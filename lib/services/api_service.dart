@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../utils/network_util.dart';
+import '../utils/logger.dart';
 
 class ApiService {
   final Dio _dio;
@@ -14,18 +14,56 @@ class ApiService {
         'Content-Type': 'application/json',
       },
     ));
-    dio.interceptors.add(NetworkUtil.createLoggingInterceptor());
+
+    if (Logger.isEnabled) {
+      dio.interceptors.add(InterceptorsWrapper(
+        onRequest: (options, handler) {
+          Logger.log('Request [${options.method}] => URL: ${options.uri}');
+          Logger.log('Headers: ${options.headers}');
+          Logger.log('Data: ${options.data}');
+          return handler.next(options);
+        },
+        onResponse: (response, handler) {
+          Logger.log('Response [${response.statusCode}] => Data: ${response.data}');
+          return handler.next(response);
+        },
+        onError: (e, handler) {
+          Logger.log('Error: ${e.message}');
+          return handler.next(e);
+        },
+      ));
+    }
+
     return ApiService._internal(dio);
   }
 
   factory ApiService.auth() {
     final dio = Dio(BaseOptions(
-      baseUrl: 'https://login.salesforce.com', // URL base de autenticación
+      baseUrl: 'https://login.salesforce.com',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     ));
-    dio.interceptors.add(NetworkUtil.createLoggingInterceptor());
+
+    if (Logger.isEnabled) {
+      dio.interceptors.add(InterceptorsWrapper(
+        onRequest: (options, handler) {
+          Logger.log('Request [${options.method}] => URL: ${options.uri}');
+          Logger.log('Headers: ${options.headers}');
+          Logger.log('Data: ${options.data}');
+          return handler.next(options);
+        },
+        onResponse: (response, handler) {
+          Logger.log('Response [${response.statusCode}] => Data: ${response.data}');
+          return handler.next(response);
+        },
+        onError: (e, handler) {
+          Logger.log('Error: ${e.message}');
+          return handler.next(e);
+        },
+      ));
+    }
+
     return ApiService._internal(dio);
   }
 
