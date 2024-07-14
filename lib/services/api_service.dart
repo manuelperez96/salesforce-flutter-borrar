@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
-import '../utils/logger.dart';
+import '../utils/network_util.dart';
 
+/// Service class for managing API requests.
 class ApiService {
   final Dio _dio;
 
   ApiService._internal(this._dio);
 
+  /// Factory constructor for creating an [ApiService] with the given [instanceUrl] and [accessToken].
   factory ApiService(String instanceUrl, String accessToken) {
     final dio = Dio(BaseOptions(
       baseUrl: instanceUrl,
@@ -15,28 +17,13 @@ class ApiService {
       },
     ));
 
-    if (Logger.isEnabled) {
-      dio.interceptors.add(InterceptorsWrapper(
-        onRequest: (options, handler) {
-          Logger.log('Request [${options.method}] => URL: ${options.uri}');
-          Logger.log('Headers: ${options.headers}');
-          Logger.log('Data: ${options.data}');
-          return handler.next(options);
-        },
-        onResponse: (response, handler) {
-          Logger.log('Response [${response.statusCode}] => Data: ${response.data}');
-          return handler.next(response);
-        },
-        onError: (e, handler) {
-          Logger.log('Error: ${e.message}');
-          return handler.next(e);
-        },
-      ));
-    }
+    // Add logging interceptor using NetworkUtil
+    dio.interceptors.add(NetworkUtil.createLoggingInterceptor());
 
     return ApiService._internal(dio);
   }
 
+  /// Factory constructor for creating an [ApiService] for authentication requests.
   factory ApiService.auth() {
     final dio = Dio(BaseOptions(
       baseUrl: 'https://login.salesforce.com',
@@ -45,27 +32,12 @@ class ApiService {
       },
     ));
 
-    if (Logger.isEnabled) {
-      dio.interceptors.add(InterceptorsWrapper(
-        onRequest: (options, handler) {
-          Logger.log('Request [${options.method}] => URL: ${options.uri}');
-          Logger.log('Headers: ${options.headers}');
-          Logger.log('Data: ${options.data}');
-          return handler.next(options);
-        },
-        onResponse: (response, handler) {
-          Logger.log('Response [${response.statusCode}] => Data: ${response.data}');
-          return handler.next(response);
-        },
-        onError: (e, handler) {
-          Logger.log('Error: ${e.message}');
-          return handler.next(e);
-        },
-      ));
-    }
+    // Add logging interceptor using NetworkUtil
+    dio.interceptors.add(NetworkUtil.createLoggingInterceptor());
 
     return ApiService._internal(dio);
   }
 
+  /// Getter for the Dio instance.
   Dio get dio => _dio;
 }
