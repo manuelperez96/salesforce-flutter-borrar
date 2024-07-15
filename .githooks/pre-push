@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Run Flutter analyze
+echo "Running flutter analyze..."
+flutter analyze
+
+if [ $? -ne 0 ]; then
+  echo "Flutter analyze failed. Aborting push."
+  exit 1
+fi
+
+# Run Flutter tests
+echo "Running flutter tests..."
+flutter test
+
+if [ $? -ne 0 ]; then
+  echo "Flutter tests failed. Aborting push."
+  exit 1
+fi
+
+echo "All checks passed. Proceeding with push."
+exit 0
