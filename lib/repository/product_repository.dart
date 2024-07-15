@@ -1,8 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
+import 'package:sf_commerce_sdk/utils/token_manager.dart';
 import '../models/responses/product/product.dart';
 
 class ProductRepository extends Repository {
-  ProductRepository(super.dio);
+
+  ProductRepository(super.host);
 
   Future<List<Product>> getProducts() async {
     try {
@@ -16,4 +19,16 @@ class ProductRepository extends Repository {
 
   @override
   String get path => '/commerce/products';
+
+  @override
+  Dio get dio {
+    final dio = Dio(BaseOptions(
+      baseUrl: host,
+      headers: {
+        'Authorization': 'Bearer ${TokenManager.accessToken}',
+        'Content-Type': 'application/json',
+      },
+    ));
+    return dio;
+  }
 }

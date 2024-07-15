@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
+import 'package:sf_commerce_sdk/utils/token_manager.dart';
 
 import '../models/responses/access_token/access_token.dart';
+import '../utils/network_util.dart';
 
 class AccessTokenRepository extends Repository {
-  AccessTokenRepository(super.dio);
+  AccessTokenRepository(super.host);
 
-  Future<AccessToken> fetchAccessToken({
+  Future<void> loadAccessToken({
     required String clientId,
     required String clientSecret,
     required String username,
@@ -26,7 +28,8 @@ class AccessTokenRepository extends Repository {
           'Content-Type': 'application/x-www-form-urlencoded',
         }),
       );
-      return AccessToken.fromJson(response.data);
+      final token = AccessToken.fromJson(response.data);
+      TokenManager.setAccessToken(token);
     } catch (e) {
       throw Exception('Failed to fetch access token: $e');
     }
@@ -34,4 +37,17 @@ class AccessTokenRepository extends Repository {
 
   @override
   String get path => '/services/oauth2/token';
+
+  @override
+  Dio get dio {
+    final dio = Dio(BaseOptions(
+      baseUrl: "https://kv7kzm78.api.commercecloud.salesforce.com",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    ));
+    // Add logging interceptor using NetworkUtil
+    dio.interceptors.add(NetworkUtil.createLoggingInterceptor());
+    return dio;
+  }
 }
