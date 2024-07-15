@@ -4,7 +4,7 @@ import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 void main() {
   group('SFCommerceSDK Integration Tests', () {
     setUp(() async {
-      SFCommerceSDK.initialize(
+      await SFCommerceSDK.initialize(
         clientId: 'test_client_id',
         clientSecret: 'test_client_secret',
         instanceUrl: 'https://api.example.com',

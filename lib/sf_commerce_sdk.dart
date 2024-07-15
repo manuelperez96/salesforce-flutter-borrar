@@ -20,7 +20,7 @@ class SFCommerceSDK {
   /// [username] - The username for Salesforce authentication (optional).
   /// [password] - The password for Salesforce authentication (optional).
   /// [enableVerboseLogs] - If true, enables verbose logging (optional, default is false).
-  static void initialize({
+  static Future<void> initialize({
     required String clientId,
     required String clientSecret,
     required String instanceUrl,
