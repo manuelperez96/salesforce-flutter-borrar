@@ -1,5 +1,3 @@
-# Ejemplo básico de archivo .gitlab-ci.yml para un proyecto Flutter
-
 stages:
   - lint
   - build
@@ -23,7 +21,3 @@ test:
   image: cirrusci/flutter:stable
   script:
     - flutter test
-
-only:
-  - branches
-
