@@ -1,14 +1,12 @@
-import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/repository/repository.dart';
 import '../models/responses/product/product.dart';
 
-class ProductRepository {
-  final Dio _dio;
-
-  ProductRepository(this._dio);
+class ProductRepository extends Repository {
+  ProductRepository(super.dio);
 
   Future<List<Product>> getProducts() async {
     try {
-      final response = await _dio.get('/commerce/products');
+      final response = await dio.get(path);
       final List<dynamic> jsonResponse = response.data['data'];
       return jsonResponse.map((productJson) => Product.fromJson(productJson)).toList();
     } catch (e) {
@@ -16,5 +14,6 @@ class ProductRepository {
     }
   }
 
-// Add other repository methods as needed
+  @override
+  String get path => '/commerce/products';
 }

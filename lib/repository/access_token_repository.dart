@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/repository/repository.dart';
 
 import '../models/responses/access_token/access_token.dart';
 
-class AccessTokenRepository {
-  final Dio _dio;
-
-  AccessTokenRepository(this._dio);
+class AccessTokenRepository extends Repository {
+  AccessTokenRepository(super.dio);
 
   Future<AccessToken> fetchAccessToken({
     required String clientId,
@@ -14,8 +13,8 @@ class AccessTokenRepository {
     required String password,
   }) async {
     try {
-      final response = await _dio.post(
-        '/services/oauth2/token',
+      final response = await dio.post(
+        path,
         data: {
           'grant_type': 'password',
           'client_id': clientId,
@@ -32,4 +31,7 @@ class AccessTokenRepository {
       throw Exception('Failed to fetch access token: $e');
     }
   }
+
+  @override
+  String get path => '/services/oauth2/token';
 }
