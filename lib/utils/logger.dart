@@ -20,7 +20,7 @@ class Logger {
     if (isEnabled) {
       if (kDebugMode) {
         print(message);
-      } // Customize logging behavior as needed
+      }
     }
   }
 }

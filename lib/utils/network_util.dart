@@ -3,7 +3,7 @@ import 'logger.dart';
 
 /// Utility class for creating logging interceptors for Dio requests.
 class NetworkUtil {
-  /// Creates an [InterceptorsWrapper] with logging capabilities for Dio requests.
+  /// Creates an [InterceptorsWrapper] with logger capabilities for Dio requests.
   ///
   /// This method returns an [InterceptorsWrapper] that logs details of
   /// requests, responses, and errors using the provided [Logger].
@@ -12,9 +12,9 @@ class NetworkUtil {
   ///
   /// ```dart
   /// final dio = Dio();
-  /// dio.interceptors.add(NetworkUtil.createLoggingInterceptor());
+  /// dio.interceptors.add(NetworkUtil.createLogsInterceptor());
   /// ```
-  static InterceptorsWrapper createLoggingInterceptor() {
+  static InterceptorsWrapper createLogsInterceptor() {
     return InterceptorsWrapper(
         onRequest: (options, handler) {
           Logger.log('Request[${options.method}] => PATH: ${options.path}');

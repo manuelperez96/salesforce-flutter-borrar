@@ -46,8 +46,8 @@ class AccessTokenRepository extends Repository {
         'Content-Type': 'application/json',
       },
     ));
-    // Add logging interceptor using NetworkUtil
-    dio.interceptors.add(NetworkUtil.createLoggingInterceptor());
+    // Add logger interceptor using NetworkUtil
+    dio.interceptors.add(NetworkUtil.createLogsInterceptor());
     return dio;
   }
 }
