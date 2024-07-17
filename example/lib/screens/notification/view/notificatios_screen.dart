@@ -1,6 +1,6 @@
+import 'package:example/components/unbuy_full_ui_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:example/components/buy_full_ui_kit.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
@@ -23,7 +23,7 @@ class NotificationsScreen extends StatelessWidget {
             )
           ],
         ),
-        body: const BuyFullKit(
+        body: const UnBuyFullKit(
           images: ["assets/screens/Notification.png"],
         ));
   }

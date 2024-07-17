@@ -1,19 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:example/components/buy_full_ui_kit.dart';
 import 'package:example/components/cart_button.dart';
 import 'package:example/components/custom_modal_bottom_sheet.dart';
 import 'package:example/components/product/product_card.dart';
+import 'package:example/components/unbuy_full_ui_kit.dart';
 import 'package:example/constants.dart';
-import 'package:example/screens/product/views/product_returns_screen.dart';
-
 import 'package:example/route/screen_export.dart';
+import 'package:example/screens/product/views/product_returns_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
+import '../../../components/review_card.dart';
 import 'components/notify_me_card.dart';
 import 'components/product_images.dart';
 import 'components/product_info.dart';
 import 'components/product_list_tile.dart';
-import '../../../components/review_card.dart';
 import 'product_buy_now_screen.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -81,7 +80,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 customModalBottomSheet(
                   context,
                   height: MediaQuery.of(context).size.height * 0.92,
-                  child: const BuyFullKit(
+                  child: const UnBuyFullKit(
                       images: ["assets/screens/Product detail.png"]),
                 );
               },
@@ -93,7 +92,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 customModalBottomSheet(
                   context,
                   height: MediaQuery.of(context).size.height * 0.92,
-                  child: const BuyFullKit(
+                  child: const UnBuyFullKit(
                     images: ["assets/screens/Shipping information.png"],
                   ),
                 );

@@ -1,5 +1,5 @@
+import 'package:example/components/unbuy_full_ui_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:example/components/buy_full_ui_kit.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -11,7 +11,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
-    return const BuyFullKit(
+    return const UnBuyFullKit(
       images: [
         "assets/screens/SEARCH_1.png",
         "assets/screens/Search_2.png",
