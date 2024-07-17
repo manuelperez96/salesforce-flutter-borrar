@@ -37,7 +37,7 @@ class ProductDetailsScreen extends StatelessWidget {
             )
           :
 
-          /// If profuct is not available then show [NotifyMeCard]
+          /// If product is not available then show [NotifyMeCard]
           NotifyMeCard(
               isNotify: false,
               onChanged: (value) {},
@@ -51,8 +51,14 @@ class ProductDetailsScreen extends StatelessWidget {
               actions: [
                 IconButton(
                   onPressed: () {},
-                  icon: SvgPicture.asset("assets/icons/Bookmark.svg",
-                      color: Theme.of(context).textTheme.bodyLarge!.color),
+                  icon: SvgPicture.asset(
+                    "assets/icons/Bookmark.svg",
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).textTheme.bodyLarge!.color ??
+                          Colors.white,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ),
               ],
             ),

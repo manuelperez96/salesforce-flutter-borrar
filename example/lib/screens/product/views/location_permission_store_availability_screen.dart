@@ -4,8 +4,8 @@ import 'package:example/theme/input_decoration_theme.dart';
 
 import '../../../constants.dart';
 
-class LocationPermissonStoreAvailabilityScreen extends StatelessWidget {
-  const LocationPermissonStoreAvailabilityScreen({super.key});
+class LocationPermissionStoreAvailabilityScreen extends StatelessWidget {
+  const LocationPermissionStoreAvailabilityScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +43,22 @@ class LocationPermissonStoreAvailabilityScreen extends StatelessWidget {
                         decoration: InputDecoration(
                           fillColor: Colors.transparent,
                           hintText: "Find something...",
-                          border: secodaryOutlineInputBorder(context),
-                          enabledBorder: secodaryOutlineInputBorder(context),
-                          focusedBorder: secodaryOutlineInputBorder(context),
+                          border: secondaryOutlineInputBorder(context),
+                          enabledBorder: secondaryOutlineInputBorder(context),
+                          focusedBorder: secondaryOutlineInputBorder(context),
                           prefixIcon: Padding(
                             padding: const EdgeInsets.all(defaultPadding / 2),
                             child: SvgPicture.asset(
                               "assets/icons/Search.svg",
                               height: 24,
-                              color: Theme.of(context)
-                                  .inputDecorationTheme
-                                  .hintStyle!
-                                  .color,
+                              colorFilter: ColorFilter.mode(
+                                Theme.of(context)
+                                        .inputDecorationTheme
+                                        .hintStyle!
+                                        .color ??
+                                    Colors.white,
+                                BlendMode.srcIn,
+                              ),
                             ),
                           ),
                         ),

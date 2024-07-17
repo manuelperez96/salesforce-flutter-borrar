@@ -23,7 +23,7 @@ class WalletHistoryCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius:
-            const BorderRadius.all(Radius.circular(defaultBorderRadious)),
+            const BorderRadius.all(Radius.circular(defaultBorderRadius)),
         border: Border.all(color: Theme.of(context).dividerColor),
       ),
       child: Column(
@@ -32,7 +32,10 @@ class WalletHistoryCard extends StatelessWidget {
             minLeadingWidth: 24,
             leading: SvgPicture.asset(
               isReturn ? "assets/icons/Return.svg" : "assets/icons/Product.svg",
-              color: Theme.of(context).iconTheme.color,
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).iconTheme.color ?? Colors.white,
+                BlendMode.srcIn,
+              ),
               height: 24,
               width: 24,
             ),
