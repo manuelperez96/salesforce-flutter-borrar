@@ -64,7 +64,7 @@ import 'screen_export.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case onbordingScreenRoute:
+    case onboardingScreenRoute:
       return MaterialPageRoute(
         builder: (context) => const OnBordingScreen(),
       );

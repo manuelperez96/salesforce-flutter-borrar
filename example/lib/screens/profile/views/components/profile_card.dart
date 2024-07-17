@@ -49,7 +49,7 @@ class ProfileCard extends StatelessWidget {
               decoration: const BoxDecoration(
                 color: primaryColor,
                 borderRadius:
-                    BorderRadius.all(Radius.circular(defaultBorderRadious)),
+                    BorderRadius.all(Radius.circular(defaultBorderRadius)),
               ),
               child: Text(
                 proLableText,
@@ -69,7 +69,10 @@ class ProfileCard extends StatelessWidget {
       trailing: isShowArrow
           ? SvgPicture.asset(
               "assets/icons/miniRight.svg",
-              color: Theme.of(context).iconTheme.color!.withOpacity(0.4),
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).iconTheme.color!.withOpacity(0.4),
+                BlendMode.srcIn,
+              ),
             )
           : null,
     );
