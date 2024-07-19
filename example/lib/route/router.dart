@@ -7,7 +7,7 @@ import 'screen_export.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case SplashScreenRoute:
+    case splashScreenRoute:
       return MaterialPageRoute(
         builder: (context) => const SplashScreen(),
       );
