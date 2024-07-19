@@ -77,7 +77,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, homeScreenRoute);
+                    Navigator.pushNamed(context, entryPointScreenRoute);
                   },
                   child: Text(
                     "Skip",
@@ -131,7 +131,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                             _pageController.nextPage(
                                 curve: Curves.ease, duration: defaultDuration);
                           } else {
-                            Navigator.pushNamed(context, homeScreenRoute);
+                            Navigator.pushNamed(context, entryPointScreenRoute);
                           }
                         },
                         style: ElevatedButton.styleFrom(
