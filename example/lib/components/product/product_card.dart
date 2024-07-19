@@ -1,3 +1,4 @@
+import 'package:example/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -6,18 +7,10 @@ import '../network_image_with_loader.dart';
 class ProductCard extends StatelessWidget {
   const ProductCard({
     super.key,
-    required this.image,
-    required this.brandName,
-    required this.title,
-    required this.price,
-    this.priceAfetDiscount,
-    this.dicountpercent,
     required this.press,
+    required this.product,
   });
-  final String image, brandName, title;
-  final double price;
-  final double? priceAfetDiscount;
-  final int? dicountpercent;
+  final ProductModel product;
   final VoidCallback press;
 
   @override
@@ -34,8 +27,9 @@ class ProductCard extends StatelessWidget {
             aspectRatio: 1.15,
             child: Stack(
               children: [
-                NetworkImageWithLoader(image, radius: defaultBorderRadius),
-                if (dicountpercent != null)
+                NetworkImageWithLoader(product.image,
+                    radius: defaultBorderRadius),
+                if (product.dicountpercent != null)
                   Positioned(
                     right: defaultPadding / 2,
                     top: defaultPadding / 2,
@@ -49,7 +43,7 @@ class ProductCard extends StatelessWidget {
                             Radius.circular(defaultBorderRadius)),
                       ),
                       child: Text(
-                        "$dicountpercent% off",
+                        "${product.dicountpercent}% off",
                         style: const TextStyle(
                             color: Colors.white,
                             fontSize: 10,
@@ -68,7 +62,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    brandName.toUpperCase(),
+                    product.brandName.toUpperCase(),
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!
@@ -76,7 +70,7 @@ class ProductCard extends StatelessWidget {
                   ),
                   const SizedBox(height: defaultPadding / 2),
                   Text(
-                    title,
+                    product.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context)
@@ -85,11 +79,11 @@ class ProductCard extends StatelessWidget {
                         .copyWith(fontSize: 12),
                   ),
                   const Spacer(),
-                  priceAfetDiscount != null
+                  product.priceAfetDiscount != null
                       ? Row(
                           children: [
                             Text(
-                              "\$$priceAfetDiscount",
+                              "\$${product.priceAfetDiscount}",
                               style: const TextStyle(
                                 color: Color(0xFF31B0D8),
                                 fontWeight: FontWeight.w500,
@@ -98,7 +92,7 @@ class ProductCard extends StatelessWidget {
                             ),
                             const SizedBox(width: defaultPadding / 4),
                             Text(
-                              "\$$price",
+                              "\$${product.price}",
                               style: TextStyle(
                                 color: Theme.of(context)
                                     .textTheme
@@ -111,7 +105,7 @@ class ProductCard extends StatelessWidget {
                           ],
                         )
                       : Text(
-                          "\$$price",
+                          "\$${product.price}",
                           style: const TextStyle(
                             color: Color(0xFF31B0D8),
                             fontWeight: FontWeight.w500,

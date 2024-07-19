@@ -1,5 +1,6 @@
+import 'package:example/components/bottom_navigation_bar/entry_point.dart';
+import 'package:example/models/product_model.dart';
 import 'package:flutter/material.dart';
-import 'package:example/entry_point.dart';
 
 import 'screen_export.dart';
 
@@ -131,8 +132,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case productDetailsScreenRoute:
       return MaterialPageRoute(
         builder: (context) {
-          bool isProductAvailable = settings.arguments as bool? ?? true;
-          return ProductDetailsScreen(isProductAvailable: isProductAvailable);
+          ProductModel product = settings.arguments as ProductModel;
+          return ProductDetailsScreen(product: product);
         },
       );
     case productReviewsScreenRoute:
