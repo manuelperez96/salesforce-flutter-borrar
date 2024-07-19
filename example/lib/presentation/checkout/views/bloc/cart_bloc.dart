@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:example/models/product_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/scheduler/ticker.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'cart_event.dart';
