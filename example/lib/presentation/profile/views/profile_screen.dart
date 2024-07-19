@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:example/components/list_tile/divider_list_tile.dart';
 import 'package:example/components/network_image_with_loader.dart';
 import 'package:example/constants.dart';
+import 'package:example/extensions/context_extensions.dart';
 import 'package:example/route/screen_export.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'components/profile_card.dart';
 import 'components/profile_menu_item_list_tile.dart';
@@ -42,44 +43,44 @@ class ProfileScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
             child: Text(
-              "Account",
+              context.localizations.account,
               style: Theme.of(context).textTheme.titleSmall,
             ),
           ),
           const SizedBox(height: defaultPadding / 2),
           ProfileMenuListTile(
-            text: "Orders",
+            text: context.localizations.orders,
             svgSrc: "assets/icons/Order.svg",
             press: () {
               Navigator.pushNamed(context, ordersScreenRoute);
             },
           ),
           ProfileMenuListTile(
-            text: "Returns",
+            text: context.localizations.returns,
             svgSrc: "assets/icons/Return.svg",
             press: () {},
           ),
           ProfileMenuListTile(
-            text: "Wishlist",
+            text: context.localizations.wishlist,
             svgSrc: "assets/icons/Wishlist.svg",
             press: () {},
           ),
           ProfileMenuListTile(
-            text: "Addresses",
+            text: context.localizations.addresses,
             svgSrc: "assets/icons/Address.svg",
             press: () {
               Navigator.pushNamed(context, addressesScreenRoute);
             },
           ),
           ProfileMenuListTile(
-            text: "Payment",
+            text: context.localizations.payment,
             svgSrc: "assets/icons/card.svg",
             press: () {
               Navigator.pushNamed(context, emptyPaymentScreenRoute);
             },
           ),
           ProfileMenuListTile(
-            text: "Wallet",
+            text: context.localizations.wallet,
             svgSrc: "assets/icons/Wallet.svg",
             press: () {
               Navigator.pushNamed(context, walletScreenRoute);
@@ -90,20 +91,20 @@ class ProfileScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 horizontal: defaultPadding, vertical: defaultPadding / 2),
             child: Text(
-              "Personalization",
+              context.localizations.personalization,
               style: Theme.of(context).textTheme.titleSmall,
             ),
           ),
           DividerListTileWithTrilingText(
             svgSrc: "assets/icons/Notification.svg",
-            title: "Notification",
-            trilingText: "Off",
+            title: context.localizations.notification,
+            trilingText: "",
             press: () {
               Navigator.pushNamed(context, enableNotificationScreenRoute);
             },
           ),
           ProfileMenuListTile(
-            text: "Preferences",
+            text: context.localizations.preferences,
             svgSrc: "assets/icons/Preferences.svg",
             press: () {
               Navigator.pushNamed(context, preferencesScreenRoute);
@@ -114,19 +115,19 @@ class ProfileScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 horizontal: defaultPadding, vertical: defaultPadding / 2),
             child: Text(
-              "Settings",
+              context.localizations.settings,
               style: Theme.of(context).textTheme.titleSmall,
             ),
           ),
           ProfileMenuListTile(
-            text: "Language",
+            text: context.localizations.language,
             svgSrc: "assets/icons/Language.svg",
             press: () {
               Navigator.pushNamed(context, selectLanguageScreenRoute);
             },
           ),
           ProfileMenuListTile(
-            text: "Location",
+            text: context.localizations.location,
             svgSrc: "assets/icons/Location.svg",
             press: () {},
           ),
@@ -135,19 +136,19 @@ class ProfileScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 horizontal: defaultPadding, vertical: defaultPadding / 2),
             child: Text(
-              "Help & Support",
+              context.localizations.help_support,
               style: Theme.of(context).textTheme.titleSmall,
             ),
           ),
           ProfileMenuListTile(
-            text: "Get Help",
+            text: context.localizations.help,
             svgSrc: "assets/icons/Help.svg",
             press: () {
               Navigator.pushNamed(context, getHelpScreenRoute);
             },
           ),
           ProfileMenuListTile(
-            text: "FAQ",
+            text: context.localizations.faq,
             svgSrc: "assets/icons/FAQ.svg",
             press: () {},
             isShowDivider: false,
@@ -167,9 +168,10 @@ class ProfileScreen extends StatelessWidget {
                 BlendMode.srcIn,
               ),
             ),
-            title: const Text(
-              "Log Out",
-              style: TextStyle(color: errorColor, fontSize: 14, height: 1),
+            title: Text(
+              context.localizations.log_out,
+              style:
+                  const TextStyle(color: errorColor, fontSize: 14, height: 1),
             ),
           )
         ],

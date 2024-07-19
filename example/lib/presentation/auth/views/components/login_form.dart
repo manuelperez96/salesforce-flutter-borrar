@@ -1,5 +1,7 @@
+import 'package:example/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 import '../../../../constants.dart';
 
@@ -21,11 +23,11 @@ class LogInForm extends StatelessWidget {
             onSaved: (emal) {
               // Email
             },
-            validator: emaildValidator.call,
+            validator: emailValidator(context).call,
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              hintText: "Email address",
+              hintText: context.localizations.email_address,
               prefixIcon: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: defaultPadding * 0.75),
@@ -49,10 +51,10 @@ class LogInForm extends StatelessWidget {
             onSaved: (pass) {
               // Password
             },
-            validator: passwordValidator.call,
+            validator: passValidator(context).call,
             obscureText: true,
             decoration: InputDecoration(
-              hintText: "Password",
+              hintText: context.localizations.password,
               prefixIcon: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: defaultPadding * 0.75),
@@ -74,5 +76,22 @@ class LogInForm extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  MultiValidator passValidator(BuildContext context) {
+    return MultiValidator([
+      RequiredValidator(errorText: context.localizations.password_required),
+      MinLengthValidator(8,
+          errorText: context.localizations.password_digits_long),
+      PatternValidator(r'(?=.*?[#?!@$%^&*-])',
+          errorText: context.localizations.passwords_special_character)
+    ]);
+  }
+
+  MultiValidator emailValidator(BuildContext context) {
+    return MultiValidator([
+      RequiredValidator(errorText: context.localizations.email_required),
+      EmailValidator(errorText: context.localizations.valid_email_address),
+    ]);
   }
 }

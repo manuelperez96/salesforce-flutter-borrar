@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:example/extensions/context_extensions.dart';
 import 'package:example/theme/input_decoration_theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchForm extends StatelessWidget {
   const SearchForm({
@@ -38,7 +38,7 @@ class SearchForm extends StatelessWidget {
         validator: validator,
         textInputAction: TextInputAction.search,
         decoration: InputDecoration(
-          hintText: "Find something...",
+          hintText: context.localizations.discover_hint,
           filled: false,
           border: secondaryOutlineInputBorder(context),
           enabledBorder: secondaryOutlineInputBorder(context),

@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:example/constants.dart';
+import 'package:example/extensions/context_extensions.dart';
 import 'package:example/route/route_constants.dart';
+import 'package:flutter/material.dart';
 
 import 'components/login_form.dart';
 
@@ -32,18 +33,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Welcome back!",
+                    context.localizations.welcome_back,
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   const SizedBox(height: defaultPadding / 2),
-                  const Text(
-                    "Log in with your data that you intered during your registration.",
+                  Text(
+                    context.localizations.login_description,
                   ),
                   const SizedBox(height: defaultPadding),
                   LogInForm(formKey: _formKey),
                   Align(
                     child: TextButton(
-                      child: const Text("Forgot password"),
+                      child: Text(context.localizations.forgot_password),
                       onPressed: () {
                         Navigator.pushNamed(
                             context, passwordRecoveryScreenRoute);
@@ -51,9 +52,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: size.height > 700
-                        ? size.height * 0.1
-                        : defaultPadding,
+                    height:
+                        size.height > 700 ? size.height * 0.1 : defaultPadding,
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -64,17 +64,17 @@ class _LoginScreenState extends State<LoginScreen> {
                             ModalRoute.withName(logInScreenRoute));
                       }
                     },
-                    child: const Text("Log in"),
+                    child: Text(context.localizations.log_in_button),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Don't have an account?"),
+                      Text(context.localizations.no_account_description),
                       TextButton(
                         onPressed: () {
                           Navigator.pushNamed(context, signUpScreenRoute);
                         },
-                        child: const Text("Sign up"),
+                        child: Text(context.localizations.sign_up),
                       )
                     ],
                   ),

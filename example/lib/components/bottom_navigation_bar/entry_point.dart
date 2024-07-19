@@ -1,5 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:example/components/bottom_navigation_bar/cart_animated_icon.dart';
+import 'package:example/extensions/context_extensions.dart';
 import 'package:example/route/screen_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -118,32 +119,32 @@ class _EntryPointState extends State<EntryPoint> {
             BottomNavigationBarItem(
               icon: svgIcon("assets/icons/Shop.svg"),
               activeIcon: svgIcon("assets/icons/Shop.svg", color: primaryColor),
-              label: "Shop",
+              label: context.localizations.label_shop,
             ),
             BottomNavigationBarItem(
               icon: svgIcon("assets/icons/Category.svg"),
               activeIcon:
                   svgIcon("assets/icons/Category.svg", color: primaryColor),
-              label: "Discover",
+              label: context.localizations.label_discover,
             ),
             BottomNavigationBarItem(
               icon: svgIcon("assets/icons/Bookmark.svg"),
               activeIcon:
                   svgIcon("assets/icons/Bookmark.svg", color: primaryColor),
-              label: "Bookmark",
+              label: context.localizations.label_bookmark,
             ),
             BottomNavigationBarItem(
               icon: CartAnimatedIcon(svgIcon: svgIcon("assets/icons/Bag.svg")),
               activeIcon: CartAnimatedIcon(
                 svgIcon: svgIcon("assets/icons/Bag.svg", color: primaryColor),
               ),
-              label: "Cart",
+              label: context.localizations.label_cart,
             ),
             BottomNavigationBarItem(
               icon: svgIcon("assets/icons/Profile.svg"),
               activeIcon:
                   svgIcon("assets/icons/Profile.svg", color: primaryColor),
-              label: "Profile",
+              label: context.localizations.label_profile,
             ),
           ],
         ),

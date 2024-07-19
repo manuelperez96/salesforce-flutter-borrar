@@ -1,4 +1,6 @@
+import 'package:example/extensions/context_extensions.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
+import 'package:example/presentation/localization/app_localizations.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:example/route/router.dart' as router;
 import 'package:example/theme/app_theme.dart';
@@ -30,6 +32,9 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.dark,
         onGenerateRoute: router.generateRoute,
         initialRoute: onboardingScreenRoute,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        onGenerateTitle: (context) => context.localizations.app_title,
       ),
     );
   }

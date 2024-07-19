@@ -1,4 +1,5 @@
 import 'package:example/components/product/product_card.dart';
+import 'package:example/extensions/context_extensions.dart';
 import 'package:example/models/product_model.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class BestSellers extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(defaultPadding),
           child: Text(
-            "Best sellers",
+            context.localizations.best_sellers,
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),

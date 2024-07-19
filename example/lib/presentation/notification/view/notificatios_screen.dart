@@ -1,4 +1,5 @@
 import 'package:example/components/unbuy_full_ui_kit.dart';
+import 'package:example/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -9,7 +10,7 @@ class NotificationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Notifications"),
+          title: Text(context.localizations.notifications),
           actions: [
             IconButton(
               onPressed: () {},

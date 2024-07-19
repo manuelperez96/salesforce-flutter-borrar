@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:example/components/product/secondary_product_card.dart';
+import 'package:example/extensions/context_extensions.dart';
 import 'package:example/models/product_model.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
 import '../../../../route/route_constants.dart';
@@ -19,7 +20,7 @@ class MostPopular extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(defaultPadding),
           child: Text(
-            "Most popular",
+            context.localizations.most_popular,
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),

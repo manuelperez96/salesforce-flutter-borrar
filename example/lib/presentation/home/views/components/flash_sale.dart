@@ -1,3 +1,4 @@
+import 'package:example/extensions/context_extensions.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class FlashSale extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(defaultPadding),
           child: Text(
-            "Flash sale",
+            context.localizations.flash_sale,
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:example/components/dot_indicators.dart';
 import 'package:example/constants.dart';
+import 'package:example/extensions/context_extensions.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,46 +17,12 @@ class OnBordingScreen extends StatefulWidget {
 class _OnBordingScreenState extends State<OnBordingScreen> {
   late PageController _pageController;
   int _pageIndex = 0;
-  final List<Onbord> _onbordData = [
-    Onbord(
-      image: "assets/Illustration/Illustration-0.png",
-      imageDarkTheme: "assets/Illustration/Illustration_darkTheme_0.png",
-      title: "Find the item you’ve \nbeen looking for",
-      description:
-          "Here you’ll see rich varieties of goods, carefully classified for seamless browsing experience.",
-    ),
-    Onbord(
-      image: "assets/Illustration/Illustration-1.png",
-      imageDarkTheme: "assets/Illustration/Illustration_darkTheme_1.png",
-      title: "Get those shopping \nbags filled",
-      description:
-          "Add any item you want to your cart, or save it on your wishlist, so you don’t miss it in your future purchases.",
-    ),
-    Onbord(
-      image: "assets/Illustration/Illustration-2.png",
-      imageDarkTheme: "assets/Illustration/Illustration_darkTheme_2.png",
-      title: "Fast & secure \npayment",
-      description: "There are many payment options available for your ease.",
-    ),
-    Onbord(
-      image: "assets/Illustration/Illustration-3.png",
-      imageDarkTheme: "assets/Illustration/Illustration_darkTheme_3.png",
-      title: "Package tracking",
-      description:
-          "In particular, Shoplon can pack your orders, and help you seamlessly manage your shipments.",
-    ),
-    Onbord(
-      image: "assets/Illustration/Illustration-4.png",
-      imageDarkTheme: "assets/Illustration/Illustration_darkTheme_4.png",
-      title: "Nearby stores",
-      description:
-          "Easily track nearby shops, browse through their items and get information about their prodcuts.",
-    ),
-  ];
+  late List<Onbord> _onbordData;
 
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
+
     super.initState();
   }
 
@@ -67,6 +34,39 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _onbordData = [
+      Onbord(
+        image: "assets/Illustration/Illustration-0.png",
+        imageDarkTheme: "assets/Illustration/Illustration_darkTheme_0.png",
+        title: context.localizations.onboarding_title_1,
+        description: context.localizations.onboarding_description_1,
+      ),
+      Onbord(
+        image: "assets/Illustration/Illustration-1.png",
+        imageDarkTheme: "assets/Illustration/Illustration_darkTheme_1.png",
+        title: context.localizations.onboarding_title_2,
+        description: context.localizations.onboarding_description_2,
+      ),
+      Onbord(
+        image: "assets/Illustration/Illustration-2.png",
+        imageDarkTheme: "assets/Illustration/Illustration_darkTheme_2.png",
+        title: context.localizations.onboarding_title_3,
+        description: context.localizations.onboarding_description_3,
+      ),
+      Onbord(
+        image: "assets/Illustration/Illustration-3.png",
+        imageDarkTheme: "assets/Illustration/Illustration_darkTheme_3.png",
+        title: context.localizations.onboarding_title_4,
+        description: context.localizations.onboarding_description_4,
+      ),
+      Onbord(
+        image: "assets/Illustration/Illustration-4.png",
+        imageDarkTheme: "assets/Illustration/Illustration_darkTheme_4.png",
+        title: context.localizations.onboarding_title_5,
+        description: context.localizations.onboarding_description_5,
+      ),
+    ];
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -80,7 +80,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                     Navigator.pushNamed(context, logInScreenRoute);
                   },
                   child: Text(
-                    "Skip",
+                    context.localizations.skip,
                     style: TextStyle(
                         color: Theme.of(context).textTheme.bodyLarge!.color),
                   ),
@@ -106,43 +106,36 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                   ),
                 ),
               ),
-              Stack(
-                alignment: Alignment.center,
+              Row(
                 children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: List.generate(
-                      _onbordData.length,
-                      (index) => Padding(
-                        padding:
-                            const EdgeInsets.only(right: defaultPadding / 4),
-                        child: DotIndicator(isActive: index == _pageIndex),
-                      ),
+                  ...List.generate(
+                    _onbordData.length,
+                    (index) => Padding(
+                      padding: const EdgeInsets.only(right: defaultPadding / 4),
+                      child: DotIndicator(isActive: index == _pageIndex),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: SizedBox(
-                      height: 60,
-                      width: 60,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (_pageIndex < _onbordData.length - 1) {
-                            _pageController.nextPage(
-                                curve: Curves.ease, duration: defaultDuration);
-                          } else {
-                            Navigator.pushNamed(context, logInScreenRoute);
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                        ),
-                        child: SvgPicture.asset(
-                          "assets/icons/Arrow - Right.svg",
-                          colorFilter: const ColorFilter.mode(
-                            Colors.white,
-                            BlendMode.srcIn,
-                          ),
+                  const Spacer(),
+                  SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_pageIndex < _onbordData.length - 1) {
+                          _pageController.nextPage(
+                              curve: Curves.ease, duration: defaultDuration);
+                        } else {
+                          Navigator.pushNamed(context, logInScreenRoute);
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                      ),
+                      child: SvgPicture.asset(
+                        "assets/icons/Arrow - Right.svg",
+                        colorFilter: const ColorFilter.mode(
+                          Colors.white,
+                          BlendMode.srcIn,
                         ),
                       ),
                     ),
