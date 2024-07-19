@@ -1,3 +1,4 @@
+const String splashScreenRoute = "splash";
 const String onboardingScreenRoute = "onbording";
 const String notificationPermissionScreenRoute = "notification_permission";
 const String preferredLanuageScreenRoute = "preferred_language";
