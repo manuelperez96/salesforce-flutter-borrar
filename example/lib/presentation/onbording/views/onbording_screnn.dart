@@ -22,7 +22,6 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
-
     super.initState();
   }
 
@@ -66,7 +65,6 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
         description: context.localizations.onboarding_description_5,
       ),
     ];
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -106,36 +104,43 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                   ),
                 ),
               ),
-              Row(
+              Stack(
+                alignment: Alignment.center,
                 children: [
-                  ...List.generate(
-                    _onbordData.length,
-                    (index) => Padding(
-                      padding: const EdgeInsets.only(right: defaultPadding / 4),
-                      child: DotIndicator(isActive: index == _pageIndex),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: List.generate(
+                      _onbordData.length,
+                      (index) => Padding(
+                        padding:
+                            const EdgeInsets.only(right: defaultPadding / 4),
+                        child: DotIndicator(isActive: index == _pageIndex),
+                      ),
                     ),
                   ),
-                  const Spacer(),
-                  SizedBox(
-                    height: 60,
-                    width: 60,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (_pageIndex < _onbordData.length - 1) {
-                          _pageController.nextPage(
-                              curve: Curves.ease, duration: defaultDuration);
-                        } else {
-                          Navigator.pushNamed(context, entryPointScreenRoute);
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: const CircleBorder(),
-                      ),
-                      child: SvgPicture.asset(
-                        "assets/icons/Arrow - Right.svg",
-                        colorFilter: const ColorFilter.mode(
-                          Colors.white,
-                          BlendMode.srcIn,
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: SizedBox(
+                      height: 60,
+                      width: 60,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_pageIndex < _onbordData.length - 1) {
+                            _pageController.nextPage(
+                                curve: Curves.ease, duration: defaultDuration);
+                          } else {
+                            Navigator.pushNamed(context, logInScreenRoute);
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                        ),
+                        child: SvgPicture.asset(
+                          "assets/icons/Arrow - Right.svg",
+                          colorFilter: const ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
                         ),
                       ),
                     ),
