@@ -1,4 +1,5 @@
 import 'package:example/models/product_model.dart';
+import 'package:example/presentation/product/views/components/bookmark_icon_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -9,9 +10,13 @@ class ProductCard extends StatelessWidget {
     super.key,
     required this.press,
     required this.product,
+    this.bottomWidget = const SizedBox(),
+    this.showBookmark = false,
   });
   final ProductModel product;
   final VoidCallback press;
+  final Widget bottomWidget;
+  final bool showBookmark;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +24,7 @@ class ProductCard extends StatelessWidget {
       onPressed: press,
       style: OutlinedButton.styleFrom(
           minimumSize: const Size(140, 220),
-          maximumSize: const Size(140, 220),
+          maximumSize: const Size(140, 260),
           padding: const EdgeInsets.all(8)),
       child: Column(
         children: [
@@ -50,7 +55,8 @@ class ProductCard extends StatelessWidget {
                             fontWeight: FontWeight.w500),
                       ),
                     ),
-                  )
+                  ),
+                if (showBookmark) BookmarkIconButton(product: product),
               ],
             ),
           ),
@@ -116,6 +122,7 @@ class ProductCard extends StatelessWidget {
               ),
             ),
           ),
+          bottomWidget,
         ],
       ),
     );

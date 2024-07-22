@@ -27,8 +27,13 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     emit(CartLoading());
 
     if (currentState is CartLoaded) {
-      final updatedProducts = List<ProductModel>.from(currentState.products)
-        ..add(event.product);
+      List<ProductModel> updatedProducts =
+          List<ProductModel>.from(currentState.products);
+      for (var i = 0; i < event.quantity; i++) {
+        updatedProducts = List<ProductModel>.from(updatedProducts)
+          ..add(event.product);
+      }
+      controller.forward();
 
       emit(CartLoaded(updatedProducts));
     } else {

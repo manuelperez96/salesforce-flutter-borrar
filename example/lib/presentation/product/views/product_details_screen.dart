@@ -4,10 +4,10 @@ import 'package:example/components/product/product_card.dart';
 import 'package:example/components/unbuy_full_ui_kit.dart';
 import 'package:example/constants.dart';
 import 'package:example/models/product_model.dart';
+import 'package:example/presentation/product/views/components/bookmark_icon_button.dart';
 import 'package:example/presentation/product/views/product_returns_screen.dart';
 import 'package:example/route/screen_export.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../components/review_card.dart';
 import 'components/notify_me_card.dart';
@@ -75,17 +75,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               floating: true,
               actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(
-                    "assets/icons/Bookmark.svg",
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).textTheme.bodyLarge!.color ??
-                          Colors.white,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                ),
+                BookmarkIconButton(product: product),
               ],
             ),
             const ProductImages(

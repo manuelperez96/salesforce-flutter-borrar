@@ -1,4 +1,5 @@
 import 'package:example/extensions/context_extensions.dart';
+import 'package:example/presentation/bookmark/bloc/bookmark_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/localization/app_localizations.dart';
 import 'package:example/route/route_constants.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<CartBloc>(create: (context) => CartBloc()),
+        BlocProvider<BookmarkBloc>(create: (context) => BookmarkBloc()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
