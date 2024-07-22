@@ -40,6 +40,7 @@ class PopularProducts extends StatelessWidget {
                     : 0,
               ),
               child: ProductCard(
+                // showBookmark: true,
                 product: demoPopularProducts[index],
                 press: () {
                   Navigator.pushNamed(

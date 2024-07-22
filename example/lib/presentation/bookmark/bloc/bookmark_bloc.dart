@@ -6,9 +6,6 @@ part 'bookmark_state.dart';
 
 class BookmarkBloc extends Bloc<BookmarkEvent, BookmarkState> {
   BookmarkBloc() : super(BookmarkInitialState()) {
-// TODO En la pantalla de detalle marcar el icono como relleno por id
-// TODO poner icono en la pantalla inicial?
-
     on<AddProductEvent>((event, emit) {
       final currentState = state;
       if (currentState is BookmarkLoadedState) {
