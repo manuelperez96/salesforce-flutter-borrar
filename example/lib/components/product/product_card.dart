@@ -1,4 +1,5 @@
 import 'package:example/models/product_model.dart';
+import 'package:example/presentation/product/views/components/bookmark_icon_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -10,10 +11,12 @@ class ProductCard extends StatelessWidget {
     required this.press,
     required this.product,
     this.bottomWidget = const SizedBox(),
+    this.showBookmark = false,
   });
   final ProductModel product;
   final VoidCallback press;
   final Widget bottomWidget;
+  final bool showBookmark;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +56,7 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                   ),
+                if (showBookmark) BookmarkIconButton(product: product),
               ],
             ),
           ),
