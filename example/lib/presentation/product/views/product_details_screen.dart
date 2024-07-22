@@ -16,21 +16,47 @@ import 'components/product_info.dart';
 import 'components/product_list_tile.dart';
 import 'product_buy_now_screen.dart';
 
-class ProductDetailsScreen extends StatelessWidget {
+class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key, required this.product});
   final ProductModel product;
 
   @override
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+}
+
+class _ProductDetailsScreenState extends State<ProductDetailsScreen>
+    with SingleTickerProviderStateMixin {
+  bool bottomEdge = false;
+
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController = ScrollController()
+      ..addListener(
+        () {
+          if (_scrollController.position.atEdge &&
+              _scrollController.position.pixels != 0) {
+            bottomEdge = true;
+            setState(() {});
+          }
+        },
+      );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: product.isProductAvailable
+      bottomNavigationBar: widget.product.isProductAvailable
           ? CartButton(
               price: 140,
               press: () {
                 customModalBottomSheet(
                   context,
                   height: MediaQuery.of(context).size.height * 0.92,
-                  child: ProductBuyNowScreen(product: product),
+                  child: ProductBuyNowScreen(product: widget.product),
                 );
               },
             )
@@ -43,6 +69,7 @@ class ProductDetailsScreen extends StatelessWidget {
             ),
       body: SafeArea(
         child: CustomScrollView(
+          controller: _scrollController,
           slivers: [
             SliverAppBar(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -57,7 +84,7 @@ class ProductDetailsScreen extends StatelessWidget {
             ProductInfo(
               brand: "LIPSY LONDON",
               title: "Sleeveless Ruffle",
-              isAvailable: product.isProductAvailable,
+              isAvailable: widget.product.isProductAvailable,
               description:
                   "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
               rating: 4.4,
@@ -134,19 +161,33 @@ class ProductDetailsScreen extends StatelessWidget {
             SliverToBoxAdapter(
               child: SizedBox(
                 height: 220,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 5,
-                  itemBuilder: (context, index) => Padding(
-                    padding: EdgeInsets.only(
-                        left: defaultPadding,
-                        right: index == 4 ? defaultPadding : 0),
-                    child: ProductCard(
-                      product: demoPopularProducts[index],
-                      press: () {},
-                    ),
-                  ),
-                ),
+                child: bottomEdge
+                    ? ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 5,
+                        itemBuilder: (context, index) => Padding(
+                          padding: EdgeInsets.only(
+                              left: defaultPadding,
+                              right: index == 4 ? defaultPadding : 0),
+                          child: FutureBuilder(
+                            future: awaitDelayed(index),
+                            builder: (context, snapshot) {
+                              return AnimatedOpacity(
+                                duration: const Duration(milliseconds: 300),
+                                opacity: snapshot.connectionState ==
+                                        ConnectionState.done
+                                    ? 1
+                                    : 0,
+                                child: ProductCard(
+                                  product: demoPopularProducts[index],
+                                  press: () {},
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
               ),
             ),
             const SliverToBoxAdapter(
@@ -156,5 +197,10 @@ class ProductDetailsScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> awaitDelayed(int index) async {
+    await Future.delayed(Duration(milliseconds: 300 * index));
+    return;
   }
 }
