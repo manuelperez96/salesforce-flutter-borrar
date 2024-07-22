@@ -75,7 +75,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               floating: true,
               actions: [
-                BookmarkIconButton(product: product),
+                BookmarkIconButton(product: widget.product),
               ],
             ),
             const ProductImages(
