@@ -9,9 +9,11 @@ class ProductCard extends StatelessWidget {
     super.key,
     required this.press,
     required this.product,
+    this.bottomWidget = const SizedBox(),
   });
   final ProductModel product;
   final VoidCallback press;
+  final Widget bottomWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class ProductCard extends StatelessWidget {
       onPressed: press,
       style: OutlinedButton.styleFrom(
           minimumSize: const Size(140, 220),
-          maximumSize: const Size(140, 220),
+          maximumSize: const Size(140, 260),
           padding: const EdgeInsets.all(8)),
       child: Column(
         children: [
@@ -50,7 +52,7 @@ class ProductCard extends StatelessWidget {
                             fontWeight: FontWeight.w500),
                       ),
                     ),
-                  )
+                  ),
               ],
             ),
           ),
@@ -116,6 +118,7 @@ class ProductCard extends StatelessWidget {
               ),
             ),
           ),
+          bottomWidget,
         ],
       ),
     );

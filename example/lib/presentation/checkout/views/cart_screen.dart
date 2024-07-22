@@ -1,9 +1,10 @@
 import 'package:example/components/product/product_card.dart';
 import 'package:example/constants.dart';
-import 'package:example/presentation/checkout/components/remove_product_button.dart';
+import 'package:example/models/product_model.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
+import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_state.dart';
-import 'package:example/route/screen_export.dart';
+import 'package:example/presentation/product/views/components/product_quantity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,46 +39,52 @@ class CartScreen extends StatelessWidget {
                 );
               }
 
+              Map<String, List<ProductModel>> groupedProducts = {};
+              for (var product in state.products) {
+                groupedProducts
+                    .putIfAbsent(product.id.toString(), () => [])
+                    .add(product);
+              }
+
+              List<Widget> productCards = [];
+              groupedProducts.forEach((id, products) {
+                final product = products
+                    .first; // Tomamos el primer producto como representante
+                final quantity =
+                    products.length; // La cantidad de productos en este grupo
+
+                Widget productCard = Padding(
+                  padding: const EdgeInsets.only(
+                    left: defaultPadding,
+                    right: defaultPadding,
+                  ),
+                  child: ProductCard(
+                    product: product,
+                    press: () {},
+                    bottomWidget: ProductQuantity(
+                      numOfItem: quantity,
+                      onIncrement: () {
+                        BlocProvider.of<CartBloc>(context)
+                            .add(AddProductCart(product, 1));
+                      },
+                      onDecrement: () {
+                        BlocProvider.of<CartBloc>(context)
+                            .add(RemoveProductCart(product));
+                      },
+                    ),
+                  ),
+                );
+
+                productCards.add(productCard);
+              });
+
               return Align(
                 alignment: Alignment.topCenter,
                 child: Wrap(
                   crossAxisAlignment: WrapCrossAlignment.center,
-                  spacing: 8.0,
+                  spacing: 4.0,
                   runSpacing: 4.0,
-                  children: List<Widget>.generate(
-                    state.products.length,
-                    (index) {
-                      final product = state.products[
-                          index]; // Asegúrate de obtener el producto actual
-                      return Padding(
-                        padding: EdgeInsets.only(
-                          left: defaultPadding,
-                          right: index == state.products.length - 1
-                              ? defaultPadding
-                              : 0,
-                        ),
-                        child: Stack(
-                          children: [
-                            ProductCard(
-                              product: product,
-                              press: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  productDetailsScreenRoute,
-                                  arguments: product,
-                                );
-                              },
-                            ),
-                            Positioned(
-                              top: 0,
-                              left: 0,
-                              child: RemoveProductButton(product: product),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                  children: productCards,
                 ),
               );
             }

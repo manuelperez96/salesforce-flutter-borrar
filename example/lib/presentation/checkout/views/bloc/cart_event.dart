@@ -4,8 +4,8 @@ abstract class CartEvent {}
 
 class AddProductCart extends CartEvent {
   final ProductModel product;
-
-  AddProductCart(this.product);
+  final int quantity;
+  AddProductCart(this.product, this.quantity);
 }
 
 class RemoveProductCart extends CartEvent {

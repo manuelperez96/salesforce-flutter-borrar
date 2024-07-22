@@ -27,6 +27,8 @@ class ProductBuyNowScreen extends StatefulWidget {
 }
 
 class _ProductBuyNowScreenState extends State<ProductBuyNowScreen> {
+  int currentQuantity = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +38,8 @@ class _ProductBuyNowScreenState extends State<ProductBuyNowScreen> {
         subTitle: "Total price",
         press: () {
           BlocProvider.of<CartBloc>(context)
-              .add(AddProductCart(widget.product));
+              .add(AddProductCart(widget.product, currentQuantity));
+
           customModalBottomSheet(
             context,
             isDismissible: false,
@@ -96,9 +99,11 @@ class _ProductBuyNowScreenState extends State<ProductBuyNowScreen> {
                           ),
                         ),
                         ProductQuantity(
-                          numOfItem: 2,
-                          onIncrement: () {},
-                          onDecrement: () {},
+                          numOfItem: currentQuantity,
+                          onIncrement: () => setState(() => currentQuantity++),
+                          onDecrement: () => setState(() => currentQuantity > 1
+                              ? currentQuantity--
+                              : currentQuantity),
                         ),
                       ],
                     ),
