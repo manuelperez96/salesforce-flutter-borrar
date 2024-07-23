@@ -48,10 +48,8 @@ class CartScreen extends StatelessWidget {
 
               List<Widget> productCards = [];
               groupedProducts.forEach((id, products) {
-                final product = products
-                    .first; // Tomamos el primer producto como representante
-                final quantity =
-                    products.length; // La cantidad de productos en este grupo
+                final product = products.first;
+                final quantity = products.length;
 
                 Widget productCard = Padding(
                   padding: const EdgeInsets.only(
