@@ -1,9 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 import '../models/responses/product/product.dart';
 
 class ProductRepository extends Repository {
-  ProductRepository(super.dio);
+  ProductRepository(super.sfcommerce);
+
+  Dio get dio => sfcommerce.dio;
 
   Future<List<Product>> getProducts() async {
     try {

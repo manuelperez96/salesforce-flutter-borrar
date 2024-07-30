@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/repository/auth_repository.dart';
 import 'package:sf_commerce_sdk/utils/credentials_wallet.dart';
 import 'package:sf_commerce_sdk/utils/network_util.dart';
 
@@ -14,13 +15,15 @@ class SFCommerceSDK {
     required this.siteId,
     required this.host,
     bool enableVerboseLogs = false,
-    required this.dio,
-  }) : assert(
-          !host.startsWith('http://') && !host.startsWith('https://'),
+    Dio? dioInstance,
+  })  : assert(
+          host.startsWith('http://') || host.startsWith('https://'),
           'The host URL must start with "http://" or "https://"',
-        ) {
+        ),
+        dio = dioInstance ?? Dio() {
     dio.options
       ..baseUrl = host
+      ..receiveDataWhenStatusError = true
       ..headers = {
         'Content-Type': 'application/json',
       };
@@ -154,5 +157,6 @@ class SFCommerceSDK {
   /// ProductRepository productRepo = SFCommerceSDK.productRepository;
   /// ```
 
-  late final productRepository = ProductRepository(dio);
+  late final productRepository = ProductRepository(this);
+  late final authRepository = AuthRepository(this);
 }
