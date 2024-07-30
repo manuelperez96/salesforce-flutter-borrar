@@ -1,15 +1,92 @@
+import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/utils/credentials_wallet.dart';
+import 'package:sf_commerce_sdk/utils/network_util.dart';
+
 import 'repository/product_repository.dart';
 import 'utils/logger.dart';
 
 /// Main class for the SFCommerceSDK.
 /// This class handles initialization and configuration of the SDK.
 class SFCommerceSDK {
-  // Required configuration fields for the SDK.
-  static late String clientId;
-  static late String organizationId;
-  static late String shortCode;
-  static late String siteId;
-  static late String host;
+  SFCommerceSDK({
+    required this.clientId,
+    required this.organizationId,
+    required this.siteId,
+    required this.host,
+    bool enableVerboseLogs = false,
+    required this.dio,
+  }) : assert(
+          !host.startsWith('http://') && !host.startsWith('https://'),
+          'The host URL must start with "http://" or "https://"',
+        ) {
+    dio.options
+      ..baseUrl = host
+      ..headers = {
+        'Content-Type': 'application/json',
+      };
+
+    dio.interceptors
+      ..add(NetworkUtil.createLogsInterceptor())
+      ..add(QueuedInterceptorsWrapper(onRequest: (options, handler) async {
+        await _addAuthHeader(options.headers);
+        handler.next(options);
+      }, onError: (DioException error, handler) async {
+        if (error.response?.statusCode == 401) {
+          // Refresh token and try again
+          try {
+            await _refreshToken();
+            return handler.resolve(await _retry(error.requestOptions));
+          } on DioException catch (error) {
+            return handler.next(error);
+          }
+        }
+
+        return handler.next(error);
+      }));
+
+    Logger.setEnabled(enableVerboseLogs);
+  }
+
+  late final _refreshTokenUrl =
+      '$host/shopper/auth/v1/organizations/$organizationId/oauth2/token';
+
+  Future<void> _addAuthHeader(Map<String, dynamic> headers) async {
+    final refreshToken = await CredentialsWallet.getRefreshToken();
+    final accessToken = await CredentialsWallet.getAccessToken();
+
+    if (!refreshToken.isEmpty) {
+      headers['Authorization'] = 'Bearer $accessToken';
+    } // You can also add basic authorization here
+  }
+
+  Future<void> _refreshToken() async {
+    final refreshToken = await CredentialsWallet.getRefreshToken();
+    final response = await Dio().post(_refreshTokenUrl,
+        data: {CredentialsWallet.refreshTokenKey: refreshToken});
+
+    if (response.statusCode == 200) {
+      await CredentialsWallet.saveAll(response.data);
+    } else {
+      await CredentialsWallet.clearAll();
+    }
+  }
+
+  Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
+    final headers = requestOptions.headers;
+    await _addAuthHeader(headers);
+    final options = Options(method: requestOptions.method, headers: headers);
+
+    return Dio().request<dynamic>(requestOptions.path,
+        data: requestOptions.data,
+        queryParameters: requestOptions.queryParameters,
+        options: options);
+  }
+
+  final Dio dio;
+  final String clientId;
+  final String organizationId;
+  final String siteId;
+  final String host;
 
   /// Initializes the SFCommerceSDK with the required parameters.
   ///
@@ -33,25 +110,26 @@ class SFCommerceSDK {
   ///   host: 'your_host_url',
   ///   enableVerboseLogs: true,
   /// );
-  /// ```
-  static Future<void> initialize({
-    required String clientId,
-    required String organizationId,
-    required String shortCode,
-    required String siteId,
-    required String host,
-    bool enableVerboseLogs = false,
-  }) async {
-    if (!host.startsWith('http://') && !host.startsWith('https://')) {
-      throw ArgumentError('The host URL must start with "http://" or "https://"');
-    }
-    SFCommerceSDK.clientId = clientId;
-    SFCommerceSDK.organizationId = organizationId;
-    SFCommerceSDK.shortCode = shortCode;
-    SFCommerceSDK.siteId = siteId;
-    SFCommerceSDK.host = host;
-    Logger.setEnabled(enableVerboseLogs);
-  }
+  // /// ```
+  // Future<void> initialize({
+  //   required String clientId,
+  //   required String organizationId,
+  //   required String shortCode,
+  //   required String siteId,
+  //   required String host,
+  //   bool enableVerboseLogs = false,
+  // }) async {
+  //   // if (!host.startsWith('http://') && !host.startsWith('https://')) {
+  //   //   throw ArgumentError(
+  //   //       'The host URL must start with "http://" or "https://"');
+  //   // }
+  //   SFCommerceSDK.clientId = clientId;
+  //   SFCommerceSDK.organizationId = organizationId;
+  //   SFCommerceSDK.shortCode = shortCode;
+  //   SFCommerceSDK.siteId = siteId;
+  //   SFCommerceSDK.host = host;
+  //   Logger.setEnabled(enableVerboseLogs);
+  // }
 
   /// Sets the verbose logging mode.
   ///
@@ -63,7 +141,7 @@ class SFCommerceSDK {
   /// ```dart
   /// SFCommerceSDK.setModeVerbose(true);
   /// ```
-  static void setModeVerbose(bool mode) {
+  void setModeVerbose(bool mode) {
     Logger.setEnabled(mode);
   }
 
@@ -75,5 +153,6 @@ class SFCommerceSDK {
   /// ```dart
   /// ProductRepository productRepo = SFCommerceSDK.productRepository;
   /// ```
-  static ProductRepository get productRepository => ProductRepository(host);
+
+  late final productRepository = ProductRepository(dio);
 }

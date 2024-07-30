@@ -6,25 +6,14 @@ import 'package:dio/dio.dart';
 /// the Dio library. It provides a `path` property to specify the API endpoint and a `Dio` HTTP client
 /// to perform the requests.
 abstract class Repository {
-  /// The base URL or host for the API.
-  ///
-  /// This is passed to the constructor and used as the base URL for all network requests.
-  final String host;
-
   /// Constructs a `Repository` with the given [host].
   ///
   /// The [host] parameter is used to initialize the base URL for the API requests.
-  Repository(this.host);
-
-  /// API endpoint that must be defined by classes inheriting from `Repository`.
-  ///
-  /// Each concrete class must provide the specific URL (or part of it) that will be used to make
-  /// the network requests.
-  String get path;
+  Repository(this.dio);
 
   /// HTTP client used to perform network requests.
   ///
   /// The `dio` instance is passed to the constructor of the repository and is used to configure
   /// and execute HTTP requests.
-  Dio get dio;
+  final Dio dio;
 }
