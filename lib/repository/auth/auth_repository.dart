@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/exception/auth_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/refresh_token_interceptor.dart';
 import 'package:sf_commerce_sdk/utils/pkce_helper.dart';
 
 class AuthRepository extends Repository {
@@ -20,6 +21,8 @@ class AuthRepository extends Repository {
         authCode: authCode,
         usid: usid,
       );
+
+      _addRefreshTokenInterceptor(token);
 
       print(token);
     } catch (_) {
@@ -47,7 +50,7 @@ class AuthRepository extends Repository {
         ),
       );
 
-      if(response.data == null || response.data is! Map) {
+      if (response.data == null || response.data is! Map) {
         throw GetAccessTokenException();
       }
 
@@ -128,18 +131,15 @@ class AuthRepository extends Repository {
       'client_id': sfCommerce.clientId,
       'usid': usid,
     };
-    /*
-    
-POST
-{{scapi_host}}/shopper/auth/v1/organizations/{{scapi_organization_id}}/oauth2/token
-code:{{auth_code}}
-grant_type:authorization_code_pkce
-redirect_uri:{{public_client_redirect_url}}
-code_verifier:{{PUBLIC_GUEST_CODE_VERIFIER}}
-channel_id:{{site_id}}
-client_id:{{scapi_public_client_id}}
-usid:{{usid}}
+  }
 
-     */
+  void _addRefreshTokenInterceptor(AccessToken token) {
+    _dio.interceptors.add(
+      RefreshTokenInterceptor(
+        organizationId: sfCommerce.organizationId,
+        host: sfCommerce.host,
+        initialToken: token,
+      ),
+    );
   }
 }

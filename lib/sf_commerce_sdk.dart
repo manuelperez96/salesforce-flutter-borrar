@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
-import 'package:sf_commerce_sdk/utils/credentials_wallet.dart';
-import 'package:sf_commerce_sdk/utils/network_util.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
 
 import 'repository/product_repository.dart';
 
@@ -20,51 +19,13 @@ class SFCommerceSDK {
           'The host URL must start with "http://" or "https://"',
         ),
         dio = dioInstance ?? Dio() {
-    dio.options
-      ..baseUrl = host
-      ..receiveDataWhenStatusError = true
-      ..headers = {
-        'Content-Type': 'application/json',
-      };
+    dio.options.headers = {
+      'Content-Type': 'application/json',
+    };
 
     dio.interceptors.add(NetworkUtil.createLogsInterceptor());
 
     Logger.setEnabled(enableVerboseLogs);
-  }
-
-  late final _refreshTokenUrl =
-      '$host/shopper/auth/v1/organizations/$organizationId/oauth2/token';
-
-  Future<void> _addAuthHeader(Map<String, dynamic> headers) async {
-    final refreshToken = await CredentialsWallet.getRefreshToken();
-    final accessToken = await CredentialsWallet.getAccessToken();
-
-    if (!refreshToken.isEmpty) {
-      headers['Authorization'] = 'Bearer $accessToken';
-    } // You can also add basic authorization here
-  }
-
-  Future<void> _refreshToken() async {
-    final refreshToken = await CredentialsWallet.getRefreshToken();
-    final response = await Dio().post(_refreshTokenUrl,
-        data: {CredentialsWallet.refreshTokenKey: refreshToken});
-
-    if (response.statusCode == 200) {
-      await CredentialsWallet.saveAll(response.data);
-    } else {
-      await CredentialsWallet.clearAll();
-    }
-  }
-
-  Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
-    final headers = requestOptions.headers;
-    await _addAuthHeader(headers);
-    final options = Options(method: requestOptions.method, headers: headers);
-
-    return Dio().request<dynamic>(requestOptions.path,
-        data: requestOptions.data,
-        queryParameters: requestOptions.queryParameters,
-        options: options);
   }
 
   final Dio dio;
