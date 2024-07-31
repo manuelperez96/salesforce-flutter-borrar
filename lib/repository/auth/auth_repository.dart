@@ -1,7 +1,3 @@
-import 'dart:convert';
-import 'dart:math';
-
-import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/exception/auth_exception.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
@@ -13,11 +9,12 @@ class AuthRepository extends Repository {
   Dio get dio => sfCommerce.dio;
 
   Future<void> anonymousLogin() async {
-    try {} catch (_) {
+    try {
+      final (codeVerifier, codeChallenge) = PkceHelper.generateCodes();
+      final (authCode, usid) = await _getAuthorizationCodes(codeChallenge);
+    } catch (_) {
       throw UnableDoAnonymousLoginException();
     }
-    final (codeVerifier, codeChallenge) = PkceHelper.generateCodes();
-    final (authCode, usid) = await _getAuthorizationCodes(codeChallenge);
   }
 
   Future<void> _getAccessToken() async {
@@ -54,7 +51,7 @@ class AuthRepository extends Repository {
       }
 
       final json = (e.response?.headers.map['location'] as List?);
-      if (json == null || json.isEmpty || !json.first is String) {
+      if (json == null || json.isEmpty || json.first is! String) {
         throw GetAuthorizationCodeException();
       }
 
