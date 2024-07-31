@@ -9,9 +9,9 @@ abstract class Repository {
   /// Constructs a `Repository` with the given [host].
   ///
   /// The [host] parameter is used to initialize the base URL for the API requests.
-  Repository(this.sfcommerce);
+  Repository(this.sfCommerce);
 
-  final SFCommerceSDK sfcommerce;
+  final SFCommerceSDK sfCommerce;
 
   /// HTTP client used to perform network requests.
   ///

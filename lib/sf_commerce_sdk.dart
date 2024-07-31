@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:sf_commerce_sdk/repository/auth_repository.dart';
+import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
 import 'package:sf_commerce_sdk/utils/credentials_wallet.dart';
 import 'package:sf_commerce_sdk/utils/network_util.dart';
 

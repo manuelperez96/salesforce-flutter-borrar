@@ -8,6 +8,8 @@
         "Lable",
         "Lindex",
         "LIPSY",
-        "Sizeguid"
+        "Pkce",
+        "Sizeguid",
+        "usid"
     ]
 }
