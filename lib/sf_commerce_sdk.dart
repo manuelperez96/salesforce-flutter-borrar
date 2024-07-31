@@ -4,7 +4,6 @@ import 'package:sf_commerce_sdk/utils/credentials_wallet.dart';
 import 'package:sf_commerce_sdk/utils/network_util.dart';
 
 import 'repository/product_repository.dart';
-import 'utils/logger.dart';
 
 /// Main class for the SFCommerceSDK.
 /// This class handles initialization and configuration of the SDK.
@@ -28,24 +27,7 @@ class SFCommerceSDK {
         'Content-Type': 'application/json',
       };
 
-    dio.interceptors
-      ..add(NetworkUtil.createLogsInterceptor())
-      ..add(QueuedInterceptorsWrapper(onRequest: (options, handler) async {
-        await _addAuthHeader(options.headers);
-        handler.next(options);
-      }, onError: (DioException error, handler) async {
-        if (error.response?.statusCode == 401) {
-          // Refresh token and try again
-          try {
-            await _refreshToken();
-            return handler.resolve(await _retry(error.requestOptions));
-          } on DioException catch (error) {
-            return handler.next(error);
-          }
-        }
-
-        return handler.next(error);
-      }));
+    dio.interceptors.add(NetworkUtil.createLogsInterceptor());
 
     Logger.setEnabled(enableVerboseLogs);
   }
