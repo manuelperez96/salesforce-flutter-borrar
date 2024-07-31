@@ -15,11 +15,13 @@ class AuthRepository extends Repository {
     try {
       final (codeVerifier, codeChallenge) = PkceHelper.generateCodes();
       final (authCode, usid) = await _getAuthorizationCodes(codeChallenge);
-      final token = _getAccessToken(
+      final token = await _getAccessToken(
         codeVerifier: codeVerifier,
         authCode: authCode,
         usid: usid,
       );
+
+      print(token);
     } catch (_) {
       throw UnableDoAnonymousLoginException();
     }
@@ -45,16 +47,11 @@ class AuthRepository extends Repository {
         ),
       );
 
-      return AccessToken(
-        tokenType: 'tokenType',
-        accessToken: 'accessToken',
-        expiresIn: 1,
-        refreshToken: 'refreshToken',
-        refreshTokenExpiresIn: 1,
-        usid: usid,
-        customerId: 'customerId',
-        encUserId: 'encUserId',
-      );
+      if(response.data == null || response.data is! Map) {
+        throw GetAccessTokenException();
+      }
+
+      return AccessToken.fromJson(response.data);
     } catch (_) {
       throw GetAccessTokenException();
     }
