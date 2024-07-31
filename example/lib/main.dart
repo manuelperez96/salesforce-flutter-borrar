@@ -16,7 +16,7 @@ void main() async {
     host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
     organizationId: 'f_ecom_zzrj_031',
     siteId: 'RefArch',
-    enableVerboseLogs: true,
+    enableVerboseLogs: false,
   ).authRepository.anonymousLogin();
   runApp(const MyApp());
 }

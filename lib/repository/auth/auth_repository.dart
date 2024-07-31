@@ -1,25 +1,62 @@
 import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/exception/auth_exception.dart';
+import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 import 'package:sf_commerce_sdk/utils/pkce_helper.dart';
 
 class AuthRepository extends Repository {
   AuthRepository(super.sfCommerce);
 
-  Dio get dio => sfCommerce.dio;
+  Dio get _dio => sfCommerce.dio;
+
+  static const _redirectUri = 'http://localhost:3000/callback';
 
   Future<void> anonymousLogin() async {
     try {
       final (codeVerifier, codeChallenge) = PkceHelper.generateCodes();
       final (authCode, usid) = await _getAuthorizationCodes(codeChallenge);
+      final token = _getAccessToken(
+        codeVerifier: codeVerifier,
+        authCode: authCode,
+        usid: usid,
+      );
     } catch (_) {
       throw UnableDoAnonymousLoginException();
     }
   }
 
-  Future<void> _getAccessToken() async {
-    try {} catch (e) {
-      throw Exception('Failed to get Token: $e');
+  Future<AccessToken> _getAccessToken({
+    required String codeVerifier,
+    required String authCode,
+    required String usid,
+  }) async {
+    try {
+      final path =
+          '${sfCommerce.host}/shopper/auth/v1/organizations/${sfCommerce.organizationId}/oauth2/token';
+      final response = await _dio.post(
+        path,
+        options: Options(
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        ),
+        data: _buildBody(
+          authCode: authCode,
+          codeVerifier: codeVerifier,
+          usid: usid,
+        ),
+      );
+
+      return AccessToken(
+        tokenType: 'tokenType',
+        accessToken: 'accessToken',
+        expiresIn: 1,
+        refreshToken: 'refreshToken',
+        refreshTokenExpiresIn: 1,
+        usid: usid,
+        customerId: 'customerId',
+        encUserId: 'encUserId',
+      );
+    } catch (_) {
+      throw GetAccessTokenException();
     }
   }
 
@@ -34,9 +71,9 @@ class AuthRepository extends Repository {
   ) async {
     try {
       final path =
-          '${sfCommerce.host}/shopper/auth/v1/organizations/${sfCommerce.organizationId}/oauth2/authorize?response_type=code&client_id=${sfCommerce.clientId}&hint=guest&code_challenge=$codeChallenge&redirect_uri=http://localhost:3000/callback';
+          '${sfCommerce.host}/shopper/auth/v1/organizations/${sfCommerce.organizationId}/oauth2/authorize?response_type=code&client_id=${sfCommerce.clientId}&hint=guest&code_challenge=$codeChallenge&redirect_uri=$_redirectUri';
 
-      final response = await dio.get(
+      final response = await _dio.get(
         path,
         options: Options(
           followRedirects: false,
@@ -78,5 +115,34 @@ class AuthRepository extends Repository {
         data.firstWhere((element) => element.startsWith('usid=')).substring(5);
 
     return (code, usid);
+  }
+
+  Map<String, dynamic> _buildBody({
+    required String authCode,
+    required String codeVerifier,
+    required String usid,
+  }) {
+    return <String, dynamic>{
+      'code': authCode,
+      'grant_type': 'authorization_code_pkce',
+      'redirect_uri': _redirectUri,
+      'code_verifier': codeVerifier,
+      'channel_id': sfCommerce.siteId,
+      'client_id': sfCommerce.clientId,
+      'usid': usid,
+    };
+    /*
+    
+POST
+{{scapi_host}}/shopper/auth/v1/organizations/{{scapi_organization_id}}/oauth2/token
+code:{{auth_code}}
+grant_type:authorization_code_pkce
+redirect_uri:{{public_client_redirect_url}}
+code_verifier:{{PUBLIC_GUEST_CODE_VERIFIER}}
+channel_id:{{site_id}}
+client_id:{{scapi_public_client_id}}
+usid:{{usid}}
+
+     */
   }
 }

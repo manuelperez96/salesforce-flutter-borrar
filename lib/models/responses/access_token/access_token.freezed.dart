@@ -20,11 +20,22 @@ AccessToken _$AccessTokenFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AccessToken {
-  String get accessToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'token_type')
   String get tokenType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'access_token')
+  String get accessToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'expires_in')
   int get expiresIn => throw _privateConstructorUsedError;
-  String get scope => throw _privateConstructorUsedError;
+  @JsonKey(name: 'refresh_token')
   String get refreshToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'refresh_token_expires_in')
+  int get refreshTokenExpiresIn => throw _privateConstructorUsedError;
+  @JsonKey(name: 'usid')
+  String get usid => throw _privateConstructorUsedError;
+  @JsonKey(name: 'customer_id')
+  String get customerId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'enc_user_id')
+  String get encUserId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,11 +50,14 @@ abstract class $AccessTokenCopyWith<$Res> {
       _$AccessTokenCopyWithImpl<$Res, AccessToken>;
   @useResult
   $Res call(
-      {String accessToken,
-      String tokenType,
-      int expiresIn,
-      String scope,
-      String refreshToken});
+      {@JsonKey(name: 'token_type') String tokenType,
+      @JsonKey(name: 'access_token') String accessToken,
+      @JsonKey(name: 'expires_in') int expiresIn,
+      @JsonKey(name: 'refresh_token') String refreshToken,
+      @JsonKey(name: 'refresh_token_expires_in') int refreshTokenExpiresIn,
+      @JsonKey(name: 'usid') String usid,
+      @JsonKey(name: 'customer_id') String customerId,
+      @JsonKey(name: 'enc_user_id') String encUserId});
 }
 
 /// @nodoc
@@ -59,32 +73,47 @@ class _$AccessTokenCopyWithImpl<$Res, $Val extends AccessToken>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? accessToken = null,
     Object? tokenType = null,
+    Object? accessToken = null,
     Object? expiresIn = null,
-    Object? scope = null,
     Object? refreshToken = null,
+    Object? refreshTokenExpiresIn = null,
+    Object? usid = null,
+    Object? customerId = null,
+    Object? encUserId = null,
   }) {
     return _then(_value.copyWith(
-      accessToken: null == accessToken
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
       tokenType: null == tokenType
           ? _value.tokenType
           : tokenType // ignore: cast_nullable_to_non_nullable
+              as String,
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
       expiresIn: null == expiresIn
           ? _value.expiresIn
           : expiresIn // ignore: cast_nullable_to_non_nullable
               as int,
-      scope: null == scope
-          ? _value.scope
-          : scope // ignore: cast_nullable_to_non_nullable
-              as String,
       refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshTokenExpiresIn: null == refreshTokenExpiresIn
+          ? _value.refreshTokenExpiresIn
+          : refreshTokenExpiresIn // ignore: cast_nullable_to_non_nullable
+              as int,
+      usid: null == usid
+          ? _value.usid
+          : usid // ignore: cast_nullable_to_non_nullable
+              as String,
+      customerId: null == customerId
+          ? _value.customerId
+          : customerId // ignore: cast_nullable_to_non_nullable
+              as String,
+      encUserId: null == encUserId
+          ? _value.encUserId
+          : encUserId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -99,11 +128,14 @@ abstract class _$$AccessTokenImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String accessToken,
-      String tokenType,
-      int expiresIn,
-      String scope,
-      String refreshToken});
+      {@JsonKey(name: 'token_type') String tokenType,
+      @JsonKey(name: 'access_token') String accessToken,
+      @JsonKey(name: 'expires_in') int expiresIn,
+      @JsonKey(name: 'refresh_token') String refreshToken,
+      @JsonKey(name: 'refresh_token_expires_in') int refreshTokenExpiresIn,
+      @JsonKey(name: 'usid') String usid,
+      @JsonKey(name: 'customer_id') String customerId,
+      @JsonKey(name: 'enc_user_id') String encUserId});
 }
 
 /// @nodoc
@@ -117,32 +149,47 @@ class __$$AccessTokenImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? accessToken = null,
     Object? tokenType = null,
+    Object? accessToken = null,
     Object? expiresIn = null,
-    Object? scope = null,
     Object? refreshToken = null,
+    Object? refreshTokenExpiresIn = null,
+    Object? usid = null,
+    Object? customerId = null,
+    Object? encUserId = null,
   }) {
     return _then(_$AccessTokenImpl(
-      accessToken: null == accessToken
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
       tokenType: null == tokenType
           ? _value.tokenType
           : tokenType // ignore: cast_nullable_to_non_nullable
+              as String,
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
       expiresIn: null == expiresIn
           ? _value.expiresIn
           : expiresIn // ignore: cast_nullable_to_non_nullable
               as int,
-      scope: null == scope
-          ? _value.scope
-          : scope // ignore: cast_nullable_to_non_nullable
-              as String,
       refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshTokenExpiresIn: null == refreshTokenExpiresIn
+          ? _value.refreshTokenExpiresIn
+          : refreshTokenExpiresIn // ignore: cast_nullable_to_non_nullable
+              as int,
+      usid: null == usid
+          ? _value.usid
+          : usid // ignore: cast_nullable_to_non_nullable
+              as String,
+      customerId: null == customerId
+          ? _value.customerId
+          : customerId // ignore: cast_nullable_to_non_nullable
+              as String,
+      encUserId: null == encUserId
+          ? _value.encUserId
+          : encUserId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -152,29 +199,47 @@ class __$$AccessTokenImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AccessTokenImpl implements _AccessToken {
   _$AccessTokenImpl(
-      {required this.accessToken,
-      required this.tokenType,
-      required this.expiresIn,
-      required this.scope,
-      required this.refreshToken});
+      {@JsonKey(name: 'token_type') required this.tokenType,
+      @JsonKey(name: 'access_token') required this.accessToken,
+      @JsonKey(name: 'expires_in') required this.expiresIn,
+      @JsonKey(name: 'refresh_token') required this.refreshToken,
+      @JsonKey(name: 'refresh_token_expires_in')
+      required this.refreshTokenExpiresIn,
+      @JsonKey(name: 'usid') required this.usid,
+      @JsonKey(name: 'customer_id') required this.customerId,
+      @JsonKey(name: 'enc_user_id') required this.encUserId});
 
   factory _$AccessTokenImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccessTokenImplFromJson(json);
 
   @override
-  final String accessToken;
-  @override
+  @JsonKey(name: 'token_type')
   final String tokenType;
   @override
+  @JsonKey(name: 'access_token')
+  final String accessToken;
+  @override
+  @JsonKey(name: 'expires_in')
   final int expiresIn;
   @override
-  final String scope;
-  @override
+  @JsonKey(name: 'refresh_token')
   final String refreshToken;
+  @override
+  @JsonKey(name: 'refresh_token_expires_in')
+  final int refreshTokenExpiresIn;
+  @override
+  @JsonKey(name: 'usid')
+  final String usid;
+  @override
+  @JsonKey(name: 'customer_id')
+  final String customerId;
+  @override
+  @JsonKey(name: 'enc_user_id')
+  final String encUserId;
 
   @override
   String toString() {
-    return 'AccessToken(accessToken: $accessToken, tokenType: $tokenType, expiresIn: $expiresIn, scope: $scope, refreshToken: $refreshToken)';
+    return 'AccessToken(tokenType: $tokenType, accessToken: $accessToken, expiresIn: $expiresIn, refreshToken: $refreshToken, refreshTokenExpiresIn: $refreshTokenExpiresIn, usid: $usid, customerId: $customerId, encUserId: $encUserId)';
   }
 
   @override
@@ -182,21 +247,35 @@ class _$AccessTokenImpl implements _AccessToken {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccessTokenImpl &&
-            (identical(other.accessToken, accessToken) ||
-                other.accessToken == accessToken) &&
             (identical(other.tokenType, tokenType) ||
                 other.tokenType == tokenType) &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
             (identical(other.expiresIn, expiresIn) ||
                 other.expiresIn == expiresIn) &&
-            (identical(other.scope, scope) || other.scope == scope) &&
             (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken));
+                other.refreshToken == refreshToken) &&
+            (identical(other.refreshTokenExpiresIn, refreshTokenExpiresIn) ||
+                other.refreshTokenExpiresIn == refreshTokenExpiresIn) &&
+            (identical(other.usid, usid) || other.usid == usid) &&
+            (identical(other.customerId, customerId) ||
+                other.customerId == customerId) &&
+            (identical(other.encUserId, encUserId) ||
+                other.encUserId == encUserId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, accessToken, tokenType, expiresIn, scope, refreshToken);
+      runtimeType,
+      tokenType,
+      accessToken,
+      expiresIn,
+      refreshToken,
+      refreshTokenExpiresIn,
+      usid,
+      customerId,
+      encUserId);
 
   @JsonKey(ignore: true)
   @override
@@ -214,25 +293,44 @@ class _$AccessTokenImpl implements _AccessToken {
 
 abstract class _AccessToken implements AccessToken {
   factory _AccessToken(
-      {required final String accessToken,
-      required final String tokenType,
-      required final int expiresIn,
-      required final String scope,
-      required final String refreshToken}) = _$AccessTokenImpl;
+          {@JsonKey(name: 'token_type') required final String tokenType,
+          @JsonKey(name: 'access_token') required final String accessToken,
+          @JsonKey(name: 'expires_in') required final int expiresIn,
+          @JsonKey(name: 'refresh_token') required final String refreshToken,
+          @JsonKey(name: 'refresh_token_expires_in')
+          required final int refreshTokenExpiresIn,
+          @JsonKey(name: 'usid') required final String usid,
+          @JsonKey(name: 'customer_id') required final String customerId,
+          @JsonKey(name: 'enc_user_id') required final String encUserId}) =
+      _$AccessTokenImpl;
 
   factory _AccessToken.fromJson(Map<String, dynamic> json) =
       _$AccessTokenImpl.fromJson;
 
   @override
-  String get accessToken;
-  @override
+  @JsonKey(name: 'token_type')
   String get tokenType;
   @override
+  @JsonKey(name: 'access_token')
+  String get accessToken;
+  @override
+  @JsonKey(name: 'expires_in')
   int get expiresIn;
   @override
-  String get scope;
-  @override
+  @JsonKey(name: 'refresh_token')
   String get refreshToken;
+  @override
+  @JsonKey(name: 'refresh_token_expires_in')
+  int get refreshTokenExpiresIn;
+  @override
+  @JsonKey(name: 'usid')
+  String get usid;
+  @override
+  @JsonKey(name: 'customer_id')
+  String get customerId;
+  @override
+  @JsonKey(name: 'enc_user_id')
+  String get encUserId;
   @override
   @JsonKey(ignore: true)
   _$$AccessTokenImplCopyWith<_$AccessTokenImpl> get copyWith =>

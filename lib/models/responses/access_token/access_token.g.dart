@@ -8,18 +8,24 @@ part of 'access_token.dart';
 
 _$AccessTokenImpl _$$AccessTokenImplFromJson(Map<String, dynamic> json) =>
     _$AccessTokenImpl(
-      accessToken: json['accessToken'] as String,
-      tokenType: json['tokenType'] as String,
-      expiresIn: (json['expiresIn'] as num).toInt(),
-      scope: json['scope'] as String,
-      refreshToken: json['refreshToken'] as String,
+      tokenType: json['token_type'] as String,
+      accessToken: json['access_token'] as String,
+      expiresIn: (json['expires_in'] as num).toInt(),
+      refreshToken: json['refresh_token'] as String,
+      refreshTokenExpiresIn: (json['refresh_token_expires_in'] as num).toInt(),
+      usid: json['usid'] as String,
+      customerId: json['customer_id'] as String,
+      encUserId: json['enc_user_id'] as String,
     );
 
 Map<String, dynamic> _$$AccessTokenImplToJson(_$AccessTokenImpl instance) =>
     <String, dynamic>{
-      'accessToken': instance.accessToken,
-      'tokenType': instance.tokenType,
-      'expiresIn': instance.expiresIn,
-      'scope': instance.scope,
-      'refreshToken': instance.refreshToken,
+      'token_type': instance.tokenType,
+      'access_token': instance.accessToken,
+      'expires_in': instance.expiresIn,
+      'refresh_token': instance.refreshToken,
+      'refresh_token_expires_in': instance.refreshTokenExpiresIn,
+      'usid': instance.usid,
+      'customer_id': instance.customerId,
+      'enc_user_id': instance.encUserId,
     };
