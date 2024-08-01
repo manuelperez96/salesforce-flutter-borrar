@@ -4,7 +4,6 @@ import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/refresh_token_interceptor.dart';
 
 import 'repository/product_repository.dart';
 
@@ -21,16 +20,7 @@ class SFCommerceSDK {
       'Content-Type': 'application/json',
     };
 
-    _dio.interceptors
-      ..add(
-        RefreshTokenInterceptor(
-          organizationId: _config.organizationId,
-          host: _config.host,
-          storage: _storage,
-          clientId: _config.clientId,
-        ),
-      )
-      ..add(NetworkUtil.createLogsInterceptor());
+    _dio.interceptors.add(NetworkUtil.createLogsInterceptor());
 
     Logger.setEnabled(enableVerboseLogs);
   }

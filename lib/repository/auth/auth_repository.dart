@@ -3,14 +3,24 @@ import 'package:sf_commerce_sdk/models/exception/auth_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/refresh_token_interceptor.dart';
 import 'package:sf_commerce_sdk/utils/pkce_helper.dart';
 
 class AuthRepository extends Repository {
-  AuthRepository(
-      {required super.dio,
-      required super.config,
-      required TokenStorage storage})
-      : _storage = storage;
+  AuthRepository({
+    required super.dio,
+    required super.config,
+    required TokenStorage storage,
+  }) : _storage = storage {
+    dio.interceptors.add(
+      RefreshTokenInterceptor(
+        organizationId: config.organizationId,
+        host: config.host,
+        storage: _storage,
+        clientId: config.clientId,
+      ),
+    );
+  }
 
   final TokenStorage _storage;
   static const _redirectUri = 'http://localhost:3000/callback';
