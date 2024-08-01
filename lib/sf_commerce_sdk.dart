@@ -1,15 +1,54 @@
+import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/refresh_token_interceptor.dart';
+
 import 'repository/product_repository.dart';
-import 'utils/logger.dart';
 
 /// Main class for the SFCommerceSDK.
 /// This class handles initialization and configuration of the SDK.
 class SFCommerceSDK {
-  // Required configuration fields for the SDK.
-  static late String clientId;
-  static late String organizationId;
-  static late String shortCode;
-  static late String siteId;
-  static late String host;
+  SFCommerceSDK({
+    required this.clientId,
+    required this.organizationId,
+    required this.siteId,
+    required this.host,
+    bool enableVerboseLogs = false,
+    Dio? dioInstance,
+  })  : assert(
+          host.startsWith('http://') || host.startsWith('https://'),
+          'The host URL must start with "http://" or "https://"',
+        ),
+        dio = dioInstance ?? Dio() {
+    dio.options.headers = {
+      'Content-Type': 'application/json',
+    };
+
+    dio.interceptors
+      ..add(
+        RefreshTokenInterceptor(
+          organizationId: organizationId,
+          host: host,
+          storage: _storage,
+          clientId: clientId,
+        ),
+      )
+      ..add(NetworkUtil.createLogsInterceptor());
+
+    Logger.setEnabled(enableVerboseLogs);
+  }
+
+  final Dio dio;
+  final String clientId;
+  final String organizationId;
+  final String siteId;
+  final String host;
+
+    static final _storage = TokenStorage(
+      storage: const FlutterSecureStorage(),
+    );
 
   /// Initializes the SFCommerceSDK with the required parameters.
   ///
@@ -33,25 +72,26 @@ class SFCommerceSDK {
   ///   host: 'your_host_url',
   ///   enableVerboseLogs: true,
   /// );
-  /// ```
-  static Future<void> initialize({
-    required String clientId,
-    required String organizationId,
-    required String shortCode,
-    required String siteId,
-    required String host,
-    bool enableVerboseLogs = false,
-  }) async {
-    if (!host.startsWith('http://') && !host.startsWith('https://')) {
-      throw ArgumentError('The host URL must start with "http://" or "https://"');
-    }
-    SFCommerceSDK.clientId = clientId;
-    SFCommerceSDK.organizationId = organizationId;
-    SFCommerceSDK.shortCode = shortCode;
-    SFCommerceSDK.siteId = siteId;
-    SFCommerceSDK.host = host;
-    Logger.setEnabled(enableVerboseLogs);
-  }
+  // /// ```
+  // Future<void> initialize({
+  //   required String clientId,
+  //   required String organizationId,
+  //   required String shortCode,
+  //   required String siteId,
+  //   required String host,
+  //   bool enableVerboseLogs = false,
+  // }) async {
+  //   // if (!host.startsWith('http://') && !host.startsWith('https://')) {
+  //   //   throw ArgumentError(
+  //   //       'The host URL must start with "http://" or "https://"');
+  //   // }
+  //   SFCommerceSDK.clientId = clientId;
+  //   SFCommerceSDK.organizationId = organizationId;
+  //   SFCommerceSDK.shortCode = shortCode;
+  //   SFCommerceSDK.siteId = siteId;
+  //   SFCommerceSDK.host = host;
+  //   Logger.setEnabled(enableVerboseLogs);
+  // }
 
   /// Sets the verbose logging mode.
   ///
@@ -63,7 +103,7 @@ class SFCommerceSDK {
   /// ```dart
   /// SFCommerceSDK.setModeVerbose(true);
   /// ```
-  static void setModeVerbose(bool mode) {
+  void setModeVerbose(bool mode) {
     Logger.setEnabled(mode);
   }
 
@@ -75,5 +115,7 @@ class SFCommerceSDK {
   /// ```dart
   /// ProductRepository productRepo = SFCommerceSDK.productRepository;
   /// ```
-  static ProductRepository get productRepository => ProductRepository(host);
+
+  late final productRepository = ProductRepository(this);
+  late final authRepository = AuthRepository(this, _storage);
 }
