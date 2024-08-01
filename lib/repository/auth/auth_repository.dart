@@ -23,7 +23,7 @@ class AuthRepository extends Repository {
         usid: usid,
       );
 
-      _storage.saveToken(token);
+      await _storage.saveToken(token);
     } catch (_) {
       throw UnableDoAnonymousLoginException();
     }
