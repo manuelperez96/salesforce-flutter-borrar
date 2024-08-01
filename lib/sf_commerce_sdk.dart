@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
@@ -11,28 +12,22 @@ import 'repository/product_repository.dart';
 /// This class handles initialization and configuration of the SDK.
 class SFCommerceSDK {
   SFCommerceSDK({
-    required this.clientId,
-    required this.organizationId,
-    required this.siteId,
-    required this.host,
+    required SfCommerceConfig config,
     bool enableVerboseLogs = false,
     Dio? dioInstance,
-  })  : assert(
-          host.startsWith('http://') || host.startsWith('https://'),
-          'The host URL must start with "http://" or "https://"',
-        ),
-        dio = dioInstance ?? Dio() {
-    dio.options.headers = {
+  })  : _config = config,
+        _dio = dioInstance ?? Dio() {
+    _dio.options.headers = {
       'Content-Type': 'application/json',
     };
 
-    dio.interceptors
+    _dio.interceptors
       ..add(
         RefreshTokenInterceptor(
-          organizationId: organizationId,
-          host: host,
+          organizationId: _config.organizationId,
+          host: _config.host,
           storage: _storage,
-          clientId: clientId,
+          clientId: _config.clientId,
         ),
       )
       ..add(NetworkUtil.createLogsInterceptor());
@@ -40,15 +35,12 @@ class SFCommerceSDK {
     Logger.setEnabled(enableVerboseLogs);
   }
 
-  final Dio dio;
-  final String clientId;
-  final String organizationId;
-  final String siteId;
-  final String host;
+  final Dio _dio;
+  final SfCommerceConfig _config;
 
-    static final _storage = TokenStorage(
-      storage: const FlutterSecureStorage(),
-    );
+  static final _storage = TokenStorage(
+    storage: const FlutterSecureStorage(),
+  );
 
   /// Initializes the SFCommerceSDK with the required parameters.
   ///
@@ -116,6 +108,10 @@ class SFCommerceSDK {
   /// ProductRepository productRepo = SFCommerceSDK.productRepository;
   /// ```
 
-  late final productRepository = ProductRepository(this);
-  late final authRepository = AuthRepository(this, _storage);
+  late final productRepository = ProductRepository(dio: _dio, config: _config);
+  late final authRepository = AuthRepository(
+    dio: _dio,
+    config: _config,
+    storage: _storage,
+  );
 }

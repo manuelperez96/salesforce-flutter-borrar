@@ -6,11 +6,13 @@ import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
 import 'package:sf_commerce_sdk/utils/pkce_helper.dart';
 
 class AuthRepository extends Repository {
-  AuthRepository(super.sfCommerce, TokenStorage storage) : _storage = storage;
+  AuthRepository(
+      {required super.dio,
+      required super.config,
+      required TokenStorage storage})
+      : _storage = storage;
 
-  Dio get _dio => sfCommerce.dio;
   final TokenStorage _storage;
-
   static const _redirectUri = 'http://localhost:3000/callback';
 
   Future<void> anonymousLogin() async {
@@ -29,7 +31,6 @@ class AuthRepository extends Repository {
     }
   }
 
-
   Future<AccessToken> _getAccessToken({
     required String codeVerifier,
     required String authCode,
@@ -37,8 +38,8 @@ class AuthRepository extends Repository {
   }) async {
     try {
       final path =
-          '${sfCommerce.host}/shopper/auth/v1/organizations/${sfCommerce.organizationId}/oauth2/token';
-      final response = await _dio.post(
+          '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/token';
+      final response = await dio.post(
         path,
         options: Options(
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -65,9 +66,9 @@ class AuthRepository extends Repository {
   ) async {
     try {
       final path =
-          '${sfCommerce.host}/shopper/auth/v1/organizations/${sfCommerce.organizationId}/oauth2/authorize?response_type=code&client_id=${sfCommerce.clientId}&hint=guest&code_challenge=$codeChallenge&redirect_uri=$_redirectUri';
+          '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/authorize?response_type=code&client_id=${config.clientId}&hint=guest&code_challenge=$codeChallenge&redirect_uri=$_redirectUri';
 
-      final response = await _dio.get(
+      final response = await dio.get(
         path,
         options: Options(
           followRedirects: false,
@@ -121,8 +122,8 @@ class AuthRepository extends Repository {
       'grant_type': 'authorization_code_pkce',
       'redirect_uri': _redirectUri,
       'code_verifier': codeVerifier,
-      'channel_id': sfCommerce.siteId,
-      'client_id': sfCommerce.clientId,
+      'channel_id': config.siteId,
+      'client_id': config.clientId,
       'usid': usid,
     };
   }

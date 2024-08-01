@@ -1,8 +1,15 @@
+import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
 import 'package:test/test.dart';
 
 void main() {
+  final config = SfCommerceConfig(
+    clientId: 'clientId',
+    organizationId: 'organizationId',
+    siteId: 'siteId',
+    host: 'https://host.com',
+  );
   group(
     "SFCommerceSDK",
     () {
@@ -13,28 +20,8 @@ void main() {
             'Can be instantiated',
             () async {
               expect(
-                SFCommerceSDK(
-                  clientId: 'clientId',
-                  organizationId: 'organizationId',
-                  siteId: 'siteId',
-                  host: 'https://host.com',
-                ),
+                SFCommerceSDK(config: config),
                 isNotNull,
-              );
-            },
-          );
-
-          test(
-            'Host must start with http:// or https://',
-            () async {
-              expect(
-                () => SFCommerceSDK(
-                  clientId: 'clientId',
-                  organizationId: 'organizationId',
-                  siteId: 'siteId',
-                  host: 'host.com',
-                ),
-                throwsA(predicate((e) => e is AssertionError)),
               );
             },
           );
@@ -48,10 +35,7 @@ void main() {
             'Logger should be enable when enableVerboseLogs is true',
             () async {
               SFCommerceSDK(
-                clientId: 'clientId',
-                organizationId: 'organizationId',
-                siteId: 'siteId',
-                host: 'https://host.com',
+                config: config,
                 enableVerboseLogs: true,
               );
               expect(Logger.isEnabled, isTrue);
@@ -62,10 +46,12 @@ void main() {
             'Logger should be disable when enableVerboseLogs is false',
             () async {
               SFCommerceSDK(
-                clientId: 'clientId',
-                organizationId: 'organizationId',
-                siteId: 'siteId',
-                host: 'https://host.com',
+                config: SfCommerceConfig(
+                  clientId: 'clientId',
+                  organizationId: 'organizationId',
+                  siteId: 'siteId',
+                  host: 'https://host.com',
+                ),
                 enableVerboseLogs: false,
               );
               expect(Logger.isEnabled, isFalse);
@@ -76,10 +62,7 @@ void main() {
             'setModeVerbose should enable logger',
             () async {
               final sfCommerce = SFCommerceSDK(
-                clientId: 'clientId',
-                organizationId: 'organizationId',
-                siteId: 'siteId',
-                host: 'https://host.com',
+                config: config,
               );
               sfCommerce.setModeVerbose(true);
               expect(Logger.isEnabled, isTrue);
@@ -90,11 +73,9 @@ void main() {
             'setModeVerbose should disable logger',
             () async {
               final sfCommerce = SFCommerceSDK(
-                clientId: 'clientId',
-                organizationId: 'organizationId',
-                siteId: 'siteId',
-                host: 'https://host.com',
+                config: config,
               );
+
               sfCommerce.setModeVerbose(false);
               expect(Logger.isEnabled, isFalse);
             },
