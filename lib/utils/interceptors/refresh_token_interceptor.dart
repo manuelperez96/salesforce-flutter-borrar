@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
 
+var _counter = 0;
+
 class RefreshTokenInterceptor extends Interceptor {
   final String _organizationId;
   final String _host;
@@ -26,7 +28,11 @@ class RefreshTokenInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    await _addAuthHeader(options.headers);
+    if (_counter == 0) {
+      _counter++;
+      await _addAuthHeader(options.headers);
+    }
+
     handler.next(options);
   }
 
@@ -37,9 +43,11 @@ class RefreshTokenInterceptor extends Interceptor {
   ) async {
     if (err.response?.statusCode == 401) {
       try {
+        print('entra en try');
         await _refreshToken();
         return handler.resolve(await _retry(err.requestOptions));
       } on DioException catch (error) {
+        print('entra en catch');
         return handler.next(error);
       }
     }
@@ -53,6 +61,11 @@ class RefreshTokenInterceptor extends Interceptor {
 
     final response = await Dio().post(
       _refreshTokenUrl,
+      options: Options(
+        headers: <String, dynamic>{
+          'Content-Type':'application/x-www-form-urlencoded'
+        },
+      ),
       data: {
         'refresh_token': token.refreshToken,
         'grant_type': 'refresh_token',

@@ -24,9 +24,16 @@ class AuthRepository extends Repository {
       );
 
       await _storage.saveToken(token);
+      print(token);
     } catch (_) {
       throw UnableDoAnonymousLoginException();
     }
+  }
+
+  Future<void> testFunction() async {
+    await _dio.get(
+      '${sfCommerce.host}/search/shopper-search/v1/organizations/${sfCommerce.organizationId}/product-search?q=ties&siteId=${sfCommerce.siteId}',
+    );
   }
 
   Future<AccessToken> _getAccessToken({
@@ -56,12 +63,6 @@ class AuthRepository extends Repository {
       return AccessToken.fromJson(response.data);
     } catch (_) {
       throw GetAccessTokenException();
-    }
-  }
-
-  Future<void> getRefreshAccessToken() async {
-    try {} catch (e) {
-      throw Exception('Failed to getRefreshAccessToken: $e');
     }
   }
 

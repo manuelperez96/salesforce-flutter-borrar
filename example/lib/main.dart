@@ -11,13 +11,16 @@ import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SFCommerceSDK(
+  final instance = SFCommerceSDK(
     clientId: '0c892f93-5262-4cab-8349-b170e0779357',
     host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
     organizationId: 'f_ecom_zzrj_031',
     siteId: 'RefArch',
     enableVerboseLogs: false,
-  ).authRepository.anonymousLogin();
+  );
+
+  await instance.authRepository.anonymousLogin();
+  await instance.authRepository.testFunction();
   runApp(const MyApp());
 }
 
