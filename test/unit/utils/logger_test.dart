@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sf_commerce_sdk/utils/logger.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
 
 void main() {
   group('Logger', () {
