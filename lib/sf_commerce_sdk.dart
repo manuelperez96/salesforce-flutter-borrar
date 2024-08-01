@@ -116,5 +116,5 @@ class SFCommerceSDK {
   /// ```
 
   late final productRepository = ProductRepository(this);
-  late final authRepository = AuthRepository(this);
+  late final authRepository = AuthRepository(this, _storage);
 }
