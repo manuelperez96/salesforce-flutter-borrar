@@ -32,6 +32,7 @@ class SFCommerceSDK {
           organizationId: organizationId,
           host: host,
           storage: _storage,
+          clientId: clientId,
         ),
       )
       ..add(NetworkUtil.createLogsInterceptor());
