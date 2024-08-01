@@ -5,8 +5,8 @@ import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
 class RefreshTokenInterceptor extends Interceptor {
   final String _organizationId;
   final String _host;
-  AccessToken _token;
-  
+  final String _clientId;
+  final TokenStorage _storage;
 
   late final _refreshTokenUrl =
       '$_host/shopper/auth/v1/organizations/$_organizationId/oauth2/token';
@@ -14,17 +14,19 @@ class RefreshTokenInterceptor extends Interceptor {
   RefreshTokenInterceptor({
     required String organizationId,
     required String host,
-    required AccessToken initialToken,
+    required TokenStorage storage,
+    required String clientId,
   })  : _organizationId = organizationId,
         _host = host,
-        _token = initialToken;
+        _storage = storage,
+        _clientId = clientId;
 
   @override
   void onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    _addAuthHeader(options.headers);
+    await _addAuthHeader(options.headers);
     handler.next(options);
   }
 
@@ -34,7 +36,6 @@ class RefreshTokenInterceptor extends Interceptor {
     ErrorInterceptorHandler handler,
   ) async {
     if (err.response?.statusCode == 401) {
-      // Refresh token and try again
       try {
         await _refreshToken();
         return handler.resolve(await _retry(err.requestOptions));
@@ -47,20 +48,30 @@ class RefreshTokenInterceptor extends Interceptor {
   }
 
   Future<void> _refreshToken() async {
-    final refreshToken = await CredentialsWallet.getRefreshToken();
-    final response = await Dio().post(_refreshTokenUrl,
-        data: {CredentialsWallet.refreshTokenKey: refreshToken});
+    final token = await _storage.getToken();
+    if (token == null) throw Exception('There is not token');
 
-    if (response.statusCode == 200) {
-      await CredentialsWallet.saveAll(response.data);
-    } else {
-      await CredentialsWallet.clearAll();
+    final response = await Dio().post(
+      _refreshTokenUrl,
+      data: {
+        'refresh_token': token.refreshToken,
+        'grant_type': 'refresh_token',
+        'client_id': _clientId,
+      },
+    );
+
+    if (response.data == null || response.statusCode != 200) {
+      throw Exception('There is not token');
     }
+
+    await _storage.saveToken(
+      AccessToken.fromJson(response.data as Map<String, dynamic>),
+    );
   }
 
   Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
     final headers = requestOptions.headers;
-    _addAuthHeader(headers);
+    await _addAuthHeader(headers);
     final options = Options(method: requestOptions.method, headers: headers);
 
     return Dio().request<dynamic>(
@@ -71,7 +82,7 @@ class RefreshTokenInterceptor extends Interceptor {
     );
   }
 
-  void _addAuthHeader(Map<String, dynamic> headers) {
-    headers['Authorization'] = 'Bearer ${_token.accessToken}';
+  Future<void> _addAuthHeader(Map<String, dynamic> headers) async {
+    headers['Authorization'] = 'Bearer ${await _storage.getToken()}';
   }
 }

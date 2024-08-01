@@ -2,13 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/exception/auth_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/refresh_token_interceptor.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
 import 'package:sf_commerce_sdk/utils/pkce_helper.dart';
 
 class AuthRepository extends Repository {
-  AuthRepository(super.sfCommerce);
+  AuthRepository(super.sfCommerce, TokenStorage storage) : _storage = storage;
 
   Dio get _dio => sfCommerce.dio;
+  final TokenStorage _storage;
 
   static const _redirectUri = 'http://localhost:3000/callback';
 
@@ -22,9 +23,7 @@ class AuthRepository extends Repository {
         usid: usid,
       );
 
-      _addRefreshTokenInterceptor(token);
-
-      print(token);
+      _storage.saveToken(token);
     } catch (_) {
       throw UnableDoAnonymousLoginException();
     }
@@ -131,15 +130,5 @@ class AuthRepository extends Repository {
       'client_id': sfCommerce.clientId,
       'usid': usid,
     };
-  }
-
-  void _addRefreshTokenInterceptor(AccessToken token) {
-    _dio.interceptors.add(
-      RefreshTokenInterceptor(
-        organizationId: sfCommerce.organizationId,
-        host: sfCommerce.host,
-        initialToken: token,
-      ),
-    );
   }
 }

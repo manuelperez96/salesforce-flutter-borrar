@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/refresh_token_interceptor.dart';
 
 import 'repository/product_repository.dart';
 
@@ -23,7 +26,15 @@ class SFCommerceSDK {
       'Content-Type': 'application/json',
     };
 
-    dio.interceptors.add(NetworkUtil.createLogsInterceptor());
+    dio.interceptors
+      ..add(
+        RefreshTokenInterceptor(
+          organizationId: organizationId,
+          host: host,
+          storage: _storage,
+        ),
+      )
+      ..add(NetworkUtil.createLogsInterceptor());
 
     Logger.setEnabled(enableVerboseLogs);
   }
@@ -33,6 +44,10 @@ class SFCommerceSDK {
   final String organizationId;
   final String siteId;
   final String host;
+
+    static final _storage = TokenStorage(
+      storage: const FlutterSecureStorage(),
+    );
 
   /// Initializes the SFCommerceSDK with the required parameters.
   ///
