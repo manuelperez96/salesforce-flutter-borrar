@@ -17,8 +17,7 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i12;
 import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart'
     as _i11;
-import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart'
-    as _i10;
+import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart' as _i10;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

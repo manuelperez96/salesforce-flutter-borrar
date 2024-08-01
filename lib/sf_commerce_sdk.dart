@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 
 import 'repository/product_repository.dart';
 

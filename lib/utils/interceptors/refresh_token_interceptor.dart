@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 
 var _counter = 0;
 
@@ -61,7 +61,7 @@ class RefreshTokenInterceptor extends Interceptor {
       _refreshTokenUrl,
       options: Options(
         headers: <String, dynamic>{
-          'Content-Type':'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
       ),
       data: {

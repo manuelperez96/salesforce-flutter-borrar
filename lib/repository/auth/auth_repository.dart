@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/exception/auth_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/refresh_token_interceptor.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 import 'package:sf_commerce_sdk/utils/pkce_helper.dart';
 
 class AuthRepository extends Repository {
