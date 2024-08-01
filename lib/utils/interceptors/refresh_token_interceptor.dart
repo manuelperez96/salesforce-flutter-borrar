@@ -43,11 +43,9 @@ class RefreshTokenInterceptor extends Interceptor {
   ) async {
     if (err.response?.statusCode == 401) {
       try {
-        print('entra en try');
         await _refreshToken();
         return handler.resolve(await _retry(err.requestOptions));
       } on DioException catch (error) {
-        print('entra en catch');
         return handler.next(error);
       }
     }

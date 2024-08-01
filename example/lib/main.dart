@@ -20,7 +20,6 @@ void main() async {
   );
 
   await instance.authRepository.anonymousLogin();
-  await instance.authRepository.testFunction();
   runApp(const MyApp());
 }
 

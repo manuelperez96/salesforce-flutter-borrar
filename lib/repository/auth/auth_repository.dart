@@ -24,17 +24,11 @@ class AuthRepository extends Repository {
       );
 
       await _storage.saveToken(token);
-      print(token);
     } catch (_) {
       throw UnableDoAnonymousLoginException();
     }
   }
 
-  Future<void> testFunction() async {
-    await _dio.get(
-      '${sfCommerce.host}/search/shopper-search/v1/organizations/${sfCommerce.organizationId}/product-search?q=ties&siteId=${sfCommerce.siteId}',
-    );
-  }
 
   Future<AccessToken> _getAccessToken({
     required String codeVerifier,
