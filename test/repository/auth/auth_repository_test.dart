@@ -1,12 +1,23 @@
 import 'package:dio/dio.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:sf_commerce_sdk/models/exception/auth_exception.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 import 'package:test/test.dart';
 
 import 'auth_repository_test.mocks.dart';
+
+class FakeResponseIncorrectStatusCode extends Fake implements Response {
+  @override
+  int? get statusCode => 302;
+}
+
+class FakeDioException extends Fake implements DioException {
+  @override
+  Response? get response => FakeResponseIncorrectStatusCode();
+}
 
 @GenerateNiceMocks(
   [
@@ -33,10 +44,10 @@ void main() {
       siteId: 'siteId',
       host: 'https://host.com',
     );
-    authRepo = AuthRepository(dio: dio, config: config, storage: storage);
 
     when(dio.interceptors).thenReturn(interceptors);
     when(interceptors.add(any)).thenReturn(null);
+    authRepo = AuthRepository(dio: dio, config: config, storage: storage);
   });
 
   group(
@@ -56,35 +67,24 @@ void main() {
         },
       );
 
-      // group(
-      //   'anonymousLogin()',
-      //   () {
-      //     test(
-      //       'When accessToken Endpoint failed, anonymous login UnableDoAnonymousLoginException',
-      //       () async {
-      //         when(
-      //           dio.post(
-      //             '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/token',
-      //             options: Options(
-      //               headers: {
-      //                 'Content-Type': 'application/x-www-form-urlencoded'
-      //               },
-      //             ),
-      //             data: anyNamed('data'),
-      //           ),
-      //         ).thenThrow(
-      //           Exception(),
-      //         );
+      group(
+        'anonymousLogin()',
+        () {
+          test(
+            'when request fail on get authorizaton code and fail is not 303, throw UnableDoAnonymousLoginException',
+            () async {
+              when(
+                dio.get(any, options: anyNamed('options')),
+              ).thenThrow(FakeDioException());
 
-      //         try {
-      //           await authRepo.anonymousLogin();
-      //         } catch (e) {
-      //           expect(e, isA<UnableDoAnonymousLoginException>);
-      //         }
-      //       },
-      //     );
-      //   },
-      // );
+              expect(
+                () => authRepo.anonymousLogin(),
+                throwsA(isA<UnableDoAnonymousLoginException>()),
+              );
+            },
+          );
+        },
+      );
     },
   );
 }

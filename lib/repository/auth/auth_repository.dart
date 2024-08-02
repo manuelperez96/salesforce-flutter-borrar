@@ -36,38 +36,12 @@ class AuthRepository extends Repository {
       );
 
       await _storage.saveToken(token);
-    } catch (_) {
+    } catch (e) {
+      print('---------------');
+      print(e.runtimeType);
+      print(e);
+      print('---------------');
       throw UnableDoAnonymousLoginException();
-    }
-  }
-
-  Future<AccessToken> _getAccessToken({
-    required String codeVerifier,
-    required String authCode,
-    required String usid,
-  }) async {
-    try {
-      final path =
-          '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/token';
-      final response = await dio.post(
-        path,
-        options: Options(
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        ),
-        data: _buildBody(
-          authCode: authCode,
-          codeVerifier: codeVerifier,
-          usid: usid,
-        ),
-      );
-
-      if (response.data == null || response.data is! Map) {
-        throw GetAccessTokenException();
-      }
-
-      return AccessToken.fromJson(response.data);
-    } catch (_) {
-      throw GetAccessTokenException();
     }
   }
 
@@ -98,6 +72,36 @@ class AuthRepository extends Repository {
       }
 
       return _getTokenRequestDataOnRedirect(json.first);
+    }
+  }
+
+  Future<AccessToken> _getAccessToken({
+    required String codeVerifier,
+    required String authCode,
+    required String usid,
+  }) async {
+    try {
+      final path =
+          '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/token';
+      final response = await dio.post(
+        path,
+        options: Options(
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        ),
+        data: _buildBody(
+          authCode: authCode,
+          codeVerifier: codeVerifier,
+          usid: usid,
+        ),
+      );
+
+      if (response.data == null || response.data is! Map) {
+        throw GetAccessTokenException();
+      }
+
+      return AccessToken.fromJson(response.data);
+    } catch (_) {
+      throw GetAccessTokenException();
     }
   }
 
