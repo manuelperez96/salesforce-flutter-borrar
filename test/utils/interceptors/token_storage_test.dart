@@ -86,7 +86,7 @@ void main() {
           when(
             storage.read(key: TokenStorage.tokenKey),
           ).thenAnswer(
-            (_) => Future.value(jsonToken),
+            (_) => Future.value(jsonStringToken),
           );
 
           final token = await tokenStorage.getToken();

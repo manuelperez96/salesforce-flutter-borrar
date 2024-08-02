@@ -1,6 +1,8 @@
 import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
 import 'package:test/test.dart';
 
+import '../../../helpers/models/access_token.dart';
+
 void main() {
   group(
     'AccessToken',
@@ -43,6 +45,18 @@ void main() {
                 }),
                 isNotNull,
               );
+            },
+          );
+        },
+      );
+
+      group(
+        'toJson()',
+        () {
+          test(
+            'When call toJson return a json with correct format',
+            () {
+              expect(accessToken.toJson(), jsonMap);
             },
           );
         },
