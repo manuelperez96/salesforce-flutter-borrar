@@ -6,8 +6,6 @@ linter:
     always_use_package_imports: true
  
 analyzer:
-  plugins:
-    - dart_code_metrics
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
