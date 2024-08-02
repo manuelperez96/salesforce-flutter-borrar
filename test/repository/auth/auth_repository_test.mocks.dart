@@ -2280,3 +2280,122 @@ class MockResponse<T> extends _i1.Mock implements _i6.Response<T> {
         ),
       ) as Uri);
 }
+
+/// A class which mocks [Headers].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockHeaders extends _i1.Mock implements _i8.Headers {
+  @override
+  bool get preserveHeaderCase => (super.noSuchMethod(
+        Invocation.getter(#preserveHeaderCase),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  Map<String, List<String>> get map => (super.noSuchMethod(
+        Invocation.getter(#map),
+        returnValue: <String, List<String>>{},
+        returnValueForMissingStub: <String, List<String>>{},
+      ) as Map<String, List<String>>);
+
+  @override
+  bool get isEmpty => (super.noSuchMethod(
+        Invocation.getter(#isEmpty),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  List<String>? operator [](String? name) => (super.noSuchMethod(
+        Invocation.method(
+          #[],
+          [name],
+        ),
+        returnValueForMissingStub: null,
+      ) as List<String>?);
+
+  @override
+  String? value(String? name) => (super.noSuchMethod(
+        Invocation.method(
+          #value,
+          [name],
+        ),
+        returnValueForMissingStub: null,
+      ) as String?);
+
+  @override
+  void add(
+    String? name,
+    String? value,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #add,
+          [
+            name,
+            value,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void set(
+    String? name,
+    dynamic value,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #set,
+          [
+            name,
+            value,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void remove(
+    String? name,
+    String? value,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #remove,
+          [
+            name,
+            value,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void removeAll(String? name) => super.noSuchMethod(
+        Invocation.method(
+          #removeAll,
+          [name],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void clear() => super.noSuchMethod(
+        Invocation.method(
+          #clear,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void forEach(_i8.HeaderForEachCallback? f) => super.noSuchMethod(
+        Invocation.method(
+          #forEach,
+          [f],
+        ),
+        returnValueForMissingStub: null,
+      );
+}

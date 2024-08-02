@@ -16,6 +16,7 @@ import 'auth_repository_test.mocks.dart';
     MockSpec<Interceptors>(),
     MockSpec<DioException>(),
     MockSpec<Response>(),
+    MockSpec<Headers>(),
   ],
 )
 void main() {
@@ -26,6 +27,7 @@ void main() {
   late AuthRepository authRepo;
   late MockDioException dioException;
   late MockResponse response;
+  late MockHeaders headers;
 
   setUp(() {
     dio = MockDio();
@@ -33,6 +35,7 @@ void main() {
     interceptors = MockInterceptors();
     dioException = MockDioException();
     response = MockResponse();
+    headers = MockHeaders();
 
     config = SfCommerceConfig(
       clientId: 'clientId',
@@ -44,6 +47,7 @@ void main() {
     when(dio.interceptors).thenReturn(interceptors);
     when(interceptors.add(any)).thenReturn(null);
     when(dioException.response).thenReturn(response);
+    when(response.headers).thenReturn(headers);
 
     authRepo = AuthRepository(dio: dio, config: config, storage: storage);
   });
@@ -72,6 +76,22 @@ void main() {
             'when request fail on get authorization code and fail is not 303, throw UnableDoAnonymousLoginException',
             () async {
               when(response.statusCode).thenReturn(302);
+              when(
+                dio.get(any, options: anyNamed('options')),
+              ).thenThrow(dioException);
+
+              expect(
+                () => authRepo.anonymousLogin(),
+                throwsA(isA<UnableDoAnonymousLoginException>()),
+              );
+            },
+          );
+
+          test(
+            'when request fail on get authorization code and fail is 303 and location in headers is incorrect, throw UnableDoAnonymousLoginException',
+            () async {
+              when(response.statusCode).thenReturn(303);
+              when(headers.map).thenReturn({});
               when(
                 dio.get(any, options: anyNamed('options')),
               ).thenThrow(dioException);
