@@ -9,21 +9,13 @@ import 'package:test/test.dart';
 
 import 'auth_repository_test.mocks.dart';
 
-class FakeResponseIncorrectStatusCode extends Fake implements Response {
-  @override
-  int? get statusCode => 302;
-}
-
-class FakeDioException extends Fake implements DioException {
-  @override
-  Response? get response => FakeResponseIncorrectStatusCode();
-}
-
 @GenerateNiceMocks(
   [
     MockSpec<Dio>(),
     MockSpec<TokenStorage>(),
     MockSpec<Interceptors>(),
+    MockSpec<DioException>(),
+    MockSpec<Response>(),
   ],
 )
 void main() {
@@ -32,11 +24,15 @@ void main() {
   late MockInterceptors interceptors;
   late SfCommerceConfig config;
   late AuthRepository authRepo;
+  late MockDioException dioException;
+  late MockResponse response;
 
   setUp(() {
     dio = MockDio();
     storage = MockTokenStorage();
     interceptors = MockInterceptors();
+    dioException = MockDioException();
+    response = MockResponse();
 
     config = SfCommerceConfig(
       clientId: 'clientId',
@@ -47,6 +43,8 @@ void main() {
 
     when(dio.interceptors).thenReturn(interceptors);
     when(interceptors.add(any)).thenReturn(null);
+    when(dioException.response).thenReturn(response);
+
     authRepo = AuthRepository(dio: dio, config: config, storage: storage);
   });
 
@@ -71,11 +69,12 @@ void main() {
         'anonymousLogin()',
         () {
           test(
-            'when request fail on get authorizaton code and fail is not 303, throw UnableDoAnonymousLoginException',
+            'when request fail on get authorization code and fail is not 303, throw UnableDoAnonymousLoginException',
             () async {
+              when(response.statusCode).thenReturn(302);
               when(
                 dio.get(any, options: anyNamed('options')),
-              ).thenThrow(FakeDioException());
+              ).thenThrow(dioException);
 
               expect(
                 () => authRepo.anonymousLogin(),

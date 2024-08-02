@@ -36,11 +36,7 @@ class AuthRepository extends Repository {
       );
 
       await _storage.saveToken(token);
-    } catch (e) {
-      print('---------------');
-      print(e.runtimeType);
-      print(e);
-      print('---------------');
+    } catch (_) {
       throw UnableDoAnonymousLoginException();
     }
   }
