@@ -1,3 +1,4 @@
+
 import 'package:dio/dio.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -201,6 +202,52 @@ void main() {
                   data: anyNamed('data'),
                 ),
               ).thenAnswer((_) async => response);
+            },
+          );
+        },
+      );
+
+      group(
+        'checkStatus',
+        () {
+          test(
+            'when there is not previous token, return false',
+            () async {
+              when(storage.getToken()).thenAnswer((_) async => null);
+              expect(await authRepo.checkStatus(), isFalse);
+            },
+          );
+
+          test(
+            'when request fail, return false',
+            () async {
+              when(
+                dio.post(
+                  any,
+                  options: anyNamed('options'),
+                  data: anyNamed('data'),
+                ),
+              ).thenThrow(Exception());
+              expect(await authRepo.checkStatus(), isFalse);
+            },
+          );
+
+          test(
+            'when request is success and return a new token, return true and save new token in storage',
+            () async {
+              when(storage.getToken()).thenAnswer((_) async => accessToken);
+              when(storage.saveToken(any)).thenAnswer((_) => Future.value());
+              when(response.data).thenReturn(jsonMap);
+              when(
+                dio.post(
+                  any,
+                  options: anyNamed('options'),
+                  data: anyNamed('data'),
+                ),
+              ).thenAnswer((_) async => response);
+
+              expect(await authRepo.checkStatus(), isTrue);
+              verify(storage.saveToken(any));
             },
           );
         },
