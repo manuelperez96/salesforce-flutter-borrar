@@ -11,10 +11,10 @@ void main() {
     host: 'https://host.com',
   );
   group(
-    "SFCommerceSDK",
+    'SFCommerceSDK',
     () {
       group(
-        "creation",
+        'creation',
         () {
           test(
             'Can be instantiated',
@@ -29,7 +29,7 @@ void main() {
       );
 
       group(
-        "enableVerboseLogs",
+        'enableVerboseLogs',
         () {
           test(
             'Logger should be enable when enableVerboseLogs is true',

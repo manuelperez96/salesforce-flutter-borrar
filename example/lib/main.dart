@@ -7,25 +7,9 @@ import 'package:example/route/router.dart' as router;
 import 'package:example/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/utils/pkce_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // final instance = SFCommerceSDK(
-  //   config: SfCommerceConfig(
-  //     clientId: '0c892f93-5262-4cab-8349-b170e0779357',
-  //     host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
-  //     organizationId: 'f_ecom_zzrj_031',
-  //     siteId: 'RefArch',
-  //   ),
-  //   enableVerboseLogs: false,
-  // );
-
-  // await instance.authRepository.anonymousLogin();
-
-  print(PkceHelper.generateCodes());
-  print(PkceHelper.generateCodes());
-  print(PkceHelper.generateCodes());
 
   runApp(const MyApp());
 }
