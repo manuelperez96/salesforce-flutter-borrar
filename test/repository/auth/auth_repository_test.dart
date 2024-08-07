@@ -7,6 +7,7 @@ import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 import 'package:test/test.dart';
 
+import '../../helpers/models/access_token.dart';
 import 'auth_repository_test.mocks.dart';
 
 @GenerateNiceMocks(
@@ -95,6 +96,74 @@ void main() {
               when(
                 dio.get(any, options: anyNamed('options')),
               ).thenThrow(dioException);
+
+              expect(
+                () => authRepo.anonymousLogin(),
+                throwsA(isA<UnableDoAnonymousLoginException>()),
+              );
+            },
+          );
+
+          test(
+            'when request get authorization code is 202 and fail get token request, throw UnableDoAnonymousLoginException',
+            () async {
+              when(response.statusCode).thenReturn(202);
+              when(headers.map).thenReturn(
+                <String, List<String>>{
+                  'location': [jsonStringToken]
+                },
+              );
+
+              when(response.data).thenReturn(
+                <String, dynamic>{'code': 'code', 'usid': 'usid'},
+              );
+
+              when(
+                dio.get(
+                  any,
+                  options: Options(
+                    followRedirects: false,
+                    headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                  ),
+                ),
+              ).thenAnswer((_) async => response);
+
+              when(
+                dio.post(
+                  any,
+                  options: anyNamed('options'),
+                  data: anyNamed('data'),
+                ),
+              ).thenThrow(GetAccessTokenException);
+
+              expect(
+                () => authRepo.anonymousLogin(),
+                throwsA(isA<UnableDoAnonymousLoginException>()),
+              );
+            },
+          );
+
+          test(
+            'when request get authorization code and get access i fail, throw UnableDoAnonymousLoginException',
+            () async {
+              when(response.statusCode).thenReturn(303);
+              when(headers.map).thenReturn(
+                <String, List<String>>{
+                  'location': [jsonStringToken]
+                },
+              );
+              when(
+                dio.get(any, options: anyNamed('options')),
+              ).thenThrow(dioException);
+              when(
+                dio.post(
+                  any,
+                  options: anyNamed('options'),
+                  data: anyNamed('data'),
+                ),
+              ).thenThrow(GetAccessTokenException);
 
               expect(
                 () => authRepo.anonymousLogin(),
