@@ -25,6 +25,37 @@ class AuthRepository extends Repository {
   final TokenStorage _storage;
   static const _redirectUri = 'http://localhost:3000/callback';
 
+  /// Check if user was already login.
+  ///
+  /// Return true if user was login, otherwise return false.
+  Future<bool> checkStatus() async {
+    final token = await _storage.getToken();
+    if (token == null) return false;
+    try {
+      final response = await dio.post(
+        '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/token',
+        options: Options(
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        ),
+        data: <String, dynamic>{
+          'refresh_token': token.refreshToken,
+          'grant_type': 'refresh_token',
+          'client_id': config.clientId,
+        },
+      );
+
+      if (response.data == null || response.data is! Map) {
+        throw GetAccessTokenException();
+      }
+
+      await _storage.saveToken(AccessToken.fromJson(response.data));
+
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   Future<void> anonymousLogin() async {
     try {
       final (codeVerifier, codeChallenge) = PkceHelper.generateCodes();
