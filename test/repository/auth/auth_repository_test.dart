@@ -146,7 +146,7 @@ void main() {
           );
 
           test(
-            'when request get authorization code and get access i fail, throw UnableDoAnonymousLoginException',
+            'when request get authorization code and get access is fail, throw UnableDoAnonymousLoginException',
             () async {
               when(response.statusCode).thenReturn(303);
               when(headers.map).thenReturn(
@@ -169,6 +169,38 @@ void main() {
                 () => authRepo.anonymousLogin(),
                 throwsA(isA<UnableDoAnonymousLoginException>()),
               );
+            },
+          );
+
+          test(
+            'when request is success, save token in local storage',
+            () {
+              when(storage.saveToken(any)).thenAnswer((_) => Future.value());
+              when(response.data).thenReturn(jsonMap);
+              when(response.statusCode).thenReturn(303);
+              when(headers.map).thenReturn(
+                <String, List<String>>{
+                  'location': [jsonStringToken],
+                },
+              );
+              when(
+                dio.get(
+                  any,
+                  options: Options(
+                    followRedirects: false,
+                    headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                  ),
+                ),
+              ).thenAnswer((_) async => response);
+              when(
+                dio.post(
+                  any,
+                  options: anyNamed('options'),
+                  data: anyNamed('data'),
+                ),
+              ).thenAnswer((_) async => response);
             },
           );
         },
