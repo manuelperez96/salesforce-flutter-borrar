@@ -1,6 +1,6 @@
+import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
-import '../models/responses/product/product.dart';
 
 class ProductRepository extends Repository {
   ProductRepository({required super.dio, required super.config});
