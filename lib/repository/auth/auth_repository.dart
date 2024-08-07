@@ -2,15 +2,27 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/exception/auth_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/credentials_wallet.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/refresh_token_interceptor.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 import 'package:sf_commerce_sdk/utils/pkce_helper.dart';
 
 class AuthRepository extends Repository {
-  AuthRepository(super.sfCommerce, TokenStorage storage) : _storage = storage;
+  AuthRepository({
+    required super.dio,
+    required super.config,
+    required TokenStorage storage,
+  }) : _storage = storage {
+    dio.interceptors.add(
+      RefreshTokenInterceptor(
+        organizationId: config.organizationId,
+        host: config.host,
+        storage: _storage,
+        clientId: config.clientId,
+      ),
+    );
+  }
 
-  Dio get _dio => sfCommerce.dio;
   final TokenStorage _storage;
-
   static const _redirectUri = 'http://localhost:3000/callback';
 
   Future<void> anonymousLogin() async {
@@ -29,45 +41,14 @@ class AuthRepository extends Repository {
     }
   }
 
-
-  Future<AccessToken> _getAccessToken({
-    required String codeVerifier,
-    required String authCode,
-    required String usid,
-  }) async {
-    try {
-      final path =
-          '${sfCommerce.host}/shopper/auth/v1/organizations/${sfCommerce.organizationId}/oauth2/token';
-      final response = await _dio.post(
-        path,
-        options: Options(
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        ),
-        data: _buildBody(
-          authCode: authCode,
-          codeVerifier: codeVerifier,
-          usid: usid,
-        ),
-      );
-
-      if (response.data == null || response.data is! Map) {
-        throw GetAccessTokenException();
-      }
-
-      return AccessToken.fromJson(response.data);
-    } catch (_) {
-      throw GetAccessTokenException();
-    }
-  }
-
   Future<(String authCode, String usid)> _getAuthorizationCodes(
     String codeChallenge,
   ) async {
     try {
       final path =
-          '${sfCommerce.host}/shopper/auth/v1/organizations/${sfCommerce.organizationId}/oauth2/authorize?response_type=code&client_id=${sfCommerce.clientId}&hint=guest&code_challenge=$codeChallenge&redirect_uri=$_redirectUri';
+          '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/authorize?response_type=code&client_id=${config.clientId}&hint=guest&code_challenge=$codeChallenge&redirect_uri=$_redirectUri';
 
-      final response = await _dio.get(
+      final response = await dio.get(
         path,
         options: Options(
           followRedirects: false,
@@ -87,6 +68,36 @@ class AuthRepository extends Repository {
       }
 
       return _getTokenRequestDataOnRedirect(json.first);
+    }
+  }
+
+  Future<AccessToken> _getAccessToken({
+    required String codeVerifier,
+    required String authCode,
+    required String usid,
+  }) async {
+    try {
+      final path =
+          '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/token';
+      final response = await dio.post(
+        path,
+        options: Options(
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        ),
+        data: _buildBody(
+          authCode: authCode,
+          codeVerifier: codeVerifier,
+          usid: usid,
+        ),
+      );
+
+      if (response.data == null || response.data is! Map) {
+        throw GetAccessTokenException();
+      }
+
+      return AccessToken.fromJson(response.data);
+    } catch (_) {
+      throw GetAccessTokenException();
     }
   }
 
@@ -121,8 +132,8 @@ class AuthRepository extends Repository {
       'grant_type': 'authorization_code_pkce',
       'redirect_uri': _redirectUri,
       'code_verifier': codeVerifier,
-      'channel_id': sfCommerce.siteId,
-      'client_id': sfCommerce.clientId,
+      'channel_id': config.siteId,
+      'client_id': config.clientId,
       'usid': usid,
     };
   }
