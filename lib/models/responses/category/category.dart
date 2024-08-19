@@ -18,24 +18,6 @@ class Category {
   });
 
   factory Category.fromJson(Map<String, dynamic> json) {
-    print(json['id']);
-    print(
-      json['name'],
-    );
-    print(
-      json['onlineSubCategoriesCount'],
-    );
-    print(
-      json['pageDescription'],
-    );
-    print(
-      json['pageTitle'],
-    );
-    print(
-      json['parentCategoryId'],
-    );
-    print(json['c_headerMenuBanner'] != null);
-
     return Category(
       id: json['id'],
       name: json['name'],

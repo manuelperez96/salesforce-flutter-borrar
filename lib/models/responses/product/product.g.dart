@@ -10,7 +10,7 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       id: json['id'] as String,
       name: json['name'] as String,
-      description: json['description'] as String,
+      description: json['description'] as String?,
       price: (json['price'] as num).toDouble(),
       currency: json['currency'] as String,
     );

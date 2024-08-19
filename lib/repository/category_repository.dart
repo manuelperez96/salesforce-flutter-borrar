@@ -39,7 +39,6 @@ class CategoryRepository extends Repository {
 
   Future<List<Category>> getCategoriesByFather(String url) async {
     try {
-      print(url);
       final response = await dio.get(url,
           options: Options(
             headers: {'Content-Type': 'application/json'},

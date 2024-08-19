@@ -22,7 +22,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 mixin _$Product {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
 
@@ -39,7 +39,7 @@ abstract class $ProductCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      String description,
+      String? description,
       double price,
       String currency});
 }
@@ -59,7 +59,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? description = null,
+    Object? description = freezed,
     Object? price = null,
     Object? currency = null,
   }) {
@@ -72,10 +72,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -98,7 +98,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      String description,
+      String? description,
       double price,
       String currency});
 }
@@ -116,7 +116,7 @@ class __$$ProductImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? description = null,
+    Object? description = freezed,
     Object? price = null,
     Object? currency = null,
   }) {
@@ -129,10 +129,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -163,7 +163,7 @@ class _$ProductImpl implements _Product {
   @override
   final String name;
   @override
-  final String description;
+  final String? description;
   @override
   final double price;
   @override
@@ -211,7 +211,7 @@ abstract class _Product implements Product {
   factory _Product(
       {required final String id,
       required final String name,
-      required final String description,
+      required final String? description,
       required final double price,
       required final String currency}) = _$ProductImpl;
 
@@ -222,7 +222,7 @@ abstract class _Product implements Product {
   @override
   String get name;
   @override
-  String get description;
+  String? get description;
   @override
   double get price;
   @override
