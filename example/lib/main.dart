@@ -11,6 +11,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // SFCommerceSDK sf = SFCommerceSDK(
+  //     config: SfCommerceConfig(
+  //   clientId: '0c892f93-5262-4cab-8349-b170e0779357',
+  //   organizationId: 'f_ecom_zzrj_031',
+  //   siteId: 'RefArch',
+  //   host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
+  // ));
+  // await sf.authRepository.anonymousLogin();
+  // sf.categoryRepository.loadCategories();
+  // final products = await sf.productRepository.getProducts([
+  //   '029407331258M',
+  //   '029407331227M',
+  // ]);
+
+  // print(products);
+
   runApp(const MyApp());
 }
 
