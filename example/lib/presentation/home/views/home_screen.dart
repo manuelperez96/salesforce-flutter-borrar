@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:example/components/Banner/S/banner_s_style_1.dart';
 import 'package:example/components/Banner/S/banner_s_style_5.dart';
 import 'package:example/constants.dart';
 import 'package:example/route/screen_export.dart';
+import 'package:flutter/material.dart';
 
 import 'components/best_sellers.dart';
 import 'components/flash_sale.dart';
