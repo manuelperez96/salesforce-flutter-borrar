@@ -7,7 +7,6 @@ import 'package:test/test.dart';
 
 import 'product_repository_test.mocks.dart';
 
-// Genera el mock para Dio
 @GenerateMocks([Dio])
 void main() {
   late ProductRepository productRepository;
@@ -27,7 +26,6 @@ void main() {
 
   group('ProductRepository', () {
     test('getProducts returns list of products on success', () async {
-      // Configura el mock para devolver una respuesta simulada
       final mockResponse = Response(
         requestOptions: RequestOptions(path: ''),
         data: {
@@ -53,13 +51,10 @@ void main() {
       when(mockDio.get(any, options: anyNamed('options')))
           .thenAnswer((_) async => mockResponse);
 
-      // Llama al método getProducts
       final products = await productRepository.getProducts(['1', '2']);
 
-      // Verifica que el método del servicio fue llamado una vez
       verify(mockDio.get(any, options: anyNamed('options'))).called(1);
 
-      // Verifica que el resultado sea el esperado
       expect(products.length, 2);
       expect(products[0].id, '1');
       expect(products[1].id, '2');
@@ -67,17 +62,52 @@ void main() {
     });
 
     test('getProducts throws an exception on failure', () async {
-      // Configura el mock para lanzar una excepción
       when(mockDio.get(any, options: anyNamed('options')))
           .thenThrow(DioException(
         requestOptions: RequestOptions(path: ''),
         error: 'Network error',
       ));
 
-      // Verifica que el método lanza una excepción
       expect(() => productRepository.getProducts(['1', '2']), throwsException);
 
-      // Verifica que el método del servicio fue llamado una vez
+      verify(mockDio.get(any, options: anyNamed('options'))).called(1);
+    });
+
+    test('getProduct returns a product on success', () async {
+      final mockResponse = Response(
+        requestOptions: RequestOptions(path: ''),
+        data: {
+          'id': '1',
+          'name': 'Product 1',
+          'description': 'Description for Product 1',
+          'price': 10.0,
+          'currency': 'USD'
+        },
+      );
+
+      when(mockDio.get(any, options: anyNamed('options')))
+          .thenAnswer((_) async => mockResponse);
+
+      final product = await productRepository.getProduct('1');
+
+      verify(mockDio.get(any, options: anyNamed('options'))).called(1);
+
+      expect(product.id, '1');
+      expect(product.name, 'Product 1');
+      expect(product.description, 'Description for Product 1');
+      expect(product.price, 10.0);
+      expect(product.currency, 'USD');
+    });
+
+    test('getProduct throws an exception on failure', () async {
+      when(mockDio.get(any, options: anyNamed('options')))
+          .thenThrow(DioException(
+        requestOptions: RequestOptions(path: ''),
+        error: 'Network error',
+      ));
+
+      expect(() => productRepository.getProduct('1'), throwsException);
+
       verify(mockDio.get(any, options: anyNamed('options'))).called(1);
     });
   });
