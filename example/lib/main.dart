@@ -19,13 +19,14 @@ void main() async {
   //   host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
   // ));
   // await sf.authRepository.anonymousLogin();
-  // sf.categoryRepository.loadCategories();
+  //  sf.categoryRepository.loadCategories();
   // final products = await sf.productRepository.getProducts([
   //   '029407331258M',
   //   '029407331227M',
   // ]);
-
   // print(products);
+  // final product = await sf.productRepository.getProduct('029407331258M');
+  // print(product);
 
   runApp(const MyApp());
 }
