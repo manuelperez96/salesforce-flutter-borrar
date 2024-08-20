@@ -20,4 +20,18 @@ class ProductRepository extends Repository {
       throw Exception('Failed to load products: $e');
     }
   }
+
+  Future<Product> getProduct(String id) async {
+    try {
+      final response = await dio.get(
+          '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/products/$id?siteId=${config.siteId}',
+          options: Options(
+            headers: {'Content-Type': 'application/json'},
+          ));
+      final dynamic jsonResponse = response.data;
+      return Product.fromJson(jsonResponse);
+    } catch (e) {
+      throw Exception('Failed to load product: $e');
+    }
+  }
 }
