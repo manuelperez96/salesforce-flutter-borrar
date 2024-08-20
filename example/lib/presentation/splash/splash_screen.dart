@@ -1,7 +1,9 @@
 import 'package:example/constants/assets.dart';
+import 'package:example/di/app_modules.dart';
 import 'package:example/route/screen_export.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,8 +13,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
-@override
+  @override
   void initState() {
     super.initState();
     _navigateToOnboarding();
@@ -26,9 +27,9 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
-  
+
   Future<void> _navigateToOnboarding() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await inject<SFCommerceSDK>().authRepository.anonymousLogin();
     if (!mounted) return;
     Navigator.pushReplacementNamed(context, onboardingScreenRoute);
   }
