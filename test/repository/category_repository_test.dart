@@ -2,9 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/category_repository.dart';
 
+import '../helpers/repository/categories_repository.dart';
 import 'category_repository_test.mocks.dart';
 
 @GenerateNiceMocks(
@@ -65,29 +67,24 @@ void main() {
       },
     );
 
-    // group(
-    //   'success',
-    //   () {
-    //     test(
-    //       'When request success, return a List of Category',
-    //       () async {
-    //         when(mockDio.get(
-    //             'https://host.com/product/shopper-products/v1/organizations/organizationId/categories?ids=root&siteId=siteId',
-    //             options: Options(
-    //               headers: {'Content-Type': 'application/json'},
-    //             ))).thenAnswer(
-    //           (realInvocation) => Future.value(response),
-    //         );
+    group(
+      'success',
+      () {
+        test(
+          'When request success, return a List of Category',
+          () async {
+            when(mockDio.get(any, options: anyNamed('options')))
+                .thenAnswer((_) async => response);
 
-    //         when(response.data).thenReturn(responseJSON);
+            when(response.data).thenReturn(responseJSON);
 
-    //         final List<Category> result =
-    //             await categoryRepository.getRootCategories();
+            final List<Category> result =
+                await categoryRepository.getRootCategories();
 
-    //         expect(result, isNotEmpty);
-    //       },
-    //     );
-    //   },
-    // );
+            expect(result, isNotEmpty);
+          },
+        );
+      },
+    );
   });
 }
