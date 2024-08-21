@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:example/components/bottom_navigation_bar/cart_animated_icon.dart';
 import 'package:example/extensions/context_extensions.dart';
+import 'package:example/presentation/home/views/custom_home_screen.dart';
 import 'package:example/route/screen_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,7 +17,8 @@ class EntryPoint extends StatefulWidget {
 
 class _EntryPointState extends State<EntryPoint> {
   final List _pages = const [
-    HomeScreen(),
+    CustomHomeScreen(),
+    //HomeScreen(),
     DiscoverScreen(),
     BookmarkScreen(),
     CartScreen(),
@@ -47,13 +49,17 @@ class _EntryPointState extends State<EntryPoint> {
         leading: const SizedBox(),
         leadingWidth: 0,
         centerTitle: false,
-        title: SvgPicture.asset(
-          "assets/logo/Shoplon.svg",
-          colorFilter: ColorFilter.mode(
-              Theme.of(context).iconTheme.color!, BlendMode.srcIn),
-          height: 20,
-          width: 100,
+        title: Image.asset(
+          'assets/icons/cap_logo.png',
+          height: 120,
         ),
+        // title: SvgPicture.asset(
+        //   "assets/logo/Shoplon.svg",
+        //   colorFilter: ColorFilter.mode(
+        //       Theme.of(context).iconTheme.color!, BlendMode.srcIn),
+        //   height: 20,
+        //   width: 100,
+        // ),
         actions: [
           IconButton(
             onPressed: () {
