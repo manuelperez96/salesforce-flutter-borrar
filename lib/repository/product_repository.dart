@@ -39,7 +39,10 @@ class ProductRepository extends Repository {
             headers: {'Content-Type': 'application/json'},
           ));
       final dynamic jsonResponse = response.data;
-      return Product.fromJson(jsonResponse);
+
+      final result = Product.fromJson(jsonResponse);
+      memoryCache.productById[id] = result;
+      return result;
     } catch (e) {
       throw Exception('Failed to load product: $e');
     }
@@ -58,13 +61,16 @@ class ProductRepository extends Repository {
             headers: {'Content-Type': 'application/json'},
           ));
       final dynamic jsonResponse = response.data['hits'];
+      List<ProductByCategory> result;
       if (jsonResponse != null) {
-        return jsonResponse
+        result = jsonResponse
             .map<ProductByCategory>((json) => ProductByCategory.fromJson(json))
             .toList();
       } else {
-        return [];
+        result = [];
       }
+      memoryCache.productCategoryByUrl[category] = result;
+      return result;
     } catch (e) {
       throw Exception('Failed to load product by category: $e');
     }
