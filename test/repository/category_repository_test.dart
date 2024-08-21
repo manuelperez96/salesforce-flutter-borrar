@@ -53,7 +53,7 @@ void main() {
       'getRootCategories()',
       () {
         test(
-          'When request fail, throw a Exception',
+          'getRootCategories throws an exception on failure',
           () async {
             when(mockDio.get(any,
                 options: Options(
@@ -64,14 +64,9 @@ void main() {
                 throwsA(isA<Exception>()));
           },
         );
-      },
-    );
 
-    group(
-      'success',
-      () {
         test(
-          'When request success, return a List of Category',
+          'getRootCategories returns a category list on success',
           () async {
             when(mockDio.get(any, options: anyNamed('options')))
                 .thenAnswer((_) async => response);
