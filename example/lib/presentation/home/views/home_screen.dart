@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // While loading use 👇
-                  // const BannerMSkelton(),‚
+                  // const BannerMSkelton(),
                   BannerSStyle1(
                     title: "New \narrival",
                     subtitle: "SPECIAL OFFER",

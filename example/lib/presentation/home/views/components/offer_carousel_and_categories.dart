@@ -1,14 +1,37 @@
+import 'package:example/di/app_modules.dart';
 import 'package:example/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:sf_commerce_sdk/models/responses/category/category.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 import '../../../../constants.dart';
 import 'categories.dart';
 import 'offers_carousel.dart';
 
-class OffersCarouselAndCategories extends StatelessWidget {
+class OffersCarouselAndCategories extends StatefulWidget {
   const OffersCarouselAndCategories({
     super.key,
   });
+
+  @override
+  State<OffersCarouselAndCategories> createState() =>
+      _OffersCarouselAndCategoriesState();
+}
+
+class _OffersCarouselAndCategoriesState
+    extends State<OffersCarouselAndCategories> {
+  List<Category>? categoryList;
+
+  @override
+  void initState() {
+    super.initState();
+    Future(
+      () async {
+        categoryList = await inject<SFCommerceSDK>().getRootCategories();
+        setState(() {});
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +50,7 @@ class OffersCarouselAndCategories extends StatelessWidget {
           ),
         ),
         // While loading use 👇
-        // const CategoriesSkelton(),
+        //const CategoriesSkelton()
         const Categories(),
       ],
     );

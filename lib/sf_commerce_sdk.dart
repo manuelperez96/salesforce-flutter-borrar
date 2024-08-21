@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:sf_commerce_sdk/models/responses/category/category.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
 import 'package:sf_commerce_sdk/repository/category_repository.dart';
@@ -98,10 +101,38 @@ class SFCommerceSDK {
   /// ProductRepository productRepo = SFCommerceSDK.productRepository;
   /// ```
 
-  late final productRepository = ProductRepository(dio: _dio, config: _config);
-  late final categoryRepository =
+  Future<void> anonymousLogin() {
+    return _authRepository.anonymousLogin();
+  }
+
+  Future<List<Category>> getRootCategories() {
+    return _categoryRepository.getRootCategories();
+  }
+
+  Future<List<ProductByCategory>> getProductsByCategory(String category) {
+    return _productRepository.getProductByCategory(category);
+  }
+
+  @visibleForTesting
+  void setAuthRepository(AuthRepository mock) {
+    _authRepository = mock;
+  }
+
+  @visibleForTesting
+  void setProductRepository(ProductRepository mock) {
+    _productRepository = mock;
+  }
+
+  @visibleForTesting
+  void setCategoryRepository(CategoryRepository mock) {
+    _categoryRepository = mock;
+  }
+
+  late ProductRepository _productRepository =
+      ProductRepository(dio: _dio, config: _config);
+  late CategoryRepository _categoryRepository =
       CategoryRepository(dio: _dio, config: _config);
-  late final authRepository = AuthRepository(
+  late AuthRepository _authRepository = AuthRepository(
     dio: _dio,
     config: _config,
     storage: _storage,
