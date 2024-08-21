@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class ProductRepository extends Repository {
@@ -32,6 +33,26 @@ class ProductRepository extends Repository {
       return Product.fromJson(jsonResponse);
     } catch (e) {
       throw Exception('Failed to load product: $e');
+    }
+  }
+
+  Future<List<ProductByCategory>> getProductByCategory(String category) async {
+    try {
+      final response = await dio.get(
+          '${config.host}/search/shopper-search/v1/organizations/${config.organizationId}/product-search?refine=cgid=$category&siteId=${config.siteId}',
+          options: Options(
+            headers: {'Content-Type': 'application/json'},
+          ));
+      final dynamic jsonResponse = response.data['hits'];
+      if (jsonResponse != null) {
+        return jsonResponse
+            .map<ProductByCategory>((json) => ProductByCategory.fromJson(json))
+            .toList();
+      } else {
+        return [];
+      }
+    } catch (e) {
+      throw Exception('Failed to load product by category: $e');
     }
   }
 }
