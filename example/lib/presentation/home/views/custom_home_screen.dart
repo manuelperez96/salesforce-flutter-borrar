@@ -35,24 +35,24 @@ class _CustomHomeScreenState extends State<CustomHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: categoryList == null
-            ? const HomeShimmer()
-            : SingleChildScrollView(
-                child: Column(
-                    children: List.generate(
-                  categoryList!.length,
-                  (index) {
-                    return CustomBanner(
-                      category: categoryList![index],
-                      productList: lista[index],
-                    );
-                  },
-                )),
+    return categoryList == null
+        ? const HomeShimmer()
+        : SingleChildScrollView(
+            child: Column(children: [
+              SizedBox(
+                height: MediaQuery.paddingOf(context).top,
               ),
-      ),
-    );
+              ...List.generate(
+                categoryList!.length,
+                (index) {
+                  return CustomBanner(
+                    category: categoryList![index],
+                    productList: lista[index],
+                  );
+                },
+              ),
+            ]),
+          );
   }
 }
 

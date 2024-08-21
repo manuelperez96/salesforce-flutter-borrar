@@ -1,9 +1,11 @@
 import 'package:animations/animations.dart';
 import 'package:example/components/bottom_navigation_bar/cart_animated_icon.dart';
+import 'package:example/components/glass_appbar.dart';
 import 'package:example/extensions/context_extensions.dart';
 import 'package:example/presentation/home/views/custom_home_screen.dart';
 import 'package:example/route/screen_export.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../constants.dart';
@@ -41,13 +43,23 @@ class _EntryPointState extends State<EntryPoint> {
     }
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        // ------------- for transparent app bar ---------------------
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+          statusBarBrightness: Brightness.light, // For iOS (dark icons)
+        ),
+        scrolledUnderElevation: 0,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+
         // pinned: true,
         // floating: true,
         // snap: true,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        leading: const SizedBox(),
-        leadingWidth: 0,
+        //backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        //leading: const SizedBox(),
+        //leadingWidth: 0,
         centerTitle: false,
         title: Image.asset(
           'assets/icons/cap_logo.png',
@@ -88,16 +100,21 @@ class _EntryPointState extends State<EntryPoint> {
         ],
       ),
       // body: _pages[_currentIndex],
-      body: PageTransitionSwitcher(
-        duration: defaultDuration,
-        transitionBuilder: (child, animation, secondAnimation) {
-          return FadeThroughTransition(
-            animation: animation,
-            secondaryAnimation: secondAnimation,
-            child: child,
-          );
-        },
-        child: _pages[_currentIndex],
+      body: Stack(
+        children: [
+          PageTransitionSwitcher(
+            duration: defaultDuration,
+            transitionBuilder: (child, animation, secondAnimation) {
+              return FadeThroughTransition(
+                animation: animation,
+                secondaryAnimation: secondAnimation,
+                child: child,
+              );
+            },
+            child: _pages[_currentIndex],
+          ),
+          const GlassAppBar(),
+        ],
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.only(top: defaultPadding / 2),
