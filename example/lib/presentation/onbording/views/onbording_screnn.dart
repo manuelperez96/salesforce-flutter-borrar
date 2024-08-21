@@ -75,7 +75,11 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, entryPointScreenRoute);
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      entryPointScreenRoute,
+                      ModalRoute.withName("/entry_point"),
+                    );
                   },
                   child: Text(
                     context.localizations.skip,
@@ -129,7 +133,11 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                             _pageController.nextPage(
                                 curve: Curves.ease, duration: defaultDuration);
                           } else {
-                            Navigator.pushNamed(context, logInScreenRoute);
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              entryPointScreenRoute,
+                              ModalRoute.withName("/entry_point"),
+                            );
                           }
                         },
                         style: ElevatedButton.styleFrom(
