@@ -19,10 +19,8 @@ class CategoryRepository extends Repository {
 
   Future<List<Category>> getCategoriesByUrl(String url) async {
     try {
-      print('aaa pido categorias');
       //check is data is in cache
       if (memoryCache.categoriesByUrl.containsKey(url)) {
-        print('aaa devuelvo cache');
         return memoryCache.categoriesByUrl[url]!;
       }
 
@@ -31,7 +29,6 @@ class CategoryRepository extends Repository {
             headers: {'Content-Type': 'application/json'},
           ));
       final List<dynamic> jsonResponse = response.data['data'][0]['categories'];
-      print('aaa devuelvo internet');
 
       List<Category> result = jsonResponse
           .map((categoryJson) => Category.fromJson(categoryJson))
