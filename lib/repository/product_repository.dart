@@ -1,10 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class ProductRepository extends Repository {
-  ProductRepository({required super.dio, required super.config});
+  final MemoryCache memoryCache;
+
+  ProductRepository(
+      {required super.dio, required super.config, required this.memoryCache});
 
   Future<List<Product>> getProducts(List<String> ids) async {
     try {
@@ -24,6 +28,11 @@ class ProductRepository extends Repository {
 
   Future<Product> getProduct(String id) async {
     try {
+      //check is data is in cache
+      if (memoryCache.productById.containsKey(id)) {
+        return memoryCache.productById[id]!;
+      }
+
       final response = await dio.get(
           '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/products/$id?siteId=${config.siteId}',
           options: Options(
@@ -38,6 +47,11 @@ class ProductRepository extends Repository {
 
   Future<List<ProductByCategory>> getProductByCategory(String category) async {
     try {
+      //check is data is in cache
+      if (memoryCache.productCategoryByUrl.containsKey(category)) {
+        return memoryCache.productCategoryByUrl[category]!;
+      }
+
       final response = await dio.get(
           '${config.host}/search/shopper-search/v1/organizations/${config.organizationId}/product-search?refine=cgid=$category&siteId=${config.siteId}',
           options: Options(

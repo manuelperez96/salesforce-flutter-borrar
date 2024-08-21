@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
@@ -30,6 +31,7 @@ class SFCommerceSDK {
 
   final Dio _dio;
   final SfCommerceConfig _config;
+  final MemoryCache _memoryCache = MemoryCache();
 
   static final _storage = TokenStorage(
     storage: const FlutterSecureStorage(),
@@ -129,9 +131,9 @@ class SFCommerceSDK {
   }
 
   late ProductRepository _productRepository =
-      ProductRepository(dio: _dio, config: _config);
+      ProductRepository(dio: _dio, config: _config, memoryCache: _memoryCache);
   late CategoryRepository _categoryRepository =
-      CategoryRepository(dio: _dio, config: _config);
+      CategoryRepository(dio: _dio, config: _config, memoryCache: _memoryCache);
   late AuthRepository _authRepository = AuthRepository(
     dio: _dio,
     config: _config,

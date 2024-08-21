@@ -3,19 +3,21 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i7;
+import 'dart:async' as _i8;
 
 import 'package:dio/dio.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i6;
-import 'package:sf_commerce_sdk/models/responses/category/category.dart' as _i9;
-import 'package:sf_commerce_sdk/models/responses/product/product.dart' as _i3;
+import 'package:mockito/src/dummies.dart' as _i7;
+import 'package:sf_commerce_sdk/data/cache/cache_memory.dart' as _i3;
+import 'package:sf_commerce_sdk/models/responses/category/category.dart'
+    as _i10;
+import 'package:sf_commerce_sdk/models/responses/product/product.dart' as _i4;
 import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart'
-    as _i11;
-import 'package:sf_commerce_sdk/models/sf_commerce_config.dart' as _i5;
-import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart' as _i4;
-import 'package:sf_commerce_sdk/repository/category_repository.dart' as _i8;
-import 'package:sf_commerce_sdk/repository/product_repository.dart' as _i10;
+    as _i12;
+import 'package:sf_commerce_sdk/models/sf_commerce_config.dart' as _i6;
+import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart' as _i5;
+import 'package:sf_commerce_sdk/repository/category_repository.dart' as _i9;
+import 'package:sf_commerce_sdk/repository/product_repository.dart' as _i11;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -40,8 +42,18 @@ class _FakeDio_0 extends _i1.SmartFake implements _i2.Dio {
         );
 }
 
-class _FakeProduct_1 extends _i1.SmartFake implements _i3.Product {
-  _FakeProduct_1(
+class _FakeMemoryCache_1 extends _i1.SmartFake implements _i3.MemoryCache {
+  _FakeMemoryCache_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeProduct_2 extends _i1.SmartFake implements _i4.Product {
+  _FakeProduct_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -53,7 +65,7 @@ class _FakeProduct_1 extends _i1.SmartFake implements _i3.Product {
 /// A class which mocks [AuthRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthRepository extends _i1.Mock implements _i4.AuthRepository {
+class MockAuthRepository extends _i1.Mock implements _i5.AuthRepository {
   @override
   _i2.Dio get dio => (super.noSuchMethod(
         Invocation.getter(#dio),
@@ -68,44 +80,57 @@ class MockAuthRepository extends _i1.Mock implements _i4.AuthRepository {
       ) as _i2.Dio);
 
   @override
-  _i5.SfCommerceConfig get config => (super.noSuchMethod(
+  _i6.SfCommerceConfig get config => (super.noSuchMethod(
         Invocation.getter(#config),
-        returnValue: _i6.dummyValue<_i5.SfCommerceConfig>(
+        returnValue: _i7.dummyValue<_i6.SfCommerceConfig>(
           this,
           Invocation.getter(#config),
         ),
-        returnValueForMissingStub: _i6.dummyValue<_i5.SfCommerceConfig>(
+        returnValueForMissingStub: _i7.dummyValue<_i6.SfCommerceConfig>(
           this,
           Invocation.getter(#config),
         ),
-      ) as _i5.SfCommerceConfig);
+      ) as _i6.SfCommerceConfig);
 
   @override
-  _i7.Future<bool> checkStatus() => (super.noSuchMethod(
+  _i8.Future<bool> checkStatus() => (super.noSuchMethod(
         Invocation.method(
           #checkStatus,
           [],
         ),
-        returnValue: _i7.Future<bool>.value(false),
-        returnValueForMissingStub: _i7.Future<bool>.value(false),
-      ) as _i7.Future<bool>);
+        returnValue: _i8.Future<bool>.value(false),
+        returnValueForMissingStub: _i8.Future<bool>.value(false),
+      ) as _i8.Future<bool>);
 
   @override
-  _i7.Future<void> anonymousLogin() => (super.noSuchMethod(
+  _i8.Future<void> anonymousLogin() => (super.noSuchMethod(
         Invocation.method(
           #anonymousLogin,
           [],
         ),
-        returnValue: _i7.Future<void>.value(),
-        returnValueForMissingStub: _i7.Future<void>.value(),
-      ) as _i7.Future<void>);
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
 }
 
 /// A class which mocks [CategoryRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockCategoryRepository extends _i1.Mock
-    implements _i8.CategoryRepository {
+    implements _i9.CategoryRepository {
+  @override
+  _i3.MemoryCache get memoryCache => (super.noSuchMethod(
+        Invocation.getter(#memoryCache),
+        returnValue: _FakeMemoryCache_1(
+          this,
+          Invocation.getter(#memoryCache),
+        ),
+        returnValueForMissingStub: _FakeMemoryCache_1(
+          this,
+          Invocation.getter(#memoryCache),
+        ),
+      ) as _i3.MemoryCache);
+
   @override
   _i2.Dio get dio => (super.noSuchMethod(
         Invocation.getter(#dio),
@@ -120,46 +145,59 @@ class MockCategoryRepository extends _i1.Mock
       ) as _i2.Dio);
 
   @override
-  _i5.SfCommerceConfig get config => (super.noSuchMethod(
+  _i6.SfCommerceConfig get config => (super.noSuchMethod(
         Invocation.getter(#config),
-        returnValue: _i6.dummyValue<_i5.SfCommerceConfig>(
+        returnValue: _i7.dummyValue<_i6.SfCommerceConfig>(
           this,
           Invocation.getter(#config),
         ),
-        returnValueForMissingStub: _i6.dummyValue<_i5.SfCommerceConfig>(
+        returnValueForMissingStub: _i7.dummyValue<_i6.SfCommerceConfig>(
           this,
           Invocation.getter(#config),
         ),
-      ) as _i5.SfCommerceConfig);
+      ) as _i6.SfCommerceConfig);
 
   @override
-  _i7.Future<List<_i9.Category>> getRootCategories() => (super.noSuchMethod(
+  _i8.Future<List<_i10.Category>> getRootCategories() => (super.noSuchMethod(
         Invocation.method(
           #getRootCategories,
           [],
         ),
-        returnValue: _i7.Future<List<_i9.Category>>.value(<_i9.Category>[]),
+        returnValue: _i8.Future<List<_i10.Category>>.value(<_i10.Category>[]),
         returnValueForMissingStub:
-            _i7.Future<List<_i9.Category>>.value(<_i9.Category>[]),
-      ) as _i7.Future<List<_i9.Category>>);
+            _i8.Future<List<_i10.Category>>.value(<_i10.Category>[]),
+      ) as _i8.Future<List<_i10.Category>>);
 
   @override
-  _i7.Future<List<_i9.Category>> getCategoriesByUrl(String? url) =>
+  _i8.Future<List<_i10.Category>> getCategoriesByUrl(String? url) =>
       (super.noSuchMethod(
         Invocation.method(
           #getCategoriesByUrl,
           [url],
         ),
-        returnValue: _i7.Future<List<_i9.Category>>.value(<_i9.Category>[]),
+        returnValue: _i8.Future<List<_i10.Category>>.value(<_i10.Category>[]),
         returnValueForMissingStub:
-            _i7.Future<List<_i9.Category>>.value(<_i9.Category>[]),
-      ) as _i7.Future<List<_i9.Category>>);
+            _i8.Future<List<_i10.Category>>.value(<_i10.Category>[]),
+      ) as _i8.Future<List<_i10.Category>>);
 }
 
 /// A class which mocks [ProductRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockProductRepository extends _i1.Mock implements _i10.ProductRepository {
+class MockProductRepository extends _i1.Mock implements _i11.ProductRepository {
+  @override
+  _i3.MemoryCache get memoryCache => (super.noSuchMethod(
+        Invocation.getter(#memoryCache),
+        returnValue: _FakeMemoryCache_1(
+          this,
+          Invocation.getter(#memoryCache),
+        ),
+        returnValueForMissingStub: _FakeMemoryCache_1(
+          this,
+          Invocation.getter(#memoryCache),
+        ),
+      ) as _i3.MemoryCache);
+
   @override
   _i2.Dio get dio => (super.noSuchMethod(
         Invocation.getter(#dio),
@@ -174,64 +212,64 @@ class MockProductRepository extends _i1.Mock implements _i10.ProductRepository {
       ) as _i2.Dio);
 
   @override
-  _i5.SfCommerceConfig get config => (super.noSuchMethod(
+  _i6.SfCommerceConfig get config => (super.noSuchMethod(
         Invocation.getter(#config),
-        returnValue: _i6.dummyValue<_i5.SfCommerceConfig>(
+        returnValue: _i7.dummyValue<_i6.SfCommerceConfig>(
           this,
           Invocation.getter(#config),
         ),
-        returnValueForMissingStub: _i6.dummyValue<_i5.SfCommerceConfig>(
+        returnValueForMissingStub: _i7.dummyValue<_i6.SfCommerceConfig>(
           this,
           Invocation.getter(#config),
         ),
-      ) as _i5.SfCommerceConfig);
+      ) as _i6.SfCommerceConfig);
 
   @override
-  _i7.Future<List<_i3.Product>> getProducts(List<String>? ids) =>
+  _i8.Future<List<_i4.Product>> getProducts(List<String>? ids) =>
       (super.noSuchMethod(
         Invocation.method(
           #getProducts,
           [ids],
         ),
-        returnValue: _i7.Future<List<_i3.Product>>.value(<_i3.Product>[]),
+        returnValue: _i8.Future<List<_i4.Product>>.value(<_i4.Product>[]),
         returnValueForMissingStub:
-            _i7.Future<List<_i3.Product>>.value(<_i3.Product>[]),
-      ) as _i7.Future<List<_i3.Product>>);
+            _i8.Future<List<_i4.Product>>.value(<_i4.Product>[]),
+      ) as _i8.Future<List<_i4.Product>>);
 
   @override
-  _i7.Future<_i3.Product> getProduct(String? id) => (super.noSuchMethod(
+  _i8.Future<_i4.Product> getProduct(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getProduct,
           [id],
         ),
-        returnValue: _i7.Future<_i3.Product>.value(_FakeProduct_1(
+        returnValue: _i8.Future<_i4.Product>.value(_FakeProduct_2(
           this,
           Invocation.method(
             #getProduct,
             [id],
           ),
         )),
-        returnValueForMissingStub: _i7.Future<_i3.Product>.value(_FakeProduct_1(
+        returnValueForMissingStub: _i8.Future<_i4.Product>.value(_FakeProduct_2(
           this,
           Invocation.method(
             #getProduct,
             [id],
           ),
         )),
-      ) as _i7.Future<_i3.Product>);
+      ) as _i8.Future<_i4.Product>);
 
   @override
-  _i7.Future<List<_i11.ProductByCategory>> getProductByCategory(
+  _i8.Future<List<_i12.ProductByCategory>> getProductByCategory(
           String? category) =>
       (super.noSuchMethod(
         Invocation.method(
           #getProductByCategory,
           [category],
         ),
-        returnValue: _i7.Future<List<_i11.ProductByCategory>>.value(
-            <_i11.ProductByCategory>[]),
+        returnValue: _i8.Future<List<_i12.ProductByCategory>>.value(
+            <_i12.ProductByCategory>[]),
         returnValueForMissingStub:
-            _i7.Future<List<_i11.ProductByCategory>>.value(
-                <_i11.ProductByCategory>[]),
-      ) as _i7.Future<List<_i11.ProductByCategory>>);
+            _i8.Future<List<_i12.ProductByCategory>>.value(
+                <_i12.ProductByCategory>[]),
+      ) as _i8.Future<List<_i12.ProductByCategory>>);
 }
