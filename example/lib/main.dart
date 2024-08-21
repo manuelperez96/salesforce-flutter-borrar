@@ -1,3 +1,4 @@
+import 'package:example/di/app_modules.dart';
 import 'package:example/extensions/context_extensions.dart';
 import 'package:example/presentation/bookmark/bloc/bookmark_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
@@ -7,26 +8,21 @@ import 'package:example/route/router.dart' as router;
 import 'package:example/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // SFCommerceSDK sf = SFCommerceSDK(
-  //     config: SfCommerceConfig(
-  //   clientId: '0c892f93-5262-4cab-8349-b170e0779357',
-  //   organizationId: 'f_ecom_zzrj_031',
-  //   siteId: 'RefArch',
-  //   host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
-  // ));
-  // await sf.authRepository.anonymousLogin();
-  //  sf.categoryRepository.loadCategories();
-  // final products = await sf.productRepository.getProducts([
-  //   '029407331258M',
-  //   '029407331227M',
-  // ]);
-  // print(products);
-  // final product = await sf.productRepository.getProduct('029407331258M');
-  // print(product);
+  SFCommerceSDK sf = SFCommerceSDK(
+      config: SfCommerceConfig(
+    clientId: '0c892f93-5262-4cab-8349-b170e0779357',
+    organizationId: 'f_ecom_zzrj_031',
+    siteId: 'RefArch',
+    host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
+  ));
+
+  AppModules().setup(sf); // Setup dependency injection
 
   runApp(const MyApp());
 }

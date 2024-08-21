@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:example/constants/assets.dart';
 import 'package:example/di/app_modules.dart';
 import 'package:example/route/screen_export.dart';
@@ -29,7 +31,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _navigateToOnboarding() async {
-    await inject<SFCommerceSDK>().authRepository.anonymousLogin();
+    await Future.wait([
+      Future.delayed(const Duration(milliseconds: 2500)),
+      inject<SFCommerceSDK>().anonymousLogin(),
+    ]);
     if (!mounted) return;
     Navigator.pushReplacementNamed(context, onboardingScreenRoute);
   }
