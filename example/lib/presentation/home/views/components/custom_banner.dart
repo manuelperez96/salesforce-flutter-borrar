@@ -1,5 +1,6 @@
 import 'package:example/components/network_image_with_loader.dart';
 import 'package:example/constants.dart';
+import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
@@ -16,85 +17,90 @@ class CustomBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AspectRatio(
-          aspectRatio: 1.87,
-          child: GestureDetector(
-            onTap: () {},
-            child: Stack(
-              children: [
-                NetworkImageWithLoader(category.cHeaderMenuBanner!, radius: 0),
-                Container(color: Colors.black45),
-                Padding(
-                  padding: const EdgeInsets.all(defaultPadding),
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            category.name,
-                            style: const TextStyle(
-                              fontFamily: grandisExtendedFont,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 24,
-                              color: Colors.white,
-                            ),
-                          ),
-                          category.pageTitle != null
-                              ? Text(
-                                  category.pageTitle!,
+    return category.cHeaderMenuBanner.isEmpty
+        ? const SizedBox.shrink()
+        : Column(
+            children: [
+              AspectRatio(
+                aspectRatio: 1.87,
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Stack(
+                    children: [
+                      NetworkImageWithLoader(category.cHeaderMenuBanner,
+                          radius: 0),
+                      Container(color: Colors.black45),
+                      Padding(
+                        padding: const EdgeInsets.all(defaultPadding),
+                        child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  category.name,
                                   style: const TextStyle(
+                                    fontFamily: grandisExtendedFont,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 24,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12,
                                   ),
-                                )
-                              : const SizedBox.shrink(),
-                        ],
-                      )),
-                )
-              ],
-            ),
-          ),
-        ),
-        const SizedBox(height: 16),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: defaultPadding / 2),
-            Padding(
-              padding: const EdgeInsets.all(defaultPadding),
-              child: Text(
-                category.name,
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-            ),
-            SizedBox(
-              height: 220,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: productList.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: EdgeInsets.only(
-                    left: defaultPadding,
-                    right: index == productList.length - 1 ? defaultPadding : 0,
-                  ),
-                  child: CustomProductCard(
-                    // showBookmark: true,
-                    product: productList[index],
-                    //press: () {},
+                                ),
+                                category.pageTitle != null
+                                    ? Text(
+                                        category.pageTitle!,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                        ),
+                                      )
+                                    : const SizedBox.shrink(),
+                              ],
+                            )),
+                      )
+                    ],
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 24),
-          ],
-        )
-      ],
-    );
+              const SizedBox(height: 16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: defaultPadding / 2),
+                  Padding(
+                    padding: const EdgeInsets.all(defaultPadding),
+                    child: Text(
+                      category.name,
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 220,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: productList.length,
+                      itemBuilder: (context, index) => Padding(
+                        padding: EdgeInsets.only(
+                          left: defaultPadding,
+                          right: index == productList.length - 1
+                              ? defaultPadding
+                              : 0,
+                        ),
+                        child: CustomProductCard(
+                          // showBookmark: true,
+                          product: productList[index],
+                          //press: () {},
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                ],
+              )
+            ],
+          );
   }
 }
 
@@ -108,7 +114,10 @@ class CustomProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, customProductDetailsScreenRoute,
+            arguments: {'id': product.productId, 'image': product.image});
+      },
       style: OutlinedButton.styleFrom(
           minimumSize: const Size(140, 220),
           maximumSize: const Size(140, 260),
@@ -120,8 +129,11 @@ class CustomProductCard extends StatelessWidget {
             aspectRatio: 1.15,
             child: Stack(
               children: [
-                NetworkImageWithLoader(product.image,
-                    radius: defaultBorderRadius),
+                Hero(
+                  tag: product.image,
+                  child: NetworkImageWithLoader(product.image,
+                      radius: defaultBorderRadius),
+                ),
               ],
             ),
           ),
