@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:example/di/app_modules.dart';
 import 'package:example/extensions/context_extensions.dart';
 import 'package:example/presentation/bookmark/bloc/bookmark_bloc.dart';
@@ -14,6 +16,8 @@ import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  HttpOverrides.global = MyHttpOverrides();
+
   SFCommerceSDK sf = SFCommerceSDK(
       config: SfCommerceConfig(
     clientId: '0c892f93-5262-4cab-8349-b170e0779357',
@@ -25,6 +29,15 @@ void main() async {
   AppModules().setup(sf); // Setup dependency injection
 
   runApp(const MyApp());
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
 }
 
 // Thanks for using our template. You are using the free version of the template.
