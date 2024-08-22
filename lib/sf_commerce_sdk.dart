@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
@@ -113,6 +114,10 @@ class SFCommerceSDK {
 
   Future<List<ProductByCategory>> getProductsByCategory(String category) {
     return _productRepository.getProductByCategory(category);
+  }
+
+  Future<Product> getProductById(String id) {
+    return _productRepository.getProduct(id);
   }
 
   @visibleForTesting

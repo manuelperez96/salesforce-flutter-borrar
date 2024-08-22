@@ -28,7 +28,8 @@ class _CustomHomeScreenState extends State<CustomHomeScreen> {
           lista.add(
               await inject<SFCommerceSDK>().getProductsByCategory(category.id));
         }
-        setState(() {});
+
+        if (mounted) setState(() {});
       },
     );
   }
@@ -64,16 +65,19 @@ class HomeShimmer extends StatelessWidget {
     return Shimmer.fromColors(
       baseColor: Colors.grey.shade200,
       highlightColor: Colors.grey.shade300,
-      child: const SingleChildScrollView(
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomSectionShimmer(),
-            SizedBox(height: 24),
-            CustomSectionShimmer(),
-            SizedBox(height: 24),
-            CustomSectionShimmer(),
-            SizedBox(height: 24),
+            SizedBox(
+              height: MediaQuery.paddingOf(context).top,
+            ),
+            const CustomSectionShimmer(),
+            const SizedBox(height: 24),
+            const CustomSectionShimmer(),
+            const SizedBox(height: 24),
+            const CustomSectionShimmer(),
+            const SizedBox(height: 24),
           ],
         ),
       ),
