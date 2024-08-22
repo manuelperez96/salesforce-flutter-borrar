@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:example/components/network_image_with_loader.dart';
 
 import '../../../../constants.dart';
 
@@ -26,17 +25,11 @@ class ProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: press,
-      leading: CircleAvatar(
-        radius: 28,
-        child: NetworkImageWithLoader(
-          imageSrc,
-          radius: 100,
-        ),
-      ),
+      leading: CircleAvatar(radius: 28, backgroundImage: AssetImage(imageSrc)),
       title: Row(
         children: [
           Text(
-            isShowHi ? "Hi, $name" : name,
+            isShowHi ? "Hola, $name" : name,
             style: const TextStyle(fontWeight: FontWeight.w500),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

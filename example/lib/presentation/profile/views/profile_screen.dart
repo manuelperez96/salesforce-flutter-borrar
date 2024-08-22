@@ -1,5 +1,4 @@
 import 'package:example/components/list_tile/divider_list_tile.dart';
-import 'package:example/components/network_image_with_loader.dart';
 import 'package:example/constants.dart';
 import 'package:example/extensions/context_extensions.dart';
 import 'package:example/route/screen_export.dart';
@@ -18,9 +17,9 @@ class ProfileScreen extends StatelessWidget {
       body: ListView(
         children: [
           ProfileCard(
-            name: "Sepide",
-            email: "theflutterway@gmail.com",
-            imageSrc: "https://i.imgur.com/IXnwbLk.png",
+            name: "Bill",
+            email: "bill_martin@gmail.com",
+            imageSrc: "assets/images/man_profile.png",
             // proLableText: "Sliver",
             // isPro: true, if the user is pro
             press: () {
@@ -32,10 +31,9 @@ class ProfileScreen extends StatelessWidget {
                 horizontal: defaultPadding, vertical: defaultPadding * 1.5),
             child: GestureDetector(
               onTap: () {},
-              child: const AspectRatio(
+              child: AspectRatio(
                 aspectRatio: 1.8,
-                child:
-                    NetworkImageWithLoader("https://i.imgur.com/dz0BBom.png"),
+                child: Image.asset("assets/images/banner_profile.png"),
               ),
             ),
           ),
@@ -76,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
             text: context.localizations.payment,
             svgSrc: "assets/icons/card.svg",
             press: () {
-              Navigator.pushNamed(context, emptyPaymentScreenRoute);
+              //Navigator.pushNamed(context, emptyPaymentScreenRoute);
             },
           ),
           ProfileMenuListTile(
@@ -123,7 +121,7 @@ class ProfileScreen extends StatelessWidget {
             text: context.localizations.language,
             svgSrc: "assets/icons/Language.svg",
             press: () {
-              Navigator.pushNamed(context, selectLanguageScreenRoute);
+              //Navigator.pushNamed(context, selectLanguageScreenRoute);
             },
           ),
           ProfileMenuListTile(
@@ -144,7 +142,7 @@ class ProfileScreen extends StatelessWidget {
             text: context.localizations.help,
             svgSrc: "assets/icons/Help.svg",
             press: () {
-              Navigator.pushNamed(context, getHelpScreenRoute);
+              //Navigator.pushNamed(context, getHelpScreenRoute);
             },
           ),
           ProfileMenuListTile(
