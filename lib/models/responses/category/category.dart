@@ -5,7 +5,7 @@ class Category {
   String? pageDescription;
   String? pageTitle;
   String parentCategoryId;
-  String? cHeaderMenuBanner;
+  String cHeaderMenuBanner;
 
   Category({
     required this.id,
@@ -14,7 +14,7 @@ class Category {
     this.pageDescription,
     this.pageTitle,
     required this.parentCategoryId,
-    this.cHeaderMenuBanner,
+    required this.cHeaderMenuBanner,
   });
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
