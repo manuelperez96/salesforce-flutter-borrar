@@ -1,6 +1,5 @@
 import 'package:example/components/network_image_with_loader.dart';
 import 'package:example/constants.dart';
-import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
@@ -114,10 +113,7 @@ class CustomProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: () {
-        Navigator.pushNamed(context, customProductDetailsScreenRoute,
-            arguments: {'id': product.productId, 'image': product.image});
-      },
+      onPressed: () {},
       style: OutlinedButton.styleFrom(
           minimumSize: const Size(140, 220),
           maximumSize: const Size(140, 260),
