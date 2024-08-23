@@ -8,9 +8,9 @@ part of 'basket.dart';
 
 _$BasketImpl _$$BasketImplFromJson(Map<String, dynamic> json) => _$BasketImpl(
       adjustedMerchandizeTotalTax:
-          (json['adjustedMerchandizeTotalTax'] as num).toInt(),
+          (json['adjustedMerchandizeTotalTax'] as num?)?.toInt(),
       adjustedShippingTotalTax:
-          (json['adjustedShippingTotalTax'] as num).toInt(),
+          (json['adjustedShippingTotalTax'] as num?)?.toInt(),
       agentBasket: json['agentBasket'] as bool,
       basketId: json['basketId'] as String,
       channelType: json['channelType'] as String,
@@ -19,8 +19,8 @@ _$BasketImpl _$$BasketImplFromJson(Map<String, dynamic> json) => _$BasketImpl(
       customerInfo:
           CustomerInfo.fromJson(json['customerInfo'] as Map<String, dynamic>),
       lastModified: DateTime.parse(json['lastModified'] as String),
-      merchandizeTotalTax: (json['merchandizeTotalTax'] as num).toInt(),
-      orderTotal: (json['orderTotal'] as num).toInt(),
+      merchandizeTotalTax: (json['merchandizeTotalTax'] as num?)?.toInt(),
+      orderTotal: (json['orderTotal'] as num?)?.toInt(),
       productSubTotal: (json['productSubTotal'] as num).toInt(),
       productTotal: (json['productTotal'] as num).toInt(),
       shipments: (json['shipments'] as List<dynamic>)
@@ -29,10 +29,10 @@ _$BasketImpl _$$BasketImplFromJson(Map<String, dynamic> json) => _$BasketImpl(
       shippingItems: (json['shippingItems'] as List<dynamic>)
           .map((e) => ShippingItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-      shippingTotal: (json['shippingTotal'] as num).toInt(),
-      shippingTotalTax: (json['shippingTotalTax'] as num).toInt(),
+      shippingTotal: (json['shippingTotal'] as num?)?.toInt(),
+      shippingTotalTax: (json['shippingTotalTax'] as num?)?.toInt(),
       taxation: json['taxation'] as String,
-      taxTotal: (json['taxTotal'] as num).toInt(),
+      taxTotal: (json['taxTotal'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$BasketImplToJson(_$BasketImpl instance) =>

@@ -20,8 +20,8 @@ Basket _$BasketFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Basket {
-  int get adjustedMerchandizeTotalTax => throw _privateConstructorUsedError;
-  int get adjustedShippingTotalTax => throw _privateConstructorUsedError;
+  int? get adjustedMerchandizeTotalTax => throw _privateConstructorUsedError;
+  int? get adjustedShippingTotalTax => throw _privateConstructorUsedError;
   bool get agentBasket => throw _privateConstructorUsedError;
   String get basketId => throw _privateConstructorUsedError;
   String get channelType => throw _privateConstructorUsedError;
@@ -29,17 +29,17 @@ mixin _$Basket {
   String get currency => throw _privateConstructorUsedError;
   CustomerInfo get customerInfo => throw _privateConstructorUsedError;
   DateTime get lastModified => throw _privateConstructorUsedError;
-  int get merchandizeTotalTax =>
+  int? get merchandizeTotalTax =>
       throw _privateConstructorUsedError; // required   Notes notes,
-  int get orderTotal => throw _privateConstructorUsedError;
+  int? get orderTotal => throw _privateConstructorUsedError;
   int get productSubTotal => throw _privateConstructorUsedError;
   int get productTotal => throw _privateConstructorUsedError;
   List<Shipment> get shipments => throw _privateConstructorUsedError;
   List<ShippingItem> get shippingItems => throw _privateConstructorUsedError;
-  int get shippingTotal => throw _privateConstructorUsedError;
-  int get shippingTotalTax => throw _privateConstructorUsedError;
+  int? get shippingTotal => throw _privateConstructorUsedError;
+  int? get shippingTotalTax => throw _privateConstructorUsedError;
   String get taxation => throw _privateConstructorUsedError;
-  int get taxTotal => throw _privateConstructorUsedError;
+  int? get taxTotal => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,8 +52,8 @@ abstract class $BasketCopyWith<$Res> {
       _$BasketCopyWithImpl<$Res, Basket>;
   @useResult
   $Res call(
-      {int adjustedMerchandizeTotalTax,
-      int adjustedShippingTotalTax,
+      {int? adjustedMerchandizeTotalTax,
+      int? adjustedShippingTotalTax,
       bool agentBasket,
       String basketId,
       String channelType,
@@ -61,16 +61,16 @@ abstract class $BasketCopyWith<$Res> {
       String currency,
       CustomerInfo customerInfo,
       DateTime lastModified,
-      int merchandizeTotalTax,
-      int orderTotal,
+      int? merchandizeTotalTax,
+      int? orderTotal,
       int productSubTotal,
       int productTotal,
       List<Shipment> shipments,
       List<ShippingItem> shippingItems,
-      int shippingTotal,
-      int shippingTotalTax,
+      int? shippingTotal,
+      int? shippingTotalTax,
       String taxation,
-      int taxTotal});
+      int? taxTotal});
 
   $CustomerInfoCopyWith<$Res> get customerInfo;
 }
@@ -88,8 +88,8 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? adjustedMerchandizeTotalTax = null,
-    Object? adjustedShippingTotalTax = null,
+    Object? adjustedMerchandizeTotalTax = freezed,
+    Object? adjustedShippingTotalTax = freezed,
     Object? agentBasket = null,
     Object? basketId = null,
     Object? channelType = null,
@@ -97,26 +97,26 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
     Object? currency = null,
     Object? customerInfo = null,
     Object? lastModified = null,
-    Object? merchandizeTotalTax = null,
-    Object? orderTotal = null,
+    Object? merchandizeTotalTax = freezed,
+    Object? orderTotal = freezed,
     Object? productSubTotal = null,
     Object? productTotal = null,
     Object? shipments = null,
     Object? shippingItems = null,
-    Object? shippingTotal = null,
-    Object? shippingTotalTax = null,
+    Object? shippingTotal = freezed,
+    Object? shippingTotalTax = freezed,
     Object? taxation = null,
-    Object? taxTotal = null,
+    Object? taxTotal = freezed,
   }) {
     return _then(_value.copyWith(
-      adjustedMerchandizeTotalTax: null == adjustedMerchandizeTotalTax
+      adjustedMerchandizeTotalTax: freezed == adjustedMerchandizeTotalTax
           ? _value.adjustedMerchandizeTotalTax
           : adjustedMerchandizeTotalTax // ignore: cast_nullable_to_non_nullable
-              as int,
-      adjustedShippingTotalTax: null == adjustedShippingTotalTax
+              as int?,
+      adjustedShippingTotalTax: freezed == adjustedShippingTotalTax
           ? _value.adjustedShippingTotalTax
           : adjustedShippingTotalTax // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       agentBasket: null == agentBasket
           ? _value.agentBasket
           : agentBasket // ignore: cast_nullable_to_non_nullable
@@ -145,14 +145,14 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
           ? _value.lastModified
           : lastModified // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      merchandizeTotalTax: null == merchandizeTotalTax
+      merchandizeTotalTax: freezed == merchandizeTotalTax
           ? _value.merchandizeTotalTax
           : merchandizeTotalTax // ignore: cast_nullable_to_non_nullable
-              as int,
-      orderTotal: null == orderTotal
+              as int?,
+      orderTotal: freezed == orderTotal
           ? _value.orderTotal
           : orderTotal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       productSubTotal: null == productSubTotal
           ? _value.productSubTotal
           : productSubTotal // ignore: cast_nullable_to_non_nullable
@@ -169,22 +169,22 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
           ? _value.shippingItems
           : shippingItems // ignore: cast_nullable_to_non_nullable
               as List<ShippingItem>,
-      shippingTotal: null == shippingTotal
+      shippingTotal: freezed == shippingTotal
           ? _value.shippingTotal
           : shippingTotal // ignore: cast_nullable_to_non_nullable
-              as int,
-      shippingTotalTax: null == shippingTotalTax
+              as int?,
+      shippingTotalTax: freezed == shippingTotalTax
           ? _value.shippingTotalTax
           : shippingTotalTax // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       taxation: null == taxation
           ? _value.taxation
           : taxation // ignore: cast_nullable_to_non_nullable
               as String,
-      taxTotal: null == taxTotal
+      taxTotal: freezed == taxTotal
           ? _value.taxTotal
           : taxTotal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 
@@ -205,8 +205,8 @@ abstract class _$$BasketImplCopyWith<$Res> implements $BasketCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int adjustedMerchandizeTotalTax,
-      int adjustedShippingTotalTax,
+      {int? adjustedMerchandizeTotalTax,
+      int? adjustedShippingTotalTax,
       bool agentBasket,
       String basketId,
       String channelType,
@@ -214,16 +214,16 @@ abstract class _$$BasketImplCopyWith<$Res> implements $BasketCopyWith<$Res> {
       String currency,
       CustomerInfo customerInfo,
       DateTime lastModified,
-      int merchandizeTotalTax,
-      int orderTotal,
+      int? merchandizeTotalTax,
+      int? orderTotal,
       int productSubTotal,
       int productTotal,
       List<Shipment> shipments,
       List<ShippingItem> shippingItems,
-      int shippingTotal,
-      int shippingTotalTax,
+      int? shippingTotal,
+      int? shippingTotalTax,
       String taxation,
-      int taxTotal});
+      int? taxTotal});
 
   @override
   $CustomerInfoCopyWith<$Res> get customerInfo;
@@ -240,8 +240,8 @@ class __$$BasketImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? adjustedMerchandizeTotalTax = null,
-    Object? adjustedShippingTotalTax = null,
+    Object? adjustedMerchandizeTotalTax = freezed,
+    Object? adjustedShippingTotalTax = freezed,
     Object? agentBasket = null,
     Object? basketId = null,
     Object? channelType = null,
@@ -249,26 +249,26 @@ class __$$BasketImplCopyWithImpl<$Res>
     Object? currency = null,
     Object? customerInfo = null,
     Object? lastModified = null,
-    Object? merchandizeTotalTax = null,
-    Object? orderTotal = null,
+    Object? merchandizeTotalTax = freezed,
+    Object? orderTotal = freezed,
     Object? productSubTotal = null,
     Object? productTotal = null,
     Object? shipments = null,
     Object? shippingItems = null,
-    Object? shippingTotal = null,
-    Object? shippingTotalTax = null,
+    Object? shippingTotal = freezed,
+    Object? shippingTotalTax = freezed,
     Object? taxation = null,
-    Object? taxTotal = null,
+    Object? taxTotal = freezed,
   }) {
     return _then(_$BasketImpl(
-      adjustedMerchandizeTotalTax: null == adjustedMerchandizeTotalTax
+      adjustedMerchandizeTotalTax: freezed == adjustedMerchandizeTotalTax
           ? _value.adjustedMerchandizeTotalTax
           : adjustedMerchandizeTotalTax // ignore: cast_nullable_to_non_nullable
-              as int,
-      adjustedShippingTotalTax: null == adjustedShippingTotalTax
+              as int?,
+      adjustedShippingTotalTax: freezed == adjustedShippingTotalTax
           ? _value.adjustedShippingTotalTax
           : adjustedShippingTotalTax // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       agentBasket: null == agentBasket
           ? _value.agentBasket
           : agentBasket // ignore: cast_nullable_to_non_nullable
@@ -297,14 +297,14 @@ class __$$BasketImplCopyWithImpl<$Res>
           ? _value.lastModified
           : lastModified // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      merchandizeTotalTax: null == merchandizeTotalTax
+      merchandizeTotalTax: freezed == merchandizeTotalTax
           ? _value.merchandizeTotalTax
           : merchandizeTotalTax // ignore: cast_nullable_to_non_nullable
-              as int,
-      orderTotal: null == orderTotal
+              as int?,
+      orderTotal: freezed == orderTotal
           ? _value.orderTotal
           : orderTotal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       productSubTotal: null == productSubTotal
           ? _value.productSubTotal
           : productSubTotal // ignore: cast_nullable_to_non_nullable
@@ -321,22 +321,22 @@ class __$$BasketImplCopyWithImpl<$Res>
           ? _value._shippingItems
           : shippingItems // ignore: cast_nullable_to_non_nullable
               as List<ShippingItem>,
-      shippingTotal: null == shippingTotal
+      shippingTotal: freezed == shippingTotal
           ? _value.shippingTotal
           : shippingTotal // ignore: cast_nullable_to_non_nullable
-              as int,
-      shippingTotalTax: null == shippingTotalTax
+              as int?,
+      shippingTotalTax: freezed == shippingTotalTax
           ? _value.shippingTotalTax
           : shippingTotalTax // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       taxation: null == taxation
           ? _value.taxation
           : taxation // ignore: cast_nullable_to_non_nullable
               as String,
-      taxTotal: null == taxTotal
+      taxTotal: freezed == taxTotal
           ? _value.taxTotal
           : taxTotal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -371,9 +371,9 @@ class _$BasketImpl implements _Basket {
       _$$BasketImplFromJson(json);
 
   @override
-  final int adjustedMerchandizeTotalTax;
+  final int? adjustedMerchandizeTotalTax;
   @override
-  final int adjustedShippingTotalTax;
+  final int? adjustedShippingTotalTax;
   @override
   final bool agentBasket;
   @override
@@ -389,10 +389,10 @@ class _$BasketImpl implements _Basket {
   @override
   final DateTime lastModified;
   @override
-  final int merchandizeTotalTax;
+  final int? merchandizeTotalTax;
 // required   Notes notes,
   @override
-  final int orderTotal;
+  final int? orderTotal;
   @override
   final int productSubTotal;
   @override
@@ -414,13 +414,13 @@ class _$BasketImpl implements _Basket {
   }
 
   @override
-  final int shippingTotal;
+  final int? shippingTotal;
   @override
-  final int shippingTotalTax;
+  final int? shippingTotalTax;
   @override
   final String taxation;
   @override
-  final int taxTotal;
+  final int? taxTotal;
 
   @override
   String toString() {
@@ -516,8 +516,8 @@ class _$BasketImpl implements _Basket {
 
 abstract class _Basket implements Basket {
   factory _Basket(
-      {required final int adjustedMerchandizeTotalTax,
-      required final int adjustedShippingTotalTax,
+      {required final int? adjustedMerchandizeTotalTax,
+      required final int? adjustedShippingTotalTax,
       required final bool agentBasket,
       required final String basketId,
       required final String channelType,
@@ -525,23 +525,23 @@ abstract class _Basket implements Basket {
       required final String currency,
       required final CustomerInfo customerInfo,
       required final DateTime lastModified,
-      required final int merchandizeTotalTax,
-      required final int orderTotal,
+      required final int? merchandizeTotalTax,
+      required final int? orderTotal,
       required final int productSubTotal,
       required final int productTotal,
       required final List<Shipment> shipments,
       required final List<ShippingItem> shippingItems,
-      required final int shippingTotal,
-      required final int shippingTotalTax,
+      required final int? shippingTotal,
+      required final int? shippingTotalTax,
       required final String taxation,
-      required final int taxTotal}) = _$BasketImpl;
+      required final int? taxTotal}) = _$BasketImpl;
 
   factory _Basket.fromJson(Map<String, dynamic> json) = _$BasketImpl.fromJson;
 
   @override
-  int get adjustedMerchandizeTotalTax;
+  int? get adjustedMerchandizeTotalTax;
   @override
-  int get adjustedShippingTotalTax;
+  int? get adjustedShippingTotalTax;
   @override
   bool get agentBasket;
   @override
@@ -557,9 +557,9 @@ abstract class _Basket implements Basket {
   @override
   DateTime get lastModified;
   @override
-  int get merchandizeTotalTax;
+  int? get merchandizeTotalTax;
   @override // required   Notes notes,
-  int get orderTotal;
+  int? get orderTotal;
   @override
   int get productSubTotal;
   @override
@@ -569,13 +569,13 @@ abstract class _Basket implements Basket {
   @override
   List<ShippingItem> get shippingItems;
   @override
-  int get shippingTotal;
+  int? get shippingTotal;
   @override
-  int get shippingTotalTax;
+  int? get shippingTotalTax;
   @override
   String get taxation;
   @override
-  int get taxTotal;
+  int? get taxTotal;
   @override
   @JsonKey(ignore: true)
   _$$BasketImplCopyWith<_$BasketImpl> get copyWith =>

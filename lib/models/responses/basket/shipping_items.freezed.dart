@@ -20,17 +20,17 @@ ShippingItem _$ShippingItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ShippingItem {
-  int get adjustedTax => throw _privateConstructorUsedError;
-  int get basePrice => throw _privateConstructorUsedError;
-  String get itemId => throw _privateConstructorUsedError;
-  String get itemText => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
-  int get priceAfterItemDiscount => throw _privateConstructorUsedError;
+  int? get adjustedTax => throw _privateConstructorUsedError;
+  int? get basePrice => throw _privateConstructorUsedError;
+  String? get itemId => throw _privateConstructorUsedError;
+  String? get itemText => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
+  int? get priceAfterItemDiscount => throw _privateConstructorUsedError;
   String get shipmentId => throw _privateConstructorUsedError;
-  int get tax => throw _privateConstructorUsedError;
-  int get taxBasis => throw _privateConstructorUsedError;
-  String get taxClassId => throw _privateConstructorUsedError;
-  int get taxRate => throw _privateConstructorUsedError;
+  int? get tax => throw _privateConstructorUsedError;
+  int? get taxBasis => throw _privateConstructorUsedError;
+  String? get taxClassId => throw _privateConstructorUsedError;
+  int? get taxRate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,17 +45,17 @@ abstract class $ShippingItemCopyWith<$Res> {
       _$ShippingItemCopyWithImpl<$Res, ShippingItem>;
   @useResult
   $Res call(
-      {int adjustedTax,
-      int basePrice,
-      String itemId,
-      String itemText,
-      int price,
-      int priceAfterItemDiscount,
+      {int? adjustedTax,
+      int? basePrice,
+      String? itemId,
+      String? itemText,
+      int? price,
+      int? priceAfterItemDiscount,
       String shipmentId,
-      int tax,
-      int taxBasis,
-      String taxClassId,
-      int taxRate});
+      int? tax,
+      int? taxBasis,
+      String? taxClassId,
+      int? taxRate});
 }
 
 /// @nodoc
@@ -71,63 +71,63 @@ class _$ShippingItemCopyWithImpl<$Res, $Val extends ShippingItem>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? adjustedTax = null,
-    Object? basePrice = null,
-    Object? itemId = null,
-    Object? itemText = null,
-    Object? price = null,
-    Object? priceAfterItemDiscount = null,
+    Object? adjustedTax = freezed,
+    Object? basePrice = freezed,
+    Object? itemId = freezed,
+    Object? itemText = freezed,
+    Object? price = freezed,
+    Object? priceAfterItemDiscount = freezed,
     Object? shipmentId = null,
-    Object? tax = null,
-    Object? taxBasis = null,
-    Object? taxClassId = null,
-    Object? taxRate = null,
+    Object? tax = freezed,
+    Object? taxBasis = freezed,
+    Object? taxClassId = freezed,
+    Object? taxRate = freezed,
   }) {
     return _then(_value.copyWith(
-      adjustedTax: null == adjustedTax
+      adjustedTax: freezed == adjustedTax
           ? _value.adjustedTax
           : adjustedTax // ignore: cast_nullable_to_non_nullable
-              as int,
-      basePrice: null == basePrice
+              as int?,
+      basePrice: freezed == basePrice
           ? _value.basePrice
           : basePrice // ignore: cast_nullable_to_non_nullable
-              as int,
-      itemId: null == itemId
+              as int?,
+      itemId: freezed == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      itemText: null == itemText
+              as String?,
+      itemText: freezed == itemText
           ? _value.itemText
           : itemText // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
+              as String?,
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      priceAfterItemDiscount: null == priceAfterItemDiscount
+              as int?,
+      priceAfterItemDiscount: freezed == priceAfterItemDiscount
           ? _value.priceAfterItemDiscount
           : priceAfterItemDiscount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
               as String,
-      tax: null == tax
+      tax: freezed == tax
           ? _value.tax
           : tax // ignore: cast_nullable_to_non_nullable
-              as int,
-      taxBasis: null == taxBasis
+              as int?,
+      taxBasis: freezed == taxBasis
           ? _value.taxBasis
           : taxBasis // ignore: cast_nullable_to_non_nullable
-              as int,
-      taxClassId: null == taxClassId
+              as int?,
+      taxClassId: freezed == taxClassId
           ? _value.taxClassId
           : taxClassId // ignore: cast_nullable_to_non_nullable
-              as String,
-      taxRate: null == taxRate
+              as String?,
+      taxRate: freezed == taxRate
           ? _value.taxRate
           : taxRate // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -141,17 +141,17 @@ abstract class _$$ShippingItemImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int adjustedTax,
-      int basePrice,
-      String itemId,
-      String itemText,
-      int price,
-      int priceAfterItemDiscount,
+      {int? adjustedTax,
+      int? basePrice,
+      String? itemId,
+      String? itemText,
+      int? price,
+      int? priceAfterItemDiscount,
       String shipmentId,
-      int tax,
-      int taxBasis,
-      String taxClassId,
-      int taxRate});
+      int? tax,
+      int? taxBasis,
+      String? taxClassId,
+      int? taxRate});
 }
 
 /// @nodoc
@@ -165,63 +165,63 @@ class __$$ShippingItemImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? adjustedTax = null,
-    Object? basePrice = null,
-    Object? itemId = null,
-    Object? itemText = null,
-    Object? price = null,
-    Object? priceAfterItemDiscount = null,
+    Object? adjustedTax = freezed,
+    Object? basePrice = freezed,
+    Object? itemId = freezed,
+    Object? itemText = freezed,
+    Object? price = freezed,
+    Object? priceAfterItemDiscount = freezed,
     Object? shipmentId = null,
-    Object? tax = null,
-    Object? taxBasis = null,
-    Object? taxClassId = null,
-    Object? taxRate = null,
+    Object? tax = freezed,
+    Object? taxBasis = freezed,
+    Object? taxClassId = freezed,
+    Object? taxRate = freezed,
   }) {
     return _then(_$ShippingItemImpl(
-      adjustedTax: null == adjustedTax
+      adjustedTax: freezed == adjustedTax
           ? _value.adjustedTax
           : adjustedTax // ignore: cast_nullable_to_non_nullable
-              as int,
-      basePrice: null == basePrice
+              as int?,
+      basePrice: freezed == basePrice
           ? _value.basePrice
           : basePrice // ignore: cast_nullable_to_non_nullable
-              as int,
-      itemId: null == itemId
+              as int?,
+      itemId: freezed == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      itemText: null == itemText
+              as String?,
+      itemText: freezed == itemText
           ? _value.itemText
           : itemText // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
+              as String?,
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      priceAfterItemDiscount: null == priceAfterItemDiscount
+              as int?,
+      priceAfterItemDiscount: freezed == priceAfterItemDiscount
           ? _value.priceAfterItemDiscount
           : priceAfterItemDiscount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
               as String,
-      tax: null == tax
+      tax: freezed == tax
           ? _value.tax
           : tax // ignore: cast_nullable_to_non_nullable
-              as int,
-      taxBasis: null == taxBasis
+              as int?,
+      taxBasis: freezed == taxBasis
           ? _value.taxBasis
           : taxBasis // ignore: cast_nullable_to_non_nullable
-              as int,
-      taxClassId: null == taxClassId
+              as int?,
+      taxClassId: freezed == taxClassId
           ? _value.taxClassId
           : taxClassId // ignore: cast_nullable_to_non_nullable
-              as String,
-      taxRate: null == taxRate
+              as String?,
+      taxRate: freezed == taxRate
           ? _value.taxRate
           : taxRate // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -246,27 +246,27 @@ class _$ShippingItemImpl implements _ShippingItem {
       _$$ShippingItemImplFromJson(json);
 
   @override
-  final int adjustedTax;
+  final int? adjustedTax;
   @override
-  final int basePrice;
+  final int? basePrice;
   @override
-  final String itemId;
+  final String? itemId;
   @override
-  final String itemText;
+  final String? itemText;
   @override
-  final int price;
+  final int? price;
   @override
-  final int priceAfterItemDiscount;
+  final int? priceAfterItemDiscount;
   @override
   final String shipmentId;
   @override
-  final int tax;
+  final int? tax;
   @override
-  final int taxBasis;
+  final int? taxBasis;
   @override
-  final String taxClassId;
+  final String? taxClassId;
   @override
-  final int taxRate;
+  final int? taxRate;
 
   @override
   String toString() {
@@ -330,43 +330,43 @@ class _$ShippingItemImpl implements _ShippingItem {
 
 abstract class _ShippingItem implements ShippingItem {
   factory _ShippingItem(
-      {required final int adjustedTax,
-      required final int basePrice,
-      required final String itemId,
-      required final String itemText,
-      required final int price,
-      required final int priceAfterItemDiscount,
+      {required final int? adjustedTax,
+      required final int? basePrice,
+      required final String? itemId,
+      required final String? itemText,
+      required final int? price,
+      required final int? priceAfterItemDiscount,
       required final String shipmentId,
-      required final int tax,
-      required final int taxBasis,
-      required final String taxClassId,
-      required final int taxRate}) = _$ShippingItemImpl;
+      required final int? tax,
+      required final int? taxBasis,
+      required final String? taxClassId,
+      required final int? taxRate}) = _$ShippingItemImpl;
 
   factory _ShippingItem.fromJson(Map<String, dynamic> json) =
       _$ShippingItemImpl.fromJson;
 
   @override
-  int get adjustedTax;
+  int? get adjustedTax;
   @override
-  int get basePrice;
+  int? get basePrice;
   @override
-  String get itemId;
+  String? get itemId;
   @override
-  String get itemText;
+  String? get itemText;
   @override
-  int get price;
+  int? get price;
   @override
-  int get priceAfterItemDiscount;
+  int? get priceAfterItemDiscount;
   @override
   String get shipmentId;
   @override
-  int get tax;
+  int? get tax;
   @override
-  int get taxBasis;
+  int? get taxBasis;
   @override
-  String get taxClassId;
+  String? get taxClassId;
   @override
-  int get taxRate;
+  int? get taxRate;
   @override
   @JsonKey(ignore: true)
   _$$ShippingItemImplCopyWith<_$ShippingItemImpl> get copyWith =>

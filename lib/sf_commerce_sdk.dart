@@ -130,6 +130,10 @@ class SFCommerceSDK {
     return _basketRepository.getBasket();
   }
 
+  Future<Basket> addProductToBasket(Product product) {
+    return _basketRepository.addItemToBasket(product.id);
+  }
+
   @visibleForTesting
   void setAuthRepository(AuthRepository mock) {
     _authRepository = mock;

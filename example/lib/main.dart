@@ -29,11 +29,15 @@ void main() async {
   AppModules().setup(sf); // Setup dependency injection
 
   await sf.anonymousLogin();
-  // final products =
-  //     await sf.getProductsByIds(['029407331289M', '029407331227M']);
+  final products =
+      await sf.getProductsByIds(['029407331289M', '029407331227M']);
   // print(products);
   final basket = await sf.getBasket();
   print(basket);
+  print('---------------');
+
+  final basketWithProduct = await sf.addProductToBasket(products.first);
+  print(basketWithProduct);
 
   runApp(const MyApp());
 }

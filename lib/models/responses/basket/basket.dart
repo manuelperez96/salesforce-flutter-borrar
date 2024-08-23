@@ -9,8 +9,8 @@ part 'basket.g.dart';
 @freezed
 class Basket with _$Basket {
   factory Basket({
-    required int adjustedMerchandizeTotalTax,
-    required int adjustedShippingTotalTax,
+    required int? adjustedMerchandizeTotalTax,
+    required int? adjustedShippingTotalTax,
     required bool agentBasket,
     required String basketId,
     required String channelType,
@@ -18,17 +18,17 @@ class Basket with _$Basket {
     required String currency,
     required CustomerInfo customerInfo,
     required DateTime lastModified,
-    required int merchandizeTotalTax,
+    required int? merchandizeTotalTax,
     // required   Notes notes,
-    required int orderTotal,
+    required int? orderTotal,
     required int productSubTotal,
     required int productTotal,
     required List<Shipment> shipments,
     required List<ShippingItem> shippingItems,
-    required int shippingTotal,
-    required int shippingTotalTax,
+    required int? shippingTotal,
+    required int? shippingTotalTax,
     required String taxation,
-    required int taxTotal,
+    required int? taxTotal,
   }) = _Basket;
 
   factory Basket.fromJson(Map<String, dynamic> json) => _$BasketFromJson(json);

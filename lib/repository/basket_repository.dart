@@ -41,4 +41,24 @@ class BasketRepository extends Repository {
       throw Exception('Failed to get basket: $e');
     }
   }
+
+  Future<Basket> addItemToBasket(String productId) async {
+    try {
+      final response = await dio.post(
+        '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$_basketId/items?siteId=${config.siteId}',
+        data: [
+          {'productId': productId, 'quantity': 1}
+        ],
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
+
+      final dynamic jsonResponse = response.data;
+      Basket basket = Basket.fromJson(jsonResponse);
+      return basket;
+    } catch (e) {
+      throw Exception('Failed to add item to basket: $e');
+    }
+  }
 }
