@@ -10,6 +10,7 @@ import 'package:example/route/router.dart' as router;
 import 'package:example/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
@@ -31,13 +32,13 @@ void main() async {
   await sf.anonymousLogin();
   final products =
       await sf.getProductsByIds(['029407331289M', '029407331227M']);
-  // print(products);
-  final basket = await sf.getBasket();
-  print(basket);
-  print('---------------');
 
-  final basketWithProduct = await sf.addProductToBasket(products.first);
+  Basket basketWithProduct =
+      await sf.addProductToBasket(productId: products.first.id);
+  basketWithProduct = await sf.addProductToBasket(productId: products.last.id);
   print(basketWithProduct);
+
+  await sf.removeItemFromBasket(products.first.id);
 
   runApp(const MyApp());
 }

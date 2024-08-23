@@ -130,8 +130,14 @@ class SFCommerceSDK {
     return _basketRepository.getBasket();
   }
 
-  Future<Basket> addProductToBasket(Product product) {
-    return _basketRepository.addItemToBasket(product.id);
+  Future<Basket> addProductToBasket(
+      {required String productId, int quantity = 1}) {
+    return _basketRepository.addItemToBasket(
+        productId: productId, quantity: quantity);
+  }
+
+  Future<void> removeItemFromBasket(String productId) {
+    return _basketRepository.removeItemFromBasket(productId);
   }
 
   @visibleForTesting
