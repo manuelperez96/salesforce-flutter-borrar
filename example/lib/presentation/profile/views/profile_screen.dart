@@ -81,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
             text: context.localizations.wallet,
             svgSrc: "assets/icons/Wallet.svg",
             press: () {
-              Navigator.pushNamed(context, walletScreenRoute);
+              Navigator.pushNamed(context, customWalletScreenRoute);
             },
           ),
           const SizedBox(height: defaultPadding),

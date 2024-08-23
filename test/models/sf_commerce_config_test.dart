@@ -35,6 +35,20 @@ void main() {
           );
         },
       );
+      test(
+        'toString() return a String',
+        () async {
+          expect(
+            SfCommerceConfig(
+              clientId: 'clientId',
+              organizationId: 'organizationId',
+              siteId: 'siteId',
+              host: 'http://host',
+            ).toString(),
+            isA<String>(),
+          );
+        },
+      );
     },
   );
 }

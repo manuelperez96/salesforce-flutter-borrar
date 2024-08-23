@@ -1,6 +1,7 @@
 import 'package:example/components/bottom_navigation_bar/entry_point.dart';
 import 'package:example/models/product_model.dart';
 import 'package:example/presentation/splash/splash_screen.dart';
+import 'package:example/presentation/wallet/views/custom_wallet_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'screen_export.dart';
@@ -109,6 +110,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case walletScreenRoute:
       return MaterialPageRoute(
         builder: (context) => const WalletScreen(),
+      );
+    case customWalletScreenRoute:
+      return MaterialPageRoute(
+        builder: (context) => const CustomWalletScreen(),
       );
     case cartScreenRoute:
       return MaterialPageRoute(

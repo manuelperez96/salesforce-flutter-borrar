@@ -23,18 +23,19 @@ class RefreshTokenInterceptor extends Interceptor {
         _storage = storage,
         _clientId = clientId;
 
-  @override
-  void onRequest(
-    RequestOptions options,
-    RequestInterceptorHandler handler,
-  ) async {
-    if (_counter == 0) {
-      _counter++;
-      await _addAuthHeader(options.headers);
-    }
+  // Not necesary because when the anonymousLogin finish add inmediatly the token to the header
+  // @override
+  // void onRequest(
+  //   RequestOptions options,
+  //   RequestInterceptorHandler handler,
+  // ) async {
+  //   if (_counter == 0) {
+  //     _counter++;
+  //     await _addAuthHeader(options.headers);
+  //   }
 
-    handler.next(options);
-  }
+  //   handler.next(options);
+  // }
 
   @override
   Future<void> onError(
@@ -94,6 +95,7 @@ class RefreshTokenInterceptor extends Interceptor {
   }
 
   Future<void> _addAuthHeader(Map<String, dynamic> headers) async {
-    headers['Authorization'] = 'Bearer ${await _storage.getToken()}';
+    headers['Authorization'] =
+        'Bearer ${(await _storage.getToken())!.accessToken}';
   }
 }
