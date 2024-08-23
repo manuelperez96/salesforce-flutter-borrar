@@ -53,6 +53,7 @@ const String cancledOrdersScreenRoute = "cancled_orders";
 const String preferencesScreenRoute = "preferences";
 const String emptyPaymentScreenRoute = "empty_payment";
 const String emptyWalletScreenRoute = "empty_wallet";
+const String customWalletScreenRoute = "custom_wallet";
 const String walletScreenRoute = "wallet";
 const String cartScreenRoute = "cart";
 const String paymentMethodScreenRoute = "payment_method";

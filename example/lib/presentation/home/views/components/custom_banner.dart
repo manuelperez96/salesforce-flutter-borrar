@@ -120,6 +120,7 @@ class CustomProductCard extends StatelessWidget {
           padding: const EdgeInsets.all(8)),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AspectRatio(
             aspectRatio: 1.15,

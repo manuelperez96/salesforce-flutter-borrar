@@ -1,10 +1,31 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
 
+import 'logger_test.mocks.dart';
+
+@GenerateNiceMocks([
+  MockSpec<RequestInterceptorHandler>(),
+  MockSpec<ErrorInterceptorHandler>(),
+  MockSpec<ResponseInterceptorHandler>(),
+])
 void main() {
+  late MockRequestInterceptorHandler requestHandler;
+  late MockErrorInterceptorHandler errorHandler;
+  late MockResponseInterceptorHandler responseHandler;
+
+  setUp(
+    () {
+      requestHandler = MockRequestInterceptorHandler();
+      errorHandler = MockErrorInterceptorHandler();
+      responseHandler = MockResponseInterceptorHandler();
+    },
+  );
   group('Logger', () {
     test('Logger is disabled by default', () {
       expect(Logger.isEnabled, isFalse);
@@ -72,6 +93,42 @@ void main() {
 
       // Restore debugPrint
       debugPrint = debugPrintThrottled;
+    });
+
+    test('InterceptorsWrapper onRequest call handler after the log', () {
+      InterceptorsWrapper interceptor = NetworkUtil.createLogsInterceptor();
+
+      final options = RequestOptions(
+        path: '/test',
+        method: 'GET',
+        headers: {'Authorization': 'Bearer token'},
+        data: {'key': 'value'},
+      );
+
+      interceptor.onRequest(options, requestHandler);
+      verify(requestHandler.next(options)).called(1);
+    });
+
+    test('InterceptorsWrapper onResponse call handler after the log', () {
+      InterceptorsWrapper interceptor = NetworkUtil.createLogsInterceptor();
+
+      final response = Response(
+        requestOptions: RequestOptions(),
+      );
+
+      interceptor.onResponse(response, responseHandler);
+      verify(responseHandler.next(response)).called(1);
+    });
+
+    test('InterceptorsWrapper onError call handler after the log', () {
+      InterceptorsWrapper interceptor = NetworkUtil.createLogsInterceptor();
+
+      final dioException = DioException(
+        requestOptions: RequestOptions(),
+      );
+
+      interceptor.onError(dioException, errorHandler);
+      verify(errorHandler.next(dioException)).called(1);
     });
   });
 }
