@@ -2,11 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
+import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
+import 'package:sf_commerce_sdk/repository/basket_repository.dart';
 import 'package:sf_commerce_sdk/repository/category_repository.dart';
 import 'package:sf_commerce_sdk/repository/product_repository.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
@@ -116,8 +118,16 @@ class SFCommerceSDK {
     return _productRepository.getProductByCategory(category);
   }
 
+  Future<List<Product>> getProductsByIds(List<String> ids) {
+    return _productRepository.getProducts(ids);
+  }
+
   Future<Product> getProductById(String id) {
     return _productRepository.getProduct(id);
+  }
+
+  Future<Basket> getBasket() {
+    return _basketRepository.getBasket();
   }
 
   @visibleForTesting
@@ -144,4 +154,6 @@ class SFCommerceSDK {
     config: _config,
     storage: _storage,
   );
+  late final BasketRepository _basketRepository =
+      BasketRepository(dio: _dio, config: _config);
 }
