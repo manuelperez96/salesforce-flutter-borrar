@@ -81,4 +81,21 @@ class BasketRepository extends Repository {
     //   throw Exception('Failed to remove item from basket: $e');
     // }
   }
+
+  Future<void> updateProductInBasket(
+      {required String productId, int quantity = 1}) async {
+    // TODO implement https://developer.salesforce.com/docs/commerce/commerce-api/references/shopper-baskets?meta=updateItemInBasket
+    // if (_basketId == null) await createBasket();
+    // try {
+    //   await dio.patch(
+    //     '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$_basketId/items/$productId?siteId=${config.siteId}',
+    //     data: {'quantity': quantity},
+    //     options: Options(
+    //       headers: {'Content-Type': 'application/json'},
+    //     ),
+    //   );
+    // } catch (e) {
+    //   throw Exception('Failed to update item in basket: $e');
+    // }
+  }
 }

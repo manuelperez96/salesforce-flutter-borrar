@@ -38,7 +38,9 @@ void main() async {
   basketWithProduct = await sf.addProductToBasket(productId: products.last.id);
   print(basketWithProduct);
 
-  await sf.removeItemFromBasket(products.first.id);
+  // await sf.removeItemFromBasket(products.first.id);
+
+  await sf.updateItemInBasket(productId: products.last.id, quantity: 2);
 
   runApp(const MyApp());
 }

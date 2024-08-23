@@ -140,6 +140,14 @@ class SFCommerceSDK {
     return _basketRepository.removeItemFromBasket(productId);
   }
 
+  Future<void> updateItemInBasket(
+      {required String productId, int quantity = 1}) {
+    return _basketRepository.updateProductInBasket(
+      productId: productId,
+      quantity: quantity,
+    );
+  }
+
   @visibleForTesting
   void setAuthRepository(AuthRepository mock) {
     _authRepository = mock;
