@@ -3,8 +3,8 @@ import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 final inject = GetIt.instance;
 
-class AppModules {
-  setup(SFCommerceSDK instance) {
+abstract final class AppModules {
+  static setup(SFCommerceSDK instance) {
     inject.registerSingleton(instance);
   }
 }
