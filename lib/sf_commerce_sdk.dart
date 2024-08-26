@@ -1,11 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
-import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
-import 'package:sf_commerce_sdk/models/responses/category/category.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
 import 'package:sf_commerce_sdk/repository/basket_repository.dart';
@@ -34,7 +28,6 @@ class SFCommerceSDK {
 
   final Dio _dio;
   final SfCommerceConfig _config;
-  final MemoryCache _memoryCache = MemoryCache();
 
   static final _storage = TokenStorage(
     storage: const FlutterSecureStorage(),
@@ -106,72 +99,66 @@ class SFCommerceSDK {
   /// ProductRepository productRepo = SFCommerceSDK.productRepository;
   /// ```
 
-  Future<void> anonymousLogin() {
-    return _authRepository.anonymousLogin();
+  // Future<void> anonymousLogin() {
+  //   return authRepository.anonymousLogin();
+  // }
+
+  // Future<List<Category>> getRootCategories() {
+  //   return categoryRepository.getRootCategories();
+  // }
+
+  // Future<List<Category>> getCategoriesByUrl(String url) {
+  //   return categoryRepository.getCategoriesByUrl(url);
+  // }
+
+  // Future<List<ProductByCategory>> getProductsByCategory(String category) {
+  //   return productRepository.getProductByCategory(category);
+  // }
+
+  // Future<List<Product>> getProductsByIds(List<String> ids) {
+  //   return productRepository.getProducts(ids);
+  // }
+
+  // Future<Product> getProductById(String id) {
+  //   return productRepository.getProduct(id);
+  // }
+
+  // Future<Basket> getBasket() {
+  //   return basketRepository.getBasket();
+  // }
+
+  // Future<Basket> addProductToBasket(
+  //     {required String productId, int quantity = 1}) {
+  //   return basketRepository.addItemToBasket(
+  //       productId: productId, quantity: quantity);
+  // }
+
+  // Future<void> removeItemFromBasket(String productId) {
+  //   return basketRepository.removeItemFromBasket(productId);
+  // }
+
+  // Future<void> updateItemInBasket(
+  //     {required String productId, int quantity = 1}) {
+  //   return basketRepository.updateProductInBasket(
+  //     productId: productId,
+  //     quantity: quantity,
+  //   );
+  // }
+
+  void clearAllCache() {
+    productRepository.clearCache();
+    categoryRepository.clearCache();
   }
 
-  Future<List<Category>> getRootCategories() {
-    return _categoryRepository.getRootCategories();
-  }
-
-  Future<List<ProductByCategory>> getProductsByCategory(String category) {
-    return _productRepository.getProductByCategory(category);
-  }
-
-  Future<List<Product>> getProductsByIds(List<String> ids) {
-    return _productRepository.getProducts(ids);
-  }
-
-  Future<Product> getProductById(String id) {
-    return _productRepository.getProduct(id);
-  }
-
-  Future<Basket> getBasket() {
-    return _basketRepository.getBasket();
-  }
-
-  Future<Basket> addProductToBasket(
-      {required String productId, int quantity = 1}) {
-    return _basketRepository.addItemToBasket(
-        productId: productId, quantity: quantity);
-  }
-
-  Future<void> removeItemFromBasket(String productId) {
-    return _basketRepository.removeItemFromBasket(productId);
-  }
-
-  Future<void> updateItemInBasket(
-      {required String productId, int quantity = 1}) {
-    return _basketRepository.updateProductInBasket(
-      productId: productId,
-      quantity: quantity,
-    );
-  }
-
-  @visibleForTesting
-  void setAuthRepository(AuthRepository mock) {
-    _authRepository = mock;
-  }
-
-  @visibleForTesting
-  void setProductRepository(ProductRepository mock) {
-    _productRepository = mock;
-  }
-
-  @visibleForTesting
-  void setCategoryRepository(CategoryRepository mock) {
-    _categoryRepository = mock;
-  }
-
-  late ProductRepository _productRepository =
-      ProductRepository(dio: _dio, config: _config, memoryCache: _memoryCache);
-  late CategoryRepository _categoryRepository =
-      CategoryRepository(dio: _dio, config: _config, memoryCache: _memoryCache);
-  late AuthRepository _authRepository = AuthRepository(
+  late ProductRepository productRepository =
+      ProductRepository(dio: _dio, config: _config);
+  late CategoryRepository categoryRepository =
+      CategoryRepository(dio: _dio, config: _config);
+  late AuthRepository authRepository = AuthRepository(
     dio: _dio,
     config: _config,
     storage: _storage,
   );
-  late final BasketRepository _basketRepository =
+  late BasketRepository basketRepository =
       BasketRepository(dio: _dio, config: _config);
 }
