@@ -33,11 +33,11 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _navigateToOnboarding() async {
     await Future.wait([
       Future.delayed(const Duration(milliseconds: 2500)),
-      Future(
-        () => inject<SFCommerceSDK>().anonymousLogin(),
-      ).then(
-        (value) => inject<SFCommerceSDK>().getRootCategories(),
-      ),
+      inject<SFCommerceSDK>().authRepository.anonymousLogin().then(
+            (value) async => await inject<SFCommerceSDK>()
+                .categoryRepository
+                .getRootCategories(),
+          ),
     ]);
     if (!mounted) return;
     Navigator.pushReplacementNamed(context, onboardingScreenRoute);
