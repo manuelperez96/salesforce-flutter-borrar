@@ -5,10 +5,9 @@ import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dar
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class ProductRepository extends Repository {
-  final MemoryCache memoryCache;
+  final MemoryCache<Product> memoryCache = MemoryCache<Product>();
 
-  ProductRepository(
-      {required super.dio, required super.config, required this.memoryCache});
+  ProductRepository({required super.dio, required super.config});
 
   Future<List<Product>> getProducts(List<String> ids) async {
     try {
@@ -29,8 +28,8 @@ class ProductRepository extends Repository {
   Future<Product> getProduct(String id) async {
     try {
       //check is data is in cache
-      if (memoryCache.productById.containsKey(id)) {
-        return memoryCache.productById[id]!;
+      if (memoryCache.hasKey(id)) {
+        return memoryCache.getValue(id);
       }
 
       final response = await dio.get(
@@ -41,7 +40,7 @@ class ProductRepository extends Repository {
       final dynamic jsonResponse = response.data;
 
       final result = Product.fromJson(jsonResponse);
-      memoryCache.productById[id] = result;
+      memoryCache.addValue(id, result);
       return result;
     } catch (e) {
       throw Exception('Failed to load product: $e');
@@ -51,9 +50,9 @@ class ProductRepository extends Repository {
   Future<List<ProductByCategory>> getProductByCategory(String category) async {
     try {
       //check is data is in cache
-      if (memoryCache.productCategoryByUrl.containsKey(category)) {
-        return memoryCache.productCategoryByUrl[category]!;
-      }
+      // if (memoryCache.productCategoryByUrl.containsKey(category)) {
+      //   return memoryCache.productCategoryByUrl[category]!;
+      // }
 
       final response = await dio.get(
           '${config.host}/search/shopper-search/v1/organizations/${config.organizationId}/product-search?refine=cgid=$category&siteId=${config.siteId}',
@@ -69,10 +68,14 @@ class ProductRepository extends Repository {
       } else {
         result = [];
       }
-      memoryCache.productCategoryByUrl[category] = result;
+      //memoryCache.productCategoryByUrl[category] = result;
       return result;
     } catch (e) {
       throw Exception('Failed to load product by category: $e');
     }
+  }
+
+  void clearCache() {
+    memoryCache.clearAll();
   }
 }
