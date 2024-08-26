@@ -1,28 +1,36 @@
-import 'package:sf_commerce_sdk/models/responses/category/category.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
-
-class MemoryCache {
-  // Singleton class
-  static final MemoryCache _memoryCache = MemoryCache._internal();
-
-  factory MemoryCache() {
-    return _memoryCache;
-  }
-
-  MemoryCache._internal() {
-    // Empty constructor
-  }
+class MemoryCache<T> {
+  MemoryCache();
 
   // Cache data
-  Map<String, List<Category>> categoriesByUrl = {};
-  Map<String, Product> productById = {};
-  Map<String, List<ProductByCategory>> productCategoryByUrl = {};
+  final Map<String, T> cacheItem = {};
+  final Map<String, List<T>> cacheItemList = {};
+
+  void addValue(String key, T value) {
+    cacheItem[key] = value;
+  }
+
+  bool hasKey(String key) {
+    return cacheItem.containsKey(key);
+  }
+
+  T getValue(String key) {
+    return cacheItem[key]!;
+  }
+
+  void addListValue(String key, List<T> value) {
+    cacheItemList[key] = value;
+  }
+
+  bool hasListKey(String key) {
+    return cacheItemList.containsKey(key);
+  }
+
+  List<T> getListValue(String key) {
+    return cacheItemList[key]!;
+  }
 
   clearAll() {
-    // Clear all data
-    categoriesByUrl = {};
-    productById = {};
-    productCategoryByUrl = {};
+    cacheItem.clear();
+    cacheItemList.clear();
   }
 }
