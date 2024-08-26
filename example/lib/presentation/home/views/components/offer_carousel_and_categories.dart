@@ -27,7 +27,9 @@ class _OffersCarouselAndCategoriesState
     super.initState();
     Future(
       () async {
-        categoryList = await inject<SFCommerceSDK>().getRootCategories();
+        categoryList = await inject<SFCommerceSDK>()
+            .categoryRepository
+            .getRootCategories();
         setState(() {});
       },
     );
