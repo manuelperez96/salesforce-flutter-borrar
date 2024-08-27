@@ -16,6 +16,7 @@ import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  //let the app read the image from salesforce
   HttpOverrides.global = MyHttpOverrides();
 
   SFCommerceSDK sf = SFCommerceSDK(
@@ -26,7 +27,21 @@ void main() async {
     host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
   ));
 
-  AppModules().setup(sf); // Setup dependency injection
+  // Setup dependency injection
+  AppModules.setup(sf);
+
+  //await sf.anonymousLogin();
+  //final products =
+  //await sf.getProductsByIds(['029407331289M', '029407331227M']);
+
+  //Basket basketWithProduct =
+  //  await sf.addProductToBasket(productId: products.first.id);
+  //basketWithProduct = await sf.addProductToBasket(productId: products.last.id);
+  //print(basketWithProduct);
+
+  // await sf.removeItemFromBasket(products.first.id);
+
+  //await sf.updateItemInBasket(productId: products.last.id, quantity: 2);
 
   runApp(const MyApp());
 }

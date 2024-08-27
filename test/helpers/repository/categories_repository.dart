@@ -1,3 +1,5 @@
+import 'package:sf_commerce_sdk/models/responses/category/category.dart';
+
 const responseJSON = {
   'limit': 1,
   'data': [
@@ -117,3 +119,18 @@ const responseJSON = {
   ],
   'total': 1
 };
+
+List<Category> categoryListModel = [
+  Category(
+      id: 'id',
+      name: 'name',
+      onlineSubCategoriesCount: 4,
+      parentCategoryId: 'parentCategoryId',
+      cHeaderMenuBanner: 'cHeaderMenuBanner'),
+  Category(
+      id: 'id2',
+      name: 'name',
+      onlineSubCategoriesCount: 4,
+      parentCategoryId: 'parentCategoryId',
+      cHeaderMenuBanner: 'cHeaderMenuBanner'),
+];

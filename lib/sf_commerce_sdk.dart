@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
+import 'package:sf_commerce_sdk/repository/basket_repository.dart';
 import 'package:sf_commerce_sdk/repository/category_repository.dart';
 import 'package:sf_commerce_sdk/repository/product_repository.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
@@ -32,7 +31,6 @@ class SFCommerceSDK {
 
   final Dio _dio;
   final SfCommerceConfig _config;
-  final MemoryCache _memoryCache = MemoryCache();
 
   static final _storage = TokenStorage(
     storage: const FlutterSecureStorage(),
@@ -61,25 +59,6 @@ class SFCommerceSDK {
   ///   enableVerboseLogs: true,
   /// );
   // /// ```
-  // Future<void> initialize({
-  //   required String clientId,
-  //   required String organizationId,
-  //   required String shortCode,
-  //   required String siteId,
-  //   required String host,
-  //   bool enableVerboseLogs = false,
-  // }) async {
-  //   // if (!host.startsWith('http://') && !host.startsWith('https://')) {
-  //   //   throw ArgumentError(
-  //   //       'The host URL must start with "http://" or "https://"');
-  //   // }
-  //   SFCommerceSDK.clientId = clientId;
-  //   SFCommerceSDK.organizationId = organizationId;
-  //   SFCommerceSDK.shortCode = shortCode;
-  //   SFCommerceSDK.siteId = siteId;
-  //   SFCommerceSDK.host = host;
-  //   Logger.setEnabled(enableVerboseLogs);
-  // }
 
   /// Sets the verbose logging mode.
   ///
@@ -104,44 +83,28 @@ class SFCommerceSDK {
   /// ProductRepository productRepo = SFCommerceSDK.productRepository;
   /// ```
 
-  Future<void> anonymousLogin() {
-    return _authRepository.anonymousLogin();
+  void clearCache() {
+    productRepository.clearCache();
+    categoryRepository.clearCache();
   }
 
-  Future<List<Category>> getRootCategories() {
-    return _categoryRepository.getRootCategories();
-  }
-
-  Future<List<ProductByCategory>> getProductsByCategory(String category) {
-    return _productRepository.getProductByCategory(category);
-  }
-
-  Future<Product> getProductById(String id) {
-    return _productRepository.getProduct(id);
-  }
-
-  @visibleForTesting
-  void setAuthRepository(AuthRepository mock) {
-    _authRepository = mock;
-  }
-
-  @visibleForTesting
-  void setProductRepository(ProductRepository mock) {
-    _productRepository = mock;
-  }
-
-  @visibleForTesting
-  void setCategoryRepository(CategoryRepository mock) {
-    _categoryRepository = mock;
-  }
-
-  late ProductRepository _productRepository =
-      ProductRepository(dio: _dio, config: _config, memoryCache: _memoryCache);
-  late CategoryRepository _categoryRepository =
-      CategoryRepository(dio: _dio, config: _config, memoryCache: _memoryCache);
-  late AuthRepository _authRepository = AuthRepository(
+  late ProductRepository productRepository = ProductRepository(
+    dio: _dio,
+    config: _config,
+    memoryCache: const MemoryCache<Product>(),
+  );
+  late CategoryRepository categoryRepository = CategoryRepository(
+    dio: _dio,
+    config: _config,
+    memoryCache: const MemoryCache<List<Category>>(),
+  );
+  late AuthRepository authRepository = AuthRepository(
     dio: _dio,
     config: _config,
     storage: _storage,
+  );
+  late BasketRepository basketRepository = BasketRepository(
+    dio: _dio,
+    config: _config,
   );
 }

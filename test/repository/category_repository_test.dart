@@ -11,7 +11,11 @@ import '../helpers/repository/categories_repository.dart';
 import 'category_repository_test.mocks.dart';
 
 @GenerateNiceMocks(
-  [MockSpec<Dio>(), MockSpec<Response>(), MockSpec<MemoryCache>()],
+  [
+    MockSpec<Dio>(),
+    MockSpec<Response>(),
+    MockSpec<MemoryCache<List<Category>>>(),
+  ],
 )
 void main() {
   late MockDio mockDio;
@@ -33,7 +37,10 @@ void main() {
     );
 
     categoryRepository = CategoryRepository(
-        dio: mockDio, config: config, memoryCache: mockMemoryCache);
+      dio: mockDio,
+      config: config,
+      memoryCache: mockMemoryCache,
+    );
   });
 
   group('CategoryRepository', () {
@@ -57,8 +64,7 @@ void main() {
         test(
           'getRootCategories throws an exception on failure',
           () async {
-            when(mockMemoryCache.categoriesByUrl).thenReturn({});
-
+            when(mockMemoryCache.hasKey(any)).thenReturn(false);
             when(mockDio.get(any,
                 options: Options(
                   headers: {'Content-Type': 'application/json'},
@@ -72,9 +78,11 @@ void main() {
         test(
           'getRootCategories returns a category list on success',
           () async {
-            when(mockMemoryCache.categoriesByUrl).thenReturn({});
-            when(mockDio.get(any, options: anyNamed('options')))
-                .thenAnswer((_) async => response);
+            when(mockMemoryCache.hasKey(any)).thenReturn(false);
+            when(mockDio.get(
+              any,
+              options: anyNamed('options'),
+            )).thenAnswer((_) async => response);
 
             when(response.data).thenReturn(responseJSON);
 
@@ -82,6 +90,19 @@ void main() {
                 await categoryRepository.getRootCategories();
 
             expect(result, isNotEmpty);
+          },
+        );
+
+        test(
+          'when memoryCache has Data, return the data cached',
+          () async {
+            when(mockMemoryCache.hasKey(any)).thenReturn(true);
+            when(mockMemoryCache.getValue(any)).thenReturn(categoryListModel);
+
+            final List<Category> result =
+                await categoryRepository.getCategoriesByUrl('url');
+
+            expect(result, categoryListModel);
           },
         );
       },
