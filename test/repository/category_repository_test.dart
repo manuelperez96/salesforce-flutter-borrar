@@ -21,7 +21,7 @@ void main() {
   late MockDio mockDio;
   late SfCommerceConfig config;
   late CategoryRepository categoryRepository;
-  late MockResponse<dynamic> response;
+  late MockResponse response;
   late MockMemoryCache mockMemoryCache;
 
   setUp(() {

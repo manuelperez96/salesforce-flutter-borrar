@@ -69,10 +69,6 @@ class AuthRepository extends Repository {
       );
 
       await _storage.saveToken(token);
-
-      dio.options.headers.addAll(
-        {'Authorization': 'Bearer ${token.accessToken}'},
-      );
     } catch (_) {
       throw UnableDoAnonymousLoginException();
     }

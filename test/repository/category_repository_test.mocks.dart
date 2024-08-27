@@ -1090,9 +1090,9 @@ class MockDio extends _i1.Mock implements _i8.Dio {
 /// A class which mocks [Response].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockResponse<T> extends _i1.Mock implements _i6.Response<T> {
+class MockResponse extends _i1.Mock implements _i6.Response<dynamic> {
   @override
-  set data(T? _data) => super.noSuchMethod(
+  set data(dynamic _data) => super.noSuchMethod(
         Invocation.setter(
           #data,
           _data,
