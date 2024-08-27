@@ -4,14 +4,17 @@ import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class CategoryRepository extends Repository {
-  late final String _pathRoot;
-  final MemoryCache<List<Category>> memoryCache;
-
-  CategoryRepository(
-      {required super.dio, required super.config, required this.memoryCache}) {
+  CategoryRepository({
+    required super.dio,
+    required super.config,
+    required this.memoryCache,
+  }) {
     _pathRoot =
         '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/categories?ids=root&siteId=${config.siteId}&levels=2';
   }
+
+  late final String _pathRoot;
+  final MemoryCache<List<Category>> memoryCache;
 
   Future<List<Category>> getRootCategories() async {
     return getCategoriesByUrl(_pathRoot);
@@ -23,15 +26,21 @@ class CategoryRepository extends Repository {
         return memoryCache.getValue(url)!;
       }
 
-      final response = await dio.get(url,
-          options: Options(
-            headers: {'Content-Type': 'application/json'},
-          ));
+      final response = await dio.get<dynamic>(
+        url,
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
 
-      final List<dynamic> jsonResponse = response.data['data'][0]['categories'];
+      final jsonResponse = (((response.data as Map)['data'] as List)[0]
+          as Map<String, dynamic>)['categories'] as List;
 
-      List<Category> result = jsonResponse
-          .map((categoryJson) => Category.fromJson(categoryJson))
+      final result = jsonResponse
+          .map(
+            (categoryJson) =>
+                Category.fromJson(categoryJson as Map<String, dynamic>),
+          )
           .toList();
 
       memoryCache.addUpdateValue(url, result);

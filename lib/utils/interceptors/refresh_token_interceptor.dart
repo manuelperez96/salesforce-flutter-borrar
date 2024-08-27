@@ -2,16 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 
-class RefreshTokenInterceptor extends Interceptor {
-  final String _organizationId;
-  final String _host;
-  final String _clientId;
-  final TokenStorage _storage;
-
-  late final _refreshTokenUrl =
-      '$_host/shopper/auth/v1/organizations/$_organizationId/oauth2/token';
-
-  RefreshTokenInterceptor({
+class RefreshTokenInterceptor extends QueuedInterceptor {
+   RefreshTokenInterceptor({
     required String organizationId,
     required String host,
     required TokenStorage storage,
@@ -21,19 +13,23 @@ class RefreshTokenInterceptor extends Interceptor {
         _storage = storage,
         _clientId = clientId;
 
-  // Not necesary because when the anonymousLogin finish add inmediatly the token to the header
-  // @override
-  // void onRequest(
-  //   RequestOptions options,
-  //   RequestInterceptorHandler handler,
-  // ) async {
-  //   if (_counter == 0) {
-  //     _counter++;
-  //     await _addAuthHeader(options.headers);
-  //   }
+  final String _organizationId;
+  final String _host;
+  final String _clientId;
+  final TokenStorage _storage;
 
-  //   handler.next(options);
-  // }
+  late final _refreshTokenUrl =
+      '$_host/shopper/auth/v1/organizations/$_organizationId/oauth2/token';
+
+  @override
+  Future<void> onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
+    await _addAuthHeader(options.headers);
+
+    handler.next(options);
+  }
 
   @override
   Future<void> onError(
@@ -56,11 +52,11 @@ class RefreshTokenInterceptor extends Interceptor {
     final token = await _storage.getToken();
     if (token == null) throw Exception('There is not token');
 
-    final response = await Dio().post(
+    final response = await Dio().post<dynamic>(
       _refreshTokenUrl,
       options: Options(
         headers: <String, dynamic>{
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
       ),
       data: {

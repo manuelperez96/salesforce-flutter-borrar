@@ -7,13 +7,6 @@ import 'package:flutter/foundation.dart';
 class Logger {
   static bool isEnabled = false;
 
-  /// Sets the logging enabled state.
-  ///
-  /// [enabled] - If true, logging is enabled.
-  static void setEnabled(bool enabled) {
-    isEnabled = enabled;
-  }
-
   /// Logs a message if logging is enabled.
   ///
   /// [message] - The message to log.
@@ -26,10 +19,10 @@ class Logger {
   }
 }
 
-
 /// Utility class for creating logging interceptors for Dio requests.
 class NetworkUtil {
-  /// Creates an [InterceptorsWrapper] with logger capabilities for Dio requests.
+  /// Creates an [InterceptorsWrapper] with logger capabilities
+  /// for Dio requests.
   ///
   /// This method returns an [InterceptorsWrapper] that logs details of
   /// requests, responses, and errors using the provided [Logger].
@@ -42,18 +35,22 @@ class NetworkUtil {
   /// ```
   static InterceptorsWrapper createLogsInterceptor() {
     return InterceptorsWrapper(
-        onRequest: (options, handler) {
-          Logger.log('Request[${options.method}] => PATH: ${options.path}');
-          return handler.next(options);
-        },
-        onResponse: (response, handler) {
-          Logger.log('Response[${response.statusCode}] => DATA: ${response.data}');
-          return handler.next(response);
-        },
-        onError: (error, handler) {
-          Logger.log('Error[${error.response?.statusCode}] => MESSAGE: ${error.message}');
-          return handler.next(error);
-        }
+      onRequest: (options, handler) {
+        Logger.log('Request[${options.method}] => PATH: ${options.path}');
+        return handler.next(options);
+      },
+      onResponse: (response, handler) {
+        Logger.log(
+          'Response[${response.statusCode}] => DATA: ${response.data}',
+        );
+        return handler.next(response);
+      },
+      onError: (error, handler) {
+        Logger.log(
+          'Error[${error.response?.statusCode}] => MESSAGE: ${error.message}',
+        );
+        return handler.next(error);
+      },
     );
   }
 }

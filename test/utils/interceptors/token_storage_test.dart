@@ -47,7 +47,7 @@ void main() {
               value: anyNamed('value'),
             ),
           ).thenAnswer(
-            (_) => Future.value(),
+            (_) => Future<void>.value(),
           );
 
           await tokenStorage.saveToken(FakeAccessToken());
@@ -69,7 +69,7 @@ void main() {
           when(
             storage.read(key: TokenStorage.tokenKey),
           ).thenAnswer(
-            (_) => Future.value(null),
+            (_) => Future.value(),
           );
 
           final token = await tokenStorage.getToken();
@@ -79,7 +79,8 @@ void main() {
       );
 
       test(
-        'When getToken() is called and previous token is saved return that token',
+        'When getToken() is called and previous token is saved '
+        'return that token',
         () async {
           final tokenStorage = TokenStorage(storage: storage);
 
@@ -95,7 +96,7 @@ void main() {
         },
       );
 
-      test('When clear() is called, clear asociated tokenKey value', () async {
+      test('When clear() is called, clear associated tokenKey value', () async {
         final tokenStorage = TokenStorage(storage: storage);
 
         when(storage.delete(key: TokenStorage.tokenKey)).thenAnswer(

@@ -797,13 +797,13 @@ class MockMemoryCache extends _i1.Mock
   }
 
   @override
-  void addOrUpdateValue(
+  void addUpdateValue(
     String? key,
     _i11.Product? value,
   ) =>
       super.noSuchMethod(
         Invocation.method(
-          #addOrUpdateValue,
+          #addUpdateValue,
           [
             key,
             value,
@@ -826,4 +826,13 @@ class MockMemoryCache extends _i1.Mock
         #getValue,
         [key],
       )) as _i11.Product?);
+
+  @override
+  void clearAll() => super.noSuchMethod(
+        Invocation.method(
+          #clearAll,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
 }

@@ -8,13 +8,12 @@ abstract final class PkceHelper {
     if (seed != null) {
       return base64UrlEncode(seed).replaceAll('=', '');
     }
-    final Random random = Random.secure();
-    final List<int> values = List<int>.generate(32, (i) => random.nextInt(256));
+    final random = Random.secure();
+    final values = List<int>.generate(32, (i) => random.nextInt(256));
     return base64UrlEncode(values).replaceAll('=', '');
   }
 
   static String _generateCodeChallenge(String codeVerifier) {
-    //final bytes = utf8.encode('dfsgfjsjfsdfgsdfgsdfg');
     final bytes = utf8.encode(codeVerifier);
     final digest = sha256.convert(bytes);
     return base64UrlEncode(digest.bytes).replaceAll('=', '');

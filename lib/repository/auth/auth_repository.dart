@@ -32,7 +32,7 @@ class AuthRepository extends Repository {
     final token = await _storage.getToken();
     if (token == null) return false;
     try {
-      final response = await dio.post(
+      final response = await dio.post<dynamic>(
         '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/token',
         options: Options(
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -48,7 +48,9 @@ class AuthRepository extends Repository {
         throw GetAccessTokenException();
       }
 
-      await _storage.saveToken(AccessToken.fromJson(response.data));
+      await _storage.saveToken(
+        AccessToken.fromJson(response.data as Map<String, dynamic>),
+      );
 
       return true;
     } catch (_) {
@@ -68,8 +70,9 @@ class AuthRepository extends Repository {
 
       await _storage.saveToken(token);
 
-      dio.options.headers
-          .addAll({'Authorization': 'Bearer ${token.accessToken}'});
+      dio.options.headers.addAll(
+        {'Authorization': 'Bearer ${token.accessToken}'},
+      );
     } catch (_) {
       throw UnableDoAnonymousLoginException();
     }
@@ -82,7 +85,7 @@ class AuthRepository extends Repository {
       final path =
           '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/authorize?response_type=code&client_id=${config.clientId}&hint=guest&code_challenge=$codeChallenge&redirect_uri=$_redirectUri';
 
-      final response = await dio.get(
+      final response = await dio.get<dynamic>(
         path,
         options: Options(
           followRedirects: false,
@@ -96,12 +99,12 @@ class AuthRepository extends Repository {
         throw GetAuthorizationCodeException();
       }
 
-      final json = (e.response?.headers.map['location'] as List?);
+      final json = e.response?.headers.map['location'] as List?;
       if (json == null || json.isEmpty || json.first is! String) {
         throw GetAuthorizationCodeException();
       }
 
-      return _getTokenRequestDataOnRedirect(json.first);
+      return _getTokenRequestDataOnRedirect(json.first as String);
     }
   }
 
@@ -113,7 +116,7 @@ class AuthRepository extends Repository {
     try {
       final path =
           '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/token';
-      final response = await dio.post(
+      final response = await dio.post<dynamic>(
         path,
         options: Options(
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -129,21 +132,23 @@ class AuthRepository extends Repository {
         throw GetAccessTokenException();
       }
 
-      return AccessToken.fromJson(response.data);
+      return AccessToken.fromJson(response.data as Map<String, dynamic>);
     } catch (_) {
       throw GetAccessTokenException();
     }
   }
 
-  (String code, String usid) _getTokenRequestDataOnSuccess(Response response) {
-    final jsonResult = (response.data as Map<String, dynamic>);
+  (String code, String usid) _getTokenRequestDataOnSuccess(
+    Response<dynamic> response,
+  ) {
+    final jsonResult = response.data as Map<String, dynamic>;
     final code = jsonResult['code'] ?? jsonResult['authCode'];
     final usid = jsonResult['usid'];
-    if (!code is String || !usid is String) {
+    if (code is! String || usid is! String) {
       throw GetAuthorizationCodeException();
     }
 
-    return (code as String, usid as String);
+    return (code, usid);
   }
 
   (String code, String usid) _getTokenRequestDataOnRedirect(String location) {

@@ -11,16 +11,17 @@ class TokenStorage {
 
   @visibleForTesting
   static const tokenKey = 'tokenKey';
- 
 
-  Future<void> saveToken(AccessToken token)  {
+  Future<void> saveToken(AccessToken token) {
     return _storage.write(key: tokenKey, value: jsonEncode(token.toJson()));
   }
 
-  Future<AccessToken?> getToken() async  {
+  Future<AccessToken?> getToken() async {
     final stringToken = await _storage.read(key: tokenKey);
     if (stringToken == null) return null;
-    return AccessToken.fromJson(jsonDecode(stringToken));
+    return AccessToken.fromJson(
+      jsonDecode(stringToken) as Map<String, dynamic>,
+    );
   }
 
   Future<void> clear() {

@@ -34,7 +34,7 @@ void main() {
     70,
     111,
     243,
-    145
+    145,
   ];
   final incorrectSeed = [
     129,
@@ -67,7 +67,7 @@ void main() {
     4,
     70,
     111,
-    243
+    243,
   ];
   const matcher = (
     'gfW1oUhr8S4_Bt7wjHqkT0tqB2O-b28WWHcIBEZv85E',

@@ -1,8 +1,4 @@
 final class SfCommerceConfig {
-  final String clientId;
-  final String organizationId;
-  final String siteId;
-  final String host;
 
   SfCommerceConfig({
     required this.clientId,
@@ -13,9 +9,14 @@ final class SfCommerceConfig {
           host.startsWith('http://') || host.startsWith('https://'),
           'The host URL must start with "http://" or "https://"',
         );
+  final String clientId;
+  final String organizationId;
+  final String siteId;
+  final String host;
 
   @override
   String toString() {
-    return 'SfCommerceConfig{clientId: $clientId, organizationId: $organizationId, siteId: $siteId, host: $host}';
+    return 'SfCommerceConfig{clientId: $clientId, organizationId: '
+    '$organizationId, siteId: $siteId, host: $host}';
   }
 }

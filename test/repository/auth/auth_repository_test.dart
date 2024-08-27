@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -17,7 +16,7 @@ import 'auth_repository_test.mocks.dart';
     MockSpec<TokenStorage>(),
     MockSpec<Interceptors>(),
     MockSpec<DioException>(),
-    MockSpec<Response>(),
+    MockSpec<Response<dynamic>>(),
     MockSpec<Headers>(),
   ],
 )
@@ -75,11 +74,12 @@ void main() {
         'anonymousLogin()',
         () {
           test(
-            'when request fail on get authorization code and fail is not 303, throw UnableDoAnonymousLoginException',
+            'when request fail on get authorization code and fail is not 303, '
+            'throw UnableDoAnonymousLoginException',
             () async {
               when(response.statusCode).thenReturn(302);
               when(
-                dio.get(any, options: anyNamed('options')),
+                dio.get<dynamic>(any, options: anyNamed('options')),
               ).thenThrow(dioException);
 
               expect(
@@ -90,12 +90,14 @@ void main() {
           );
 
           test(
-            'when request fail on get authorization code and fail is 303 and location in headers is incorrect, throw UnableDoAnonymousLoginException',
+            'when request fail on get authorization code and fail is 303 and '
+            'location in headers is incorrect, throw '
+            'UnableDoAnonymousLoginException',
             () async {
               when(response.statusCode).thenReturn(303);
               when(headers.map).thenReturn({});
               when(
-                dio.get(any, options: anyNamed('options')),
+                dio.get<dynamic>(any, options: anyNamed('options')),
               ).thenThrow(dioException);
 
               expect(
@@ -106,12 +108,13 @@ void main() {
           );
 
           test(
-            'when request get authorization code is 202 and fail get token request, throw UnableDoAnonymousLoginException',
+            'when request get authorization code is 202 and fail get token '
+            'request, throw UnableDoAnonymousLoginException',
             () async {
               when(response.statusCode).thenReturn(202);
               when(headers.map).thenReturn(
                 <String, List<String>>{
-                  'location': [jsonStringToken]
+                  'location': [jsonStringToken],
                 },
               );
 
@@ -120,19 +123,19 @@ void main() {
               );
 
               when(
-                dio.get(
+                dio.get<dynamic>(
                   any,
                   options: Options(
                     followRedirects: false,
                     headers: {
-                      'Content-Type': 'application/x-www-form-urlencoded'
+                      'Content-Type': 'application/x-www-form-urlencoded',
                     },
                   ),
                 ),
               ).thenAnswer((_) async => response);
 
               when(
-                dio.post(
+                dio.post<dynamic>(
                   any,
                   options: anyNamed('options'),
                   data: anyNamed('data'),
@@ -147,19 +150,20 @@ void main() {
           );
 
           test(
-            'when request get authorization code and get access is fail, throw UnableDoAnonymousLoginException',
+            'when request get authorization code and get access is fail, '
+            'throw UnableDoAnonymousLoginException',
             () async {
               when(response.statusCode).thenReturn(303);
               when(headers.map).thenReturn(
                 <String, List<String>>{
-                  'location': [jsonStringToken]
+                  'location': [jsonStringToken],
                 },
               );
               when(
-                dio.get(any, options: anyNamed('options')),
+                dio.get<dynamic>(any, options: anyNamed('options')),
               ).thenThrow(dioException);
               when(
-                dio.post(
+                dio.post<dynamic>(
                   any,
                   options: anyNamed('options'),
                   data: anyNamed('data'),
@@ -185,18 +189,18 @@ void main() {
                 },
               );
               when(
-                dio.get(
+                dio.get<dynamic>(
                   any,
                   options: Options(
                     followRedirects: false,
                     headers: {
-                      'Content-Type': 'application/x-www-form-urlencoded'
+                      'Content-Type': 'application/x-www-form-urlencoded',
                     },
                   ),
                 ),
               ).thenAnswer((_) async => response);
               when(
-                dio.post(
+                dio.post<dynamic>(
                   any,
                   options: anyNamed('options'),
                   data: anyNamed('data'),
@@ -222,7 +226,7 @@ void main() {
             'when request fail, return false',
             () async {
               when(
-                dio.post(
+                dio.post<dynamic>(
                   any,
                   options: anyNamed('options'),
                   data: anyNamed('data'),
@@ -233,13 +237,14 @@ void main() {
           );
 
           test(
-            'when request is success and return a new token, return true and save new token in storage',
+            'when request is success and return a new token, return true '
+            'and save new token in storage',
             () async {
               when(storage.getToken()).thenAnswer((_) async => accessToken);
               when(storage.saveToken(any)).thenAnswer((_) => Future.value());
               when(response.data).thenReturn(jsonMap);
               when(
-                dio.post(
+                dio.post<dynamic>(
                   any,
                   options: anyNamed('options'),
                   data: anyNamed('data'),

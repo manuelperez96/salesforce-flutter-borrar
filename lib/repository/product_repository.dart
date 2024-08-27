@@ -5,22 +5,28 @@ import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dar
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class ProductRepository extends Repository {
-  final MemoryCache<Product> memoryCache;
+  const ProductRepository({
+    required super.dio,
+    required super.config,
+    required this.memoryCache,
+  });
 
-  ProductRepository(
-      {required super.dio, required super.config, required this.memoryCache});
+  final MemoryCache<Product> memoryCache;
 
   Future<List<Product>> getProducts(List<String> ids) async {
     try {
-      final response = await dio.get(
-          '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/products?ids=${ids.join(',')}&siteId=${config.siteId}',
-          options: Options(
-            headers: {'Content-Type': 'application/json'},
-          ));
+      final response = await dio.get<dynamic>(
+        '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/products?ids=${ids.join(',')}&siteId=${config.siteId}',
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
 
-      final List<dynamic> jsonResponse = response.data['data'];
+      final jsonResponse = (response.data as Map)['data'] as List;
 
-      return jsonResponse.map((json) => Product.fromJson(json)).toList();
+      return jsonResponse
+          .map((json) => Product.fromJson(json as Map<String, dynamic>))
+          .toList();
     } catch (e) {
       throw Exception('Failed to load products: $e');
     }
@@ -32,14 +38,15 @@ class ProductRepository extends Repository {
         return memoryCache.getValue(id)!;
       }
 
-      final response = await dio.get(
-          '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/products/$id?siteId=${config.siteId}',
-          options: Options(
-            headers: {'Content-Type': 'application/json'},
-          ));
+      final response = await dio.get<dynamic>(
+        '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/products/$id?siteId=${config.siteId}',
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
       final dynamic jsonResponse = response.data;
 
-      final result = Product.fromJson(jsonResponse);
+      final result = Product.fromJson(jsonResponse as Map<String, dynamic>);
       memoryCache.addUpdateValue(id, result);
       return result;
     } catch (e) {
@@ -47,19 +54,23 @@ class ProductRepository extends Repository {
     }
   }
 
-  // TODO: change ProductByCategory by Product + cache manager
+  // TODO(Carlos): change ProductByCategory by Product + cache manager
   Future<List<ProductByCategory>> getProductByCategory(String category) async {
     try {
-      final response = await dio.get(
-          '${config.host}/search/shopper-search/v1/organizations/${config.organizationId}/product-search?refine=cgid=$category&siteId=${config.siteId}',
-          options: Options(
-            headers: {'Content-Type': 'application/json'},
-          ));
-      final dynamic jsonResponse = response.data['hits'];
+      final response = await dio.get<dynamic>(
+        '${config.host}/search/shopper-search/v1/organizations/${config.organizationId}/product-search?refine=cgid=$category&siteId=${config.siteId}',
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
+      final jsonResponse = (response.data as Map)['hits'] as List?;
 
       if (jsonResponse != null) {
         return jsonResponse
-            .map<ProductByCategory>((json) => ProductByCategory.fromJson(json))
+            .map<ProductByCategory>(
+              (json) =>
+                  ProductByCategory.fromJson(json as Map<String, dynamic>),
+            )
             .toList();
       } else {
         return [];
