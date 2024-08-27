@@ -14,11 +14,7 @@ import 'package:dio/src/response.dart' as _i6;
 import 'package:dio/src/transformer.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:sf_commerce_sdk/data/cache/cache_memory.dart' as _i10;
-import 'package:sf_commerce_sdk/models/responses/category/category.dart'
-    as _i11;
-import 'package:sf_commerce_sdk/models/responses/product/product.dart' as _i12;
-import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart'
-    as _i13;
+import 'package:sf_commerce_sdk/models/responses/product/product.dart' as _i11;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -794,58 +790,40 @@ class MockDio extends _i1.Mock implements _i7.Dio {
 /// A class which mocks [MemoryCache].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockMemoryCache extends _i1.Mock implements _i10.MemoryCache {
+class MockMemoryCache extends _i1.Mock
+    implements _i10.MemoryCache<_i11.Product> {
   MockMemoryCache() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  Map<String, List<_i11.Category>> get categoriesByUrl => (super.noSuchMethod(
-        Invocation.getter(#categoriesByUrl),
-        returnValue: <String, List<_i11.Category>>{},
-      ) as Map<String, List<_i11.Category>>);
-
-  @override
-  set categoriesByUrl(Map<String, List<_i11.Category>>? _categoriesByUrl) =>
+  void addOrUpdateValue(
+    String? key,
+    _i11.Product? value,
+  ) =>
       super.noSuchMethod(
-        Invocation.setter(
-          #categoriesByUrl,
-          _categoriesByUrl,
+        Invocation.method(
+          #addOrUpdateValue,
+          [
+            key,
+            value,
+          ],
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  Map<String, _i12.Product> get productById => (super.noSuchMethod(
-        Invocation.getter(#productById),
-        returnValue: <String, _i12.Product>{},
-      ) as Map<String, _i12.Product>);
-
-  @override
-  set productById(Map<String, _i12.Product>? _productById) =>
-      super.noSuchMethod(
-        Invocation.setter(
-          #productById,
-          _productById,
+  bool hasKey(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #hasKey,
+          [key],
         ),
-        returnValueForMissingStub: null,
-      );
+        returnValue: false,
+      ) as bool);
 
   @override
-  Map<String, List<_i13.ProductByCategory>> get productCategoryByUrl =>
-      (super.noSuchMethod(
-        Invocation.getter(#productCategoryByUrl),
-        returnValue: <String, List<_i13.ProductByCategory>>{},
-      ) as Map<String, List<_i13.ProductByCategory>>);
-
-  @override
-  set productCategoryByUrl(
-          Map<String, List<_i13.ProductByCategory>>? _productCategoryByUrl) =>
-      super.noSuchMethod(
-        Invocation.setter(
-          #productCategoryByUrl,
-          _productCategoryByUrl,
-        ),
-        returnValueForMissingStub: null,
-      );
+  _i11.Product? getValue(String? key) => (super.noSuchMethod(Invocation.method(
+        #getValue,
+        [key],
+      )) as _i11.Product?);
 }
