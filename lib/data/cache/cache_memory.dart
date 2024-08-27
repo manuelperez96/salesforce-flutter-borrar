@@ -1,5 +1,5 @@
 class MemoryCache<T> {
-  const MemoryCache({Map<String, T>? cached}) : _cacheMap = cached ?? const {};
+  MemoryCache({Map<String, T>? cached}) : _cacheMap = cached ?? {};
 
   final Map<String, T> _cacheMap;
 

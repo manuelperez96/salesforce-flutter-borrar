@@ -13,9 +13,9 @@ class Category {
         id: json['id'] as String,
         name: json['name'] as String,
         onlineSubCategoriesCount: json['onlineSubCategoriesCount'] as int,
-        pageDescription: json['pageDescription'] as String,
-        pageTitle: json['pageTitle'] as String,
-        parentCategoryId: json['parentCategoryId'] as String,
+        pageDescription: (json['pageDescription'] ?? '') as String,
+        pageTitle: (json['pageTitle'] ?? '') as String,
+        parentCategoryId: (json['parentCategoryId'] ?? '') as String,
         cHeaderMenuBanner: json['c_headerMenuBanner'] != null
             ? parseBannerImage(json['c_headerMenuBanner'] as String)
             : '',

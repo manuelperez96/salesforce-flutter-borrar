@@ -10,7 +10,7 @@ class CategoryRepository extends Repository {
     required this.memoryCache,
   }) {
     _pathRoot =
-        '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/categories?ids=root&siteId=${config.siteId}&levels=2';
+        '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/categories?ids=root&siteId=${config.siteId}';
   }
 
   late final String _pathRoot;
