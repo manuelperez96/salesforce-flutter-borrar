@@ -11,7 +11,7 @@ abstract class Repository {
   /// Constructs a `Repository` with the given [host].
   ///
   /// The [host] parameter is used to initialize the base URL for the API requests.
-  Repository({required this.dio, required this.config});
+  const Repository({required this.dio, required this.config});
 
   @protected
   final Dio dio;
