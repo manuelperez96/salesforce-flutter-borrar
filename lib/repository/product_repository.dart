@@ -5,9 +5,10 @@ import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dar
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class ProductRepository extends Repository {
-  final MemoryCache<Product> memoryCache = MemoryCache<Product>();
+  final MemoryCache<Product> memoryCache;
 
-  ProductRepository({required super.dio, required super.config});
+  ProductRepository(
+      {required super.dio, required super.config, required this.memoryCache});
 
   Future<List<Product>> getProducts(List<String> ids) async {
     try {
@@ -27,9 +28,8 @@ class ProductRepository extends Repository {
 
   Future<Product> getProduct(String id) async {
     try {
-      //check is data is in cache
       if (memoryCache.hasKey(id)) {
-        return memoryCache.getValue(id);
+        return memoryCache.getValue(id)!;
       }
 
       final response = await dio.get(
@@ -40,36 +40,30 @@ class ProductRepository extends Repository {
       final dynamic jsonResponse = response.data;
 
       final result = Product.fromJson(jsonResponse);
-      memoryCache.addValue(id, result);
+      memoryCache.addOrUpdateValue(id, result);
       return result;
     } catch (e) {
       throw Exception('Failed to load product: $e');
     }
   }
 
+  // TODO: change ProductByCategory by Product + cache manager
   Future<List<ProductByCategory>> getProductByCategory(String category) async {
     try {
-      //check is data is in cache
-      // if (memoryCache.productCategoryByUrl.containsKey(category)) {
-      //   return memoryCache.productCategoryByUrl[category]!;
-      // }
-
       final response = await dio.get(
           '${config.host}/search/shopper-search/v1/organizations/${config.organizationId}/product-search?refine=cgid=$category&siteId=${config.siteId}',
           options: Options(
             headers: {'Content-Type': 'application/json'},
           ));
       final dynamic jsonResponse = response.data['hits'];
-      List<ProductByCategory> result;
+
       if (jsonResponse != null) {
-        result = jsonResponse
+        return jsonResponse
             .map<ProductByCategory>((json) => ProductByCategory.fromJson(json))
             .toList();
       } else {
-        result = [];
+        return [];
       }
-      //memoryCache.productCategoryByUrl[category] = result;
-      return result;
     } catch (e) {
       throw Exception('Failed to load product by category: $e');
     }

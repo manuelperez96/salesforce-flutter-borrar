@@ -5,9 +5,10 @@ import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class CategoryRepository extends Repository {
   late final String _pathRoot;
-  final MemoryCache<Category> memoryCache = MemoryCache<Category>();
+  final MemoryCache<Category> memoryCache;
 
-  CategoryRepository({required super.dio, required super.config}) {
+  CategoryRepository(
+      {required super.dio, required super.config, required this.memoryCache}) {
     _pathRoot =
         '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/categories?ids=root&siteId=${config.siteId}&levels=2';
   }
@@ -18,11 +19,6 @@ class CategoryRepository extends Repository {
 
   Future<List<Category>> getCategoriesByUrl(String url) async {
     try {
-      //check if data is in cache
-      if (memoryCache.hasListKey(url)) {
-        return memoryCache.getListValue(url);
-      }
-
       final response = await dio.get(url,
           options: Options(
             headers: {'Content-Type': 'application/json'},
@@ -33,8 +29,6 @@ class CategoryRepository extends Repository {
       List<Category> result = jsonResponse
           .map((categoryJson) => Category.fromJson(categoryJson))
           .toList();
-
-      memoryCache.addListValue(url, result);
 
       return result;
     } catch (e) {

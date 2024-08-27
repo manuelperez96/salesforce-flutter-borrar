@@ -1,36 +1,21 @@
 class MemoryCache<T> {
-  MemoryCache();
+  const MemoryCache() : _cacheMap = const {};
 
-  // Cache data
-  final Map<String, T> cacheItem = {};
-  final Map<String, List<T>> cacheItemList = {};
+  final Map<String, T> _cacheMap;
 
-  void addValue(String key, T value) {
-    cacheItem[key] = value;
+  void addOrUpdateValue(String key, T value) {
+    _cacheMap[key] = value;
   }
 
   bool hasKey(String key) {
-    return cacheItem.containsKey(key);
+    return _cacheMap.containsKey(key);
   }
 
-  T getValue(String key) {
-    return cacheItem[key]!;
-  }
-
-  void addListValue(String key, List<T> value) {
-    cacheItemList[key] = value;
-  }
-
-  bool hasListKey(String key) {
-    return cacheItemList.containsKey(key);
-  }
-
-  List<T> getListValue(String key) {
-    return cacheItemList[key]!;
+  T? getValue(String key) {
+    return _cacheMap[key];
   }
 
   clearAll() {
-    cacheItem.clear();
-    cacheItemList.clear();
+    _cacheMap.clear();
   }
 }
