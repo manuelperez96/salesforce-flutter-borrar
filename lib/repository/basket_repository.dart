@@ -43,7 +43,7 @@ class BasketRepository extends Repository {
   }
 
   Future<Basket> addItemToBasket(
-      {required String productId, int quantity = 1}) async {
+      {required String productId, int quantity = 1,}) async {
     if (_basketId == null) await createBasket();
     try {
       final response = await dio.post<dynamic>(
@@ -64,7 +64,8 @@ class BasketRepository extends Repository {
   }
 
   Future<void> removeItemFromBasket(String productId) async {
-    // TODO(Patri): implement removeItemFromBasket (PATRI: No elimina un producto agregado anteriormente a la cesta)
+    // TODO(Patri): implement removeItemFromBasket. 
+    // TODO(Patri): No elimina un producto agregado anteriormente a la cesta
     // TODO(Patri): https://developer.salesforce.com/docs/commerce/commerce-api/references/shopper-baskets?meta=removeItemFromBasket
 
     // if (_basketId == null) await createBasket();

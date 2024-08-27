@@ -1230,13 +1230,13 @@ class MockResponse<T> extends _i1.Mock implements _i6.Response<T> {
 class MockMemoryCache extends _i1.Mock
     implements _i12.MemoryCache<List<_i13.Category>> {
   @override
-  void addOrUpdateValue(
+  void addUpdateValue(
     String? key,
     List<_i13.Category>? value,
   ) =>
       super.noSuchMethod(
         Invocation.method(
-          #addOrUpdateValue,
+          #addUpdateValue,
           [
             key,
             value,
@@ -1263,4 +1263,13 @@ class MockMemoryCache extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       ) as List<_i13.Category>?);
+
+  @override
+  void clearAll() => super.noSuchMethod(
+        Invocation.method(
+          #clearAll,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
 }

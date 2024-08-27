@@ -32,23 +32,25 @@ void main() {
     });
 
     test('Logger can be enabled', () {
-      Logger.setEnabled(true);
+      Logger.isEnabled = true;
       expect(Logger.isEnabled, isTrue);
     });
 
     test('Logger can be disabled', () {
-      Logger.setEnabled(false);
+      Logger.isEnabled = false;
       expect(Logger.isEnabled, isFalse);
     });
 
     test('Logger logs message when enabled', () {
-      Logger.setEnabled(true);
+      Logger.isEnabled = true;
 
       // Capture printed messages
       final log = <String>[];
-      final spec = ZoneSpecification(print: (self, parent, zone, message) {
-        log.add(message);
-      });
+      final spec = ZoneSpecification(
+        print: (self, parent, zone, message) {
+          log.add(message);
+        },
+      );
 
       Logger.log('Test message');
 
@@ -56,34 +58,42 @@ void main() {
       expect(log, isEmpty);
 
       // Run the logging code inside a custom zone
-      runZoned(() {
-        Logger.log('Test message');
-      }, zoneSpecification: spec);
+      runZoned(
+        () {
+          Logger.log('Test message');
+        },
+        zoneSpecification: spec,
+      );
 
       // Verify that the message was logged
       expect(log, contains('Test message'));
     });
 
     test('Logger does not log message when disabled', () {
-      Logger.setEnabled(false);
+      Logger.isEnabled = false;
 
       // Capture printed messages
       final log = <String>[];
-      final spec = ZoneSpecification(print: (self, parent, zone, message) {
-        log.add(message);
-      });
+      final spec = ZoneSpecification(
+        print: (self, parent, zone, message) {
+          log.add(message);
+        },
+      );
 
       // Run the logging code inside a custom zone
-      runZoned(() {
-        Logger.log('Test message');
-      }, zoneSpecification: spec);
+      runZoned(
+        () {
+          Logger.log('Test message');
+        },
+        zoneSpecification: spec,
+      );
 
       // Verify that no message was logged
       expect(log, isEmpty);
     });
 
     test('Logger logs only in debug mode', () {
-      Logger.setEnabled(true);
+      Logger.isEnabled = true;
 
       debugPrint = (String? message, {int? wrapWidth}) {
         expect(message, equals('Test message in debug mode'));
@@ -96,7 +106,7 @@ void main() {
     });
 
     test('InterceptorsWrapper onRequest call handler after the log', () {
-      InterceptorsWrapper interceptor = NetworkUtil.createLogsInterceptor();
+      final interceptor = NetworkUtil.createLogsInterceptor();
 
       final options = RequestOptions(
         path: '/test',
@@ -110,9 +120,9 @@ void main() {
     });
 
     test('InterceptorsWrapper onResponse call handler after the log', () {
-      InterceptorsWrapper interceptor = NetworkUtil.createLogsInterceptor();
+      final interceptor = NetworkUtil.createLogsInterceptor();
 
-      final response = Response(
+      final response = Response<dynamic>(
         requestOptions: RequestOptions(),
       );
 
@@ -121,7 +131,7 @@ void main() {
     });
 
     test('InterceptorsWrapper onError call handler after the log', () {
-      InterceptorsWrapper interceptor = NetworkUtil.createLogsInterceptor();
+      final interceptor = NetworkUtil.createLogsInterceptor();
 
       final dioException = DioException(
         requestOptions: RequestOptions(),

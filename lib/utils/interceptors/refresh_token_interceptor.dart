@@ -56,7 +56,7 @@ class RefreshTokenInterceptor extends QueuedInterceptor {
       _refreshTokenUrl,
       options: Options(
         headers: <String, dynamic>{
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
       ),
       data: {

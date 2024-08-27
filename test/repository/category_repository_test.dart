@@ -13,7 +13,7 @@ import 'category_repository_test.mocks.dart';
 @GenerateNiceMocks(
   [
     MockSpec<Dio>(),
-    MockSpec<Response>(),
+    MockSpec<Response<dynamic>>(),
     MockSpec<MemoryCache<List<Category>>>(),
   ],
 )
@@ -21,7 +21,7 @@ void main() {
   late MockDio mockDio;
   late SfCommerceConfig config;
   late CategoryRepository categoryRepository;
-  late MockResponse response;
+  late MockResponse<dynamic> response;
   late MockMemoryCache mockMemoryCache;
 
   setUp(() {
@@ -65,13 +65,19 @@ void main() {
           'getRootCategories throws an exception on failure',
           () async {
             when(mockMemoryCache.hasKey(any)).thenReturn(false);
-            when(mockDio.get(any,
+            when(
+              mockDio.get<dynamic>(
+                any,
                 options: Options(
                   headers: {'Content-Type': 'application/json'},
-                ))).thenThrow(Exception());
+                ),
+              ),
+            ).thenThrow(Exception());
 
-            expect(() async => await categoryRepository.getRootCategories(),
-                throwsA(isA<Exception>()));
+            expect(
+              () => categoryRepository.getRootCategories(),
+              throwsA(isA<Exception>()),
+            );
           },
         );
 
@@ -79,15 +85,16 @@ void main() {
           'getRootCategories returns a category list on success',
           () async {
             when(mockMemoryCache.hasKey(any)).thenReturn(false);
-            when(mockDio.get(
-              any,
-              options: anyNamed('options'),
-            )).thenAnswer((_) async => response);
+            when(
+              mockDio.get<dynamic>(
+                any,
+                options: anyNamed('options'),
+              ),
+            ).thenAnswer((_) async => response);
 
             when(response.data).thenReturn(responseJSON);
 
-            final List<Category> result =
-                await categoryRepository.getRootCategories();
+            final result = await categoryRepository.getRootCategories();
 
             expect(result, isNotEmpty);
           },
@@ -99,8 +106,7 @@ void main() {
             when(mockMemoryCache.hasKey(any)).thenReturn(true);
             when(mockMemoryCache.getValue(any)).thenReturn(categoryListModel);
 
-            final List<Category> result =
-                await categoryRepository.getCategoriesByUrl('url');
+            final result = await categoryRepository.getCategoriesByUrl('url');
 
             expect(result, categoryListModel);
           },

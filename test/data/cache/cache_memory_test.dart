@@ -8,7 +8,7 @@ void main() {
       test(
         'creation',
         () async {
-          expect(const MemoryCache(), isNotNull);
+          expect(const MemoryCache<String>(), isNotNull);
         },
       );
     },

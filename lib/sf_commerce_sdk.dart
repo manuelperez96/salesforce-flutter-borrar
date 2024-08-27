@@ -26,7 +26,7 @@ class SFCommerceSDK {
 
     _dio.interceptors.add(NetworkUtil.createLogsInterceptor());
 
-    Logger.setEnabled(enableVerboseLogs);
+    Logger.isEnabled = enableVerboseLogs;
   }
 
   final Dio _dio;
@@ -36,75 +36,36 @@ class SFCommerceSDK {
     storage: const FlutterSecureStorage(),
   );
 
-  /// Initializes the SFCommerceSDK with the required parameters.
-  ///
-  /// This method sets the initial configuration for the SDK including the client ID,
-  /// organization ID, short code, site ID, host, and optionally enables verbose logging.
-  ///
-  /// [clientId] - The client ID provided by Salesforce.
-  /// [organizationId] - The organization ID provided by Salesforce.
-  /// [shortCode] - The short code for the Salesforce instance.
-  /// [siteId] - The site ID for the Salesforce instance.
-  /// [host] - The host URL for the Salesforce instance.
-  /// [enableVerboseLogs] - If true, enables verbose logging. Default is false.
-  ///
-  /// Example usage:
-  /// ```dart
-  /// await SFCommerceSDK.initialize(
-  ///   clientId: 'your_client_id',
-  ///   organizationId: 'your_organization_id',
-  ///   shortCode: 'your_short_code',
-  ///   siteId: 'your_site_id',
-  ///   host: 'your_host_url',
-  ///   enableVerboseLogs: true,
-  /// );
-  // /// ```
-
-  /// Sets the verbose logging mode.
-  ///
-  /// This method enables or disables verbose logging based on the [mode] parameter.
-  ///
-  /// [mode] - If true, enables verbose logging; if false, disables it.
-  ///
-  /// Example usage:
-  /// ```dart
-  /// SFCommerceSDK.setModeVerbose(true);
-  /// ```
-  void setModeVerbose(bool mode) {
-    Logger.setEnabled(mode);
-  }
-
-  /// Getter for the [ProductRepository] instance.
-  ///
-  /// This method provides access to the [ProductRepository] instance for product-related API calls.
-  ///
-  /// Example usage:
-  /// ```dart
-  /// ProductRepository productRepo = SFCommerceSDK.productRepository;
-  /// ```
-
-  void clearCache() {
-    productRepository.clearCache();
-    categoryRepository.clearCache();
-  }
-
   late ProductRepository productRepository = ProductRepository(
     dio: _dio,
     config: _config,
     memoryCache: const MemoryCache<Product>(),
   );
+
   late CategoryRepository categoryRepository = CategoryRepository(
     dio: _dio,
     config: _config,
     memoryCache: const MemoryCache<List<Category>>(),
   );
+
   late AuthRepository authRepository = AuthRepository(
     dio: _dio,
     config: _config,
     storage: _storage,
   );
+
   late BasketRepository basketRepository = BasketRepository(
     dio: _dio,
     config: _config,
   );
+
+  bool get modeVerbose => Logger.isEnabled;
+  set modeVerbose(bool mode) {
+    Logger.isEnabled = mode;
+  }
+
+  void clearCache() {
+    productRepository.clearCache();
+    categoryRepository.clearCache();
+  }
 }

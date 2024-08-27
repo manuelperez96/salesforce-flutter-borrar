@@ -31,13 +31,14 @@ void main() {
         'creation',
         () {
           expect(
-              RefreshTokenInterceptor(
-                organizationId: 'organizationId',
-                host: 'host',
-                storage: mockTokenStorage,
-                clientId: 'clientId',
-              ),
-              isNotNull);
+            RefreshTokenInterceptor(
+              organizationId: 'organizationId',
+              host: 'host',
+              storage: mockTokenStorage,
+              clientId: 'clientId',
+            ),
+            isNotNull,
+          );
         },
       );
 
@@ -56,9 +57,12 @@ void main() {
         when(mockTokenStorage.getToken()).thenAnswer((_) async => null);
 
         expect(
-            () => refreshTokenInterceptor.onError(
-                dioException, ErrorInterceptorHandler()),
-            throwsException);
+          () => refreshTokenInterceptor.onError(
+            dioException,
+            ErrorInterceptorHandler(),
+          ),
+          throwsException,
+        );
 
         verify(mockTokenStorage.getToken()).called(1);
       });

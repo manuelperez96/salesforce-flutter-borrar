@@ -53,7 +53,6 @@ void main() {
                   siteId: 'siteId',
                   host: 'https://host.com',
                 ),
-                enableVerboseLogs: false,
               );
               expect(Logger.isEnabled, isFalse);
             },
@@ -62,10 +61,7 @@ void main() {
           test(
             'setModeVerbose should enable logger',
             () async {
-              final sfCommerce = SFCommerceSDK(
-                config: config,
-              );
-              sfCommerce.setModeVerbose(true);
+              SFCommerceSDK(config: config).modeVerbose = true;
               expect(Logger.isEnabled, isTrue);
             },
           );
@@ -73,11 +69,7 @@ void main() {
           test(
             'setModeVerbose should disable logger',
             () async {
-              final sfCommerce = SFCommerceSDK(
-                config: config,
-              );
-
-              sfCommerce.setModeVerbose(false);
+              SFCommerceSDK(config: config).modeVerbose = false;
               expect(Logger.isEnabled, isFalse);
             },
           );

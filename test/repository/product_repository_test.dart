@@ -39,7 +39,7 @@ void main() {
       () {
         test('getProducts returns list of products on success', () async {
           final mockResponse = Response(
-            requestOptions: RequestOptions(path: ''),
+            requestOptions: RequestOptions(),
             data: {
               'data': [
                 {
@@ -47,25 +47,27 @@ void main() {
                   'name': 'Product 1',
                   'description': 'Description for Product 1',
                   'price': 10.0,
-                  'currency': 'USD'
+                  'currency': 'USD',
                 },
                 {
                   'id': '2',
                   'name': 'Product 2',
                   'description': 'Description for Product 2',
                   'price': 20.0,
-                  'currency': 'USD'
+                  'currency': 'USD',
                 },
-              ]
+              ],
             },
           );
 
-          when(mockDio.get(any, options: anyNamed('options')))
-              .thenAnswer((_) async => mockResponse);
+          when(
+            mockDio.get<dynamic>(any, options: anyNamed('options')),
+          ).thenAnswer((_) async => mockResponse);
 
           final products = await productRepository.getProducts(['1', '2']);
 
-          verify(mockDio.get(any, options: anyNamed('options'))).called(1);
+          verify(mockDio.get<dynamic>(any, options: anyNamed('options')))
+              .called(1);
 
           expect(products.length, 2);
           expect(products[0].id, '1');
@@ -74,16 +76,21 @@ void main() {
         });
 
         test('getProducts throws an exception on failure', () async {
-          when(mockDio.get(any, options: anyNamed('options')))
-              .thenThrow(DioException(
-            requestOptions: RequestOptions(path: ''),
-            error: 'Network error',
-          ));
+          when(mockDio.get<dynamic>(any, options: anyNamed('options')))
+              .thenThrow(
+            DioException(
+              requestOptions: RequestOptions(),
+              error: 'Network error',
+            ),
+          );
 
           expect(
-              () => productRepository.getProducts(['1', '2']), throwsException);
+            () => productRepository.getProducts(['1', '2']),
+            throwsException,
+          );
 
-          verify(mockDio.get(any, options: anyNamed('options'))).called(1);
+          verify(mockDio.get<dynamic>(any, options: anyNamed('options')))
+              .called(1);
         });
       },
     );
@@ -93,24 +100,25 @@ void main() {
       () {
         test('getProduct returns a product on success', () async {
           final mockResponse = Response(
-            requestOptions: RequestOptions(path: ''),
+            requestOptions: RequestOptions(),
             data: {
               'id': '1',
               'name': 'Product 1',
               'description': 'Description for Product 1',
               'price': 10.0,
-              'currency': 'USD'
+              'currency': 'USD',
             },
           );
 
           when(mockMemoryCache.hasKey(any)).thenReturn(false);
 
-          when(mockDio.get(any, options: anyNamed('options')))
+          when(mockDio.get<dynamic>(any, options: anyNamed('options')))
               .thenAnswer((_) async => mockResponse);
 
           final product = await productRepository.getProduct('1');
 
-          verify(mockDio.get(any, options: anyNamed('options'))).called(1);
+          verify(mockDio.get<dynamic>(any, options: anyNamed('options')))
+              .called(1);
 
           expect(product.id, '1');
           expect(product.name, 'Product 1');
@@ -122,15 +130,18 @@ void main() {
         test('getProduct throws an exception on failure', () async {
           when(mockMemoryCache.hasKey(any)).thenReturn(false);
 
-          when(mockDio.get(any, options: anyNamed('options')))
-              .thenThrow(DioException(
-            requestOptions: RequestOptions(path: ''),
-            error: 'Network error',
-          ));
+          when(mockDio.get<dynamic>(any, options: anyNamed('options')))
+              .thenThrow(
+            DioException(
+              requestOptions: RequestOptions(),
+              error: 'Network error',
+            ),
+          );
 
           expect(() => productRepository.getProduct('1'), throwsException);
 
-          verify(mockDio.get(any, options: anyNamed('options'))).called(1);
+          verify(mockDio.get<dynamic>(any, options: anyNamed('options')))
+              .called(1);
         });
 
         test('when the cache has data, return the data cached', () async {
@@ -150,7 +161,7 @@ void main() {
         test('getProductByCategory returns a product list on success',
             () async {
           final mockResponse = Response(
-            requestOptions: RequestOptions(path: ''),
+            requestOptions: RequestOptions(),
             data: {
               'hits': [
                 {
@@ -158,26 +169,27 @@ void main() {
                   'productName': 'Product 1',
                   'image': {'link': 'imageIUrl'},
                   'price': 10.0,
-                  'currency': 'USD'
+                  'currency': 'USD',
                 },
                 {
                   'productId': '2',
                   'productName': 'Product 2',
                   'image': {'link': 'imageIUrl2'},
                   'price': 20.0,
-                  'currency': 'USD'
+                  'currency': 'USD',
                 },
-              ]
+              ],
             },
           );
 
-          when(mockDio.get(any, options: anyNamed('options')))
+          when(mockDio.get<dynamic>(any, options: anyNamed('options')))
               .thenAnswer((_) async => mockResponse);
 
           final products =
               await productRepository.getProductByCategory('categoryID');
 
-          verify(mockDio.get(any, options: anyNamed('options'))).called(1);
+          verify(mockDio.get<dynamic>(any, options: anyNamed('options')))
+              .called(1);
 
           expect(products.length, 2);
           expect(products[0].productId, '1');
@@ -186,16 +198,21 @@ void main() {
         });
 
         test('getProducts throws an exception on failure', () async {
-          when(mockDio.get(any, options: anyNamed('options')))
-              .thenThrow(DioException(
-            requestOptions: RequestOptions(path: ''),
-            error: 'Network error',
-          ));
+          when(mockDio.get<dynamic>(any, options: anyNamed('options')))
+              .thenThrow(
+            DioException(
+              requestOptions: RequestOptions(),
+              error: 'Network error',
+            ),
+          );
 
-          expect(() => productRepository.getProductByCategory('categoryID'),
-              throwsException);
+          expect(
+            () => productRepository.getProductByCategory('categoryID'),
+            throwsException,
+          );
 
-          verify(mockDio.get(any, options: anyNamed('options'))).called(1);
+          verify(mockDio.get<dynamic>(any, options: anyNamed('options')))
+              .called(1);
         });
       },
     );
