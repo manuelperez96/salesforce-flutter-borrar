@@ -1,27 +1,36 @@
 import 'package:dio/dio.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/product_repository.dart';
 import 'package:test/test.dart';
 
+import '../helpers/repository/product_repository.dart';
 import 'product_repository_test.mocks.dart';
 
-@GenerateMocks([Dio])
+@GenerateMocks([Dio], customMocks: [MockSpec<MemoryCache<Product>>()])
 void main() {
   late ProductRepository productRepository;
   late MockDio mockDio;
   late SfCommerceConfig config;
+  late MockMemoryCache mockMemoryCache;
 
   setUp(() {
     mockDio = MockDio();
+    mockMemoryCache = MockMemoryCache();
     config = SfCommerceConfig(
       clientId: '0c892f93-5262-4cab-8349-b170e0779357',
       organizationId: 'f_ecom_zzrj_031',
       siteId: 'RefArch',
       host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
     );
-    productRepository = ProductRepository(dio: mockDio, config: config);
+    productRepository = ProductRepository(
+      dio: mockDio,
+      config: config,
+      memoryCache: mockMemoryCache,
+    );
   });
 
   group('ProductRepository', () {
@@ -94,6 +103,8 @@ void main() {
             },
           );
 
+          when(mockMemoryCache.hasKey(any)).thenReturn(false);
+
           when(mockDio.get(any, options: anyNamed('options')))
               .thenAnswer((_) async => mockResponse);
 
@@ -109,6 +120,8 @@ void main() {
         });
 
         test('getProduct throws an exception on failure', () async {
+          when(mockMemoryCache.hasKey(any)).thenReturn(false);
+
           when(mockDio.get(any, options: anyNamed('options')))
               .thenThrow(DioException(
             requestOptions: RequestOptions(path: ''),
@@ -118,6 +131,15 @@ void main() {
           expect(() => productRepository.getProduct('1'), throwsException);
 
           verify(mockDio.get(any, options: anyNamed('options'))).called(1);
+        });
+
+        test('when the cache has data, return the data cached', () async {
+          when(mockMemoryCache.hasKey(any)).thenReturn(true);
+          when(mockMemoryCache.getValue(any)).thenReturn(productModel);
+
+          final result = await productRepository.getProduct('1');
+
+          expect(result, productModel);
         });
       },
     );

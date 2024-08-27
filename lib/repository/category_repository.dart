@@ -5,7 +5,7 @@ import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class CategoryRepository extends Repository {
   late final String _pathRoot;
-  final MemoryCache<Category> memoryCache;
+  final MemoryCache<List<Category>> memoryCache;
 
   CategoryRepository(
       {required super.dio, required super.config, required this.memoryCache}) {
@@ -19,6 +19,10 @@ class CategoryRepository extends Repository {
 
   Future<List<Category>> getCategoriesByUrl(String url) async {
     try {
+      if (memoryCache.hasKey(url)) {
+        return memoryCache.getValue(url)!;
+      }
+
       final response = await dio.get(url,
           options: Options(
             headers: {'Content-Type': 'application/json'},
@@ -29,6 +33,8 @@ class CategoryRepository extends Repository {
       List<Category> result = jsonResponse
           .map((categoryJson) => Category.fromJson(categoryJson))
           .toList();
+
+      memoryCache.addOrUpdateValue(url, result);
 
       return result;
     } catch (e) {

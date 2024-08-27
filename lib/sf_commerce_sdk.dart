@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
+import 'package:sf_commerce_sdk/models/responses/category/category.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
 import 'package:sf_commerce_sdk/repository/basket_repository.dart';
@@ -56,25 +59,6 @@ class SFCommerceSDK {
   ///   enableVerboseLogs: true,
   /// );
   // /// ```
-  // Future<void> initialize({
-  //   required String clientId,
-  //   required String organizationId,
-  //   required String shortCode,
-  //   required String siteId,
-  //   required String host,
-  //   bool enableVerboseLogs = false,
-  // }) async {
-  //   // if (!host.startsWith('http://') && !host.startsWith('https://')) {
-  //   //   throw ArgumentError(
-  //   //       'The host URL must start with "http://" or "https://"');
-  //   // }
-  //   SFCommerceSDK.clientId = clientId;
-  //   SFCommerceSDK.organizationId = organizationId;
-  //   SFCommerceSDK.shortCode = shortCode;
-  //   SFCommerceSDK.siteId = siteId;
-  //   SFCommerceSDK.host = host;
-  //   Logger.setEnabled(enableVerboseLogs);
-  // }
 
   /// Sets the verbose logging mode.
   ///
@@ -99,66 +83,28 @@ class SFCommerceSDK {
   /// ProductRepository productRepo = SFCommerceSDK.productRepository;
   /// ```
 
-  // Future<void> anonymousLogin() {
-  //   return authRepository.anonymousLogin();
-  // }
-
-  // Future<List<Category>> getRootCategories() {
-  //   return categoryRepository.getRootCategories();
-  // }
-
-  // Future<List<Category>> getCategoriesByUrl(String url) {
-  //   return categoryRepository.getCategoriesByUrl(url);
-  // }
-
-  // Future<List<ProductByCategory>> getProductsByCategory(String category) {
-  //   return productRepository.getProductByCategory(category);
-  // }
-
-  // Future<List<Product>> getProductsByIds(List<String> ids) {
-  //   return productRepository.getProducts(ids);
-  // }
-
-  // Future<Product> getProductById(String id) {
-  //   return productRepository.getProduct(id);
-  // }
-
-  // Future<Basket> getBasket() {
-  //   return basketRepository.getBasket();
-  // }
-
-  // Future<Basket> addProductToBasket(
-  //     {required String productId, int quantity = 1}) {
-  //   return basketRepository.addItemToBasket(
-  //       productId: productId, quantity: quantity);
-  // }
-
-  // Future<void> removeItemFromBasket(String productId) {
-  //   return basketRepository.removeItemFromBasket(productId);
-  // }
-
-  // Future<void> updateItemInBasket(
-  //     {required String productId, int quantity = 1}) {
-  //   return basketRepository.updateProductInBasket(
-  //     productId: productId,
-  //     quantity: quantity,
-  //   );
-  // }
-
-  void clearAllCache() {
+  void clearCache() {
     productRepository.clearCache();
     categoryRepository.clearCache();
   }
 
-  late ProductRepository productRepository =
-      ProductRepository(dio: _dio, config: _config);
-  late CategoryRepository categoryRepository =
-      CategoryRepository(dio: _dio, config: _config);
+  late ProductRepository productRepository = ProductRepository(
+    dio: _dio,
+    config: _config,
+    memoryCache: const MemoryCache<Product>(),
+  );
+  late CategoryRepository categoryRepository = CategoryRepository(
+    dio: _dio,
+    config: _config,
+    memoryCache: const MemoryCache<List<Category>>(),
+  );
   late AuthRepository authRepository = AuthRepository(
     dio: _dio,
     config: _config,
     storage: _storage,
   );
-  late BasketRepository basketRepository =
-      BasketRepository(dio: _dio, config: _config);
+  late BasketRepository basketRepository = BasketRepository(
+    dio: _dio,
+    config: _config,
+  );
 }
