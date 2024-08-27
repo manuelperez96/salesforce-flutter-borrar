@@ -10,13 +10,13 @@ import 'package:example/route/router.dart' as router;
 import 'package:example/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  //let the app read the image from salesforce
   HttpOverrides.global = MyHttpOverrides();
 
   SFCommerceSDK sf = SFCommerceSDK(
@@ -27,20 +27,21 @@ void main() async {
     host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
   ));
 
-  AppModules().setup(sf); // Setup dependency injection
+  // Setup dependency injection
+  AppModules.setup(sf);
 
-  await sf.anonymousLogin();
-  final products =
-      await sf.getProductsByIds(['029407331289M', '029407331227M']);
+  //await sf.anonymousLogin();
+  //final products =
+  //await sf.getProductsByIds(['029407331289M', '029407331227M']);
 
-  Basket basketWithProduct =
-      await sf.addProductToBasket(productId: products.first.id);
-  basketWithProduct = await sf.addProductToBasket(productId: products.last.id);
-  print(basketWithProduct);
+  //Basket basketWithProduct =
+  //  await sf.addProductToBasket(productId: products.first.id);
+  //basketWithProduct = await sf.addProductToBasket(productId: products.last.id);
+  //print(basketWithProduct);
 
   // await sf.removeItemFromBasket(products.first.id);
 
-  await sf.updateItemInBasket(productId: products.last.id, quantity: 2);
+  //await sf.updateItemInBasket(productId: products.last.id, quantity: 2);
 
   runApp(const MyApp());
 }

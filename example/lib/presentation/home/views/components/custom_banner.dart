@@ -22,45 +22,55 @@ class CustomBanner extends StatelessWidget {
             children: [
               AspectRatio(
                 aspectRatio: 1.87,
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Stack(
-                    children: [
-                      NetworkImageWithLoader(category.cHeaderMenuBanner,
-                          radius: 0),
-                      Container(color: Colors.black45),
-                      Padding(
-                        padding: const EdgeInsets.all(defaultPadding),
-                        child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  category.name,
-                                  style: const TextStyle(
-                                    fontFamily: grandisExtendedFont,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 24,
-                                    color: Colors.white,
-                                  ),
+                child: Stack(
+                  children: [
+                    NetworkImageWithLoader(category.cHeaderMenuBanner,
+                        radius: 0),
+                    Container(color: Colors.black45),
+                    Padding(
+                      padding: const EdgeInsets.all(defaultPadding),
+                      child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                category.name,
+                                style: const TextStyle(
+                                  fontFamily: grandisExtendedFont,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 24,
+                                  color: Colors.white,
                                 ),
-                                category.pageTitle != null
-                                    ? Text(
+                              ),
+                              category.pageTitle != null
+                                  ? SizedBox(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.7,
+                                      child: Text(
                                         category.pageTitle!,
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 12,
                                         ),
-                                      )
-                                    : const SizedBox.shrink(),
-                              ],
-                            )),
-                      )
-                    ],
-                  ),
+                                      ),
+                                    )
+                                  : const SizedBox.shrink(),
+                            ],
+                          )),
+                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(defaultPadding),
+                    //   child: Align(
+                    //     alignment: Alignment.centerRight,
+                    //     child: RightArrowButtonBanner(
+                    //       onTap: () {},
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
                 ),
               ),
               const SizedBox(height: 16),

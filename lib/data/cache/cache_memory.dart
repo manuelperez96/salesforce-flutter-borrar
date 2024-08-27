@@ -1,28 +1,21 @@
-import 'package:sf_commerce_sdk/models/responses/category/category.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
+class MemoryCache<T> {
+  const MemoryCache() : _cacheMap = const {};
 
-class MemoryCache {
-  // Singleton class
-  static final MemoryCache _memoryCache = MemoryCache._internal();
+  final Map<String, T> _cacheMap;
 
-  factory MemoryCache() {
-    return _memoryCache;
+  void addOrUpdateValue(String key, T value) {
+    _cacheMap[key] = value;
   }
 
-  MemoryCache._internal() {
-    // Empty constructor
+  bool hasKey(String key) {
+    return _cacheMap.containsKey(key);
   }
 
-  // Cache data
-  Map<String, List<Category>> categoriesByUrl = {};
-  Map<String, Product> productById = {};
-  Map<String, List<ProductByCategory>> productCategoryByUrl = {};
+  T? getValue(String key) {
+    return _cacheMap[key];
+  }
 
   clearAll() {
-    // Clear all data
-    categoriesByUrl = {};
-    productById = {};
-    productCategoryByUrl = {};
+    _cacheMap.clear();
   }
 }

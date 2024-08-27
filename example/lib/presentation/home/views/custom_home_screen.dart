@@ -8,7 +8,8 @@ import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomHomeScreen extends StatefulWidget {
-  const CustomHomeScreen({super.key});
+  final String? urlCategories;
+  const CustomHomeScreen({super.key, this.urlCategories});
 
   @override
   State<CustomHomeScreen> createState() => _CustomHomeScreenState();
@@ -23,10 +24,19 @@ class _CustomHomeScreenState extends State<CustomHomeScreen> {
     super.initState();
     Future(
       () async {
-        categoryList = await inject<SFCommerceSDK>().getRootCategories();
+        if (widget.urlCategories != null) {
+          categoryList = await inject<SFCommerceSDK>()
+              .categoryRepository
+              .getCategoriesByUrl(widget.urlCategories!);
+        } else {
+          categoryList = await inject<SFCommerceSDK>()
+              .categoryRepository
+              .getRootCategories();
+        }
         for (Category category in categoryList!) {
-          lista.add(
-              await inject<SFCommerceSDK>().getProductsByCategory(category.id));
+          lista.add(await inject<SFCommerceSDK>()
+              .productRepository
+              .getProductByCategory(category.id));
         }
 
         if (mounted) setState(() {});
