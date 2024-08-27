@@ -16,7 +16,7 @@ class MemoryCache<T> {
     return _cacheMap[key];
   }
 
-  clearAll() {
+  void clearAll() {
     _cacheMap.clear();
   }
 }
