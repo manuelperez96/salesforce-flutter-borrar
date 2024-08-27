@@ -3,7 +3,8 @@ class MemoryCache<T> {
 
   final Map<String, T> _cacheMap;
 
-  void addOrUpdateValue(String key, T value) {
+  /// Add current value to cache. If exists, update it.
+  void addUpdateValue(String key, T value) {
     _cacheMap[key] = value;
   }
 

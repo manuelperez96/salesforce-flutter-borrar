@@ -40,7 +40,7 @@ class ProductRepository extends Repository {
       final dynamic jsonResponse = response.data;
 
       final result = Product.fromJson(jsonResponse);
-      memoryCache.addOrUpdateValue(id, result);
+      memoryCache.addUpdateValue(id, result);
       return result;
     } catch (e) {
       throw Exception('Failed to load product: $e');

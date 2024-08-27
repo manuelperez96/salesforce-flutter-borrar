@@ -34,7 +34,7 @@ class CategoryRepository extends Repository {
           .map((categoryJson) => Category.fromJson(categoryJson))
           .toList();
 
-      memoryCache.addOrUpdateValue(url, result);
+      memoryCache.addUpdateValue(url, result);
 
       return result;
     } catch (e) {
