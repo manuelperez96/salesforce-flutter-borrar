@@ -38,8 +38,9 @@ class CategoryRepository extends Repository {
 
       final result = jsonResponse
           .map(
-            (categoryJson) =>
-                Category.fromJson(categoryJson as Map<String, dynamic>),
+            (categoryJson) => Category.fromJson(
+              categoryJson as Map<String, dynamic>,
+            ),
           )
           .toList();
 
