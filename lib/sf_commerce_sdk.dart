@@ -39,13 +39,13 @@ class SFCommerceSDK {
   late ProductRepository productRepository = ProductRepository(
     dio: _dio,
     config: _config,
-    memoryCache: MemoryCache<Product>(),
+    memoryCache: const MemoryCache<Product>(),
   );
 
   late CategoryRepository categoryRepository = CategoryRepository(
     dio: _dio,
     config: _config,
-    memoryCache: MemoryCache<List<Category>>(),
+    memoryCache: const MemoryCache<List<Category>>(),
   );
 
   late AuthRepository authRepository = AuthRepository(
