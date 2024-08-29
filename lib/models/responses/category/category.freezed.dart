@@ -17,10 +17,16 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Category {
   String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  int get onlineSubCategoriesCount => throw _privateConstructorUsedError;
   String get parentCategoryId => throw _privateConstructorUsedError;
-  String get cHeaderMenuBanner => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  int get subcategoryCount => throw _privateConstructorUsedError;
+  bool get enableCompare => throw _privateConstructorUsedError;
+  bool get showInMenu => throw _privateConstructorUsedError;
+  List<String>? get pageKeywords => throw _privateConstructorUsedError;
+  String? get menuBannerImage => throw _privateConstructorUsedError;
+  ImageOrientation? get menuBannerOrientation =>
+      throw _privateConstructorUsedError;
+  String? get slotBannerImage => throw _privateConstructorUsedError;
   String? get pageDescription => throw _privateConstructorUsedError;
   String? get pageTitle => throw _privateConstructorUsedError;
 
@@ -36,10 +42,15 @@ abstract class $CategoryCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String name,
-      int onlineSubCategoriesCount,
       String parentCategoryId,
-      String cHeaderMenuBanner,
+      String name,
+      int subcategoryCount,
+      bool enableCompare,
+      bool showInMenu,
+      List<String>? pageKeywords,
+      String? menuBannerImage,
+      ImageOrientation? menuBannerOrientation,
+      String? slotBannerImage,
       String? pageDescription,
       String? pageTitle});
 }
@@ -58,10 +69,15 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? onlineSubCategoriesCount = null,
     Object? parentCategoryId = null,
-    Object? cHeaderMenuBanner = null,
+    Object? name = null,
+    Object? subcategoryCount = null,
+    Object? enableCompare = null,
+    Object? showInMenu = null,
+    Object? pageKeywords = freezed,
+    Object? menuBannerImage = freezed,
+    Object? menuBannerOrientation = freezed,
+    Object? slotBannerImage = freezed,
     Object? pageDescription = freezed,
     Object? pageTitle = freezed,
   }) {
@@ -70,22 +86,42 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      onlineSubCategoriesCount: null == onlineSubCategoriesCount
-          ? _value.onlineSubCategoriesCount
-          : onlineSubCategoriesCount // ignore: cast_nullable_to_non_nullable
-              as int,
       parentCategoryId: null == parentCategoryId
           ? _value.parentCategoryId
           : parentCategoryId // ignore: cast_nullable_to_non_nullable
               as String,
-      cHeaderMenuBanner: null == cHeaderMenuBanner
-          ? _value.cHeaderMenuBanner
-          : cHeaderMenuBanner // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
+      subcategoryCount: null == subcategoryCount
+          ? _value.subcategoryCount
+          : subcategoryCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      enableCompare: null == enableCompare
+          ? _value.enableCompare
+          : enableCompare // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showInMenu: null == showInMenu
+          ? _value.showInMenu
+          : showInMenu // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pageKeywords: freezed == pageKeywords
+          ? _value.pageKeywords
+          : pageKeywords // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      menuBannerImage: freezed == menuBannerImage
+          ? _value.menuBannerImage
+          : menuBannerImage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      menuBannerOrientation: freezed == menuBannerOrientation
+          ? _value.menuBannerOrientation
+          : menuBannerOrientation // ignore: cast_nullable_to_non_nullable
+              as ImageOrientation?,
+      slotBannerImage: freezed == slotBannerImage
+          ? _value.slotBannerImage
+          : slotBannerImage // ignore: cast_nullable_to_non_nullable
+              as String?,
       pageDescription: freezed == pageDescription
           ? _value.pageDescription
           : pageDescription // ignore: cast_nullable_to_non_nullable
@@ -108,10 +144,15 @@ abstract class _$$CategoryImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String name,
-      int onlineSubCategoriesCount,
       String parentCategoryId,
-      String cHeaderMenuBanner,
+      String name,
+      int subcategoryCount,
+      bool enableCompare,
+      bool showInMenu,
+      List<String>? pageKeywords,
+      String? menuBannerImage,
+      ImageOrientation? menuBannerOrientation,
+      String? slotBannerImage,
       String? pageDescription,
       String? pageTitle});
 }
@@ -128,10 +169,15 @@ class __$$CategoryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? onlineSubCategoriesCount = null,
     Object? parentCategoryId = null,
-    Object? cHeaderMenuBanner = null,
+    Object? name = null,
+    Object? subcategoryCount = null,
+    Object? enableCompare = null,
+    Object? showInMenu = null,
+    Object? pageKeywords = freezed,
+    Object? menuBannerImage = freezed,
+    Object? menuBannerOrientation = freezed,
+    Object? slotBannerImage = freezed,
     Object? pageDescription = freezed,
     Object? pageTitle = freezed,
   }) {
@@ -140,22 +186,42 @@ class __$$CategoryImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      onlineSubCategoriesCount: null == onlineSubCategoriesCount
-          ? _value.onlineSubCategoriesCount
-          : onlineSubCategoriesCount // ignore: cast_nullable_to_non_nullable
-              as int,
       parentCategoryId: null == parentCategoryId
           ? _value.parentCategoryId
           : parentCategoryId // ignore: cast_nullable_to_non_nullable
               as String,
-      cHeaderMenuBanner: null == cHeaderMenuBanner
-          ? _value.cHeaderMenuBanner
-          : cHeaderMenuBanner // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
+      subcategoryCount: null == subcategoryCount
+          ? _value.subcategoryCount
+          : subcategoryCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      enableCompare: null == enableCompare
+          ? _value.enableCompare
+          : enableCompare // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showInMenu: null == showInMenu
+          ? _value.showInMenu
+          : showInMenu // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pageKeywords: freezed == pageKeywords
+          ? _value._pageKeywords
+          : pageKeywords // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      menuBannerImage: freezed == menuBannerImage
+          ? _value.menuBannerImage
+          : menuBannerImage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      menuBannerOrientation: freezed == menuBannerOrientation
+          ? _value.menuBannerOrientation
+          : menuBannerOrientation // ignore: cast_nullable_to_non_nullable
+              as ImageOrientation?,
+      slotBannerImage: freezed == slotBannerImage
+          ? _value.slotBannerImage
+          : slotBannerImage // ignore: cast_nullable_to_non_nullable
+              as String?,
       pageDescription: freezed == pageDescription
           ? _value.pageDescription
           : pageDescription // ignore: cast_nullable_to_non_nullable
@@ -173,23 +239,47 @@ class __$$CategoryImplCopyWithImpl<$Res>
 class _$CategoryImpl implements _Category {
   _$CategoryImpl(
       {required this.id,
-      required this.name,
-      required this.onlineSubCategoriesCount,
       required this.parentCategoryId,
-      required this.cHeaderMenuBanner,
+      required this.name,
+      required this.subcategoryCount,
+      required this.enableCompare,
+      required this.showInMenu,
+      final List<String>? pageKeywords,
+      this.menuBannerImage,
+      this.menuBannerOrientation,
+      this.slotBannerImage,
       this.pageDescription,
-      this.pageTitle});
+      this.pageTitle})
+      : _pageKeywords = pageKeywords;
 
   @override
   final String id;
   @override
-  final String name;
-  @override
-  final int onlineSubCategoriesCount;
-  @override
   final String parentCategoryId;
   @override
-  final String cHeaderMenuBanner;
+  final String name;
+  @override
+  final int subcategoryCount;
+  @override
+  final bool enableCompare;
+  @override
+  final bool showInMenu;
+  final List<String>? _pageKeywords;
+  @override
+  List<String>? get pageKeywords {
+    final value = _pageKeywords;
+    if (value == null) return null;
+    if (_pageKeywords is EqualUnmodifiableListView) return _pageKeywords;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final String? menuBannerImage;
+  @override
+  final ImageOrientation? menuBannerOrientation;
+  @override
+  final String? slotBannerImage;
   @override
   final String? pageDescription;
   @override
@@ -197,7 +287,7 @@ class _$CategoryImpl implements _Category {
 
   @override
   String toString() {
-    return 'Category(id: $id, name: $name, onlineSubCategoriesCount: $onlineSubCategoriesCount, parentCategoryId: $parentCategoryId, cHeaderMenuBanner: $cHeaderMenuBanner, pageDescription: $pageDescription, pageTitle: $pageTitle)';
+    return 'Category(id: $id, parentCategoryId: $parentCategoryId, name: $name, subcategoryCount: $subcategoryCount, enableCompare: $enableCompare, showInMenu: $showInMenu, pageKeywords: $pageKeywords, menuBannerImage: $menuBannerImage, menuBannerOrientation: $menuBannerOrientation, slotBannerImage: $slotBannerImage, pageDescription: $pageDescription, pageTitle: $pageTitle)';
   }
 
   @override
@@ -206,14 +296,23 @@ class _$CategoryImpl implements _Category {
         (other.runtimeType == runtimeType &&
             other is _$CategoryImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(
-                    other.onlineSubCategoriesCount, onlineSubCategoriesCount) ||
-                other.onlineSubCategoriesCount == onlineSubCategoriesCount) &&
             (identical(other.parentCategoryId, parentCategoryId) ||
                 other.parentCategoryId == parentCategoryId) &&
-            (identical(other.cHeaderMenuBanner, cHeaderMenuBanner) ||
-                other.cHeaderMenuBanner == cHeaderMenuBanner) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.subcategoryCount, subcategoryCount) ||
+                other.subcategoryCount == subcategoryCount) &&
+            (identical(other.enableCompare, enableCompare) ||
+                other.enableCompare == enableCompare) &&
+            (identical(other.showInMenu, showInMenu) ||
+                other.showInMenu == showInMenu) &&
+            const DeepCollectionEquality()
+                .equals(other._pageKeywords, _pageKeywords) &&
+            (identical(other.menuBannerImage, menuBannerImage) ||
+                other.menuBannerImage == menuBannerImage) &&
+            (identical(other.menuBannerOrientation, menuBannerOrientation) ||
+                other.menuBannerOrientation == menuBannerOrientation) &&
+            (identical(other.slotBannerImage, slotBannerImage) ||
+                other.slotBannerImage == slotBannerImage) &&
             (identical(other.pageDescription, pageDescription) ||
                 other.pageDescription == pageDescription) &&
             (identical(other.pageTitle, pageTitle) ||
@@ -224,10 +323,15 @@ class _$CategoryImpl implements _Category {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      name,
-      onlineSubCategoriesCount,
       parentCategoryId,
-      cHeaderMenuBanner,
+      name,
+      subcategoryCount,
+      enableCompare,
+      showInMenu,
+      const DeepCollectionEquality().hash(_pageKeywords),
+      menuBannerImage,
+      menuBannerOrientation,
+      slotBannerImage,
       pageDescription,
       pageTitle);
 
@@ -241,23 +345,38 @@ class _$CategoryImpl implements _Category {
 abstract class _Category implements Category {
   factory _Category(
       {required final String id,
-      required final String name,
-      required final int onlineSubCategoriesCount,
       required final String parentCategoryId,
-      required final String cHeaderMenuBanner,
+      required final String name,
+      required final int subcategoryCount,
+      required final bool enableCompare,
+      required final bool showInMenu,
+      final List<String>? pageKeywords,
+      final String? menuBannerImage,
+      final ImageOrientation? menuBannerOrientation,
+      final String? slotBannerImage,
       final String? pageDescription,
       final String? pageTitle}) = _$CategoryImpl;
 
   @override
   String get id;
   @override
-  String get name;
-  @override
-  int get onlineSubCategoriesCount;
-  @override
   String get parentCategoryId;
   @override
-  String get cHeaderMenuBanner;
+  String get name;
+  @override
+  int get subcategoryCount;
+  @override
+  bool get enableCompare;
+  @override
+  bool get showInMenu;
+  @override
+  List<String>? get pageKeywords;
+  @override
+  String? get menuBannerImage;
+  @override
+  ImageOrientation? get menuBannerOrientation;
+  @override
+  String? get slotBannerImage;
   @override
   String? get pageDescription;
   @override

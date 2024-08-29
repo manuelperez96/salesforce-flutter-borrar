@@ -16,10 +16,10 @@ class CategoryRepository extends Repository {
   final MemoryCache<List<Category>> memoryCache;
 
   Future<List<Category>> getRootCategories() async {
-    return getCategoriesByUrl(_pathRoot);
+    return getSubcategories(_pathRoot);
   }
 
-  Future<List<Category>> getCategoriesByUrl(String url) async {
+  Future<List<Category>> getSubcategories(String rootCategory) async {
     try {
       if (memoryCache.hasKey(url)) {
         return memoryCache.getValue(url)!;
