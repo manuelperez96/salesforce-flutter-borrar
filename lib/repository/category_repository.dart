@@ -44,7 +44,7 @@ class CategoryRepository extends Repository {
           )
           .toList();
 
-      memoryCache.addUpdateValue(url, result);
+      memoryCache.addValue(url, result);
 
       return result;
     } catch (e) {
