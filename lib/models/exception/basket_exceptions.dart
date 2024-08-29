@@ -1,23 +1,23 @@
 abstract class BasketRepositoryException implements Exception {
-  BasketRepositoryException();
+  const BasketRepositoryException();
 }
 
 class CreateBasketException extends BasketRepositoryException {
-  CreateBasketException();
+  const CreateBasketException();
 }
 
 class GetBasketException extends BasketRepositoryException {
-  GetBasketException();
+  const GetBasketException();
 }
 
 class AddProductToBasketException extends BasketRepositoryException {
-  AddProductToBasketException();
+  const AddProductToBasketException();
 }
 
 class RemoveProductFromBasketException extends BasketRepositoryException {
-  RemoveProductFromBasketException();
+  const RemoveProductFromBasketException();
 }
 
 class UpdateProductInBasketException extends BasketRepositoryException {
-  UpdateProductInBasketException();
+  const UpdateProductInBasketException();
 }
