@@ -51,7 +51,7 @@ class Category with _$Category {
       pageKeywords: _parseKeyword(json['pageKeywords'] as String?),
       slotBannerImage: json['c_slotBannerImage'] as String?,
       subcategories: _parseSubCategories(
-        json['categories'] as List<Map<String, dynamic>>?,
+        json['categories'] as List<dynamic>?,
       ),
     );
   }
@@ -71,8 +71,11 @@ class Category with _$Category {
     return value.split(', ');
   }
 
-  static List<Category>? _parseSubCategories(List<Map<String, dynamic>>? json) {
+  static List<Category>? _parseSubCategories(List<dynamic>? json) {
     if (json == null) return null;
-    return json.map((e) => Category.fromJson(json: e)).toList();
+    return json
+        .cast<Map<String, dynamic>>()
+        .map((e) => Category.fromJson(json: e))
+        .toList();
   }
 }

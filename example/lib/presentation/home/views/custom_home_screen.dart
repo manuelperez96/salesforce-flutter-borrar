@@ -27,7 +27,7 @@ class _CustomHomeScreenState extends State<CustomHomeScreen> {
         if (widget.urlCategories != null) {
           categoryList = await inject<SFCommerceSDK>()
               .categoryRepository
-              .getSubcategoriesWithDeep(widget.urlCategories!);
+              .getSubcategories(widget.urlCategories!);
         } else {
           categoryList = await inject<SFCommerceSDK>()
               .categoryRepository

@@ -12,8 +12,10 @@ class CategoryRepository extends Repository {
 
   final MemoryCache<List<Category>> memoryCache;
 
-  Future<List<Category>> getAllCategories() =>
-      _getSubcategoriesWithDeep('root', deepLevel: 2,);
+  Future<List<Category>> getAllCategories() => _getSubcategoriesWithDeep(
+        'root',
+        deepLevel: 2,
+      );
 
   Future<List<Category>> getRootCategories() => getSubcategories('root');
 
@@ -22,7 +24,7 @@ class CategoryRepository extends Repository {
 
   Future<List<Category>> _getSubcategoriesWithDeep(
     String categoryName, {
-    double deepLevel = 1,
+    int deepLevel = 1,
   }) async {
     assert(
       deepLevel >= 0 && deepLevel <= 2,
@@ -33,7 +35,7 @@ class CategoryRepository extends Repository {
       'categoryName can not be empty',
     );
 
-    final uri = _buildCategoryUrl(categoryName);
+    final uri = _buildCategoryUrl(categoryName, deepLevel);
     try {
       final cachedValue = memoryCache.getValue(uri.toString());
       if (cachedValue != null) return cachedValue;
@@ -47,6 +49,7 @@ class CategoryRepository extends Repository {
 
       return categories;
     } catch (e) {
+      print(uri.toString());
       throw Exception('Failed to load categories: $e');
     }
   }
@@ -55,8 +58,8 @@ class CategoryRepository extends Repository {
     memoryCache.clearAll();
   }
 
-  Uri _buildCategoryUrl(String category) => Uri.parse(
-        '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/category/$category&siteId=${config.siteId}',
+  Uri _buildCategoryUrl(String category, int deepLevel) => Uri.parse(
+        '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/categories/$category?levels=$deepLevel&siteId=${config.siteId}',
       );
 
   List<Map<String, dynamic>> _getCategoriesMap(
