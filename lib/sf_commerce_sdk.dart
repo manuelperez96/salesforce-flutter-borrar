@@ -36,16 +36,16 @@ class SFCommerceSDK {
     storage: const FlutterSecureStorage(),
   );
 
-  late ProductRepository productRepository = ProductRepository(
+  late final ProductRepository productRepository = ProductRepository(
     dio: _dio,
     config: _config,
-    memoryCache: const MemoryCache<Product>(),
+    memoryCache: MemoryCache<Product>(),
   );
 
-  late CategoryRepository categoryRepository = CategoryRepository(
+  late final CategoryRepository categoryRepository = CategoryRepository(
     dio: _dio,
     config: _config,
-    memoryCache: const MemoryCache<List<Category>>(),
+    memoryCache: MemoryCache<List<Category>>(),
   );
 
   late AuthRepository authRepository = AuthRepository(
