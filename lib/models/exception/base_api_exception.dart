@@ -1,5 +1,5 @@
 abstract class BaseApiException implements Exception {
-  const BaseApiException({this.message});
+  const BaseApiException([this.message]);
 
   final Object? message;
 

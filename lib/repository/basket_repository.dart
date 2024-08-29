@@ -19,10 +19,8 @@ class BasketRepository extends Repository {
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
 
       return basket;
-    } on DioException catch (_) {
-      throw const CreateBasketException();
     } catch (e) {
-      throw const CreateBasketException();
+      throw CreateBasketException(e);
     }
   }
 
