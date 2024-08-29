@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Category _$CategoryFromJson(Map<String, dynamic> json) {
-  return _Category.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Category {
   String get id => throw _privateConstructorUsedError;
@@ -28,7 +24,6 @@ mixin _$Category {
   String? get pageDescription => throw _privateConstructorUsedError;
   String? get pageTitle => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CategoryCopyWith<Category> get copyWith =>
       throw _privateConstructorUsedError;
@@ -174,7 +169,7 @@ class __$$CategoryImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$CategoryImpl implements _Category {
   _$CategoryImpl(
       {required this.id,
@@ -184,9 +179,6 @@ class _$CategoryImpl implements _Category {
       required this.cHeaderMenuBanner,
       this.pageDescription,
       this.pageTitle});
-
-  factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CategoryImplFromJson(json);
 
   @override
   final String id;
@@ -228,7 +220,6 @@ class _$CategoryImpl implements _Category {
                 other.pageTitle == pageTitle));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -245,13 +236,6 @@ class _$CategoryImpl implements _Category {
   @pragma('vm:prefer-inline')
   _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
       __$$CategoryImplCopyWithImpl<_$CategoryImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CategoryImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Category implements Category {
@@ -263,9 +247,6 @@ abstract class _Category implements Category {
       required final String cHeaderMenuBanner,
       final String? pageDescription,
       final String? pageTitle}) = _$CategoryImpl;
-
-  factory _Category.fromJson(Map<String, dynamic> json) =
-      _$CategoryImpl.fromJson;
 
   @override
   String get id;

@@ -14,17 +14,19 @@ class Category with _$Category {
     String? pageTitle,
   }) = _Category;
 
-  factory Category.fromJson(Map<String, dynamic> json) => Category(
-        id: json['id'] as String,
-        name: json['name'] as String,
-        onlineSubCategoriesCount: json['onlineSubCategoriesCount'] as int,
-        pageDescription: (json['pageDescription'] ?? '') as String,
-        pageTitle: (json['pageTitle'] ?? '') as String,
-        parentCategoryId: (json['parentCategoryId'] ?? '') as String,
-        cHeaderMenuBanner: json['c_headerMenuBanner'] != null
-            ? parseBannerImage(json['c_headerMenuBanner'] as String)
-            : '',
-      );
+  factory Category.fromJson({required Map<String, dynamic> json}) {
+    return Category(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      onlineSubCategoriesCount: json['onlineSubCategoriesCount'] as int,
+      pageDescription: (json['pageDescription'] ?? '') as String,
+      pageTitle: (json['pageTitle'] ?? '') as String,
+      parentCategoryId: (json['parentCategoryId'] ?? '') as String,
+      cHeaderMenuBanner: json['c_headerMenuBanner'] != null
+          ? parseBannerImage(json['c_headerMenuBanner'] as String)
+          : '',
+    );
+  }
 
   static String parseBannerImage(String original) {
     var imageUrl = original.substring(original.indexOf('src'));
