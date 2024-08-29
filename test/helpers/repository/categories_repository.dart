@@ -129,7 +129,7 @@ const responseJSON = {
   'total': 1,
 };
 
-const categoryListModel = [
+final categoryListModel = [
   Category(
     id: 'id',
     name: 'name',

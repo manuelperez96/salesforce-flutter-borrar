@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/models/exception/basket_exceptions.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
-import 'package:sf_commerce_sdk/repository/exceptions/basket_exceptions.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class BasketRepository extends Repository {
@@ -19,10 +19,8 @@ class BasketRepository extends Repository {
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
 
       return basket;
-    } on DioException catch (_) {
-      throw CreateBasketException();
     } catch (e) {
-      throw CreateBasketException();
+      throw CreateBasketException(e);
     }
   }
 
@@ -39,11 +37,7 @@ class BasketRepository extends Repository {
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
     } catch (e) {
-      if (e is DioException) {
-        throw GetBasketException();
-      } else {
-        throw GetBasketException();
-      }
+      throw GetBasketException(e);
     }
   }
 
@@ -65,10 +59,8 @@ class BasketRepository extends Repository {
       final jsonResponse = response.data;
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
-    } on DioException catch (_) {
-      throw AddProductToBasketException();
-    } catch (_) {
-      throw AddProductToBasketException();
+    } catch (e) {
+      throw AddProductToBasketException(e);
     }
   }
 
@@ -87,10 +79,8 @@ class BasketRepository extends Repository {
       final jsonResponse = response.data;
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
-    } on DioException catch (_) {
-      throw RemoveProductFromBasketException();
-    } catch (_) {
-      throw RemoveProductFromBasketException();
+    } catch (e) {
+      throw RemoveProductFromBasketException(e);
     }
   }
 
@@ -110,10 +100,8 @@ class BasketRepository extends Repository {
       final jsonResponse = response.data;
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
-    } on DioException catch (_) {
-      throw UpdateProductInBasketException();
-    } catch (_) {
-      throw UpdateProductInBasketException();
+    } catch (e) {
+      throw UpdateProductInBasketException(e);
     }
   }
 }

@@ -32,7 +32,7 @@ class CategoryRepository extends Repository {
 
       final result = jsonResponse
           .map(
-            (categoryJson) => Category.fromJson(
+            (categoryJson) => Category.fromJson(json: 
               categoryJson as Map<String, dynamic>,
             ),
           )

@@ -4,7 +4,7 @@ import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
-import 'package:sf_commerce_sdk/repository/auth/auth_repository.dart';
+import 'package:sf_commerce_sdk/repository/auth_repository.dart';
 import 'package:sf_commerce_sdk/repository/basket_repository.dart';
 import 'package:sf_commerce_sdk/repository/category_repository.dart';
 import 'package:sf_commerce_sdk/repository/product_repository.dart';

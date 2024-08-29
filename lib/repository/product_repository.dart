@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
+import 'package:sf_commerce_sdk/models/exception/product_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
@@ -28,7 +29,7 @@ class ProductRepository extends Repository {
           .map((json) => Product.fromJson(json as Map<String, dynamic>))
           .toList();
     } catch (e) {
-      throw Exception('Failed to load products: $e');
+      throw UnableToGetProductException(e);
     }
   }
 
@@ -50,7 +51,7 @@ class ProductRepository extends Repository {
       memoryCache.addValue(id, result);
       return result;
     } catch (e) {
-      throw Exception('Failed to load product: $e');
+      throw UnableToGetProductException(e);
     }
   }
 
@@ -76,7 +77,7 @@ class ProductRepository extends Repository {
         return [];
       }
     } catch (e) {
-      throw Exception('Failed to load product by category: $e');
+      throw UnableToGetProductException(e);
     }
   }
 
