@@ -45,7 +45,7 @@ class AuthRepository extends Repository {
       );
 
       if (response.data == null || response.data is! Map) {
-        throw GetAccessTokenException();
+        throw const GetAccessTokenException();
       }
 
       await _storage.saveToken(
@@ -70,7 +70,7 @@ class AuthRepository extends Repository {
 
       await _storage.saveToken(token);
     } catch (_) {
-      throw UnableDoAnonymousLoginException();
+      throw const UnableDoAnonymousLoginException();
     }
   }
 
@@ -92,12 +92,12 @@ class AuthRepository extends Repository {
       return _getTokenRequestDataOnSuccess(response);
     } on DioException catch (e) {
       if (e.response?.statusCode != 303) {
-        throw GetAuthorizationCodeException();
+        throw const GetAuthorizationCodeException();
       }
 
       final json = e.response?.headers.map['location'] as List?;
       if (json == null || json.isEmpty || json.first is! String) {
-        throw GetAuthorizationCodeException();
+        throw const GetAuthorizationCodeException();
       }
 
       return _getTokenRequestDataOnRedirect(json.first as String);
@@ -125,12 +125,12 @@ class AuthRepository extends Repository {
       );
 
       if (response.data == null || response.data is! Map) {
-        throw GetAccessTokenException();
+        throw const GetAccessTokenException();
       }
 
       return AccessToken.fromJson(response.data as Map<String, dynamic>);
     } catch (_) {
-      throw GetAccessTokenException();
+      throw const GetAccessTokenException();
     }
   }
 
@@ -141,7 +141,7 @@ class AuthRepository extends Repository {
     final code = jsonResult['code'] ?? jsonResult['authCode'];
     final usid = jsonResult['usid'];
     if (code is! String || usid is! String) {
-      throw GetAuthorizationCodeException();
+      throw const GetAuthorizationCodeException();
     }
 
     return (code, usid);

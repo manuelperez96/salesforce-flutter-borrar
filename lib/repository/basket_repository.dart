@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
 import 'package:sf_commerce_sdk/models/exception/basket_exceptions.dart';
+import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class BasketRepository extends Repository {
@@ -20,9 +20,9 @@ class BasketRepository extends Repository {
 
       return basket;
     } on DioException catch (_) {
-      throw CreateBasketException();
+      throw const CreateBasketException();
     } catch (e) {
-      throw CreateBasketException();
+      throw const CreateBasketException();
     }
   }
 
@@ -40,9 +40,9 @@ class BasketRepository extends Repository {
       return basket;
     } catch (e) {
       if (e is DioException) {
-        throw GetBasketException();
+        throw const GetBasketException();
       } else {
-        throw GetBasketException();
+        throw const GetBasketException();
       }
     }
   }
@@ -66,9 +66,9 @@ class BasketRepository extends Repository {
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
     } on DioException catch (_) {
-      throw AddProductToBasketException();
+      throw const AddProductToBasketException();
     } catch (_) {
-      throw AddProductToBasketException();
+      throw const AddProductToBasketException();
     }
   }
 
@@ -88,9 +88,9 @@ class BasketRepository extends Repository {
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
     } on DioException catch (_) {
-      throw RemoveProductFromBasketException();
+      throw const RemoveProductFromBasketException();
     } catch (_) {
-      throw RemoveProductFromBasketException();
+      throw const RemoveProductFromBasketException();
     }
   }
 
@@ -111,9 +111,9 @@ class BasketRepository extends Repository {
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
     } on DioException catch (_) {
-      throw UpdateProductInBasketException();
+      throw const UpdateProductInBasketException();
     } catch (_) {
-      throw UpdateProductInBasketException();
+      throw const UpdateProductInBasketException();
     }
   }
 }
