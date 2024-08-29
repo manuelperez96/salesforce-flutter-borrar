@@ -797,13 +797,13 @@ class MockMemoryCache extends _i1.Mock
   }
 
   @override
-  void addUpdateValue(
+  void addValue(
     String? key,
     _i11.Product? value,
   ) =>
       super.noSuchMethod(
         Invocation.method(
-          #addUpdateValue,
+          #addValue,
           [
             key,
             value,

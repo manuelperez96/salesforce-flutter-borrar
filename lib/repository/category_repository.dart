@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
@@ -26,12 +25,7 @@ class CategoryRepository extends Repository {
         return memoryCache.getValue(url)!;
       }
 
-      final response = await dio.get<dynamic>(
-        url,
-        options: Options(
-          headers: {'Content-Type': 'application/json'},
-        ),
-      );
+      final response = await dio.get<dynamic>(url);
 
       final jsonResponse = (((response.data as Map)['data'] as List)[0]
           as Map<String, dynamic>)['categories'] as List;
@@ -44,7 +38,7 @@ class CategoryRepository extends Repository {
           )
           .toList();
 
-      memoryCache.addUpdateValue(url, result);
+      memoryCache.addValue(url, result);
 
       return result;
     } catch (e) {

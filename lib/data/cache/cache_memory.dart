@@ -1,10 +1,10 @@
 class MemoryCache<T> {
-  const MemoryCache({Map<String, T>? cached}) : _cacheMap = cached ?? const {};
+  MemoryCache({Map<String, T>? cached}) : _cacheMap = cached ?? <String, T>{};
 
   final Map<String, T> _cacheMap;
 
   /// Add current value to cache. If exists, update it.
-  void addUpdateValue(String key, T value) {
+  void addValue(String key, T value) {
     _cacheMap[key] = value;
   }
 
