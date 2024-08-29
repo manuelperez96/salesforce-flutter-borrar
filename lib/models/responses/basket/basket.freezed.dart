@@ -34,6 +34,7 @@ mixin _$Basket {
   int? get orderTotal => throw _privateConstructorUsedError;
   int get productSubTotal => throw _privateConstructorUsedError;
   int get productTotal => throw _privateConstructorUsedError;
+  List<ProductItem>? get productItems => throw _privateConstructorUsedError;
   List<Shipment> get shipments => throw _privateConstructorUsedError;
   List<ShippingItem> get shippingItems => throw _privateConstructorUsedError;
   int? get shippingTotal => throw _privateConstructorUsedError;
@@ -41,8 +42,12 @@ mixin _$Basket {
   String get taxation => throw _privateConstructorUsedError;
   int? get taxTotal => throw _privateConstructorUsedError;
 
+  /// Serializes this Basket to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketCopyWith<Basket> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -65,6 +70,7 @@ abstract class $BasketCopyWith<$Res> {
       int? orderTotal,
       int productSubTotal,
       int productTotal,
+      List<ProductItem>? productItems,
       List<Shipment> shipments,
       List<ShippingItem> shippingItems,
       int? shippingTotal,
@@ -85,6 +91,8 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +109,7 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
     Object? orderTotal = freezed,
     Object? productSubTotal = null,
     Object? productTotal = null,
+    Object? productItems = freezed,
     Object? shipments = null,
     Object? shippingItems = null,
     Object? shippingTotal = freezed,
@@ -161,6 +170,10 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
           ? _value.productTotal
           : productTotal // ignore: cast_nullable_to_non_nullable
               as int,
+      productItems: freezed == productItems
+          ? _value.productItems
+          : productItems // ignore: cast_nullable_to_non_nullable
+              as List<ProductItem>?,
       shipments: null == shipments
           ? _value.shipments
           : shipments // ignore: cast_nullable_to_non_nullable
@@ -188,6 +201,8 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
     ) as $Val);
   }
 
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CustomerInfoCopyWith<$Res> get customerInfo {
@@ -218,6 +233,7 @@ abstract class _$$BasketImplCopyWith<$Res> implements $BasketCopyWith<$Res> {
       int? orderTotal,
       int productSubTotal,
       int productTotal,
+      List<ProductItem>? productItems,
       List<Shipment> shipments,
       List<ShippingItem> shippingItems,
       int? shippingTotal,
@@ -237,6 +253,8 @@ class __$$BasketImplCopyWithImpl<$Res>
       _$BasketImpl _value, $Res Function(_$BasketImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -253,6 +271,7 @@ class __$$BasketImplCopyWithImpl<$Res>
     Object? orderTotal = freezed,
     Object? productSubTotal = null,
     Object? productTotal = null,
+    Object? productItems = freezed,
     Object? shipments = null,
     Object? shippingItems = null,
     Object? shippingTotal = freezed,
@@ -313,6 +332,10 @@ class __$$BasketImplCopyWithImpl<$Res>
           ? _value.productTotal
           : productTotal // ignore: cast_nullable_to_non_nullable
               as int,
+      productItems: freezed == productItems
+          ? _value._productItems
+          : productItems // ignore: cast_nullable_to_non_nullable
+              as List<ProductItem>?,
       shipments: null == shipments
           ? _value._shipments
           : shipments // ignore: cast_nullable_to_non_nullable
@@ -358,13 +381,15 @@ class _$BasketImpl implements _Basket {
       required this.orderTotal,
       required this.productSubTotal,
       required this.productTotal,
+      required final List<ProductItem>? productItems,
       required final List<Shipment> shipments,
       required final List<ShippingItem> shippingItems,
       required this.shippingTotal,
       required this.shippingTotalTax,
       required this.taxation,
       required this.taxTotal})
-      : _shipments = shipments,
+      : _productItems = productItems,
+        _shipments = shipments,
         _shippingItems = shippingItems;
 
   factory _$BasketImpl.fromJson(Map<String, dynamic> json) =>
@@ -397,6 +422,16 @@ class _$BasketImpl implements _Basket {
   final int productSubTotal;
   @override
   final int productTotal;
+  final List<ProductItem>? _productItems;
+  @override
+  List<ProductItem>? get productItems {
+    final value = _productItems;
+    if (value == null) return null;
+    if (_productItems is EqualUnmodifiableListView) return _productItems;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   final List<Shipment> _shipments;
   @override
   List<Shipment> get shipments {
@@ -424,7 +459,7 @@ class _$BasketImpl implements _Basket {
 
   @override
   String toString() {
-    return 'Basket(adjustedMerchandizeTotalTax: $adjustedMerchandizeTotalTax, adjustedShippingTotalTax: $adjustedShippingTotalTax, agentBasket: $agentBasket, basketId: $basketId, channelType: $channelType, creationDate: $creationDate, currency: $currency, customerInfo: $customerInfo, lastModified: $lastModified, merchandizeTotalTax: $merchandizeTotalTax, orderTotal: $orderTotal, productSubTotal: $productSubTotal, productTotal: $productTotal, shipments: $shipments, shippingItems: $shippingItems, shippingTotal: $shippingTotal, shippingTotalTax: $shippingTotalTax, taxation: $taxation, taxTotal: $taxTotal)';
+    return 'Basket(adjustedMerchandizeTotalTax: $adjustedMerchandizeTotalTax, adjustedShippingTotalTax: $adjustedShippingTotalTax, agentBasket: $agentBasket, basketId: $basketId, channelType: $channelType, creationDate: $creationDate, currency: $currency, customerInfo: $customerInfo, lastModified: $lastModified, merchandizeTotalTax: $merchandizeTotalTax, orderTotal: $orderTotal, productSubTotal: $productSubTotal, productTotal: $productTotal, productItems: $productItems, shipments: $shipments, shippingItems: $shippingItems, shippingTotal: $shippingTotal, shippingTotalTax: $shippingTotalTax, taxation: $taxation, taxTotal: $taxTotal)';
   }
 
   @override
@@ -462,6 +497,8 @@ class _$BasketImpl implements _Basket {
             (identical(other.productTotal, productTotal) ||
                 other.productTotal == productTotal) &&
             const DeepCollectionEquality()
+                .equals(other._productItems, _productItems) &&
+            const DeepCollectionEquality()
                 .equals(other._shipments, _shipments) &&
             const DeepCollectionEquality()
                 .equals(other._shippingItems, _shippingItems) &&
@@ -475,7 +512,7 @@ class _$BasketImpl implements _Basket {
                 other.taxTotal == taxTotal));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -492,6 +529,7 @@ class _$BasketImpl implements _Basket {
         orderTotal,
         productSubTotal,
         productTotal,
+        const DeepCollectionEquality().hash(_productItems),
         const DeepCollectionEquality().hash(_shipments),
         const DeepCollectionEquality().hash(_shippingItems),
         shippingTotal,
@@ -500,7 +538,9 @@ class _$BasketImpl implements _Basket {
         taxTotal
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketImplCopyWith<_$BasketImpl> get copyWith =>
@@ -529,6 +569,7 @@ abstract class _Basket implements Basket {
       required final int? orderTotal,
       required final int productSubTotal,
       required final int productTotal,
+      required final List<ProductItem>? productItems,
       required final List<Shipment> shipments,
       required final List<ShippingItem> shippingItems,
       required final int? shippingTotal,
@@ -557,13 +598,15 @@ abstract class _Basket implements Basket {
   @override
   DateTime get lastModified;
   @override
-  int? get merchandizeTotalTax;
-  @override // required   Notes notes,
+  int? get merchandizeTotalTax; // required   Notes notes,
+  @override
   int? get orderTotal;
   @override
   int get productSubTotal;
   @override
   int get productTotal;
+  @override
+  List<ProductItem>? get productItems;
   @override
   List<Shipment> get shipments;
   @override
@@ -576,8 +619,11 @@ abstract class _Basket implements Basket {
   String get taxation;
   @override
   int? get taxTotal;
+
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketImplCopyWith<_$BasketImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

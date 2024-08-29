@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/customer_info.dart';
+import 'package:sf_commerce_sdk/models/responses/basket/product_item.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/shipments.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/shipping_items.dart';
 
@@ -23,6 +24,7 @@ class Basket with _$Basket {
     required int? orderTotal,
     required int productSubTotal,
     required int productTotal,
+    required List<ProductItem>? productItems,
     required List<Shipment> shipments,
     required List<ShippingItem> shippingItems,
     required int? shippingTotal,

@@ -10,6 +10,7 @@ import 'package:example/route/router.dart' as router;
 import 'package:example/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
@@ -30,19 +31,27 @@ void main() async {
   // Setup dependency injection
   AppModules.setup(sf);
 
-  //await sf.anonymousLogin();
-  //final products =
-  //await sf.getProductsByIds(['029407331289M', '029407331227M']);
+  await sf.authRepository.anonymousLogin();
+  final products = await sf.productRepository
+      .getProducts(['029407331289M', '029407331227M']);
 
-  //Basket basketWithProduct =
-  //  await sf.addProductToBasket(productId: products.first.id);
-  //basketWithProduct = await sf.addProductToBasket(productId: products.last.id);
-  //print(basketWithProduct);
+  Basket basket = await sf.basketRepository.createBasket();
 
-  // await sf.removeItemFromBasket(products.first.id);
+  basket = await sf.basketRepository.addProductToBasket(
+      basketId: basket.basketId, productId: products.first.id);
+  basket = await sf.basketRepository.addProductToBasket(
+      basketId: basket.basketId, productId: products.last.id);
 
-  //await sf.updateItemInBasket(productId: products.last.id, quantity: 2);
+  // basket = await sf.basketRepository.removeProductFromBasket(
+  //     basketId: basket.basketId,
+  //     basketItemId: basket.productItems!.first.itemId);
 
+  basket = await sf.basketRepository.updateProductInBasket(
+      basketId: basket.basketId,
+      basketItemId: basket.productItems!.first.itemId,
+      quantity: 2);
+
+  print(basket);
   runApp(const MyApp());
 }
 
