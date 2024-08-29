@@ -1230,13 +1230,13 @@ class MockResponse extends _i1.Mock implements _i6.Response<dynamic> {
 class MockMemoryCache extends _i1.Mock
     implements _i12.MemoryCache<List<_i13.Category>> {
   @override
-  void addUpdateValue(
+  void addValue(
     String? key,
     List<_i13.Category>? value,
   ) =>
       super.noSuchMethod(
         Invocation.method(
-          #addUpdateValue,
+          #addValue,
           [
             key,
             value,
