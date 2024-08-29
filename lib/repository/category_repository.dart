@@ -1,52 +1,70 @@
+import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class CategoryRepository extends Repository {
-  CategoryRepository({
+  const CategoryRepository({
     required super.dio,
     required super.config,
     required this.memoryCache,
-  }) {
-    _pathRoot =
-        '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/categories?ids=root&siteId=${config.siteId}';
-  }
+  });
 
-  late final String _pathRoot;
   final MemoryCache<List<Category>> memoryCache;
 
-  Future<List<Category>> getRootCategories() async {
-    return getCategoriesByUrl(_pathRoot);
-  }
+  Future<List<Category>> getAllCategories() => _getSubcategoriesWithDeep(
+        'root',
+        deepLevel: 2,
+      );
 
-  Future<List<Category>> getCategoriesByUrl(String url) async {
+  Future<List<Category>> getRootCategories() => getSubcategories('root');
+
+  Future<List<Category>> getSubcategories(String categoryName) =>
+      _getSubcategoriesWithDeep(categoryName);
+
+  Future<List<Category>> _getSubcategoriesWithDeep(
+    String categoryName, {
+    int deepLevel = 1,
+  }) async {
+    assert(
+      deepLevel >= 0 && deepLevel <= 2,
+      'deepLevel can not be smaller than 0 or bigger than 2',
+    );
+    assert(
+      categoryName.isNotEmpty,
+      'categoryName can not be empty',
+    );
+
+    final uri = _buildCategoryUrl(categoryName, deepLevel);
     try {
-      if (memoryCache.hasKey(url)) {
-        return memoryCache.getValue(url)!;
-      }
+      final cachedValue = memoryCache.getValue(uri.toString());
+      if (cachedValue != null) return cachedValue;
 
-      final response = await dio.get<dynamic>(url);
-
-      final jsonResponse = (((response.data as Map)['data'] as List)[0]
-          as Map<String, dynamic>)['categories'] as List;
-
-      final result = jsonResponse
-          .map(
-            (categoryJson) => Category.fromJson(json: 
-              categoryJson as Map<String, dynamic>,
-            ),
-          )
+      final response = await dio.get<Map<String, dynamic>>(uri.toString());
+      final categories = _getCategoriesMap(response)
+          .map((e) => Category.fromJson(json: e))
           .toList();
 
-      memoryCache.addValue(url, result);
+      memoryCache.addValue(uri.toString(), [...categories]);
 
-      return result;
+      return categories;
     } catch (e) {
+      print(uri.toString());
       throw Exception('Failed to load categories: $e');
     }
   }
 
   void clearCache() {
     memoryCache.clearAll();
+  }
+
+  Uri _buildCategoryUrl(String category, int deepLevel) => Uri.parse(
+        '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/categories/$category?levels=$deepLevel&siteId=${config.siteId}',
+      );
+
+  List<Map<String, dynamic>> _getCategoriesMap(
+    Response<Map<String, dynamic>> response,
+  ) {
+    return (response.data!['categories'] as List).cast<Map<String, dynamic>>();
   }
 }

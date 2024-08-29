@@ -16,7 +16,7 @@ class CustomBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return category.cHeaderMenuBanner.isEmpty
+    return category.menuBannerImage == null
         ? const SizedBox.shrink()
         : Column(
             children: [
@@ -24,8 +24,10 @@ class CustomBanner extends StatelessWidget {
                 aspectRatio: 1.87,
                 child: Stack(
                   children: [
-                    NetworkImageWithLoader(category.cHeaderMenuBanner,
-                        radius: 0),
+                    NetworkImageWithLoader(
+                      category.menuBannerImage!,
+                      radius: 0,
+                    ),
                     Container(color: Colors.black45),
                     Padding(
                       padding: const EdgeInsets.all(defaultPadding),
