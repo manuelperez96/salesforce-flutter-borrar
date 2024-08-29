@@ -23,6 +23,7 @@ mixin _$Category {
   bool get enableCompare => throw _privateConstructorUsedError;
   bool get showInMenu => throw _privateConstructorUsedError;
   List<String>? get pageKeywords => throw _privateConstructorUsedError;
+  List<Category>? get subcategories => throw _privateConstructorUsedError;
   String? get menuBannerImage => throw _privateConstructorUsedError;
   ImageOrientation? get menuBannerOrientation =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,7 @@ abstract class $CategoryCopyWith<$Res> {
       bool enableCompare,
       bool showInMenu,
       List<String>? pageKeywords,
+      List<Category>? subcategories,
       String? menuBannerImage,
       ImageOrientation? menuBannerOrientation,
       String? slotBannerImage,
@@ -75,6 +77,7 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
     Object? enableCompare = null,
     Object? showInMenu = null,
     Object? pageKeywords = freezed,
+    Object? subcategories = freezed,
     Object? menuBannerImage = freezed,
     Object? menuBannerOrientation = freezed,
     Object? slotBannerImage = freezed,
@@ -110,6 +113,10 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
           ? _value.pageKeywords
           : pageKeywords // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      subcategories: freezed == subcategories
+          ? _value.subcategories
+          : subcategories // ignore: cast_nullable_to_non_nullable
+              as List<Category>?,
       menuBannerImage: freezed == menuBannerImage
           ? _value.menuBannerImage
           : menuBannerImage // ignore: cast_nullable_to_non_nullable
@@ -150,6 +157,7 @@ abstract class _$$CategoryImplCopyWith<$Res>
       bool enableCompare,
       bool showInMenu,
       List<String>? pageKeywords,
+      List<Category>? subcategories,
       String? menuBannerImage,
       ImageOrientation? menuBannerOrientation,
       String? slotBannerImage,
@@ -175,6 +183,7 @@ class __$$CategoryImplCopyWithImpl<$Res>
     Object? enableCompare = null,
     Object? showInMenu = null,
     Object? pageKeywords = freezed,
+    Object? subcategories = freezed,
     Object? menuBannerImage = freezed,
     Object? menuBannerOrientation = freezed,
     Object? slotBannerImage = freezed,
@@ -210,6 +219,10 @@ class __$$CategoryImplCopyWithImpl<$Res>
           ? _value._pageKeywords
           : pageKeywords // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      subcategories: freezed == subcategories
+          ? _value._subcategories
+          : subcategories // ignore: cast_nullable_to_non_nullable
+              as List<Category>?,
       menuBannerImage: freezed == menuBannerImage
           ? _value.menuBannerImage
           : menuBannerImage // ignore: cast_nullable_to_non_nullable
@@ -245,12 +258,14 @@ class _$CategoryImpl implements _Category {
       required this.enableCompare,
       required this.showInMenu,
       final List<String>? pageKeywords,
+      final List<Category>? subcategories,
       this.menuBannerImage,
       this.menuBannerOrientation,
       this.slotBannerImage,
       this.pageDescription,
       this.pageTitle})
-      : _pageKeywords = pageKeywords;
+      : _pageKeywords = pageKeywords,
+        _subcategories = subcategories;
 
   @override
   final String id;
@@ -274,6 +289,16 @@ class _$CategoryImpl implements _Category {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<Category>? _subcategories;
+  @override
+  List<Category>? get subcategories {
+    final value = _subcategories;
+    if (value == null) return null;
+    if (_subcategories is EqualUnmodifiableListView) return _subcategories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? menuBannerImage;
   @override
@@ -287,7 +312,7 @@ class _$CategoryImpl implements _Category {
 
   @override
   String toString() {
-    return 'Category(id: $id, parentCategoryId: $parentCategoryId, name: $name, subcategoryCount: $subcategoryCount, enableCompare: $enableCompare, showInMenu: $showInMenu, pageKeywords: $pageKeywords, menuBannerImage: $menuBannerImage, menuBannerOrientation: $menuBannerOrientation, slotBannerImage: $slotBannerImage, pageDescription: $pageDescription, pageTitle: $pageTitle)';
+    return 'Category(id: $id, parentCategoryId: $parentCategoryId, name: $name, subcategoryCount: $subcategoryCount, enableCompare: $enableCompare, showInMenu: $showInMenu, pageKeywords: $pageKeywords, subcategories: $subcategories, menuBannerImage: $menuBannerImage, menuBannerOrientation: $menuBannerOrientation, slotBannerImage: $slotBannerImage, pageDescription: $pageDescription, pageTitle: $pageTitle)';
   }
 
   @override
@@ -307,6 +332,8 @@ class _$CategoryImpl implements _Category {
                 other.showInMenu == showInMenu) &&
             const DeepCollectionEquality()
                 .equals(other._pageKeywords, _pageKeywords) &&
+            const DeepCollectionEquality()
+                .equals(other._subcategories, _subcategories) &&
             (identical(other.menuBannerImage, menuBannerImage) ||
                 other.menuBannerImage == menuBannerImage) &&
             (identical(other.menuBannerOrientation, menuBannerOrientation) ||
@@ -329,6 +356,7 @@ class _$CategoryImpl implements _Category {
       enableCompare,
       showInMenu,
       const DeepCollectionEquality().hash(_pageKeywords),
+      const DeepCollectionEquality().hash(_subcategories),
       menuBannerImage,
       menuBannerOrientation,
       slotBannerImage,
@@ -351,6 +379,7 @@ abstract class _Category implements Category {
       required final bool enableCompare,
       required final bool showInMenu,
       final List<String>? pageKeywords,
+      final List<Category>? subcategories,
       final String? menuBannerImage,
       final ImageOrientation? menuBannerOrientation,
       final String? slotBannerImage,
@@ -371,6 +400,8 @@ abstract class _Category implements Category {
   bool get showInMenu;
   @override
   List<String>? get pageKeywords;
+  @override
+  List<Category>? get subcategories;
   @override
   String? get menuBannerImage;
   @override

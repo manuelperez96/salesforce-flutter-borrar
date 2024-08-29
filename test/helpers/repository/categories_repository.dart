@@ -133,15 +133,17 @@ final categoryListModel = [
   Category(
     id: 'id',
     name: 'name',
-    onlineSubCategoriesCount: 4,
+    enableCompare: true,
+    showInMenu: true,
+    subcategoryCount: 4,
     parentCategoryId: 'parentCategoryId',
-    cHeaderMenuBanner: 'cHeaderMenuBanner',
   ),
   Category(
     id: 'id2',
     name: 'name',
-    onlineSubCategoriesCount: 4,
+    enableCompare: true,
+    showInMenu: true,
+    subcategoryCount: 2,
     parentCategoryId: 'parentCategoryId',
-    cHeaderMenuBanner: 'cHeaderMenuBanner',
   ),
 ];

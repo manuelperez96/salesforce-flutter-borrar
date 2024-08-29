@@ -106,7 +106,7 @@ void main() {
             when(mockMemoryCache.hasKey(any)).thenReturn(true);
             when(mockMemoryCache.getValue(any)).thenReturn(categoryListModel);
 
-            final result = await categoryRepository.getSubcategories('url');
+            final result = await categoryRepository.getSubcategoriesWithDeep('url');
 
             expect(result, categoryListModel);
           },

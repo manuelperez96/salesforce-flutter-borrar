@@ -26,6 +26,7 @@ class Category with _$Category {
     required bool enableCompare,
     required bool showInMenu,
     List<String>? pageKeywords,
+    List<Category>? subcategories,
     String? menuBannerImage,
     ImageOrientation? menuBannerOrientation,
     String? slotBannerImage,
@@ -48,6 +49,10 @@ class Category with _$Category {
         json['c_headerMenuOrientation'] as String?,
       ),
       pageKeywords: _parseKeyword(json['pageKeywords'] as String?),
+      slotBannerImage: json['c_slotBannerImage'] as String?,
+      subcategories: _parseSubCategories(
+        json['categories'] as List<Map<String, dynamic>>?,
+      ),
     );
   }
 
@@ -60,9 +65,14 @@ class Category with _$Category {
     if (value == null) return null;
     return _imageRegex.firstMatch(value)?.group(1);
   }
-  
+
   static List<String>? _parseKeyword(String? value) {
     if (value == null) return null;
     return value.split(', ');
+  }
+
+  static List<Category>? _parseSubCategories(List<Map<String, dynamic>>? json) {
+    if (json == null) return null;
+    return json.map((e) => Category.fromJson(json: e)).toList();
   }
 }
