@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
-import 'package:sf_commerce_sdk/repository/exceptions/basket_exceptions.dart';
+import 'package:sf_commerce_sdk/models/exception/basket_exceptions.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class BasketRepository extends Repository {
