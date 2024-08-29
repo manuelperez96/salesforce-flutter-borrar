@@ -23,6 +23,9 @@ _$BasketImpl _$$BasketImplFromJson(Map<String, dynamic> json) => _$BasketImpl(
       orderTotal: (json['orderTotal'] as num?)?.toInt(),
       productSubTotal: (json['productSubTotal'] as num).toInt(),
       productTotal: (json['productTotal'] as num).toInt(),
+      productItems: (json['productItems'] as List<dynamic>?)
+          ?.map((e) => ProductItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
       shipments: (json['shipments'] as List<dynamic>)
           .map((e) => Shipment.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -50,6 +53,7 @@ Map<String, dynamic> _$$BasketImplToJson(_$BasketImpl instance) =>
       'orderTotal': instance.orderTotal,
       'productSubTotal': instance.productSubTotal,
       'productTotal': instance.productTotal,
+      'productItems': instance.productItems,
       'shipments': instance.shipments,
       'shippingItems': instance.shippingItems,
       'shippingTotal': instance.shippingTotal,
