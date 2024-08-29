@@ -1,13 +1,18 @@
-class Category {
-  const Category({
-    required this.id,
-    required this.name,
-    required this.onlineSubCategoriesCount,
-    required this.parentCategoryId,
-    required this.cHeaderMenuBanner,
-    this.pageDescription,
-    this.pageTitle,
-  });
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'category.freezed.dart';
+
+@freezed
+class Category with _$Category {
+  factory Category({
+    required String id,
+    required String name,
+    required int onlineSubCategoriesCount,
+    required String parentCategoryId,
+    required String cHeaderMenuBanner,
+    String? pageDescription,
+    String? pageTitle,
+  }) = _Category;
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
         id: json['id'] as String,
@@ -20,14 +25,6 @@ class Category {
             ? parseBannerImage(json['c_headerMenuBanner'] as String)
             : '',
       );
-
-  final String id;
-  final String name;
-  final int onlineSubCategoriesCount;
-  final String? pageDescription;
-  final String? pageTitle;
-  final String parentCategoryId;
-  final String cHeaderMenuBanner;
 
   static String parseBannerImage(String original) {
     var imageUrl = original.substring(original.indexOf('src'));
