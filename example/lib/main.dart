@@ -10,7 +10,6 @@ import 'package:example/route/router.dart' as router;
 import 'package:example/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
@@ -21,37 +20,17 @@ void main() async {
   HttpOverrides.global = MyHttpOverrides();
 
   SFCommerceSDK sf = SFCommerceSDK(
-      config: SfCommerceConfig(
-    clientId: '0c892f93-5262-4cab-8349-b170e0779357',
-    organizationId: 'f_ecom_zzrj_031',
-    siteId: 'RefArch',
-    host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
-  ));
+    config: SfCommerceConfig(
+      clientId: '0c892f93-5262-4cab-8349-b170e0779357',
+      organizationId: 'f_ecom_zzrj_031',
+      siteId: 'RefArch',
+      host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
+    ),
+  );
 
   // Setup dependency injection
   AppModules.setup(sf);
 
-  await sf.authRepository.anonymousLogin();
-  final products = await sf.productRepository
-      .getProducts(['029407331289M', '029407331227M']);
-
-  Basket basket = await sf.basketRepository.createBasket();
-
-  basket = await sf.basketRepository.addProductToBasket(
-      basketId: basket.basketId, productId: products.first.id);
-  basket = await sf.basketRepository.addProductToBasket(
-      basketId: basket.basketId, productId: products.last.id);
-
-  // basket = await sf.basketRepository.removeProductFromBasket(
-  //     basketId: basket.basketId,
-  //     basketItemId: basket.productItems!.first.itemId);
-
-  basket = await sf.basketRepository.updateProductInBasket(
-      basketId: basket.basketId,
-      basketItemId: basket.productItems!.first.itemId,
-      quantity: 2);
-
-  print(basket);
   runApp(const MyApp());
 }
 
