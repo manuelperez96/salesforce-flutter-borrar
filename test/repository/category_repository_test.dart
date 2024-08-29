@@ -13,7 +13,7 @@ import 'category_repository_test.mocks.dart';
 @GenerateNiceMocks(
   [
     MockSpec<Dio>(),
-    MockSpec<Response<dynamic>>(),
+    MockSpec<Response<Map<String, dynamic>>>(),
     MockSpec<MemoryCache<List<Category>>>(),
   ],
 )
@@ -84,9 +84,9 @@ void main() {
         test(
           'getRootCategories returns a category list on success',
           () async {
-            when(mockMemoryCache.hasKey(any)).thenReturn(false);
+            when(mockMemoryCache.getValue(any)).thenReturn(null);
             when(
-              mockDio.get<dynamic>(
+              mockDio.get<Map<String, dynamic>>(
                 any,
                 options: anyNamed('options'),
               ),
@@ -106,7 +106,7 @@ void main() {
             when(mockMemoryCache.hasKey(any)).thenReturn(true);
             when(mockMemoryCache.getValue(any)).thenReturn(categoryListModel);
 
-            final result = await categoryRepository.getSubcategoriesWithDeep('url');
+            final result = await categoryRepository.getAllCategories();
 
             expect(result, categoryListModel);
           },

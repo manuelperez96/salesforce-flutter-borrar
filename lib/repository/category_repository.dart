@@ -49,7 +49,6 @@ class CategoryRepository extends Repository {
 
       return categories;
     } catch (e) {
-      print(uri.toString());
       throw Exception('Failed to load categories: $e');
     }
   }
