@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
+import 'package:sf_commerce_sdk/repository/exceptions/basket_exceptions.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class BasketRepository extends Repository {
   BasketRepository({required super.dio, required super.config});
-  String? _basketId;
 
   Future<Basket> createBasket() async {
     try {
@@ -15,39 +15,46 @@ class BasketRepository extends Repository {
         ),
       );
 
-      final dynamic jsonResponse = response.data;
+      final jsonResponse = response.data;
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
-      _basketId = basket.basketId;
+
       return basket;
+    } on DioException catch (_) {
+      throw CreateBasketException();
     } catch (e) {
-      throw Exception('Failed to create basket: $e');
+      throw CreateBasketException();
     }
   }
 
-  Future<Basket> getBasket() async {
-    if (_basketId == null) await createBasket();
+  Future<Basket> getBasket(String basketId) async {
     try {
       final response = await dio.get<dynamic>(
-        '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$_basketId?siteId=${config.siteId}',
+        '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$basketId?siteId=${config.siteId}',
         options: Options(
           headers: {'Content-Type': 'application/json'},
         ),
       );
 
-      final dynamic jsonResponse = response.data;
+      final jsonResponse = response.data;
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
     } catch (e) {
-      throw Exception('Failed to get basket: $e');
+      if (e is DioException) {
+        throw GetBasketException();
+      } else {
+        throw GetBasketException();
+      }
     }
   }
 
-  Future<Basket> addItemToBasket(
-      {required String productId, int quantity = 1,}) async {
-    if (_basketId == null) await createBasket();
+  Future<Basket> addProductToBasket({
+    required String basketId,
+    required String productId,
+    int quantity = 1,
+  }) async {
     try {
       final response = await dio.post<dynamic>(
-        '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$_basketId/items?siteId=${config.siteId}',
+        '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$basketId/items?siteId=${config.siteId}',
         data: [
           {'productId': productId, 'quantity': quantity},
         ],
@@ -58,47 +65,55 @@ class BasketRepository extends Repository {
       final jsonResponse = response.data;
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
-    } catch (e) {
-      throw Exception('Failed to add item to basket: $e');
+    } on DioException catch (_) {
+      throw AddProductToBasketException();
+    } catch (_) {
+      throw AddProductToBasketException();
     }
   }
 
-  Future<void> removeItemFromBasket(String productId) async {
-    // TODO(Patri): implement removeItemFromBasket. 
-    // TODO(Patri): No elimina un producto agregado anteriormente a la cesta
-    // TODO(Patri): https://developer.salesforce.com/docs/commerce/commerce-api/references/shopper-baskets?meta=removeItemFromBasket
+  Future<Basket> removeProductFromBasket({
+    required String basketId,
+    required String basketItemId,
+  }) async {
+    try {
+      final response = await dio.delete<dynamic>(
+        '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$basketId/items/$basketItemId?siteId=${config.siteId}',
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
 
-    // if (_basketId == null) await createBasket();
-    // try {
-
-    //   await dio.delete(
-    //     '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$_basketId/items/$productId?siteId=${config.siteId}',
-    //     options: Options(
-    //       headers: {'Content-Type': 'application/json'},
-    //     ),
-    //   );
-
-    // } catch (e) {
-    //   throw Exception('Failed to remove item from basket: $e');
-    // }
+      final jsonResponse = response.data;
+      final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
+      return basket;
+    } on DioException catch (_) {
+      throw RemoveProductFromBasketException();
+    } catch (_) {
+      throw RemoveProductFromBasketException();
+    }
   }
 
-  Future<void> updateProductInBasket({
-    required String productId,
+  Future<Basket> updateProductInBasket({
+    required String basketId,
+    required String basketItemId,
     int quantity = 1,
   }) async {
-    // TODO(Patri): implement https://developer.salesforce.com/docs/commerce/commerce-api/references/shopper-baskets?meta=updateItemInBasket
-    // if (_basketId == null) await createBasket();
-    // try {
-    //   await dio.patch(
-    //     '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$_basketId/items/$productId?siteId=${config.siteId}',
-    //     data: {'quantity': quantity},
-    //     options: Options(
-    //       headers: {'Content-Type': 'application/json'},
-    //     ),
-    //   );
-    // } catch (e) {
-    //   throw Exception('Failed to update item in basket: $e');
-    // }
+    try {
+      final response = await dio.patch<dynamic>(
+        '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$basketId/items/$basketItemId?siteId=${config.siteId}',
+        data: {'quantity': quantity},
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
+      final jsonResponse = response.data;
+      final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
+      return basket;
+    } on DioException catch (_) {
+      throw UpdateProductInBasketException();
+    } catch (_) {
+      throw UpdateProductInBasketException();
+    }
   }
 }
