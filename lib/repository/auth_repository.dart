@@ -69,8 +69,8 @@ class AuthRepository extends Repository {
       );
 
       await _storage.saveToken(token);
-    } catch (_) {
-      throw const UnableDoAnonymousLoginException();
+    } catch (e) {
+      throw UnableDoAnonymousLoginException(message: e);
     }
   }
 
@@ -92,12 +92,12 @@ class AuthRepository extends Repository {
       return _getTokenRequestDataOnSuccess(response);
     } on DioException catch (e) {
       if (e.response?.statusCode != 303) {
-        throw const GetAuthorizationCodeException();
+        throw GetAuthorizationCodeException(message: e);
       }
 
       final json = e.response?.headers.map['location'] as List?;
       if (json == null || json.isEmpty || json.first is! String) {
-        throw const GetAuthorizationCodeException();
+        throw GetAuthorizationCodeException(message: e);
       }
 
       return _getTokenRequestDataOnRedirect(json.first as String);
@@ -129,8 +129,8 @@ class AuthRepository extends Repository {
       }
 
       return AccessToken.fromJson(response.data as Map<String, dynamic>);
-    } catch (_) {
-      throw const GetAccessTokenException();
+    } catch (e) {
+      throw GetAccessTokenException(message: e);
     }
   }
 

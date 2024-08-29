@@ -1,7 +1,7 @@
 abstract class BaseApiException implements Exception {
   const BaseApiException({this.message});
 
-  final String? message;
+  final Object? message;
 
   @override
   String toString() {
