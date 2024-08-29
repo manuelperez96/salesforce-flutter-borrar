@@ -37,11 +37,7 @@ class BasketRepository extends Repository {
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
     } catch (e) {
-      if (e is DioException) {
-        throw const GetBasketException();
-      } else {
-        throw const GetBasketException();
-      }
+      throw GetBasketException(e);
     }
   }
 
@@ -63,10 +59,8 @@ class BasketRepository extends Repository {
       final jsonResponse = response.data;
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
-    } on DioException catch (_) {
-      throw const AddProductToBasketException();
-    } catch (_) {
-      throw const AddProductToBasketException();
+    } catch (e) {
+      throw AddProductToBasketException(e);
     }
   }
 
@@ -85,10 +79,8 @@ class BasketRepository extends Repository {
       final jsonResponse = response.data;
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
-    } on DioException catch (_) {
-      throw const RemoveProductFromBasketException();
-    } catch (_) {
-      throw const RemoveProductFromBasketException();
+    } catch (e) {
+      throw RemoveProductFromBasketException(e);
     }
   }
 
@@ -108,10 +100,8 @@ class BasketRepository extends Repository {
       final jsonResponse = response.data;
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
       return basket;
-    } on DioException catch (_) {
-      throw const UpdateProductInBasketException();
-    } catch (_) {
-      throw const UpdateProductInBasketException();
+    } catch (e) {
+      throw UpdateProductInBasketException(e);
     }
   }
 }
