@@ -4,3 +4,4 @@
 - Add authentication logic with bloc in example.
 - Create product detail page in example.
 - Refactor api code.
+- Internacionalization
