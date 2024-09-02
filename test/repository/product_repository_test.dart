@@ -43,6 +43,19 @@ void main() {
                   'pageTitle': 'pageTitle for Product 1',
                   'price': 10,
                   'pricePerUnit': 10,
+                  'imageGroups': [
+                    {
+                      'viewType': 'viewType',
+                      'images': [
+                        {
+                          'alt': 'alt',
+                          'disBaseLink': 'disBaseLink',
+                          'link': 'link',
+                          'title': 'title',
+                        },
+                      ],
+                    },
+                  ],
                   'shortDescription': 'shortDescription for Product 1',
                   'currency': 'USD',
                 },
@@ -55,6 +68,19 @@ void main() {
                   'pricePerUnit': 20,
                   'shortDescription': 'shortDescription for Product 2',
                   'currency': 'USD',
+                  'imageGroups': [
+                    {
+                      'viewType': 'viewType',
+                      'images': [
+                        {
+                          'alt': 'alt',
+                          'disBaseLink': 'disBaseLink',
+                          'link': 'link',
+                          'title': 'title',
+                        },
+                      ],
+                    },
+                  ],
                 },
               ],
             },
@@ -108,6 +134,19 @@ void main() {
               'pageTitle': 'pageTitle for Product 1',
               'price': 10,
               'pricePerUnit': 10,
+              'imageGroups': [
+                {
+                  'viewType': 'viewType',
+                  'images': [
+                    {
+                      'alt': 'alt',
+                      'disBaseLink': 'disBaseLink',
+                      'link': 'link',
+                      'title': 'title',
+                    },
+                  ],
+                },
+              ],
               'shortDescription': 'shortDescription for Product 1',
               'currency': 'USD',
             },
