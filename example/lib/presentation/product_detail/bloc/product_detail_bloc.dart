@@ -15,7 +15,8 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     required ProductRepository productRepository,
   })  : _productRepository = productRepository,
         super(_Initial(productId: productId)) {
-    on<ProductDetailEvent>(_onProductDetailEvent);
+    on<_Started>(_onProductDetailEvent);
+    on<_UpdateQuantity>(_onUpdateQuantity);
   }
 
   final ProductRepository _productRepository;
@@ -28,10 +29,18 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
         state.copyWith(
           product: response,
           status: ProductDetailStatus.loaded,
+          productQuantity: response.minOrderQuantity ?? 1,
         ),
       );
     } catch (e) {
       emit(state.copyWith(status: ProductDetailStatus.error));
     }
+  }
+
+  void _onUpdateQuantity(
+    _UpdateQuantity event,
+    Emitter<ProductDetailState> emit,
+  ) {
+    emit(state.copyWith(productQuantity: event.quantity));
   }
 }
