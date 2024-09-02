@@ -21,13 +21,21 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Product {
   String get id => throw _privateConstructorUsedError;
+  String get currency =>
+      throw _privateConstructorUsedError; // required List<ImageGroup> imageGroups,
   String get name => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
-  String get currency => throw _privateConstructorUsedError;
+  String get pageDescription => throw _privateConstructorUsedError;
+  String get pageTitle => throw _privateConstructorUsedError;
+  int get price => throw _privateConstructorUsedError;
+  int get pricePerUnit => throw _privateConstructorUsedError;
+  String get shortDescription => throw _privateConstructorUsedError;
 
+  /// Serializes this Product to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -38,10 +46,13 @@ abstract class $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String currency,
       String name,
-      String? description,
-      double price,
-      String currency});
+      String pageDescription,
+      String pageTitle,
+      int price,
+      int pricePerUnit,
+      String shortDescription});
 }
 
 /// @nodoc
@@ -54,35 +65,52 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? description = freezed,
-    Object? price = null,
     Object? currency = null,
+    Object? name = null,
+    Object? pageDescription = null,
+    Object? pageTitle = null,
+    Object? price = null,
+    Object? pricePerUnit = null,
+    Object? shortDescription = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+      pageDescription: null == pageDescription
+          ? _value.pageDescription
+          : pageDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      pageTitle: null == pageTitle
+          ? _value.pageTitle
+          : pageTitle // ignore: cast_nullable_to_non_nullable
+              as String,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      currency: null == currency
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
+              as int,
+      pricePerUnit: null == pricePerUnit
+          ? _value.pricePerUnit
+          : pricePerUnit // ignore: cast_nullable_to_non_nullable
+              as int,
+      shortDescription: null == shortDescription
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -97,10 +125,13 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String currency,
       String name,
-      String? description,
-      double price,
-      String currency});
+      String pageDescription,
+      String pageTitle,
+      int price,
+      int pricePerUnit,
+      String shortDescription});
 }
 
 /// @nodoc
@@ -111,35 +142,52 @@ class __$$ProductImplCopyWithImpl<$Res>
       _$ProductImpl _value, $Res Function(_$ProductImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? description = freezed,
-    Object? price = null,
     Object? currency = null,
+    Object? name = null,
+    Object? pageDescription = null,
+    Object? pageTitle = null,
+    Object? price = null,
+    Object? pricePerUnit = null,
+    Object? shortDescription = null,
   }) {
     return _then(_$ProductImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+      pageDescription: null == pageDescription
+          ? _value.pageDescription
+          : pageDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      pageTitle: null == pageTitle
+          ? _value.pageTitle
+          : pageTitle // ignore: cast_nullable_to_non_nullable
+              as String,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      currency: null == currency
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
+              as int,
+      pricePerUnit: null == pricePerUnit
+          ? _value.pricePerUnit
+          : pricePerUnit // ignore: cast_nullable_to_non_nullable
+              as int,
+      shortDescription: null == shortDescription
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -150,10 +198,13 @@ class __$$ProductImplCopyWithImpl<$Res>
 class _$ProductImpl implements _Product {
   _$ProductImpl(
       {required this.id,
+      required this.currency,
       required this.name,
-      required this.description,
+      required this.pageDescription,
+      required this.pageTitle,
       required this.price,
-      required this.currency});
+      required this.pricePerUnit,
+      required this.shortDescription});
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
@@ -161,17 +212,24 @@ class _$ProductImpl implements _Product {
   @override
   final String id;
   @override
+  final String currency;
+// required List<ImageGroup> imageGroups,
+  @override
   final String name;
   @override
-  final String? description;
+  final String pageDescription;
   @override
-  final double price;
+  final String pageTitle;
   @override
-  final String currency;
+  final int price;
+  @override
+  final int pricePerUnit;
+  @override
+  final String shortDescription;
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, description: $description, price: $price, currency: $currency)';
+    return 'Product(id: $id, currency: $currency, name: $name, pageDescription: $pageDescription, pageTitle: $pageTitle, price: $price, pricePerUnit: $pricePerUnit, shortDescription: $shortDescription)';
   }
 
   @override
@@ -180,20 +238,28 @@ class _$ProductImpl implements _Product {
         (other.runtimeType == runtimeType &&
             other is _$ProductImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.price, price) || other.price == price) &&
             (identical(other.currency, currency) ||
-                other.currency == currency));
+                other.currency == currency) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.pageDescription, pageDescription) ||
+                other.pageDescription == pageDescription) &&
+            (identical(other.pageTitle, pageTitle) ||
+                other.pageTitle == pageTitle) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.pricePerUnit, pricePerUnit) ||
+                other.pricePerUnit == pricePerUnit) &&
+            (identical(other.shortDescription, shortDescription) ||
+                other.shortDescription == shortDescription));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, description, price, currency);
+  int get hashCode => Object.hash(runtimeType, id, currency, name,
+      pageDescription, pageTitle, price, pricePerUnit, shortDescription);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
@@ -210,25 +276,37 @@ class _$ProductImpl implements _Product {
 abstract class _Product implements Product {
   factory _Product(
       {required final String id,
+      required final String currency,
       required final String name,
-      required final String? description,
-      required final double price,
-      required final String currency}) = _$ProductImpl;
+      required final String pageDescription,
+      required final String pageTitle,
+      required final int price,
+      required final int pricePerUnit,
+      required final String shortDescription}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
   @override
   String get id;
   @override
+  String get currency; // required List<ImageGroup> imageGroups,
+  @override
   String get name;
   @override
-  String? get description;
+  String get pageDescription;
   @override
-  double get price;
+  String get pageTitle;
   @override
-  String get currency;
+  int get price;
   @override
-  @JsonKey(ignore: true)
+  int get pricePerUnit;
+  @override
+  String get shortDescription;
+
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

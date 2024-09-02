@@ -1,12 +1,8 @@
-import 'package:example/components/product/product_card.dart';
-import 'package:example/constants.dart';
-import 'package:example/models/product_model.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
-import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_state.dart';
-import 'package:example/presentation/product/views/components/product_quantity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -41,7 +37,7 @@ class CartScreen extends StatelessWidget {
                     );
                   }
 
-                  Map<String, List<ProductModel>> groupedProducts = {};
+                  Map<String, List<Product>> groupedProducts = {};
                   for (var product in state.products) {
                     groupedProducts
                         .putIfAbsent(product.id.toString(), () => [])
@@ -53,29 +49,29 @@ class CartScreen extends StatelessWidget {
                     final product = products.first;
                     final quantity = products.length;
 
-                    Widget productCard = Padding(
-                      padding: const EdgeInsets.only(
-                        left: defaultPadding,
-                        right: defaultPadding,
-                      ),
-                      child: ProductCard(
-                        product: product,
-                        press: () {},
-                        bottomWidget: ProductQuantity(
-                          numOfItem: quantity,
-                          onIncrement: () {
-                            BlocProvider.of<CartBloc>(context)
-                                .add(AddProductCart(product, 1));
-                          },
-                          onDecrement: () {
-                            BlocProvider.of<CartBloc>(context)
-                                .add(RemoveProductCart(product));
-                          },
-                        ),
-                      ),
-                    );
+                    // Widget productCard = Padding(
+                    //   padding: const EdgeInsets.only(
+                    //     left: defaultPadding,
+                    //     right: defaultPadding,
+                    //   ),
+                    //   child: ProductCard(
+                    //     product: product,
+                    //     press: () {},
+                    //     bottomWidget: ProductQuantity(
+                    //       numOfItem: quantity,
+                    //       onIncrement: () {
+                    //         BlocProvider.of<CartBloc>(context)
+                    //             .add(AddProductCart(product, 1));
+                    //       },
+                    //       onDecrement: () {
+                    //         BlocProvider.of<CartBloc>(context)
+                    //             .add(RemoveProductCart(product));
+                    //       },
+                    //     ),
+                    //   ),
+                    // );
 
-                    productCards.add(productCard);
+                    // productCards.add(productCard);
                   });
 
                   return Align(

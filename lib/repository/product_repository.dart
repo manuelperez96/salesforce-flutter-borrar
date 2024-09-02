@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
 import 'package:sf_commerce_sdk/models/exception/product_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_category.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
 class ProductRepository extends Repository {
@@ -56,26 +56,22 @@ class ProductRepository extends Repository {
   }
 
   // TODO(Carlos): change ProductByCategory by Product + cache manager
-  Future<List<ProductByCategory>> getProductByCategory(String category) async {
+  Future<List<ProductPreviewByCategory>> getProductByCategory(
+    String category,
+  ) async {
     try {
-      final response = await dio.get<dynamic>(
+      final response = await dio.get<Map<String, dynamic>>(
         '${config.host}/search/shopper-search/v1/organizations/${config.organizationId}/product-search?refine=cgid=$category&siteId=${config.siteId}',
-        options: Options(
-          headers: {'Content-Type': 'application/json'},
-        ),
       );
-      final jsonResponse = (response.data as Map)['hits'] as List?;
+      if (response.data == null) return [];
 
-      if (jsonResponse != null) {
-        return jsonResponse
-            .map<ProductByCategory>(
-              (json) =>
-                  ProductByCategory.fromJson(json as Map<String, dynamic>),
-            )
-            .toList();
-      } else {
-        return [];
-      }
+      return ((response.data! as Map)['hits'] as List?)
+              ?.cast<Map<String, dynamic>>()
+              .map(
+                (json) => _toProductPreview(categoryId: category, json: json),
+              )
+              .toList() ??
+          [];
     } catch (e) {
       throw UnableToGetProductException(e);
     }
@@ -83,5 +79,15 @@ class ProductRepository extends Repository {
 
   void clearCache() {
     memoryCache.clearAll();
+  }
+
+  ProductPreviewByCategory _toProductPreview({
+    required String categoryId,
+    required Map<String, dynamic> json,
+  }) {
+    return ProductPreviewByCategory.fromJson(
+      categoryId: categoryId,
+      json: json,
+    );
   }
 }

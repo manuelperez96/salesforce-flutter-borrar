@@ -1,12 +1,13 @@
 import 'package:example/components/network_image_with_loader.dart';
 import 'package:example/constants.dart';
+import 'package:example/presentation/home/views/components/custom_product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product_by_category.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_category.dart';
 
 class CustomBanner extends StatelessWidget {
   final Category category;
-  final List<ProductByCategory> productList;
+  final List<ProductPreviewByCategory> productList;
 
   const CustomBanner({
     super.key,
@@ -112,73 +113,5 @@ class CustomBanner extends StatelessWidget {
               )
             ],
           );
-  }
-}
-
-class CustomProductCard extends StatelessWidget {
-  const CustomProductCard({
-    super.key,
-    required this.product,
-  });
-  final ProductByCategory product;
-
-  @override
-  Widget build(BuildContext context) {
-    return OutlinedButton(
-      onPressed: () {},
-      style: OutlinedButton.styleFrom(
-          minimumSize: const Size(140, 220),
-          maximumSize: const Size(140, 260),
-          padding: const EdgeInsets.all(8)),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AspectRatio(
-            aspectRatio: 1.15,
-            child: Stack(
-              children: [
-                Hero(
-                  tag: product.image,
-                  child: NetworkImageWithLoader(product.image,
-                      radius: defaultBorderRadius),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: defaultPadding / 2, vertical: defaultPadding / 2),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: defaultPadding / 2),
-                  Text(
-                    product.productName,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall!
-                        .copyWith(fontSize: 12),
-                  ),
-                  const Spacer(),
-                  Text(
-                    "${product.price} ${product.currency}",
-                    style: const TextStyle(
-                      color: Color(0xFF31B0D8),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }
