@@ -19,13 +19,12 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<CartBloc>(create: (context) => CartBloc()),
-        // BlocProvider<BookmarkBloc>(create: (context) => BookmarkBloc()),
         BlocProvider<HomeBloc>(
-            create: (context) => HomeBloc(
-                  categoryRepository:
-                      inject<SFCommerceSDK>().categoryRepository,
-                  productRepository: inject<SFCommerceSDK>().productRepository,
-                )..add(HomeEvent.loadHomeData())),
+          create: (context) => HomeBloc(
+            categoryRepository: inject<SFCommerceSDK>().categoryRepository,
+            productRepository: inject<SFCommerceSDK>().productRepository,
+          )..add(const HomeEvent.loadHomeData()),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
