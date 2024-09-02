@@ -20,16 +20,12 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   static const _splashDuration = Duration(milliseconds: 2500);
 
   Future<void> _onStarted(_Started event, Emitter<SplashState> emit) async {
-    final clock = Stopwatch()..start();
     try {
-      final logged = await _authRepository.checkStatus();
-      if (logged) {
-        await _awaitSplashTime(clock);
-        return emit(state.copyWith(logged: true));
-      }
+      await Future.wait([
+        Future.delayed(_splashDuration),
+        _doLogin(),
+      ]);
 
-      await _authRepository.anonymousLogin();
-      await _awaitSplashTime(clock);
       return emit(state.copyWith(logged: true));
     } catch (e) {
       // Todo(Team): handle error case. Maybe add an error splash screen.
@@ -37,11 +33,9 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     }
   }
 
-  Future<void> _awaitSplashTime(Stopwatch clock) async {
-    clock.stop();
-    final remainingTime =
-        _splashDuration.inMilliseconds - clock.elapsed.inMilliseconds;
-    if (remainingTime < 0) return Future.value();
-    await Future.delayed(Duration(milliseconds: remainingTime));
+  Future<void> _doLogin() async {
+    final logged = await _authRepository.checkStatus();
+    if (logged) return;
+    return _authRepository.anonymousLogin();
   }
 }
