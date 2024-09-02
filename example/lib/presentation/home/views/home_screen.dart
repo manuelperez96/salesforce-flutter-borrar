@@ -1,74 +1,43 @@
-import 'package:example/components/Banner/S/banner_s_style_1.dart';
-import 'package:example/components/Banner/S/banner_s_style_5.dart';
-import 'package:example/constants.dart';
-import 'package:example/route/screen_export.dart';
+import 'package:example/presentation/home/bloc/home_bloc.dart';
+import 'package:example/presentation/home/views/components/custom_banner.dart';
+import 'package:example/presentation/home/views/components/home_shimmer.dart';
 import 'package:flutter/material.dart';
-
-import 'components/best_sellers.dart';
-import 'components/flash_sale.dart';
-import 'components/most_popular.dart';
-import 'components/offer_carousel_and_categories.dart';
-import 'components/popular_products.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            const SliverToBoxAdapter(child: OffersCarouselAndCategories()),
-            const SliverToBoxAdapter(child: PopularProducts()),
-            const SliverPadding(
-              padding: EdgeInsets.symmetric(vertical: defaultPadding * 1.5),
-              sliver: SliverToBoxAdapter(child: FlashSale()),
-            ),
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  // While loading use 👇
-                  // const BannerMSkelton(),
-                  BannerSStyle1(
-                    title: "New \narrival",
-                    subtitle: "SPECIAL OFFER",
-                    discountParcent: 50,
-                    press: () {
-                      Navigator.pushNamed(context, onSaleScreenRoute);
-                    },
-                  ),
-                  const SizedBox(height: defaultPadding / 4),
-                  // We have 4 banner styles, all in the pro version
-                ],
-              ),
-            ),
-            const SliverToBoxAdapter(child: BestSellers()),
-            const SliverToBoxAdapter(child: MostPopular()),
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  const SizedBox(height: defaultPadding * 1.5),
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        if (state.status == HomeStatus.loading) return const HomeShimmer();
 
-                  const SizedBox(height: defaultPadding / 4),
-                  // While loading use 👇
-                  // const BannerSSkelton(),
-                  BannerSStyle5(
-                    title: "Black \nfriday",
-                    subtitle: "50% Off",
-                    bottomText: "Collection".toUpperCase(),
-                    press: () {
-                      Navigator.pushNamed(context, onSaleScreenRoute);
-                    },
-                  ),
-                  const SizedBox(height: defaultPadding / 4),
-                ],
-              ),
+        if (state.status == HomeStatus.loaded &&
+            state.productByCategory.isNotEmpty) {
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: MediaQuery.paddingOf(context).top,
+                ),
+                ...List.generate(
+                  state.productByCategory.length,
+                  (index) {
+                    final entries = state.productByCategory.entries.toList();
+                    return CustomBanner(
+                      category: entries[index].key,
+                      productList: entries[index].value,
+                    );
+                  },
+                ),
+              ],
             ),
-            const SliverToBoxAdapter(child: BestSellers()),
-          ],
-        ),
-      ),
+          );
+        }
+
+        return const Center(child: Text("Failed to load data"));
+      },
     );
   }
 }

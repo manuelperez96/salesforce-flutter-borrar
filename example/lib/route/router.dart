@@ -1,7 +1,7 @@
 import 'package:example/components/bottom_navigation_bar/entry_point.dart';
-import 'package:example/models/product_model.dart';
+import 'package:example/presentation/home/views/home_screen.dart';
+import 'package:example/presentation/product_detail/product_detail_provider.dart';
 import 'package:example/presentation/splash/splash_screen.dart';
-import 'package:example/presentation/wallet/views/custom_wallet_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'screen_export.dart';
@@ -31,8 +31,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case productDetailsScreenRoute:
       return MaterialPageRoute(
         builder: (context) {
-          ProductModel product = settings.arguments as ProductModel;
-          return ProductDetailsScreen(product: product);
+          String productId = settings.arguments as String;
+          return ProductDetailProvider(productId: productId);
         },
       );
     case productReviewsScreenRoute:
@@ -59,10 +59,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const SearchScreen(),
       );
-    case bookmarkScreenRoute:
-      return MaterialPageRoute(
-        builder: (context) => const BookmarkScreen(),
-      );
+    // case bookmarkScreenRoute:
+    //   return MaterialPageRoute(
+    //     builder: (context) => const BookmarkScreen(),
+    //   );
     case entryPointScreenRoute:
       return MaterialPageRoute(
         builder: (context) => const EntryPoint(),
@@ -107,14 +107,14 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const EmptyWalletScreen(),
       );
-    case walletScreenRoute:
-      return MaterialPageRoute(
-        builder: (context) => const WalletScreen(),
-      );
-    case customWalletScreenRoute:
-      return MaterialPageRoute(
-        builder: (context) => const CustomWalletScreen(),
-      );
+    // case walletScreenRoute:
+    //   return MaterialPageRoute(
+    //     builder: (context) => const WalletScreen(),
+    //   );
+    // case customWalletScreenRoute:
+    //   return MaterialPageRoute(
+    //     builder: (context) => const CustomWalletScreen(),
+    //   );
     case cartScreenRoute:
       return MaterialPageRoute(
         builder: (context) => const CartScreen(),

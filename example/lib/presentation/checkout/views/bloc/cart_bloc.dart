@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:example/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 import 'cart_event.dart';
 import 'cart_state.dart';
@@ -27,10 +27,9 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     emit(CartLoading());
 
     if (currentState is CartLoaded) {
-      List<ProductModel> updatedProducts =
-          List<ProductModel>.from(currentState.products);
+      List<Product> updatedProducts = List<Product>.from(currentState.products);
       for (var i = 0; i < event.quantity; i++) {
-        updatedProducts = List<ProductModel>.from(updatedProducts)
+        updatedProducts = List<Product>.from(updatedProducts)
           ..add(event.product);
       }
       controller.forward();
@@ -47,7 +46,7 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     emit(CartLoading());
 
     if (currentState is CartLoaded) {
-      final updatedProducts = List<ProductModel>.from(currentState.products)
+      final updatedProducts = List<Product>.from(currentState.products)
         ..remove(event.product);
       controller.forward();
       emit(CartLoaded(updatedProducts));

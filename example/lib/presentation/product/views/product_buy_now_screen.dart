@@ -1,7 +1,6 @@
 import 'package:example/components/cart_button.dart';
 import 'package:example/components/custom_modal_bottom_sheet.dart';
 import 'package:example/components/network_image_with_loader.dart';
-import 'package:example/models/product_model.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/product/views/added_to_cart_message_screen.dart';
@@ -11,6 +10,7 @@ import 'package:example/presentation/product/views/size_guide_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 import '../../../constants.dart';
 import 'components/product_quantity.dart';
@@ -20,7 +20,7 @@ import 'components/unit_price.dart';
 
 class ProductBuyNowScreen extends StatefulWidget {
   const ProductBuyNowScreen({super.key, required this.product});
-  final ProductModel product;
+  final Product product;
 
   @override
   State<ProductBuyNowScreen> createState() => _ProductBuyNowScreenState();

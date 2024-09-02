@@ -1,15 +1,15 @@
-part of 'bookmark_bloc.dart';
+// part of 'bookmark_bloc.dart';
 
-abstract class BookmarkEvent {}
+// abstract class BookmarkEvent {}
 
-class AddProductEvent extends BookmarkEvent {
-  final ProductModel product;
+// class AddProductEvent extends BookmarkEvent {
+//   final ProductModel product;
 
-  AddProductEvent(this.product);
-}
+//   AddProductEvent(this.product);
+// }
 
-class RemoveProductEvent extends BookmarkEvent {
-  final ProductModel product;
+// class RemoveProductEvent extends BookmarkEvent {
+//   final ProductModel product;
 
-  RemoveProductEvent(this.product);
-}
+//   RemoveProductEvent(this.product);
+// }
