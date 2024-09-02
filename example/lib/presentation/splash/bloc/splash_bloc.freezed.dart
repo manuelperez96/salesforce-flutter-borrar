@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_bloc.dart';
+part of 'splash_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,51 +15,52 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$HomeEvent {
+mixin _$SplashEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadHomeData,
+    required TResult Function() started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadHomeData,
+    TResult? Function()? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadHomeData,
+    TResult Function()? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadHomeData value) loadHomeData,
+    required TResult Function(_Started value) started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadHomeData value)? loadHomeData,
+    TResult? Function(_Started value)? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadHomeData value)? loadHomeData,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HomeEventCopyWith<$Res> {
-  factory $HomeEventCopyWith(HomeEvent value, $Res Function(HomeEvent) then) =
-      _$HomeEventCopyWithImpl<$Res, HomeEvent>;
+abstract class $SplashEventCopyWith<$Res> {
+  factory $SplashEventCopyWith(
+          SplashEvent value, $Res Function(SplashEvent) then) =
+      _$SplashEventCopyWithImpl<$Res, SplashEvent>;
 }
 
 /// @nodoc
-class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
-    implements $HomeEventCopyWith<$Res> {
-  _$HomeEventCopyWithImpl(this._value, this._then);
+class _$SplashEventCopyWithImpl<$Res, $Val extends SplashEvent>
+    implements $SplashEventCopyWith<$Res> {
+  _$SplashEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,35 +69,35 @@ class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
 }
 
 /// @nodoc
-abstract class _$$LoadHomeDataImplCopyWith<$Res> {
-  factory _$$LoadHomeDataImplCopyWith(
-          _$LoadHomeDataImpl value, $Res Function(_$LoadHomeDataImpl) then) =
-      __$$LoadHomeDataImplCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadHomeDataImplCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$LoadHomeDataImpl>
-    implements _$$LoadHomeDataImplCopyWith<$Res> {
-  __$$LoadHomeDataImplCopyWithImpl(
-      _$LoadHomeDataImpl _value, $Res Function(_$LoadHomeDataImpl) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$SplashEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadHomeDataImpl implements _LoadHomeData {
-  const _$LoadHomeDataImpl();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
-    return 'HomeEvent.loadHomeData()';
+    return 'SplashEvent.started()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadHomeDataImpl);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -105,27 +106,27 @@ class _$LoadHomeDataImpl implements _LoadHomeData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadHomeData,
+    required TResult Function() started,
   }) {
-    return loadHomeData();
+    return started();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadHomeData,
+    TResult? Function()? started,
   }) {
-    return loadHomeData?.call();
+    return started?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadHomeData,
+    TResult Function()? started,
     required TResult orElse(),
   }) {
-    if (loadHomeData != null) {
-      return loadHomeData();
+    if (started != null) {
+      return started();
     }
     return orElse();
   }
@@ -133,63 +134,52 @@ class _$LoadHomeDataImpl implements _LoadHomeData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadHomeData value) loadHomeData,
+    required TResult Function(_Started value) started,
   }) {
-    return loadHomeData(this);
+    return started(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadHomeData value)? loadHomeData,
+    TResult? Function(_Started value)? started,
   }) {
-    return loadHomeData?.call(this);
+    return started?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadHomeData value)? loadHomeData,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) {
-    if (loadHomeData != null) {
-      return loadHomeData(this);
+    if (started != null) {
+      return started(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadHomeData implements HomeEvent {
-  const factory _LoadHomeData() = _$LoadHomeDataImpl;
+abstract class _Started implements SplashEvent {
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-mixin _$HomeState {
-  Map<Category, List<ProductPreviewByCategory>> get productByCategory =>
-      throw _privateConstructorUsedError;
-  HomeStatus get status => throw _privateConstructorUsedError;
+mixin _$SplashState {
+  bool get logged => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Map<Category, List<ProductPreviewByCategory>> productByCategory,
-            HomeStatus status)
-        initial,
+    required TResult Function(bool logged) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Map<Category, List<ProductPreviewByCategory>> productByCategory,
-            HomeStatus status)?
-        initial,
+    TResult? Function(bool logged)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Map<Category, List<ProductPreviewByCategory>> productByCategory,
-            HomeStatus status)?
-        initial,
+    TResult Function(bool logged)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -211,24 +201,23 @@ mixin _$HomeState {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HomeStateCopyWith<HomeState> get copyWith =>
+  $SplashStateCopyWith<SplashState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res, HomeState>;
+abstract class $SplashStateCopyWith<$Res> {
+  factory $SplashStateCopyWith(
+          SplashState value, $Res Function(SplashState) then) =
+      _$SplashStateCopyWithImpl<$Res, SplashState>;
   @useResult
-  $Res call(
-      {Map<Category, List<ProductPreviewByCategory>> productByCategory,
-      HomeStatus status});
+  $Res call({bool logged});
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
-    implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._value, this._then);
+class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
+    implements $SplashStateCopyWith<$Res> {
+  _$SplashStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -238,38 +227,31 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productByCategory = null,
-    Object? status = null,
+    Object? logged = null,
   }) {
     return _then(_value.copyWith(
-      productByCategory: null == productByCategory
-          ? _value.productByCategory
-          : productByCategory // ignore: cast_nullable_to_non_nullable
-              as Map<Category, List<ProductPreviewByCategory>>,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as HomeStatus,
+      logged: null == logged
+          ? _value.logged
+          : logged // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res>
-    implements $HomeStateCopyWith<$Res> {
+    implements $SplashStateCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Map<Category, List<ProductPreviewByCategory>> productByCategory,
-      HomeStatus status});
+  $Res call({bool logged});
 }
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$SplashStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -278,18 +260,13 @@ class __$$InitialImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productByCategory = null,
-    Object? status = null,
+    Object? logged = null,
   }) {
     return _then(_$InitialImpl(
-      productByCategory: null == productByCategory
-          ? _value._productByCategory
-          : productByCategory // ignore: cast_nullable_to_non_nullable
-              as Map<Category, List<ProductPreviewByCategory>>,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as HomeStatus,
+      logged: null == logged
+          ? _value.logged
+          : logged // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -297,29 +274,15 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl(
-      {final Map<Category, List<ProductPreviewByCategory>> productByCategory =
-          const <Category, List<ProductPreviewByCategory>>{},
-      this.status = HomeStatus.loading})
-      : _productByCategory = productByCategory;
-
-  final Map<Category, List<ProductPreviewByCategory>> _productByCategory;
-  @override
-  @JsonKey()
-  Map<Category, List<ProductPreviewByCategory>> get productByCategory {
-    if (_productByCategory is EqualUnmodifiableMapView)
-      return _productByCategory;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_productByCategory);
-  }
+  const _$InitialImpl({this.logged = false});
 
   @override
   @JsonKey()
-  final HomeStatus status;
+  final bool logged;
 
   @override
   String toString() {
-    return 'HomeState.initial(productByCategory: $productByCategory, status: $status)';
+    return 'SplashState.initial(logged: $logged)';
   }
 
   @override
@@ -327,14 +290,11 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
-            const DeepCollectionEquality()
-                .equals(other._productByCategory, _productByCategory) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.logged, logged) || other.logged == logged));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_productByCategory), status);
+  int get hashCode => Object.hash(runtimeType, logged);
 
   @JsonKey(ignore: true)
   @override
@@ -345,36 +305,27 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Map<Category, List<ProductPreviewByCategory>> productByCategory,
-            HomeStatus status)
-        initial,
+    required TResult Function(bool logged) initial,
   }) {
-    return initial(productByCategory, status);
+    return initial(logged);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            Map<Category, List<ProductPreviewByCategory>> productByCategory,
-            HomeStatus status)?
-        initial,
+    TResult? Function(bool logged)? initial,
   }) {
-    return initial?.call(productByCategory, status);
+    return initial?.call(logged);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            Map<Category, List<ProductPreviewByCategory>> productByCategory,
-            HomeStatus status)?
-        initial,
+    TResult Function(bool logged)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(productByCategory, status);
+      return initial(logged);
     }
     return orElse();
   }
@@ -408,15 +359,11 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements HomeState {
-  const factory _Initial(
-      {final Map<Category, List<ProductPreviewByCategory>> productByCategory,
-      final HomeStatus status}) = _$InitialImpl;
+abstract class _Initial implements SplashState {
+  const factory _Initial({final bool logged}) = _$InitialImpl;
 
   @override
-  Map<Category, List<ProductPreviewByCategory>> get productByCategory;
-  @override
-  HomeStatus get status;
+  bool get logged;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

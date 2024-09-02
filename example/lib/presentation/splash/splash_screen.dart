@@ -1,45 +1,47 @@
-import 'dart:async';
-
 import 'package:example/constants/assets.dart';
 import 'package:example/di/app_modules.dart';
+import 'package:example/presentation/splash/bloc/splash_bloc.dart';
 import 'package:example/route/screen_export.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
-
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    _navigateToOnboarding();
-  }
+class SplashProvider extends StatelessWidget {
+  const SplashProvider({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Lottie.asset(Assets.bagAnimation),
+    return BlocProvider(
+      create: (_) => SplashBloc(
+        authRepository: inject<SFCommerceSDK>().authRepository,
+      )..add(const SplashEvent.started()),
+      child: const SplashScreen(),
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<SplashBloc, SplashState>(
+      listenWhen: _didLogin,
+      listener: _navigateToOnboarding,
+      child: Scaffold(
+        body: Center(
+          child: Lottie.asset(Assets.bagAnimation),
+        ),
       ),
     );
   }
 
-  Future<void> _navigateToOnboarding() async {
-    await Future.wait([
-      Future.delayed(const Duration(milliseconds: 2500)),
-      inject<SFCommerceSDK>().authRepository.anonymousLogin().then(
-            (value) async => await inject<SFCommerceSDK>()
-                .categoryRepository
-                .getRootCategories(),
-          ),
-    ]);
-    if (!mounted) return;
+  bool _didLogin(SplashState previous, SplashState current) {
+    return current.logged;
+  }
+
+  void _navigateToOnboarding(BuildContext context, SplashState state) {
     Navigator.pushReplacementNamed(context, onboardingScreenRoute);
   }
 }
