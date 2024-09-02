@@ -19,6 +19,8 @@ class CartButton extends StatelessWidget {
   final int productQuantity;
   @override
   Widget build(BuildContext context) {
+    final int stock = product.inventory.stockLevel;
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -26,7 +28,7 @@ class CartButton extends StatelessWidget {
         child: SizedBox(
           height: 64,
           child: Material(
-            color: primaryColor,
+            color: stock == 0 ? Colors.grey : primaryColor,
             clipBehavior: Clip.hardEdge,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
@@ -34,7 +36,7 @@ class CartButton extends StatelessWidget {
               ),
             ),
             child: InkWell(
-              onTap: press,
+              onTap: stock == 0 ? null : press,
               child: Row(
                 children: [
                   Expanded(

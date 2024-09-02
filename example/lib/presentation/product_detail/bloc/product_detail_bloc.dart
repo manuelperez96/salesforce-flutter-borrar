@@ -17,6 +17,8 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
         super(_Initial(productId: productId)) {
     on<_Started>(_onProductDetailEvent);
     on<_UpdateQuantity>(_onUpdateQuantity);
+    on<_SelectedColor>(_onUpdateSelectedColor);
+    on<_SelectedSize>(_onUpdateSelectedSize);
   }
 
   final ProductRepository _productRepository;
@@ -42,5 +44,19 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     Emitter<ProductDetailState> emit,
   ) {
     emit(state.copyWith(productQuantity: event.quantity));
+  }
+
+  void _onUpdateSelectedColor(
+    _SelectedColor event,
+    Emitter<ProductDetailState> emit,
+  ) {
+    emit(state.copyWith(selectedColor: event.color));
+  }
+
+  void _onUpdateSelectedSize(
+    _SelectedSize event,
+    Emitter<ProductDetailState> emit,
+  ) {
+    emit(state.copyWith(selectedSize: event.size));
   }
 }

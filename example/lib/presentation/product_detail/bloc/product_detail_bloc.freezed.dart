@@ -20,18 +20,24 @@ mixin _$ProductDetailEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int quantity) updateQuantity,
+    required TResult Function(String color) updateSelectedColor,
+    required TResult Function(String size) updateSelectedSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int quantity)? updateQuantity,
+    TResult? Function(String color)? updateSelectedColor,
+    TResult? Function(String size)? updateSelectedSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int quantity)? updateQuantity,
+    TResult Function(String color)? updateSelectedColor,
+    TResult Function(String size)? updateSelectedSize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$ProductDetailEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_SelectedColor value) updateSelectedColor,
+    required TResult Function(_SelectedSize value) updateSelectedSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_SelectedColor value)? updateSelectedColor,
+    TResult? Function(_SelectedSize value)? updateSelectedSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_SelectedColor value)? updateSelectedColor,
+    TResult Function(_SelectedSize value)? updateSelectedSize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +132,8 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int quantity) updateQuantity,
+    required TResult Function(String color) updateSelectedColor,
+    required TResult Function(String size) updateSelectedSize,
   }) {
     return started();
   }
@@ -129,6 +143,8 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int quantity)? updateQuantity,
+    TResult? Function(String color)? updateSelectedColor,
+    TResult? Function(String size)? updateSelectedSize,
   }) {
     return started?.call();
   }
@@ -138,6 +154,8 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int quantity)? updateQuantity,
+    TResult Function(String color)? updateSelectedColor,
+    TResult Function(String size)? updateSelectedSize,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -151,6 +169,8 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_SelectedColor value) updateSelectedColor,
+    required TResult Function(_SelectedSize value) updateSelectedSize,
   }) {
     return started(this);
   }
@@ -160,6 +180,8 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_SelectedColor value)? updateSelectedColor,
+    TResult? Function(_SelectedSize value)? updateSelectedSize,
   }) {
     return started?.call(this);
   }
@@ -169,6 +191,8 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_SelectedColor value)? updateSelectedColor,
+    TResult Function(_SelectedSize value)? updateSelectedSize,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -254,6 +278,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int quantity) updateQuantity,
+    required TResult Function(String color) updateSelectedColor,
+    required TResult Function(String size) updateSelectedSize,
   }) {
     return updateQuantity(quantity);
   }
@@ -263,6 +289,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int quantity)? updateQuantity,
+    TResult? Function(String color)? updateSelectedColor,
+    TResult? Function(String size)? updateSelectedSize,
   }) {
     return updateQuantity?.call(quantity);
   }
@@ -272,6 +300,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int quantity)? updateQuantity,
+    TResult Function(String color)? updateSelectedColor,
+    TResult Function(String size)? updateSelectedSize,
     required TResult orElse(),
   }) {
     if (updateQuantity != null) {
@@ -285,6 +315,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_SelectedColor value) updateSelectedColor,
+    required TResult Function(_SelectedSize value) updateSelectedSize,
   }) {
     return updateQuantity(this);
   }
@@ -294,6 +326,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_SelectedColor value)? updateSelectedColor,
+    TResult? Function(_SelectedSize value)? updateSelectedSize,
   }) {
     return updateQuantity?.call(this);
   }
@@ -303,6 +337,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_SelectedColor value)? updateSelectedColor,
+    TResult Function(_SelectedSize value)? updateSelectedSize,
     required TResult orElse(),
   }) {
     if (updateQuantity != null) {
@@ -325,29 +361,350 @@ abstract class _UpdateQuantity implements ProductDetailEvent {
 }
 
 /// @nodoc
+abstract class _$$SelectedColorImplCopyWith<$Res> {
+  factory _$$SelectedColorImplCopyWith(
+          _$SelectedColorImpl value, $Res Function(_$SelectedColorImpl) then) =
+      __$$SelectedColorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String color});
+}
+
+/// @nodoc
+class __$$SelectedColorImplCopyWithImpl<$Res>
+    extends _$ProductDetailEventCopyWithImpl<$Res, _$SelectedColorImpl>
+    implements _$$SelectedColorImplCopyWith<$Res> {
+  __$$SelectedColorImplCopyWithImpl(
+      _$SelectedColorImpl _value, $Res Function(_$SelectedColorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? color = null,
+  }) {
+    return _then(_$SelectedColorImpl(
+      null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectedColorImpl implements _SelectedColor {
+  const _$SelectedColorImpl(this.color);
+
+  @override
+  final String color;
+
+  @override
+  String toString() {
+    return 'ProductDetailEvent.updateSelectedColor(color: $color)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectedColorImpl &&
+            (identical(other.color, color) || other.color == color));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, color);
+
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectedColorImplCopyWith<_$SelectedColorImpl> get copyWith =>
+      __$$SelectedColorImplCopyWithImpl<_$SelectedColorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int quantity) updateQuantity,
+    required TResult Function(String color) updateSelectedColor,
+    required TResult Function(String size) updateSelectedSize,
+  }) {
+    return updateSelectedColor(color);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int quantity)? updateQuantity,
+    TResult? Function(String color)? updateSelectedColor,
+    TResult? Function(String size)? updateSelectedSize,
+  }) {
+    return updateSelectedColor?.call(color);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int quantity)? updateQuantity,
+    TResult Function(String color)? updateSelectedColor,
+    TResult Function(String size)? updateSelectedSize,
+    required TResult orElse(),
+  }) {
+    if (updateSelectedColor != null) {
+      return updateSelectedColor(color);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_SelectedColor value) updateSelectedColor,
+    required TResult Function(_SelectedSize value) updateSelectedSize,
+  }) {
+    return updateSelectedColor(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_SelectedColor value)? updateSelectedColor,
+    TResult? Function(_SelectedSize value)? updateSelectedSize,
+  }) {
+    return updateSelectedColor?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_SelectedColor value)? updateSelectedColor,
+    TResult Function(_SelectedSize value)? updateSelectedSize,
+    required TResult orElse(),
+  }) {
+    if (updateSelectedColor != null) {
+      return updateSelectedColor(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectedColor implements ProductDetailEvent {
+  const factory _SelectedColor(final String color) = _$SelectedColorImpl;
+
+  String get color;
+
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SelectedColorImplCopyWith<_$SelectedColorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SelectedSizeImplCopyWith<$Res> {
+  factory _$$SelectedSizeImplCopyWith(
+          _$SelectedSizeImpl value, $Res Function(_$SelectedSizeImpl) then) =
+      __$$SelectedSizeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String size});
+}
+
+/// @nodoc
+class __$$SelectedSizeImplCopyWithImpl<$Res>
+    extends _$ProductDetailEventCopyWithImpl<$Res, _$SelectedSizeImpl>
+    implements _$$SelectedSizeImplCopyWith<$Res> {
+  __$$SelectedSizeImplCopyWithImpl(
+      _$SelectedSizeImpl _value, $Res Function(_$SelectedSizeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? size = null,
+  }) {
+    return _then(_$SelectedSizeImpl(
+      null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectedSizeImpl implements _SelectedSize {
+  const _$SelectedSizeImpl(this.size);
+
+  @override
+  final String size;
+
+  @override
+  String toString() {
+    return 'ProductDetailEvent.updateSelectedSize(size: $size)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectedSizeImpl &&
+            (identical(other.size, size) || other.size == size));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, size);
+
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectedSizeImplCopyWith<_$SelectedSizeImpl> get copyWith =>
+      __$$SelectedSizeImplCopyWithImpl<_$SelectedSizeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int quantity) updateQuantity,
+    required TResult Function(String color) updateSelectedColor,
+    required TResult Function(String size) updateSelectedSize,
+  }) {
+    return updateSelectedSize(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int quantity)? updateQuantity,
+    TResult? Function(String color)? updateSelectedColor,
+    TResult? Function(String size)? updateSelectedSize,
+  }) {
+    return updateSelectedSize?.call(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int quantity)? updateQuantity,
+    TResult Function(String color)? updateSelectedColor,
+    TResult Function(String size)? updateSelectedSize,
+    required TResult orElse(),
+  }) {
+    if (updateSelectedSize != null) {
+      return updateSelectedSize(size);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_SelectedColor value) updateSelectedColor,
+    required TResult Function(_SelectedSize value) updateSelectedSize,
+  }) {
+    return updateSelectedSize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_SelectedColor value)? updateSelectedColor,
+    TResult? Function(_SelectedSize value)? updateSelectedSize,
+  }) {
+    return updateSelectedSize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_SelectedColor value)? updateSelectedColor,
+    TResult Function(_SelectedSize value)? updateSelectedSize,
+    required TResult orElse(),
+  }) {
+    if (updateSelectedSize != null) {
+      return updateSelectedSize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectedSize implements ProductDetailEvent {
+  const factory _SelectedSize(final String size) = _$SelectedSizeImpl;
+
+  String get size;
+
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SelectedSizeImplCopyWith<_$SelectedSizeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ProductDetailState {
   String get productId => throw _privateConstructorUsedError;
   ProductDetailStatus get status => throw _privateConstructorUsedError;
   Product? get product => throw _privateConstructorUsedError;
   int? get productQuantity => throw _privateConstructorUsedError;
+  String? get selectedColor => throw _privateConstructorUsedError;
+  String? get selectedSize => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String productId, ProductDetailStatus status,
-            Product? product, int? productQuantity)
+    required TResult Function(
+            String productId,
+            ProductDetailStatus status,
+            Product? product,
+            int? productQuantity,
+            String? selectedColor,
+            String? selectedSize)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String productId, ProductDetailStatus status,
-            Product? product, int? productQuantity)?
+    TResult? Function(
+            String productId,
+            ProductDetailStatus status,
+            Product? product,
+            int? productQuantity,
+            String? selectedColor,
+            String? selectedSize)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String productId, ProductDetailStatus status,
-            Product? product, int? productQuantity)?
+    TResult Function(
+            String productId,
+            ProductDetailStatus status,
+            Product? product,
+            int? productQuantity,
+            String? selectedColor,
+            String? selectedSize)?
         initial,
     required TResult orElse(),
   }) =>
@@ -386,7 +743,9 @@ abstract class $ProductDetailStateCopyWith<$Res> {
       {String productId,
       ProductDetailStatus status,
       Product? product,
-      int? productQuantity});
+      int? productQuantity,
+      String? selectedColor,
+      String? selectedSize});
 
   $ProductCopyWith<$Res>? get product;
 }
@@ -410,6 +769,8 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
     Object? status = null,
     Object? product = freezed,
     Object? productQuantity = freezed,
+    Object? selectedColor = freezed,
+    Object? selectedSize = freezed,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -428,6 +789,14 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
           ? _value.productQuantity
           : productQuantity // ignore: cast_nullable_to_non_nullable
               as int?,
+      selectedColor: freezed == selectedColor
+          ? _value.selectedColor
+          : selectedColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectedSize: freezed == selectedSize
+          ? _value.selectedSize
+          : selectedSize // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -458,7 +827,9 @@ abstract class _$$InitialImplCopyWith<$Res>
       {String productId,
       ProductDetailStatus status,
       Product? product,
-      int? productQuantity});
+      int? productQuantity,
+      String? selectedColor,
+      String? selectedSize});
 
   @override
   $ProductCopyWith<$Res>? get product;
@@ -481,6 +852,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? status = null,
     Object? product = freezed,
     Object? productQuantity = freezed,
+    Object? selectedColor = freezed,
+    Object? selectedSize = freezed,
   }) {
     return _then(_$InitialImpl(
       productId: null == productId
@@ -499,6 +872,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.productQuantity
           : productQuantity // ignore: cast_nullable_to_non_nullable
               as int?,
+      selectedColor: freezed == selectedColor
+          ? _value.selectedColor
+          : selectedColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectedSize: freezed == selectedSize
+          ? _value.selectedSize
+          : selectedSize // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -510,7 +891,9 @@ class _$InitialImpl implements _Initial {
       {required this.productId,
       this.status = ProductDetailStatus.loading,
       this.product,
-      this.productQuantity});
+      this.productQuantity,
+      this.selectedColor,
+      this.selectedSize});
 
   @override
   final String productId;
@@ -521,10 +904,14 @@ class _$InitialImpl implements _Initial {
   final Product? product;
   @override
   final int? productQuantity;
+  @override
+  final String? selectedColor;
+  @override
+  final String? selectedSize;
 
   @override
   String toString() {
-    return 'ProductDetailState.initial(productId: $productId, status: $status, product: $product, productQuantity: $productQuantity)';
+    return 'ProductDetailState.initial(productId: $productId, status: $status, product: $product, productQuantity: $productQuantity, selectedColor: $selectedColor, selectedSize: $selectedSize)';
   }
 
   @override
@@ -537,12 +924,16 @@ class _$InitialImpl implements _Initial {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.productQuantity, productQuantity) ||
-                other.productQuantity == productQuantity));
+                other.productQuantity == productQuantity) &&
+            (identical(other.selectedColor, selectedColor) ||
+                other.selectedColor == selectedColor) &&
+            (identical(other.selectedSize, selectedSize) ||
+                other.selectedSize == selectedSize));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, productId, status, product, productQuantity);
+  int get hashCode => Object.hash(runtimeType, productId, status, product,
+      productQuantity, selectedColor, selectedSize);
 
   /// Create a copy of ProductDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -555,33 +946,51 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String productId, ProductDetailStatus status,
-            Product? product, int? productQuantity)
+    required TResult Function(
+            String productId,
+            ProductDetailStatus status,
+            Product? product,
+            int? productQuantity,
+            String? selectedColor,
+            String? selectedSize)
         initial,
   }) {
-    return initial(productId, status, product, productQuantity);
+    return initial(productId, status, product, productQuantity, selectedColor,
+        selectedSize);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String productId, ProductDetailStatus status,
-            Product? product, int? productQuantity)?
+    TResult? Function(
+            String productId,
+            ProductDetailStatus status,
+            Product? product,
+            int? productQuantity,
+            String? selectedColor,
+            String? selectedSize)?
         initial,
   }) {
-    return initial?.call(productId, status, product, productQuantity);
+    return initial?.call(productId, status, product, productQuantity,
+        selectedColor, selectedSize);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String productId, ProductDetailStatus status,
-            Product? product, int? productQuantity)?
+    TResult Function(
+            String productId,
+            ProductDetailStatus status,
+            Product? product,
+            int? productQuantity,
+            String? selectedColor,
+            String? selectedSize)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(productId, status, product, productQuantity);
+      return initial(productId, status, product, productQuantity, selectedColor,
+          selectedSize);
     }
     return orElse();
   }
@@ -620,7 +1029,9 @@ abstract class _Initial implements ProductDetailState {
       {required final String productId,
       final ProductDetailStatus status,
       final Product? product,
-      final int? productQuantity}) = _$InitialImpl;
+      final int? productQuantity,
+      final String? selectedColor,
+      final String? selectedSize}) = _$InitialImpl;
 
   @override
   String get productId;
@@ -630,6 +1041,10 @@ abstract class _Initial implements ProductDetailState {
   Product? get product;
   @override
   int? get productQuantity;
+  @override
+  String? get selectedColor;
+  @override
+  String? get selectedSize;
 
   /// Create a copy of ProductDetailState
   /// with the given fields replaced by the non-null parameter values.

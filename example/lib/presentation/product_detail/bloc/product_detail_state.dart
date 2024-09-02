@@ -9,5 +9,7 @@ class ProductDetailState with _$ProductDetailState {
     @Default(ProductDetailStatus.loading) ProductDetailStatus status,
     Product? product,
     int? productQuantity,
+    String? selectedColor,
+    String? selectedSize,
   }) = _Initial;
 }
