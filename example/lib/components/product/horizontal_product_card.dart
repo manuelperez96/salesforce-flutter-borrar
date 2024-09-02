@@ -15,8 +15,9 @@ class HorizontalProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 15),
-      padding: EdgeInsets.all(defaultPadding),
+      margin: EdgeInsets.only(bottom: 15),
+      padding: EdgeInsets.symmetric(
+          horizontal: defaultPadding / 2, vertical: defaultPadding),
       height: 130,
       decoration: BoxDecoration(
         border: Border.all(color: Theme.of(context).focusColor),

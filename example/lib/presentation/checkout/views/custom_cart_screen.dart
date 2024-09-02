@@ -27,20 +27,17 @@ class CustomCartScreen extends StatelessWidget {
           );
         } else {
           return Scaffold(
-            body: Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.paddingOf(context).top,
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    padding: EdgeInsets.all(defaultPadding),
-                    itemCount: state.products.length,
-                    itemBuilder: (context, index) => HorizontalProductCard(
-                        productCart: state.products[index]),
-                  ),
-                ),
-              ],
+            body: ListView.builder(
+              padding: EdgeInsets.all(defaultPadding),
+              itemCount: state.products.length + 1,
+              itemBuilder: (context, index) {
+                if (index == 0)
+                  return SizedBox(
+                    height: MediaQuery.paddingOf(context).top,
+                  );
+                return HorizontalProductCard(
+                    productCart: state.products[index - 1]);
+              },
             ),
             floatingActionButton: FloatingActionButton.extended(
               onPressed: () {},
