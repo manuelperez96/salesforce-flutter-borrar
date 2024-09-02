@@ -1,25 +1,20 @@
 import 'package:dio/dio.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/product_repository.dart';
 import 'package:test/test.dart';
 
-import '../helpers/repository/product_repository.dart';
 import 'product_repository_test.mocks.dart';
 
-@GenerateMocks([Dio], customMocks: [MockSpec<MemoryCache<Product>>()])
+@GenerateMocks([Dio])
 void main() {
   late ProductRepository productRepository;
   late MockDio mockDio;
   late SfCommerceConfig config;
-  late MockMemoryCache mockMemoryCache;
 
   setUp(() {
     mockDio = MockDio();
-    mockMemoryCache = MockMemoryCache();
     config = SfCommerceConfig(
       clientId: '0c892f93-5262-4cab-8349-b170e0779357',
       organizationId: 'f_ecom_zzrj_031',
@@ -29,7 +24,6 @@ void main() {
     productRepository = ProductRepository(
       dio: mockDio,
       config: config,
-      memoryCache: mockMemoryCache,
     );
   });
 
@@ -45,15 +39,21 @@ void main() {
                 {
                   'id': '1',
                   'name': 'Product 1',
-                  'description': 'Description for Product 1',
-                  'price': 10.0,
+                  'pageDescription': 'pageDescription for Product 1',
+                  'pageTitle': 'pageTitle for Product 1',
+                  'price': 10,
+                  'pricePerUnit': 10,
+                  'shortDescription': 'shortDescription for Product 1',
                   'currency': 'USD',
                 },
                 {
                   'id': '2',
                   'name': 'Product 2',
-                  'description': 'Description for Product 2',
-                  'price': 20.0,
+                  'pageDescription': 'pageDescription for Product 2',
+                  'pageTitle': 'pageTitle for Product 2',
+                  'price': 20,
+                  'pricePerUnit': 20,
+                  'shortDescription': 'shortDescription for Product 2',
                   'currency': 'USD',
                 },
               ],
@@ -104,13 +104,14 @@ void main() {
             data: {
               'id': '1',
               'name': 'Product 1',
-              'description': 'Description for Product 1',
-              'price': 10.0,
+              'pageDescription': 'pageDescription for Product 1',
+              'pageTitle': 'pageTitle for Product 1',
+              'price': 10,
+              'pricePerUnit': 10,
+              'shortDescription': 'shortDescription for Product 1',
               'currency': 'USD',
             },
           );
-
-          when(mockMemoryCache.hasKey(any)).thenReturn(false);
 
           when(mockDio.get<dynamic>(any, options: anyNamed('options')))
               .thenAnswer((_) async => mockResponse);
@@ -122,14 +123,12 @@ void main() {
 
           expect(product.id, '1');
           expect(product.name, 'Product 1');
-          expect(product.description, 'Description for Product 1');
+          expect(product.shortDescription, 'shortDescription for Product 1');
           expect(product.price, 10.0);
           expect(product.currency, 'USD');
         });
 
         test('getProduct throws an exception on failure', () async {
-          when(mockMemoryCache.hasKey(any)).thenReturn(false);
-
           when(mockDio.get<dynamic>(any, options: anyNamed('options')))
               .thenThrow(
             DioException(
@@ -142,15 +141,6 @@ void main() {
 
           verify(mockDio.get<dynamic>(any, options: anyNamed('options')))
               .called(1);
-        });
-
-        test('when the cache has data, return the data cached', () async {
-          when(mockMemoryCache.hasKey(any)).thenReturn(true);
-          when(mockMemoryCache.getValue(any)).thenReturn(productModel);
-
-          final result = await productRepository.getProduct('1');
-
-          expect(result, productModel);
         });
       },
     );
@@ -165,18 +155,30 @@ void main() {
             data: {
               'hits': [
                 {
-                  'productId': '1',
-                  'productName': 'Product 1',
-                  'image': {'link': 'imageIUrl'},
-                  'price': 10.0,
-                  'currency': 'USD',
+                  'representedProduct': {'id': '1'},
+                  'image': {
+                    'alt': 'alt',
+                    'disBaseLink': 'disBaseLink',
+                    'link': 'link',
+                    'title': 'title',
+                  },
+                  'productName': 'productName1',
+                  'price': 10,
+                  'currency': 'currency',
+                  'categoryId': 'categoryId',
                 },
                 {
-                  'productId': '2',
-                  'productName': 'Product 2',
-                  'image': {'link': 'imageIUrl2'},
-                  'price': 20.0,
-                  'currency': 'USD',
+                  'representedProduct': {'id': '2'},
+                  'image': {
+                    'alt': 'alt',
+                    'disBaseLink': 'disBaseLink',
+                    'link': 'link',
+                    'title': 'title',
+                  },
+                  'productName': 'productName2',
+                  'price': 20,
+                  'currency': 'currency',
+                  'categoryId': 'categoryId',
                 },
               ],
             },
@@ -192,9 +194,9 @@ void main() {
               .called(1);
 
           expect(products.length, 2);
-          expect(products[0].productId, '1');
-          expect(products[1].productId, '2');
-          expect(products[0].productName, 'Product 1');
+          expect(products[0].id, '1');
+          expect(products[1].id, '2');
+          expect(products[0].productName, 'productName1');
         });
 
         test('getProducts throws an exception on failure', () async {

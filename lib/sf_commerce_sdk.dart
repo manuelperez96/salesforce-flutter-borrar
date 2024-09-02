@@ -1,8 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
-import 'package:sf_commerce_sdk/models/responses/category/category.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/auth_repository.dart';
 import 'package:sf_commerce_sdk/repository/basket_repository.dart';
@@ -39,13 +36,11 @@ class SFCommerceSDK {
   late final ProductRepository productRepository = ProductRepository(
     dio: _dio,
     config: _config,
-    memoryCache: MemoryCache<Product>(),
   );
 
   late final CategoryRepository categoryRepository = CategoryRepository(
     dio: _dio,
     config: _config,
-    memoryCache: MemoryCache<List<Category>>(),
   );
 
   late AuthRepository authRepository = AuthRepository(
@@ -62,10 +57,5 @@ class SFCommerceSDK {
   bool get modeVerbose => Logger.isEnabled;
   set modeVerbose(bool mode) {
     Logger.isEnabled = mode;
-  }
-
-  void clearCache() {
-    productRepository.clearCache();
-    categoryRepository.clearCache();
   }
 }

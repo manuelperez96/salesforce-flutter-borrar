@@ -4,5 +4,4 @@
 - Refactor Splash to use bloc. - Manu
 - Add authentication logic with bloc in example. - Manu
 - Create product detail page in example. - Patri
-- Eliminar cache? - Carlos
 - Basket (Checkout: cerrar la cesta) - Carlos

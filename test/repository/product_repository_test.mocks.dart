@@ -13,8 +13,6 @@ import 'package:dio/src/options.dart' as _i2;
 import 'package:dio/src/response.dart' as _i6;
 import 'package:dio/src/transformer.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:sf_commerce_sdk/data/cache/cache_memory.dart' as _i10;
-import 'package:sf_commerce_sdk/models/responses/product/product.dart' as _i11;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -785,54 +783,4 @@ class MockDio extends _i1.Mock implements _i7.Dio {
           ),
         )),
       ) as _i8.Future<_i6.Response<T>>);
-}
-
-/// A class which mocks [MemoryCache].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockMemoryCache extends _i1.Mock
-    implements _i10.MemoryCache<_i11.Product> {
-  MockMemoryCache() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  void addValue(
-    String? key,
-    _i11.Product? value,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #addValue,
-          [
-            key,
-            value,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
-
-  @override
-  bool hasKey(String? key) => (super.noSuchMethod(
-        Invocation.method(
-          #hasKey,
-          [key],
-        ),
-        returnValue: false,
-      ) as bool);
-
-  @override
-  _i11.Product? getValue(String? key) => (super.noSuchMethod(Invocation.method(
-        #getValue,
-        [key],
-      )) as _i11.Product?);
-
-  @override
-  void clearAll() => super.noSuchMethod(
-        Invocation.method(
-          #clearAll,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
 }

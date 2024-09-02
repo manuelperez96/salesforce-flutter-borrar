@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
@@ -7,10 +6,7 @@ class CategoryRepository extends Repository {
   const CategoryRepository({
     required super.dio,
     required super.config,
-    required this.memoryCache,
   });
-
-  final MemoryCache<List<Category>> memoryCache;
 
   Future<List<Category>> getAllCategories() => _getSubcategoriesWithDeep(
         'root',
@@ -37,24 +33,15 @@ class CategoryRepository extends Repository {
 
     final uri = _buildCategoryUrl(categoryName, deepLevel);
     try {
-      final cachedValue = memoryCache.getValue(uri.toString());
-      if (cachedValue != null) return cachedValue;
-
       final response = await dio.get<Map<String, dynamic>>(uri.toString());
       final categories = _getCategoriesMap(response)
           .map((e) => Category.fromJson(json: e))
           .toList();
 
-      memoryCache.addValue(uri.toString(), [...categories]);
-
       return categories;
     } catch (e) {
       throw Exception('Failed to load categories: $e');
     }
-  }
-
-  void clearCache() {
-    memoryCache.clearAll();
   }
 
   Uri _buildCategoryUrl(String category, int deepLevel) => Uri.parse(

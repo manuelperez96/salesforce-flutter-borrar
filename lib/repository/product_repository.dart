@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
 import 'package:sf_commerce_sdk/models/exception/product_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_category.dart';
@@ -9,10 +8,7 @@ class ProductRepository extends Repository {
   const ProductRepository({
     required super.dio,
     required super.config,
-    required this.memoryCache,
   });
-
-  final MemoryCache<Product> memoryCache;
 
   Future<List<Product>> getProducts(List<String> ids) async {
     try {
@@ -35,10 +31,6 @@ class ProductRepository extends Repository {
 
   Future<Product> getProduct(String id) async {
     try {
-      if (memoryCache.hasKey(id)) {
-        return memoryCache.getValue(id)!;
-      }
-
       final response = await dio.get<dynamic>(
         '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/products/$id?siteId=${config.siteId}',
         options: Options(
@@ -48,7 +40,7 @@ class ProductRepository extends Repository {
       final dynamic jsonResponse = response.data;
 
       final result = Product.fromJson(jsonResponse as Map<String, dynamic>);
-      memoryCache.addValue(id, result);
+
       return result;
     } catch (e) {
       throw UnableToGetProductException(e);
@@ -75,10 +67,6 @@ class ProductRepository extends Repository {
     } catch (e) {
       throw UnableToGetProductException(e);
     }
-  }
-
-  void clearCache() {
-    memoryCache.clearAll();
   }
 
   ProductPreviewByCategory _toProductPreview({
