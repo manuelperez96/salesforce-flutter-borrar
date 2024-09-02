@@ -1,6 +1,7 @@
 import 'package:example/di/app_modules.dart';
 import 'package:example/extensions/context_extensions.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
+import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/home/bloc/home_bloc.dart';
 import 'package:example/presentation/localization/app_localizations.dart';
 import 'package:example/route/route_constants.dart';
@@ -18,7 +19,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<CartBloc>(create: (context) => CartBloc()),
+        BlocProvider<CartBloc>(
+            create: (context) => CartBloc(
+                basketRepository: inject<SFCommerceSDK>().basketRepository)
+              ..add(CreateCart())),
         // BlocProvider<BookmarkBloc>(create: (context) => BookmarkBloc()),
         BlocProvider<HomeBloc>(
             create: (context) => HomeBloc(

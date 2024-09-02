@@ -19,7 +19,7 @@ class ProductQuantity extends StatelessWidget {
         AppIconButton(
             iconPath: "assets/icons/Minus.svg", onPressed: onDecrement),
         SizedBox(
-          width: 40,
+          width: 30,
           child: Center(
             child: Text(
               numOfItem.toString(),
