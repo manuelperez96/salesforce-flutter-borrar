@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 import '../constants.dart';
 
 class CartButton extends StatelessWidget {
   const CartButton({
     super.key,
-    required this.price,
+    required this.product,
     this.title = "Buy Now",
     this.subTitle = "Unit price",
     required this.press,
+    required this.productQuantity,
   });
 
-  final double price;
+  final Product product;
   final String title, subTitle;
   final VoidCallback press;
-
+  final int productQuantity;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,7 +47,8 @@ class CartButton extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "\$${price.toStringAsFixed(2)}",
+                            // product.currency + // TODO Currency USD -> $
+                            "\$${(product.price * productQuantity).toStringAsFixed(2)}",
                             style: Theme.of(context)
                                 .textTheme
                                 .titleSmall!

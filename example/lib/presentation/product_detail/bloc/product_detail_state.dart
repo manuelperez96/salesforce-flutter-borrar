@@ -8,5 +8,6 @@ class ProductDetailState with _$ProductDetailState {
     required String productId,
     @Default(ProductDetailStatus.loading) ProductDetailStatus status,
     Product? product,
+    int? productQuantity,
   }) = _Initial;
 }

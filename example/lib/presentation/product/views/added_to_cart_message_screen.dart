@@ -24,7 +24,7 @@ class AddedToCartMessageScreen extends StatelessWidget {
               ),
               const Spacer(flex: 2),
               Text(
-                "Added to cart",
+                "Add to cart",
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall!
@@ -48,8 +48,8 @@ class AddedToCartMessageScreen extends StatelessWidget {
               ),
               const SizedBox(height: defaultPadding),
               ElevatedButton(
-                onPressed: () {},
-                child: const Text("Checkout"),
+                onPressed: () => Navigator.pop(context),
+                child: const Text("Cancel"),
               ),
               const Spacer(),
             ],

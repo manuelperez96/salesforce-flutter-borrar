@@ -17,7 +17,9 @@ class ProductQuantity extends StatelessWidget {
     return Row(
       children: [
         AppIconButton(
-            iconPath: "assets/icons/Minus.svg", onPressed: onDecrement),
+          iconPath: "assets/icons/Minus.svg",
+          onPressed: onDecrement,
+        ),
         SizedBox(
           width: 30,
           child: Center(

@@ -29,6 +29,15 @@ mixin _$Product {
   double get price => throw _privateConstructorUsedError;
   double get pricePerUnit => throw _privateConstructorUsedError;
   String get shortDescription => throw _privateConstructorUsedError;
+  int? get minOrderQuantity =>
+      throw _privateConstructorUsedError; // required String slugUrl,
+// required int stepQuantity,
+// required String unitMeasure,
+// required int unitQuantity,
+// required String upc,
+// required List<Variant> variants,
+  List<ProductVariationAttribute>? get variationAttributes =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this Product to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -80,6 +89,8 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? price = null,
     Object? pricePerUnit = null,
     Object? shortDescription = null,
+    Object? minOrderQuantity = freezed,
+    Object? variationAttributes = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -118,6 +129,14 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      minOrderQuantity: freezed == minOrderQuantity
+          ? _value.minOrderQuantity
+          : minOrderQuantity // ignore: cast_nullable_to_non_nullable
+              as int?,
+      variationAttributes: freezed == variationAttributes
+          ? _value.variationAttributes
+          : variationAttributes // ignore: cast_nullable_to_non_nullable
+              as List<ProductVariationAttribute>?,
     ) as $Val);
   }
 }
@@ -163,6 +182,8 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? price = null,
     Object? pricePerUnit = null,
     Object? shortDescription = null,
+    Object? minOrderQuantity = freezed,
+    Object? variationAttributes = freezed,
   }) {
     return _then(_$ProductImpl(
       id: null == id
@@ -201,6 +222,14 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      minOrderQuantity: freezed == minOrderQuantity
+          ? _value.minOrderQuantity
+          : minOrderQuantity // ignore: cast_nullable_to_non_nullable
+              as int?,
+      variationAttributes: freezed == variationAttributes
+          ? _value._variationAttributes
+          : variationAttributes // ignore: cast_nullable_to_non_nullable
+              as List<ProductVariationAttribute>?,
     ));
   }
 }
@@ -247,6 +276,30 @@ class _$ProductImpl implements _Product {
   final double pricePerUnit;
   @override
   final String shortDescription;
+  @override
+  final int? minOrderQuantity;
+// required String slugUrl,
+// required int stepQuantity,
+// required String unitMeasure,
+// required int unitQuantity,
+// required String upc,
+// required List<Variant> variants,
+  final List<ProductVariationAttribute>? _variationAttributes;
+// required String slugUrl,
+// required int stepQuantity,
+// required String unitMeasure,
+// required int unitQuantity,
+// required String upc,
+// required List<Variant> variants,
+  @override
+  List<ProductVariationAttribute>? get variationAttributes {
+    final value = _variationAttributes;
+    if (value == null) return null;
+    if (_variationAttributes is EqualUnmodifiableListView)
+      return _variationAttributes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -272,7 +325,11 @@ class _$ProductImpl implements _Product {
             (identical(other.pricePerUnit, pricePerUnit) ||
                 other.pricePerUnit == pricePerUnit) &&
             (identical(other.shortDescription, shortDescription) ||
-                other.shortDescription == shortDescription));
+                other.shortDescription == shortDescription) &&
+            (identical(other.minOrderQuantity, minOrderQuantity) ||
+                other.minOrderQuantity == minOrderQuantity) &&
+            const DeepCollectionEquality()
+                .equals(other._variationAttributes, _variationAttributes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -337,6 +394,15 @@ abstract class _Product implements Product {
   double get pricePerUnit;
   @override
   String get shortDescription;
+  @override
+  int? get minOrderQuantity; // required String slugUrl,
+// required int stepQuantity,
+// required String unitMeasure,
+// required int unitQuantity,
+// required String upc,
+// required List<Variant> variants,
+  @override
+  List<ProductVariationAttribute>? get variationAttributes;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
