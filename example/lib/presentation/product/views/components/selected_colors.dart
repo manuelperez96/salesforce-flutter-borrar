@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 import '../../../../constants.dart';
-import 'color_dot.dart';
 
 class SelectedColors extends StatelessWidget {
   const SelectedColors({
     super.key,
-    required this.colors,
-    required this.selectedColorIndex,
+    required this.product,
     required this.press,
   });
-  final List<Color> colors;
-  final int selectedColorIndex;
   final ValueChanged<int> press;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
+    final colors = product.variationAttributes!
+        .firstWhere((element) => element.id == "color")
+        .values
+        .map((color) => color)
+        .toList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,11 +37,22 @@ class SelectedColors extends StatelessWidget {
               (index) => Padding(
                 padding: EdgeInsets.only(
                     left: index == 0 ? defaultPadding : defaultPadding / 2),
-                child: ColorDot(
-                  color: colors[index],
-                  isActive: selectedColorIndex == index,
-                  press: () => press(index),
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(colors[index].name,
+                      style: TextStyle(
+                          color: product.variationValues!.color ==
+                                  colors[index].value
+                              ? null
+                              : Colors.black)),
                 ),
+                // TODO finish this when Saleforce responds (show Colors)
+
+                //  ColorDot(
+                //   color: colors[index],
+                //   isActive: selectedColorIndex == index,
+                //   press: () => press(index),
+                // ),
               ),
             ),
           ),

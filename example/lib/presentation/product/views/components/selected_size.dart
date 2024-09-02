@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 import '../../../../constants.dart';
 
 class SelectedSize extends StatelessWidget {
   const SelectedSize({
     super.key,
-    required this.sizes,
-    required this.selectedIndex,
+    required this.product,
     required this.press,
   });
 
-  final List<String> sizes;
-  final int selectedIndex;
   final ValueChanged<int> press;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
+    final List<ValuesVariation> sizes = product.variationAttributes!
+        .firstWhere((element) => element.id == "size")
+        .values
+        .map((size) => size)
+        .toList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,8 +38,8 @@ class SelectedSize extends StatelessWidget {
               padding: EdgeInsets.only(
                   left: index == 0 ? defaultPadding : defaultPadding / 2),
               child: SizeButton(
-                text: sizes[index],
-                isActive: selectedIndex == index,
+                text: sizes[index].name,
+                isActive: product.variationValues!.size == sizes[index].value,
                 press: () => press(index),
               ),
             ),
