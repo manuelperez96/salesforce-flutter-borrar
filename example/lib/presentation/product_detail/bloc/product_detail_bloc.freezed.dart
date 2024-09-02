@@ -66,9 +66,6 @@ class _$ProductDetailEventCopyWithImpl<$Res, $Val extends ProductDetailEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ProductDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -85,9 +82,6 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of ProductDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -214,9 +208,7 @@ mixin _$ProductDetailState {
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductDetailState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ProductDetailStateCopyWith<ProductDetailState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -242,8 +234,6 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductDetailState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -267,8 +257,6 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
     ) as $Val);
   }
 
-  /// Create a copy of ProductDetailState
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductCopyWith<$Res>? get product {
@@ -304,8 +292,6 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductDetailState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -365,9 +351,7 @@ class _$InitialImpl implements _Initial {
   @override
   int get hashCode => Object.hash(runtimeType, productId, status, product);
 
-  /// Create a copy of ProductDetailState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -448,11 +432,8 @@ abstract class _Initial implements ProductDetailState {
   ProductDetailStatus get status;
   @override
   Product? get product;
-
-  /// Create a copy of ProductDetailState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

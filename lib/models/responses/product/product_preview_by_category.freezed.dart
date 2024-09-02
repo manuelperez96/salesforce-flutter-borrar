@@ -23,9 +23,7 @@ mixin _$ProductPreviewByCategory {
   String get currency => throw _privateConstructorUsedError;
   String get categoryId => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProductPreviewByCategory
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ProductPreviewByCategoryCopyWith<ProductPreviewByCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,8 +56,6 @@ class _$ProductPreviewByCategoryCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductPreviewByCategory
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,8 +94,6 @@ class _$ProductPreviewByCategoryCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of ProductPreviewByCategory
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ImageCopyWith<$Res> get image {
@@ -140,8 +134,6 @@ class __$$ProductPreviewByCategoryImplCopyWithImpl<$Res>
       $Res Function(_$ProductPreviewByCategoryImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductPreviewByCategory
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -230,9 +222,7 @@ class _$ProductPreviewByCategoryImpl implements _ProductPreviewByCategory {
   int get hashCode => Object.hash(
       runtimeType, id, productName, image, price, currency, categoryId);
 
-  /// Create a copy of ProductPreviewByCategory
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductPreviewByCategoryImplCopyWith<_$ProductPreviewByCategoryImpl>
@@ -261,11 +251,8 @@ abstract class _ProductPreviewByCategory implements ProductPreviewByCategory {
   String get currency;
   @override
   String get categoryId;
-
-  /// Create a copy of ProductPreviewByCategory
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ProductPreviewByCategoryImplCopyWith<_$ProductPreviewByCategoryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
