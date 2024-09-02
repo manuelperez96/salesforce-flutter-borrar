@@ -1,7 +1,5 @@
 // Pending task
 - Clean template. Remove unnecessary images and screens. - Patri
 - Internacionalization 
-- Refactor Splash to use bloc. - Manu
-- Add authentication logic with bloc in example. - Manu
 - Create product detail page in example. - Patri
 - Basket (Checkout: cerrar la cesta) - Carlos
