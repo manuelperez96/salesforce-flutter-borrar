@@ -2,8 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sf_commerce_sdk/data/cache/cache_memory.dart';
-import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/category_repository.dart';
 
@@ -14,7 +12,6 @@ import 'category_repository_test.mocks.dart';
   [
     MockSpec<Dio>(),
     MockSpec<Response<Map<String, dynamic>>>(),
-    MockSpec<MemoryCache<List<Category>>>(),
   ],
 )
 void main() {
@@ -22,12 +19,10 @@ void main() {
   late SfCommerceConfig config;
   late CategoryRepository categoryRepository;
   late MockResponse response;
-  late MockMemoryCache mockMemoryCache;
 
   setUp(() {
     mockDio = MockDio();
     response = MockResponse();
-    mockMemoryCache = MockMemoryCache();
 
     config = SfCommerceConfig(
       clientId: 'clientId',
@@ -39,7 +34,6 @@ void main() {
     categoryRepository = CategoryRepository(
       dio: mockDio,
       config: config,
-      memoryCache: mockMemoryCache,
     );
   });
 
@@ -51,7 +45,6 @@ void main() {
           CategoryRepository(
             dio: mockDio,
             config: config,
-            memoryCache: mockMemoryCache,
           ),
           isNotNull,
         );
@@ -64,7 +57,6 @@ void main() {
         test(
           'getRootCategories throws an exception on failure',
           () async {
-            when(mockMemoryCache.hasKey(any)).thenReturn(false);
             when(
               mockDio.get<dynamic>(
                 any,
@@ -84,7 +76,6 @@ void main() {
         test(
           'getRootCategories returns a category list on success',
           () async {
-            when(mockMemoryCache.getValue(any)).thenReturn(null);
             when(
               mockDio.get<Map<String, dynamic>>(
                 any,
@@ -97,18 +88,6 @@ void main() {
             final result = await categoryRepository.getRootCategories();
 
             expect(result, isNotEmpty);
-          },
-        );
-
-        test(
-          'when memoryCache has Data, return the data cached',
-          () async {
-            when(mockMemoryCache.hasKey(any)).thenReturn(true);
-            when(mockMemoryCache.getValue(any)).thenReturn(categoryListModel);
-
-            final result = await categoryRepository.getAllCategories();
-
-            expect(result, categoryListModel);
           },
         );
       },
