@@ -15,7 +15,7 @@ export '../presentation/on_sale/views/on_sale_screen.dart';
 export '../presentation/onbording/views/onbording_screnn.dart';
 export '../presentation/order/views/orders_screen.dart';
 export '../presentation/preferences/views/preferences_screen.dart';
-export '../presentation/product_detail/product_details_screen.dart';
+export '../presentation/product_detail/product_detail_screen.dart';
 export '../presentation/profile/views/profile_screen.dart';
 export '../presentation/reviews/view/product_reviews_screen.dart';
 export '../presentation/search/views/search_screen.dart';

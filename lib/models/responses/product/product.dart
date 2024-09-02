@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:sf_commerce_sdk/models/responses/product/image.dart';
 
 part 'product.freezed.dart';
 part 'product.g.dart';
@@ -8,7 +9,7 @@ class Product with _$Product {
   factory Product({
     required String id,
     required String currency,
-    // required List<ImageGroup> imageGroups,
+    required List<ImageGroup> imageGroups,
     required String name,
     required String pageDescription,
     required String pageTitle,
@@ -33,4 +34,15 @@ class Product with _$Product {
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
+}
+
+@freezed
+class ImageGroup with _$ImageGroup {
+  factory ImageGroup({
+    required List<Image> images,
+    required String viewType,
+  }) = _ImageGroup;
+
+  factory ImageGroup.fromJson(Map<String, dynamic> json) =>
+      _$ImageGroupFromJson(json);
 }

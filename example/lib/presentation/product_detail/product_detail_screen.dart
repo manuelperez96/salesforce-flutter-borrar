@@ -5,20 +5,21 @@ import 'package:example/components/unbuy_full_ui_kit.dart';
 import 'package:example/constants.dart';
 import 'package:example/presentation/product/views/components/product_images.dart';
 import 'package:example/presentation/product/views/components/product_list_tile.dart';
+import 'package:example/presentation/product/views/product_buy_now_screen.dart';
 import 'package:example/presentation/product/views/product_returns_screen.dart';
 import 'package:example/presentation/product_detail/bloc/product_detail_bloc.dart';
 import 'package:example/route/screen_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductDetailsScreen extends StatefulWidget {
-  const ProductDetailsScreen({super.key});
+class ProductDetailScreen extends StatefulWidget {
+  const ProductDetailScreen({super.key});
 
   @override
-  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
 }
 
-class _ProductDetailsScreenState extends State<ProductDetailsScreen>
+class _ProductDetailScreenState extends State<ProductDetailScreen>
     with SingleTickerProviderStateMixin {
   bool bottomEdge = false;
 
@@ -45,15 +46,20 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
     return BlocBuilder<ProductDetailBloc, ProductDetailState>(
       builder: (context, state) {
         print(state);
+
+        if (state.status == ProductDetailStatus.loading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
         return Scaffold(
           bottomNavigationBar: CartButton(
             price: 140,
             press: () {
-              // customModalBottomSheet(
-              //   context,
-              //   height: MediaQuery.of(context).size.height * 0.92,
-              //   child: ProductBuyNowScreen(product: widget.product),
-              // );
+              customModalBottomSheet(
+                context,
+                height: MediaQuery.of(context).size.height * 0.92,
+                child: ProductBuyNowScreen(product: state.product!),
+              );
             },
           ),
           body: SafeArea(
@@ -64,11 +70,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   floating: true,
                   actions: [
-                    // BookmarkIconButton(product: widget.product),
+                    //      BookmarkIconButton(product: state.product!),
                   ],
                 ),
-                const ProductImages(
-                  images: [],
+                ProductImages(
+                  images: state.product!.imageGroups.first.images
+                      .map((image) => image.link)
+                      .toList(),
                 ),
 
                 ProductListTile(
