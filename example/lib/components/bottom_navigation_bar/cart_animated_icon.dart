@@ -39,12 +39,16 @@ class _CartAnimatedIconState extends State<CartAnimatedIcon>
           animation: _animation,
           builder: (context, child) {
             return Positioned(
-              bottom: 0, // _animation.value,
+              bottom: 0,
               right: 0,
+              // child: Transform(
+              //     transform: Matrix4.translationValues(
+              //         _animation.value * 5, -_animation.value * 30, 0)
+              //       ..scale(1 + _animation.value / 2),
+              //     child: child!),
               child: Transform(
-                  transform: Matrix4.translationValues(
-                      _animation.value * 5, -_animation.value * 30, 0)
-                    ..scale(1 + _animation.value / 2),
+                  transform:
+                      Matrix4.translationValues(0, -_animation.value * 30, 0),
                   child: child!),
             );
           },
