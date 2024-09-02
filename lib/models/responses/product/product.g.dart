@@ -16,8 +16,8 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       pageDescription: json['pageDescription'] as String,
       pageTitle: json['pageTitle'] as String,
-      price: (json['price'] as num).toInt(),
-      pricePerUnit: (json['pricePerUnit'] as num).toInt(),
+      price: (json['price'] as num).toDouble(),
+      pricePerUnit: (json['pricePerUnit'] as num).toDouble(),
       shortDescription: json['shortDescription'] as String,
     );
 

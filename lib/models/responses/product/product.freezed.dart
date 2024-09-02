@@ -26,8 +26,8 @@ mixin _$Product {
   String get name => throw _privateConstructorUsedError;
   String get pageDescription => throw _privateConstructorUsedError;
   String get pageTitle => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
-  int get pricePerUnit => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
+  double get pricePerUnit => throw _privateConstructorUsedError;
   String get shortDescription => throw _privateConstructorUsedError;
 
   /// Serializes this Product to a JSON map.
@@ -51,8 +51,8 @@ abstract class $ProductCopyWith<$Res> {
       String name,
       String pageDescription,
       String pageTitle,
-      int price,
-      int pricePerUnit,
+      double price,
+      double pricePerUnit,
       String shortDescription});
 }
 
@@ -109,11 +109,11 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       pricePerUnit: null == pricePerUnit
           ? _value.pricePerUnit
           : pricePerUnit // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       shortDescription: null == shortDescription
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
@@ -136,8 +136,8 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String name,
       String pageDescription,
       String pageTitle,
-      int price,
-      int pricePerUnit,
+      double price,
+      double pricePerUnit,
       String shortDescription});
 }
 
@@ -192,11 +192,11 @@ class __$$ProductImplCopyWithImpl<$Res>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       pricePerUnit: null == pricePerUnit
           ? _value.pricePerUnit
           : pricePerUnit // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       shortDescription: null == shortDescription
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
@@ -242,9 +242,9 @@ class _$ProductImpl implements _Product {
   @override
   final String pageTitle;
   @override
-  final int price;
+  final double price;
   @override
-  final int pricePerUnit;
+  final double pricePerUnit;
   @override
   final String shortDescription;
 
@@ -313,8 +313,8 @@ abstract class _Product implements Product {
       required final String name,
       required final String pageDescription,
       required final String pageTitle,
-      required final int price,
-      required final int pricePerUnit,
+      required final double price,
+      required final double pricePerUnit,
       required final String shortDescription}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
@@ -332,9 +332,9 @@ abstract class _Product implements Product {
   @override
   String get pageTitle;
   @override
-  int get price;
+  double get price;
   @override
-  int get pricePerUnit;
+  double get pricePerUnit;
   @override
   String get shortDescription;
 
