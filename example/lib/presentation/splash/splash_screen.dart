@@ -1,7 +1,7 @@
 import 'package:example/constants/assets.dart';
 import 'package:example/di/app_modules.dart';
 import 'package:example/presentation/splash/bloc/splash_bloc.dart';
-import 'package:example/route/screen_export.dart';
+import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';

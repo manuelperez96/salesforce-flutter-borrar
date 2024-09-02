@@ -1,10 +1,28 @@
 import 'package:example/components/bottom_navigation_bar/entry_point.dart';
+import 'package:example/presentation/address/views/addresses_screen.dart';
+import 'package:example/presentation/auth/views/login_screen.dart';
+import 'package:example/presentation/auth/views/password_recovery_screen.dart';
+import 'package:example/presentation/auth/views/signup_screen.dart';
+import 'package:example/presentation/checkout/views/cart_screen.dart';
+import 'package:example/presentation/discover/views/discover_screen.dart';
 import 'package:example/presentation/home/views/home_screen.dart';
+import 'package:example/presentation/kids/views/kids_screen.dart';
+import 'package:example/presentation/notification/view/enable_notification_screen.dart';
+import 'package:example/presentation/notification/view/no_notification_screen.dart';
+import 'package:example/presentation/notification/view/notification_ontions_screen.dart';
+import 'package:example/presentation/notification/view/notificatios_screen.dart';
+import 'package:example/presentation/on_sale/views/on_sale_screen.dart';
+import 'package:example/presentation/onbording/views/onbording_screnn.dart';
+import 'package:example/presentation/order/views/orders_screen.dart';
+import 'package:example/presentation/preferences/views/preferences_screen.dart';
 import 'package:example/presentation/product_detail/product_detail_provider.dart';
+import 'package:example/presentation/profile/views/profile_screen.dart';
+import 'package:example/presentation/reviews/view/product_reviews_screen.dart';
 import 'package:example/presentation/splash/splash_screen.dart';
+import 'package:example/presentation/user_info/views/user_info_screen.dart';
+import 'package:example/presentation/wallet/views/empty_wallet_screen.dart';
+import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
-
-import 'screen_export.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -55,10 +73,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const KidsScreen(),
       );
-    case searchScreenRoute:
-      return MaterialPageRoute(
-        builder: (context) => const SearchScreen(),
-      );
     // case bookmarkScreenRoute:
     //   return MaterialPageRoute(
     //     builder: (context) => const BookmarkScreen(),
@@ -107,14 +121,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const EmptyWalletScreen(),
       );
-    // case walletScreenRoute:
-    //   return MaterialPageRoute(
-    //     builder: (context) => const WalletScreen(),
-    //   );
-    // case customWalletScreenRoute:
-    //   return MaterialPageRoute(
-    //     builder: (context) => const CustomWalletScreen(),
-    //   );
     case cartScreenRoute:
       return MaterialPageRoute(
         builder: (context) => const CartScreen(),

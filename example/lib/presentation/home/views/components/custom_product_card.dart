@@ -1,6 +1,6 @@
 import 'package:example/components/network_image_with_loader.dart';
 import 'package:example/constants.dart';
-import 'package:example/route/screen_export.dart';
+import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_category.dart';
 
