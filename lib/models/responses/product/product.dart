@@ -14,7 +14,7 @@ class Product with _$Product {
     required String pageDescription,
     required String pageTitle,
     required double price,
-    required int pricePerUnit,
+    required double pricePerUnit,
     required String shortDescription,
     required int? minOrderQuantity,
     // required String slugUrl,
@@ -46,28 +46,4 @@ class ImageGroup with _$ImageGroup {
 
   factory ImageGroup.fromJson(Map<String, dynamic> json) =>
       _$ImageGroupFromJson(json);
-}
-
-@freezed
-class ProductVariationAttribute with _$ProductVariationAttribute {
-  factory ProductVariationAttribute({
-    required String id,
-    required String name,
-    required List<ValuesVariation> values,
-  }) = _ProductVariationAttribute;
-
-  factory ProductVariationAttribute.fromJson(Map<String, dynamic> json) =>
-      _$ProductVariationAttributeFromJson(json);
-}
-
-@freezed
-class ValuesVariation with _$ValuesVariation {
-  factory ValuesVariation({
-    required String name,
-    required bool orderable,
-    required String value,
-  }) = _ValuesVariation;
-
-  factory ValuesVariation.fromJson(Map<String, dynamic> json) =>
-      _$ValuesVariationFromJson(json);
 }

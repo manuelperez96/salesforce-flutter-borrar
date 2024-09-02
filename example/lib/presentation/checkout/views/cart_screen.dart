@@ -1,8 +1,8 @@
+import 'package:example/components/product/horizontal_product_card.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -37,52 +37,53 @@ class CartScreen extends StatelessWidget {
                     );
                   }
 
-                  Map<String, List<Product>> groupedProducts = {};
-                  for (var product in state.products) {
-                    groupedProducts
-                        .putIfAbsent(product.id.toString(), () => [])
-                        .add(product);
-                  }
-
-                  List<Widget> productCards = [];
-                  groupedProducts.forEach((id, products) {
-                    // final product = products.first;
-                    // final quantity = products.length;
-
-                    // Widget productCard = Padding(
-                    //   padding: const EdgeInsets.only(
-                    //     left: defaultPadding,
-                    //     right: defaultPadding,
-                    //   ),
-                    //   child: ProductCard(
-                    //     product: product,
-                    //     press: () {},
-                    //     bottomWidget: ProductQuantity(
-                    //       numOfItem: quantity,
-                    //       onIncrement: () {
-                    //         BlocProvider.of<CartBloc>(context)
-                    //             .add(AddProductCart(product, 1));
-                    //       },
-                    //       onDecrement: () {
-                    //         BlocProvider.of<CartBloc>(context)
-                    //             .add(RemoveProductCart(product));
-                    //       },
-                    //     ),
-                    //   ),
-                    // );
-
-                    // productCards.add(productCard);
-                  });
-
-                  return Align(
-                    alignment: Alignment.topCenter,
-                    child: Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      spacing: 4.0,
-                      runSpacing: 4.0,
-                      children: productCards,
-                    ),
+                  return ListView.builder(
+                    itemCount: state.products.length,
+                    itemBuilder: (context, index) => HorizontalProductCard(
+                        productCart: state.products[index]),
                   );
+
+                  // List<Widget> productCards = [];
+                  // state.products.forEach((productCart) {
+                  //   final product = productCart.product;
+                  //   final quantity = productCart.quantity;
+
+                  //   Widget productCard = Padding(
+                  //     padding: const EdgeInsets.only(
+                  //       left: defaultPadding,
+                  //       right: defaultPadding,
+                  //     ),
+                  //     child: ProductDetailCard(
+                  //       product: product,
+                  //       press: () {},
+                  //       bottomWidget: ProductQuantity(
+                  //         numOfItem: quantity,
+                  //         onIncrement: () {
+                  //           BlocProvider.of<CartBloc>(context).add(
+                  //               ModifyQuantityProductCart(
+                  //                   product: product, increase: true));
+                  //         },
+                  //         onDecrement: () {
+                  //           BlocProvider.of<CartBloc>(context).add(
+                  //               ModifyQuantityProductCart(
+                  //                   product: product, increase: false));
+                  //         },
+                  //       ),
+                  //     ),
+                  //   );
+
+                  //   productCards.add(productCard);
+                  // });
+
+                  // return Align(
+                  //   alignment: Alignment.topLeft,
+                  //   child: Wrap(
+                  //     crossAxisAlignment: WrapCrossAlignment.center,
+                  //     spacing: 4.0,
+                  //     runSpacing: 4.0,
+                  //     children: productCards,
+                  //   ),
+                  // );
                 }
                 return const SizedBox();
               },

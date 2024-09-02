@@ -2,6 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:example/components/bottom_navigation_bar/cart_animated_icon.dart';
 import 'package:example/components/glass_appbar.dart';
 import 'package:example/extensions/context_extensions.dart';
+import 'package:example/presentation/checkout/views/custom_cart_screen.dart';
 import 'package:example/presentation/home/views/home_screen.dart';
 import 'package:example/route/screen_export.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,8 @@ class _EntryPointState extends State<EntryPoint> {
     HomeScreen(),
     DiscoverScreen(),
     // BookmarkScreen(), // TODO Descomentar todo lo relacionado
-    CartScreen(),
+    //CartScreen(),
+    CustomCartScreen(),
     ProfileScreen(),
   ];
   int _currentIndex = 0;

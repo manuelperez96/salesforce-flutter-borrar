@@ -17,7 +17,7 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       pageDescription: json['pageDescription'] as String,
       pageTitle: json['pageTitle'] as String,
       price: (json['price'] as num).toDouble(),
-      pricePerUnit: (json['pricePerUnit'] as num).toInt(),
+      pricePerUnit: (json['pricePerUnit'] as num).toDouble(),
       shortDescription: json['shortDescription'] as String,
       minOrderQuantity: (json['minOrderQuantity'] as num?)?.toInt(),
       variationAttributes: (json['variationAttributes'] as List<dynamic>?)
@@ -87,4 +87,18 @@ Map<String, dynamic> _$$ValuesVariationImplToJson(
       'name': instance.name,
       'orderable': instance.orderable,
       'value': instance.value,
+    };
+
+_$ImageGroupImpl _$$ImageGroupImplFromJson(Map<String, dynamic> json) =>
+    _$ImageGroupImpl(
+      images: (json['images'] as List<dynamic>)
+          .map((e) => Image.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      viewType: json['viewType'] as String,
+    );
+
+Map<String, dynamic> _$$ImageGroupImplToJson(_$ImageGroupImpl instance) =>
+    <String, dynamic>{
+      'images': instance.images,
+      'viewType': instance.viewType,
     };
