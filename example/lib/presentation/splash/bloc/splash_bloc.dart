@@ -35,15 +35,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       // Todo(Team): handle error case. Maybe add an error splash screen.
       addError(e);
     }
-
-    // await Future.wait([
-    //   Future.delayed(const Duration(milliseconds: 2500)),
-    //   inject<SFCommerceSDK>().authRepository.anonymousLogin().then(
-    //         (value) async => await inject<SFCommerceSDK>()
-    //             .categoryRepository
-    //             .getRootCategories(),
-    //       ),
-    // ]);
   }
 
   Future<void> _awaitSplashTime(Stopwatch clock) async {
