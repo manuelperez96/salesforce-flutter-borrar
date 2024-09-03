@@ -4,6 +4,8 @@ abstract class CartEvent {}
 
 class CreateCart extends CartEvent {}
 
+class CheckStatusCart extends CartEvent {}
+
 class ModifyQuantityProductCart extends CartEvent {
   final Product product;
   final bool increase; // true -> increase      false -> decrease

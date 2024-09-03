@@ -52,6 +52,7 @@ class SFCommerceSDK {
   late BasketRepository basketRepository = BasketRepository(
     dio: _dio,
     config: _config,
+    storage: _storage,
   );
 
   bool get modeVerbose => Logger.isEnabled;

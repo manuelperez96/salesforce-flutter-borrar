@@ -13,6 +13,9 @@ import 'package:dio/src/options.dart' as _i2;
 import 'package:dio/src/response.dart' as _i6;
 import 'package:dio/src/transformer.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart'
+    as _i11;
+import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart' as _i10;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -783,4 +786,61 @@ class MockDio extends _i1.Mock implements _i7.Dio {
           ),
         )),
       ) as _i8.Future<_i6.Response<T>>);
+}
+
+/// A class which mocks [TokenStorage].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockTokenStorage extends _i1.Mock implements _i10.TokenStorage {
+  MockTokenStorage() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i8.Future<void> saveToken(_i11.AccessToken? token) => (super.noSuchMethod(
+        Invocation.method(
+          #saveToken,
+          [token],
+        ),
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
+
+  @override
+  _i8.Future<_i11.AccessToken?> getToken() => (super.noSuchMethod(
+        Invocation.method(
+          #getToken,
+          [],
+        ),
+        returnValue: _i8.Future<_i11.AccessToken?>.value(),
+      ) as _i8.Future<_i11.AccessToken?>);
+
+  @override
+  _i8.Future<void> saveBasketID(String? basketID) => (super.noSuchMethod(
+        Invocation.method(
+          #saveBasketID,
+          [basketID],
+        ),
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
+
+  @override
+  _i8.Future<String?> getBasketID() => (super.noSuchMethod(
+        Invocation.method(
+          #getBasketID,
+          [],
+        ),
+        returnValue: _i8.Future<String?>.value(),
+      ) as _i8.Future<String?>);
+
+  @override
+  _i8.Future<void> clear() => (super.noSuchMethod(
+        Invocation.method(
+          #clear,
+          [],
+        ),
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
 }

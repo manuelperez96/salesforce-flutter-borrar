@@ -2,9 +2,41 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/models/exception/basket_exceptions.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 
 class BasketRepository extends Repository {
-  BasketRepository({required super.dio, required super.config});
+  BasketRepository({
+    required super.dio,
+    required super.config,
+    required TokenStorage storage,
+  }) : _storage = storage;
+
+  final TokenStorage _storage;
+
+  // Future<Basket> checkBasketExists() async {
+  //   try {
+  //     final response = await dio.get<dynamic>(
+  //       '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$basketId?siteId=${config.siteId}',
+  //       options: Options(
+  //         headers: {'Content-Type': 'application/json'},
+  //       ),
+  //     );
+
+  //     final jsonResponse = response.data;
+  //     final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
+  //     return basket;
+  //   } on DioException catch (e) {
+  //     if (e.response?.statusCode != 303) throw GetBasketException(e);
+  //   }
+  // }
+
+  Future<String?> getBasketId() {
+    return _storage.getBasketID();
+  }
+
+  // Future<void> saveBasketId(String basketID) {
+  //   return _storage.saveBasketID(basketID);
+  // }
 
   Future<Basket> createBasket() async {
     try {
@@ -17,6 +49,8 @@ class BasketRepository extends Repository {
 
       final jsonResponse = response.data;
       final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
+
+      await _storage.saveBasketID(basket.basketId);
 
       return basket;
     } catch (e) {
