@@ -34,7 +34,7 @@ class ProductSizeColorSelectors extends StatelessWidget {
       builder: (context, state) {
         final product = state.initialProduct!;
 
-        bool _hasVariationAttribute({required String attributeId}) =>
+        bool hasVariationAttribute({required String attributeId}) =>
             product.variationAttributes != null &&
             product.variationAttributes!
                 .any((element) => element.id == attributeId);
@@ -42,7 +42,7 @@ class ProductSizeColorSelectors extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (_hasVariationAttribute(attributeId: "color"))
+            if (hasVariationAttribute(attributeId: "color"))
               SelectedColors(
                 product: product,
                 selectedColor: state.selectedColor!,
@@ -50,7 +50,7 @@ class ProductSizeColorSelectors extends StatelessWidget {
                       ProductDetailEvent.updateSelectedColor(color.value),
                     ),
               ),
-            if (_hasVariationAttribute(attributeId: "size"))
+            if (hasVariationAttribute(attributeId: "size"))
               SelectedSize(
                 selectedSize: state.selectedSize!,
                 sizes: product.variationAttributes!

@@ -12,36 +12,37 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CartBloc, CartState>(builder: (context, state) {
       if (state is CartLoading || state is CartInitial) {
-        return Scaffold(
-          body: const Center(
+        return const Scaffold(
+          body: Center(
             child: CircularProgressIndicator(),
           ),
         );
       } else {
         final currentState = state as CartLoaded;
         if (currentState.products.isEmpty) {
-          return Scaffold(
-            body: const Center(
+          return const Scaffold(
+            body: Center(
               child: Text("Cart is empty"),
             ),
           );
         } else {
           return Scaffold(
             body: ListView.builder(
-              padding: EdgeInsets.all(defaultPadding),
+              padding: const EdgeInsets.all(defaultPadding),
               itemCount: state.products.length + 1,
               itemBuilder: (context, index) {
-                if (index == 0)
+                if (index == 0) {
                   return SizedBox(
                     height: MediaQuery.paddingOf(context).top,
                   );
+                }
                 return HorizontalProductCard(
                     productCart: state.products[index - 1]);
               },
             ),
             floatingActionButton: FloatingActionButton.extended(
               onPressed: () {},
-              label: Row(
+              label: const Row(
                 children: [
                   Text('Checkout'),
                   SizedBox(

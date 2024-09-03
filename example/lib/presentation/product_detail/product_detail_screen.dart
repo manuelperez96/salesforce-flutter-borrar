@@ -40,8 +40,8 @@ class ProductDetailScreen extends StatelessWidget {
     return BlocBuilder<ProductDetailBloc, ProductDetailState>(
       builder: (context, state) {
         if (state.status == ProductDetailStatus.loading) {
-          return Scaffold(
-            body: const Center(child: CircularProgressIndicator()),
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
           );
         }
         final initialProduct = state.initialProduct!;
@@ -74,7 +74,7 @@ class ProductDetailScreen extends StatelessWidget {
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   floating: true,
                   title: Text(initialProduct.pageTitle),
-                  actions: [
+                  actions: const [
                     //      BookmarkIconButton(product: state.product!),
                   ],
                 ),
@@ -89,7 +89,7 @@ class ProductDetailScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            ProductDetailQuantitySelector(),
+                            const ProductDetailQuantitySelector(),
                             Text(
                                 'Stock: ${initialProduct.inventory.stockLevel}'),
                           ],
@@ -112,7 +112,7 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                 ),
                 const SliverToBoxAdapter(child: Divider()),
-                SliverToBoxAdapter(child: ProductSizeColorSelectors()),
+                const SliverToBoxAdapter(child: ProductSizeColorSelectors()),
                 const SliverToBoxAdapter(
                   child: SizedBox(height: defaultPadding),
                 )

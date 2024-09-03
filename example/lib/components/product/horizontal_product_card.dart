@@ -15,8 +15,8 @@ class HorizontalProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 15),
-      padding: EdgeInsets.symmetric(
+      margin: const EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.symmetric(
           horizontal: defaultPadding / 2, vertical: defaultPadding),
       height: 130,
       decoration: BoxDecoration(
@@ -31,7 +31,7 @@ class HorizontalProductCard extends StatelessWidget {
                 productCart.product.imageGroups[0].images[0].link,
                 radius: defaultBorderRadius),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +45,7 @@ class HorizontalProductCard extends StatelessWidget {
                       .titleSmall!
                       .copyWith(fontSize: 12),
                 ),
-                Spacer(),
+                const Spacer(),
                 Row(
                   children: [
                     Text(
@@ -56,7 +56,7 @@ class HorizontalProductCard extends StatelessWidget {
                         fontSize: 12,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     ProductQuantity(
                       numOfItem: productCart.quantity,
                       onIncrement: () {

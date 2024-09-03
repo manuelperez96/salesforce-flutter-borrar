@@ -44,34 +44,25 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     emit(CartLoading());
     String? basketID = await _basketRepository.getBasketId();
     if (basketID == null) {
-      print('caso 1');
-      this.add(CreateCart());
+      add(CreateCart());
     } else {
-      print('caso 2');
       try {
         Basket basket = await _basketRepository.getBasket(basketID);
-        print('caso 2 - $basketID');
         List<ProductCart> products = [];
-        if (basket.productItems != null && basket.productItems!.length > 0) {
+        if (basket.productItems != null && basket.productItems!.isNotEmpty) {
           List<String> itemsIDs = getItemsIDs(basket.productItems!);
-          print('caso 2 - ${itemsIDs}');
           List<Product> productList =
               await _productRepository.getProducts(itemsIDs);
 
-          print('caso 2 - ${productList}');
-          productList.forEach(
-            (product) {
-              products.add(ProductCart(
-                  product: product,
-                  quantity: getQuantity(product.id, basket.productItems!)));
-            },
-          );
-          print('caso 2 - ${products}');
+          for (var product in productList) {
+            products.add(ProductCart(
+                product: product,
+                quantity: getQuantity(product.id, basket.productItems!)));
+          }
         }
         emit(CartLoaded(products, basket));
       } catch (e) {
-        print('caso 3');
-        this.add(CreateCart());
+        add(CreateCart());
       }
     }
   }
@@ -85,15 +76,16 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     Basket newBasket;
 
     ProductCart productCart = currentState
-        .products[IndexOfProduct(event.product, currentState.products)!];
+        .products[indexOfProduct(event.product, currentState.products)!];
 
     String itemId =
         findItemIdFromBasket(event.product, currentState.currentCart);
 
-    if (event.increase)
+    if (event.increase) {
       productCart.increaseQuantity();
-    else
+    } else {
       productCart.decreaseQuantity();
+    }
 
     if (productCart.quantity == 0) {
       currentState.products.remove(productCart);
@@ -122,19 +114,20 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     final currentState = state as CartLoaded;
     Basket newBasket;
 
-    int? indexOfProduct = IndexOfProduct(event.product, currentState.products);
+    int? indexOfCurrentProduct =
+        indexOfProduct(event.product, currentState.products);
 
     List<ProductCart> updatedProducts =
         List<ProductCart>.from(currentState.products);
 
-    if (indexOfProduct != null) {
-      updatedProducts[indexOfProduct].addQuantity(event.quantity);
+    if (indexOfCurrentProduct != null) {
+      updatedProducts[indexOfCurrentProduct].addQuantity(event.quantity);
 
       newBasket = await _basketRepository.updateProductInBasket(
           basketId: currentState.currentCart.basketId,
-          basketItemId:
-              currentState.currentCart.productItems![indexOfProduct].itemId,
-          quantity: updatedProducts[indexOfProduct].quantity);
+          basketItemId: currentState
+              .currentCart.productItems![indexOfCurrentProduct].itemId,
+          quantity: updatedProducts[indexOfCurrentProduct].quantity);
     } else {
       updatedProducts
           .add(ProductCart(product: event.product, quantity: event.quantity));
@@ -164,7 +157,7 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
         basketItemId: itemIdToRemove);
 
     final updatedProducts = List<ProductCart>.from(currentState.products)
-      ..remove(IndexOfProduct(event.product, currentState.products));
+      ..removeAt(indexOfProduct(event.product, currentState.products)!);
     controller.forward();
     emit(CartLoaded(updatedProducts, newBasket));
   }
@@ -174,7 +167,7 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     return Ticker(onTick);
   }
 
-  int? IndexOfProduct(Product product, List<ProductCart> productsList) {
+  int? indexOfProduct(Product product, List<ProductCart> productsList) {
     for (int i = 0; i < productsList.length; i++) {
       if (product.id == productsList[i].product.id) return i;
     }
@@ -183,31 +176,27 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
 
   String findItemIdFromBasket(Product product, Basket basket) {
     String itemId = '';
-    basket.productItems!.forEach(
-      (element) {
-        if (element.productId == product.id) {
-          itemId = element.itemId;
-        }
-      },
-    );
+    for (var element in basket.productItems!) {
+      if (element.productId == product.id) {
+        itemId = element.itemId;
+      }
+    }
     return itemId;
   }
 
   List<String> getItemsIDs(List<ProductItem> productItems) {
     List<String> ids = [];
-    productItems.forEach(
-      (element) => ids.add(element.productId),
-    );
+    for (var element in productItems) {
+      ids.add(element.productId);
+    }
     return ids;
   }
 
   int getQuantity(String id, List<ProductItem> productList) {
     int quantity = 1; //by default
-    productList.forEach(
-      (element) {
-        if (element.productId == id) quantity = element.quantity;
-      },
-    );
+    for (var element in productList) {
+      if (element.productId == id) quantity = element.quantity;
+    }
     return quantity;
   }
 }
