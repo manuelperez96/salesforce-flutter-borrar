@@ -1,8 +1,8 @@
-import 'package:example/presentation/localization/app_localizations.dart';
+import 'app_localizations.dart';
 
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
-  AppLocalizationsEn([super.locale = 'en']);
+  AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
   String get app_title => 'Demo Capgemini';
@@ -23,24 +23,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboarding_title_5 => 'Nearby stores';
 
   @override
-  String get onboarding_description_1 =>
-      'Here you’ll see rich varieties of goods, carefully classified for seamless browsing experience.';
+  String get onboarding_description_1 => 'Here you’ll see rich varieties of goods, carefully classified for seamless browsing experience.';
 
   @override
-  String get onboarding_description_2 =>
-      'Add any item you want to your cart, or save it on your wishlist, so you don’t miss it in your future purchases.';
+  String get onboarding_description_2 => 'Add any item you want to your cart, or save it on your wishlist, so you don’t miss it in your future purchases.';
 
   @override
-  String get onboarding_description_3 =>
-      'There are many payment options available for your ease.';
+  String get onboarding_description_3 => 'There are many payment options available for your ease.';
 
   @override
-  String get onboarding_description_4 =>
-      'In particular, Shoplon can pack your orders, and help you seamlessly manage your shipments.';
+  String get onboarding_description_4 => 'In particular, Shoplon can pack your orders, and help you seamlessly manage your shipments.';
 
   @override
-  String get onboarding_description_5 =>
-      'Easily track nearby shops, browse through their items and get information about their prodcuts.';
+  String get onboarding_description_5 => 'Easily track nearby shops, browse through their items and get information about their prodcuts.';
 
   @override
   String get skip => 'Skip';
@@ -49,8 +44,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcome_back => 'Welcome back!';
 
   @override
-  String get login_description =>
-      'Log in with your data that you intered during your registration.';
+  String get login_description => 'Log in with your data that you intered during your registration.';
 
   @override
   String get forgot_password => 'Forgot password';
@@ -77,8 +71,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get valid_email_address => 'Enter a valid email address';
 
   @override
-  String get passwords_special_character =>
-      'Passwords must have at least one special character';
+  String get passwords_special_character => 'Passwords must have at least one special character';
 
   @override
   String get password_required => 'Password is required';

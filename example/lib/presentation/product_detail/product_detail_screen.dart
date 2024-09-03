@@ -15,25 +15,6 @@ import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key});
-  List<String> getImagesByColor({
-    required String selectedColor,
-    required List<ImageGroup> imageGroups,
-  }) {
-    final imageLinks = <String>[];
-
-    // Recorre todos los grupos de imágenes
-    for (final imageGroup in imageGroups) {
-      // Recorre todas las imágenes dentro del grupo
-      for (final image in imageGroup.images) {
-        // Si el enlace contiene el color seleccionado, añadirlo a la lista
-        if (image.link.contains(selectedColor)) {
-          imageLinks.add(image.link);
-        }
-      }
-    }
-
-    return imageLinks;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +27,7 @@ class ProductDetailScreen extends StatelessWidget {
         }
         final initialProduct = state.initialProduct!;
         final productQuantity = state.productQuantity!;
-        final imageByColor = getImagesByColor(
+        final imageByColor = Product.getImagesByColor(
           selectedColor: state.selectedColor ?? '', // For items without color
           imageGroups: initialProduct.imageGroups,
         );
