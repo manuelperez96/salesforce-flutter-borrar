@@ -1,5 +1,4 @@
 import 'package:example/constants.dart';
-import 'package:example/extensions/context_extensions.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -41,22 +40,22 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     demoCategories = [
-      CategoryModel(name: context.localizations.all_categories),
+      CategoryModel(name: 'context.localizations.all_categories'),
       CategoryModel(
-        name: context.localizations.onsale,
+        name: 'context.localizations.onsale',
         svgSrc: 'assets/icons/Sale.svg',
         route: onSaleScreenRoute,
       ),
       CategoryModel(
-        name: context.localizations.mans,
+        name: 'context.localizations.mans',
         svgSrc: 'assets/icons/Man.svg',
       ),
       CategoryModel(
-        name: context.localizations.womans,
+        name: 'context.localizations.womans',
         svgSrc: 'assets/icons/Woman.svg',
       ),
       CategoryModel(
-        name: context.localizations.kids,
+        name: 'context.localizations.kids',
         svgSrc: 'assets/icons/Child.svg',
         route: kidsScreenRoute,
       ),

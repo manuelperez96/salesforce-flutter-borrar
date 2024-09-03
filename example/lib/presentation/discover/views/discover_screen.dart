@@ -1,5 +1,5 @@
 import 'package:example/constants.dart';
-import 'package:example/extensions/context_extensions.dart';
+import 'package:example/l10n/l10n.dart';
 import 'package:example/models/category_model.dart';
 import 'package:example/presentation/discover/views/components/expansion_category.dart';
 import 'package:example/presentation/search/views/components/search_form.dart';
@@ -27,7 +27,7 @@ class DiscoverScreen extends StatelessWidget {
                 vertical: defaultPadding / 2,
               ),
               child: Text(
-                context.localizations.categories,
+                context.l10n.categories,
                 style: Theme.of(context).textTheme.titleSmall,
               ),
             ),
@@ -54,42 +54,42 @@ class DiscoverScreen extends StatelessWidget {
   List<CategoryModel> getCategoriesList(BuildContext context) {
     return [
       CategoryModel(
-        title: context.localizations.onsale,
+        title: context.l10n.onSale,
         svgSrc: 'assets/icons/Sale.svg',
         subCategories: [
-          CategoryModel(title: context.localizations.category_subtitle_1),
-          CategoryModel(title: context.localizations.category_subtitle_2),
-          CategoryModel(title: context.localizations.category_subtitle_3),
-          CategoryModel(title: context.localizations.category_subtitle_4),
-          CategoryModel(title: context.localizations.category_subtitle_5),
+          CategoryModel(title: 'context.localizations.category_subtitle_1'),
+          CategoryModel(title: 'context.localizations.category_subtitle_2'),
+          CategoryModel(title: 'context.localizations.category_subtitle_3'),
+          CategoryModel(title: 'context.localizations.category_subtitle_4'),
+          CategoryModel(title: 'context.localizations.category_subtitle_5'),
         ],
       ),
-      CategoryModel(
-        title: context.localizations.man_woman,
-        svgSrc: 'assets/icons/Man&Woman.svg',
-        subCategories: [
-          CategoryModel(title: context.localizations.category_subtitle_1),
-          CategoryModel(title: context.localizations.category_subtitle_2),
-          CategoryModel(title: context.localizations.category_subtitle_3),
-        ],
-      ),
-      CategoryModel(
-        title: context.localizations.kids,
-        svgSrc: 'assets/icons/Child.svg',
-        subCategories: [
-          CategoryModel(title: context.localizations.category_subtitle_1),
-          CategoryModel(title: context.localizations.category_subtitle_2),
-          CategoryModel(title: context.localizations.category_subtitle_3),
-        ],
-      ),
-      CategoryModel(
-        title: context.localizations.accessories,
-        svgSrc: 'assets/icons/Accessories.svg',
-        subCategories: [
-          CategoryModel(title: context.localizations.category_subtitle_1),
-          CategoryModel(title: context.localizations.category_subtitle_2),
-        ],
-      ),
+      // CategoryModel(
+      //   title: context.localizations.man_woman,
+      //   svgSrc: 'assets/icons/Man&Woman.svg',
+      //   subCategories: [
+      //     CategoryModel(title: context.localizations.category_subtitle_1),
+      //     CategoryModel(title: context.localizations.category_subtitle_2),
+      //     CategoryModel(title: context.localizations.category_subtitle_3),
+      //   ],
+      // ),
+      // CategoryModel(
+      //   title: context.localizations.kids,
+      //   svgSrc: 'assets/icons/Child.svg',
+      //   subCategories: [
+      //     CategoryModel(title: context.localizations.category_subtitle_1),
+      //     CategoryModel(title: context.localizations.category_subtitle_2),
+      //     CategoryModel(title: context.localizations.category_subtitle_3),
+      //   ],
+      // ),
+      // CategoryModel(
+      //   title: context.localizations.accessories,
+      //   svgSrc: 'assets/icons/Accessories.svg',
+      //   subCategories: [
+      //     CategoryModel(title: context.localizations.category_subtitle_1),
+      //     CategoryModel(title: context.localizations.category_subtitle_2),
+      //   ],
+      // ),
     ];
   }
 }
