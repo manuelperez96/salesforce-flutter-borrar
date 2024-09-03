@@ -15,7 +15,7 @@ class ProductDetailProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ProductDetailBloc(
-        productId: productId,
+        initialProductId: productId,
         productRepository: inject<SFCommerceSDK>().productRepository,
       )..add(const ProductDetailEvent.started()),
       child: ProductDetailScreen(),

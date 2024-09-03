@@ -7,9 +7,11 @@ class SelectedColors extends StatelessWidget {
   const SelectedColors({
     super.key,
     required this.product,
-    required this.press,
+    required this.onPressed,
+    required this.selectedColor,
   });
-  final ValueChanged<int> press;
+  final ValueChanged<ValuesVariation> onPressed;
+  final String selectedColor;
   final Product product;
 
   @override
@@ -38,11 +40,10 @@ class SelectedColors extends StatelessWidget {
                 padding: EdgeInsets.only(
                     left: index == 0 ? defaultPadding : defaultPadding / 2),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => onPressed(colors[index]),
                   child: Text(colors[index].name,
                       style: TextStyle(
-                          color: product.variationValues!.color ==
-                                  colors[index].value
+                          color: selectedColor == colors[index].value
                               ? null
                               : Colors.black)),
                 ),
@@ -51,7 +52,7 @@ class SelectedColors extends StatelessWidget {
                 //  ColorDot(
                 //   color: colors[index],
                 //   isActive: selectedColorIndex == index,
-                //   press: () => press(index),
+                //   press: () => press(colors[index]),
                 // ),
               ),
             ),

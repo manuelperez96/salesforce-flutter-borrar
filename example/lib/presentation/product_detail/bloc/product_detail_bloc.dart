@@ -11,10 +11,10 @@ part 'product_detail_state.dart';
 
 class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
   ProductDetailBloc({
-    required String productId,
+    required String initialProductId,
     required ProductRepository productRepository,
   })  : _productRepository = productRepository,
-        super(_Initial(productId: productId)) {
+        super(_Initial(initialProductId: initialProductId)) {
     on<_Started>(_onProductDetailEvent);
     on<_UpdateQuantity>(_onUpdateQuantity);
     on<_SelectedColor>(_onUpdateSelectedColor);
@@ -26,12 +26,16 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
   Future<void> _onProductDetailEvent(
       ProductDetailEvent event, Emitter<ProductDetailState> emit) async {
     try {
-      final response = await _productRepository.getProduct(state.productId);
+      final response =
+          await _productRepository.getProduct(state.initialProductId);
       emit(
         state.copyWith(
-          product: response,
+          initialProduct: response,
           status: ProductDetailStatus.loaded,
           productQuantity: response.minOrderQuantity ?? 1,
+          selectedColor: response.variationValues?.color,
+          selectedSize: response.variationValues?.size,
+          selectedProductId: response.id,
         ),
       );
     } catch (e) {
@@ -50,13 +54,35 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     _SelectedColor event,
     Emitter<ProductDetailState> emit,
   ) {
-    emit(state.copyWith(selectedColor: event.color));
+    late final String selectedProductId;
+    for (var variant in state.initialProduct!.variants!) {
+      if (variant.variationValues.color == state.selectedColor &&
+          variant.variationValues.size == state.selectedSize) {
+        selectedProductId = variant.productId;
+      }
+    }
+
+    emit(state.copyWith(
+      selectedColor: event.color,
+      selectedProductId: selectedProductId,
+    ));
   }
 
   void _onUpdateSelectedSize(
     _SelectedSize event,
     Emitter<ProductDetailState> emit,
   ) {
-    emit(state.copyWith(selectedSize: event.size));
+    late final String selectedProductId;
+    for (var variant in state.initialProduct!.variants!) {
+      if (variant.variationValues.color == state.selectedColor &&
+          variant.variationValues.size == state.selectedSize) {
+        selectedProductId = variant.productId;
+      }
+    }
+
+    emit(state.copyWith(
+      selectedSize: event.size,
+      selectedProductId: selectedProductId,
+    ));
   }
 }
