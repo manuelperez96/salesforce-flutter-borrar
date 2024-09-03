@@ -4,5 +4,15 @@ import 'app_localizations.dart';
 class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
+  @override
+  String get shop => 'Tienda';
 
+  @override
+  String get categories => 'Categorías';
+
+  @override
+  String get cart => 'Cesta';
+
+  @override
+  String get onSale => 'En venta';
 }

@@ -1,6 +1,5 @@
 import 'package:example/components/dot_indicators.dart';
 import 'package:example/constants.dart';
-import 'package:example/extensions/context_extensions.dart';
 import 'package:example/presentation/onbording/views/components/onbording_content.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';

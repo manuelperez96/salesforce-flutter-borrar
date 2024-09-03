@@ -1,5 +1,5 @@
 import 'package:example/constants.dart';
-import 'package:example/extensions/context_extensions.dart';
+import 'package:example/l10n/l10n.dart';
 import 'package:example/models/category_model.dart';
 import 'package:example/presentation/discover/views/components/expansion_category.dart';
 import 'package:example/presentation/search/views/components/search_form.dart';
@@ -26,9 +26,8 @@ class DiscoverScreen extends StatelessWidget {
                 horizontal: defaultPadding,
                 vertical: defaultPadding / 2,
               ),
-                // TODO(Manuel): fix
               child: Text(
-                'context.localizations.categories',
+                context.l10n.categories,
                 style: Theme.of(context).textTheme.titleSmall,
               ),
             ),
@@ -54,9 +53,8 @@ class DiscoverScreen extends StatelessWidget {
 
   List<CategoryModel> getCategoriesList(BuildContext context) {
     return [
-        // TODO(Manuel): fix
       CategoryModel(
-        title: 'context.localizations.onsale',
+        title: context.l10n.onSale,
         svgSrc: 'assets/icons/Sale.svg',
         subCategories: [
           CategoryModel(title: 'context.localizations.category_subtitle_1'),

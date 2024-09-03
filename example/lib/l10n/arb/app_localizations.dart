@@ -91,6 +91,29 @@ abstract class AppLocalizations {
     Locale('es')
   ];
 
+  /// No description provided for @shop.
+  ///
+  /// In es, this message translates to:
+  /// **'Tienda'**
+  String get shop;
+
+  /// No description provided for @categories.
+  ///
+  /// In es, this message translates to:
+  /// **'Categorías'**
+  String get categories;
+
+  /// No description provided for @cart.
+  ///
+  /// In es, this message translates to:
+  /// **'Cesta'**
+  String get cart;
+
+  /// No description provided for @onSale.
+  ///
+  /// In es, this message translates to:
+  /// **'En venta'**
+  String get onSale;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

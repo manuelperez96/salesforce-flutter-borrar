@@ -2,7 +2,7 @@ import 'package:animations/animations.dart';
 import 'package:example/components/bottom_navigation_bar/cart_animated_icon.dart';
 import 'package:example/components/glass_appbar.dart';
 import 'package:example/constants.dart';
-import 'package:example/extensions/context_extensions.dart';
+import 'package:example/l10n/l10n.dart';
 import 'package:example/presentation/checkout/views/cart_screen.dart';
 import 'package:example/presentation/discover/views/discover_screen.dart';
 import 'package:example/presentation/home/views/home_screen.dart';
@@ -124,22 +124,20 @@ class _EntryPointState extends State<EntryPoint> {
             BottomNavigationBarItem(
               icon: svgIcon('assets/icons/Shop.svg'),
               activeIcon: svgIcon('assets/icons/Shop.svg', color: primaryColor),
-              // TODO(Manuel): fix
-              label: 'context.localizations.label_shop',
+              label: context.l10n.shop,
             ),
             BottomNavigationBarItem(
-                icon: svgIcon('assets/icons/Category.svg'),
-                activeIcon:
-                    svgIcon('assets/icons/Category.svg', color: primaryColor),
-                // TODO(Manuel): fix
-                label: 'context.localizations.label_discover,'),
+              icon: svgIcon('assets/icons/Category.svg'),
+              activeIcon:
+                  svgIcon('assets/icons/Category.svg', color: primaryColor),
+              label: context.l10n.categories,
+            ),
             BottomNavigationBarItem(
               icon: CartAnimatedIcon(svgIcon: svgIcon('assets/icons/Bag.svg')),
               activeIcon: CartAnimatedIcon(
                 svgIcon: svgIcon('assets/icons/Bag.svg', color: primaryColor),
               ),
-              // TODO(Manuel): fix
-              label: 'context.localizations.label_cart',
+              label: context.l10n.cart,
             ),
           ],
         ),

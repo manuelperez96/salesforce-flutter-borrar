@@ -1,4 +1,7 @@
 {
   "@@locale": "es",
-  "@hello": "hola"
+  "shop": "Tienda",
+  "categories": "Categorías",
+  "cart": "Cesta",
+  "onSale": "En venta"
 }

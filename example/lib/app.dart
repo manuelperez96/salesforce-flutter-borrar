@@ -1,5 +1,5 @@
 import 'package:example/di/app_modules.dart';
-import 'package:example/extensions/context_extensions.dart';
+import 'package:example/l10n/arb/app_localizations.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/home/bloc/home_bloc.dart';
@@ -39,9 +39,8 @@ class App extends StatelessWidget {
         themeMode: ThemeMode.dark,
         onGenerateRoute: router.generateRoute,
         initialRoute: splashScreenRoute,
-        // localizationsDelegates: AppLocalizations.localizationsDelegates,
-        // supportedLocales: AppLocalizations.supportedLocales,
-        // onGenerateTitle: (context) => context.localizations.app_title,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
       ),
     );
   }
