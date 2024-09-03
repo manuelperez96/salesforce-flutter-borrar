@@ -75,11 +75,11 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
 
     Basket newBasket;
 
-    final productCart = currentState
-        .products[indexOfProduct(event.product, currentState.products)!];
+    final index = indexOfProduct(event.product, currentState.products)!;
 
-    final itemId =
-        findItemIdFromBasket(event.product, currentState.currentCart);
+    final productCart = currentState.products[index];
+
+    final itemId = currentState.currentCart.productItems![index].itemId;
 
     if (event.increase) {
       productCart.increaseQuantity();
@@ -152,8 +152,11 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   ) async {
     final currentState = state as CartLoaded;
 
+    final indexProductToRemove =
+        indexOfProduct(event.product, currentState.products)!;
+
     final itemIdToRemove =
-        findItemIdFromBasket(event.product, currentState.currentCart);
+        currentState.currentCart.productItems![indexProductToRemove].itemId;
 
     final newBasket = await _basketRepository.removeProductFromBasket(
       basketId: currentState.currentCart.basketId,
@@ -161,7 +164,7 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     );
 
     final updatedProducts = List<ProductCart>.from(currentState.products)
-      ..removeAt(indexOfProduct(event.product, currentState.products)!);
+      ..removeAt(indexProductToRemove);
     unawaited(controller.forward());
     emit(CartLoaded(updatedProducts, newBasket));
   }

@@ -37,12 +37,8 @@ mixin _$AccessToken {
   @JsonKey(name: 'enc_user_id')
   String get encUserId => throw _privateConstructorUsedError;
 
-  /// Serializes this AccessToken to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AccessToken
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AccessTokenCopyWith<AccessToken> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,8 +70,6 @@ class _$AccessTokenCopyWithImpl<$Res, $Val extends AccessToken>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AccessToken
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,8 +146,6 @@ class __$$AccessTokenImplCopyWithImpl<$Res>
       _$AccessTokenImpl _value, $Res Function(_$AccessTokenImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AccessToken
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -272,7 +264,7 @@ class _$AccessTokenImpl implements _AccessToken {
                 other.encUserId == encUserId));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -285,9 +277,7 @@ class _$AccessTokenImpl implements _AccessToken {
       customerId,
       encUserId);
 
-  /// Create a copy of AccessToken
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AccessTokenImplCopyWith<_$AccessTokenImpl> get copyWith =>
@@ -341,11 +331,8 @@ abstract class _AccessToken implements AccessToken {
   @override
   @JsonKey(name: 'enc_user_id')
   String get encUserId;
-
-  /// Create a copy of AccessToken
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AccessTokenImplCopyWith<_$AccessTokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

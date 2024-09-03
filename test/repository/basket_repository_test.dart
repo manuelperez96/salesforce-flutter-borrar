@@ -9,9 +9,9 @@ import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 
 import 'basket_repository_test.mocks.dart';
 
-@GenerateMocks(
-  [Dio],
-  customMocks: [
+@GenerateNiceMocks(
+  [
+    MockSpec<Dio>(),
     MockSpec<TokenStorage>(),
   ],
 )

@@ -295,7 +295,7 @@ class __$$ProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProductImpl implements _Product {
+class _$ProductImpl extends _Product {
   _$ProductImpl(
       {required this.id,
       required this.currency,
@@ -313,7 +313,8 @@ class _$ProductImpl implements _Product {
       required final List<Variant>? variants})
       : _imageGroups = imageGroups,
         _variationAttributes = variationAttributes,
-        _variants = variants;
+        _variants = variants,
+        super._();
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
@@ -440,7 +441,7 @@ class _$ProductImpl implements _Product {
   }
 }
 
-abstract class _Product implements Product {
+abstract class _Product extends Product {
   factory _Product(
       {required final String id,
       required final String currency,
@@ -456,6 +457,7 @@ abstract class _Product implements Product {
       required final VariationValues? variationValues,
       required final List<ProductVariationAttribute>? variationAttributes,
       required final List<Variant>? variants}) = _$ProductImpl;
+  _Product._() : super._();
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
