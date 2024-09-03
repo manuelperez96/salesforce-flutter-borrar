@@ -40,7 +40,9 @@ class ProductDetailScreen extends StatelessWidget {
     return BlocBuilder<ProductDetailBloc, ProductDetailState>(
       builder: (context, state) {
         if (state.status == ProductDetailStatus.loading) {
-          return const Center(child: CircularProgressIndicator());
+          return Scaffold(
+            body: const Center(child: CircularProgressIndicator()),
+          );
         }
         final initialProduct = state.initialProduct!;
         final productQuantity = state.productQuantity!;

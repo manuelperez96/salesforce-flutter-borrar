@@ -39,7 +39,10 @@ class _ProductImagesState extends State<ProductImages> {
       child: AspectRatio(
         aspectRatio: 1,
         child: widget.images.isEmpty
-            ? Center(child: Text('Sin Imagen disponible'))
+            ? Center(
+                child: Image.asset(
+                "assets/images/not_available.png",
+              ))
             : Stack(
                 children: [
                   PageView.builder(
