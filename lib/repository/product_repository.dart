@@ -47,7 +47,6 @@ class ProductRepository extends Repository {
     }
   }
 
-  // TODO(Carlos): change ProductByCategory by Product + cache manager
   Future<List<ProductPreviewByCategory>> getProductByCategory(
     String category,
   ) async {

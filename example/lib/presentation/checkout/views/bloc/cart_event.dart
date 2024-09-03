@@ -6,9 +6,8 @@ class CreateCart extends CartEvent {}
 
 class CheckStatusCart extends CartEvent {}
 
+// true -> increase      false -> decrease
 class ModifyQuantityProductCart extends CartEvent {
-  // true -> increase      false -> decrease
-
   ModifyQuantityProductCart({required this.product, required this.increase});
   final Product product;
   final bool increase;
