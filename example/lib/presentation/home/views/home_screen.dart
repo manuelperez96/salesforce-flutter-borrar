@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           );
         }
 
-        return const Center(child: Text("Failed to load data"));
+        return const Center(child: Text('Failed to load data'));
       },
     );
   }

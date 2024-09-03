@@ -1,14 +1,13 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../constants.dart';
-
 class ReviewCard extends StatelessWidget {
   const ReviewCard({
-    super.key,
     required this.rating,
     required this.numOfReviews,
+    super.key,
     this.numOfFiveStar = 0,
     this.numOfFourStar = 0,
     this.numOfThreeStar = 0,
@@ -18,11 +17,11 @@ class ReviewCard extends StatelessWidget {
 
   final double rating;
   final int numOfReviews;
-  final int numOfFiveStar,
-      numOfFourStar,
-      numOfThreeStar,
-      numOfTwoStar,
-      numOfOneStar;
+  final int numOfFiveStar;
+  final int numOfFourStar;
+  final int numOfThreeStar;
+  final int numOfTwoStar;
+  final int numOfOneStar;
 
   @override
   Widget build(BuildContext context) {
@@ -42,20 +41,20 @@ class ReviewCard extends StatelessWidget {
               children: [
                 Text.rich(
                   TextSpan(
-                    text: "$rating ",
+                    text: '$rating ',
                     style: Theme.of(context)
                         .textTheme
                         .headlineSmall!
                         .copyWith(fontWeight: FontWeight.w500),
                     children: [
                       TextSpan(
-                        text: "/5",
+                        text: '/5',
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ],
                   ),
                 ),
-                Text("Based on $numOfReviews Reviews"),
+                Text('Based on $numOfReviews Reviews'),
                 const SizedBox(height: defaultPadding),
                 RatingBar.builder(
                   initialRating: rating,
@@ -71,7 +70,7 @@ class ReviewCard extends StatelessWidget {
                   ignoreGestures: true,
                   onRatingUpdate: (value) {},
                   itemBuilder: (context, index) =>
-                      SvgPicture.asset("assets/icons/Star_filled.svg"),
+                      SvgPicture.asset('assets/icons/Star_filled.svg'),
                 ),
               ],
             ),
@@ -96,9 +95,9 @@ class ReviewCard extends StatelessWidget {
 
 class RateBar extends StatelessWidget {
   const RateBar({
-    super.key,
     required this.star,
     required this.value,
+    super.key,
   });
 
   final int star;
@@ -113,9 +112,10 @@ class RateBar extends StatelessWidget {
           SizedBox(
             width: 40,
             child: Text(
-              "$star Star",
+              '$star Star',
               style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                  color: Theme.of(context).textTheme.bodyMedium!.color),
+                    color: Theme.of(context).textTheme.bodyMedium!.color,
+                  ),
             ),
           ),
           const SizedBox(width: defaultPadding / 2),

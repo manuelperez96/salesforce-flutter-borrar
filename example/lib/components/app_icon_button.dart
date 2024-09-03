@@ -4,12 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class AppIconButton extends StatelessWidget {
   const AppIconButton({
-    super.key,
     required this.iconPath,
     required this.onPressed,
+    super.key,
   });
   final String iconPath;
-  final Function() onPressed;
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -18,7 +18,8 @@ class AppIconButton extends StatelessWidget {
       child: OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-            padding: const EdgeInsets.all(defaultPadding / 2)),
+          padding: const EdgeInsets.all(defaultPadding / 2),
+        ),
         child: SvgPicture.asset(
           iconPath,
           colorFilter: ColorFilter.mode(

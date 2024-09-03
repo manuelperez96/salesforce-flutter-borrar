@@ -1,14 +1,13 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
-import '../../../../constants.dart';
-
 class SelectedColors extends StatelessWidget {
   const SelectedColors({
-    super.key,
     required this.product,
     required this.onPressed,
     required this.selectedColor,
+    super.key,
   });
   final ValueChanged<ValuesVariation> onPressed;
   final String selectedColor;
@@ -17,7 +16,7 @@ class SelectedColors extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = product.variationAttributes!
-        .firstWhere((element) => element.id == "color")
+        .firstWhere((element) => element.id == 'color')
         .values
         .map((color) => color)
         .toList();
@@ -27,7 +26,7 @@ class SelectedColors extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(defaultPadding),
           child: Text(
-            "Select Color",
+            'Select Color',
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
@@ -38,16 +37,20 @@ class SelectedColors extends StatelessWidget {
               colors.length,
               (index) => Padding(
                 padding: EdgeInsets.only(
-                    left: index == 0 ? defaultPadding : defaultPadding / 2),
+                  left: index == 0 ? defaultPadding : defaultPadding / 2,
+                ),
                 child: TextButton(
                   onPressed: () => onPressed(colors[index]),
-                  child: Text(colors[index].name,
-                      style: TextStyle(
-                          color: selectedColor == colors[index].value
-                              ? null
-                              : Colors.black)),
+                  child: Text(
+                    colors[index].name,
+                    style: TextStyle(
+                      color: selectedColor == colors[index].value
+                          ? null
+                          : Colors.black,
+                    ),
+                  ),
                 ),
-                // TODO finish this when Saleforce responds (show Colors)
+                // TODOfinish this when Saleforce responds (show Colors)
 
                 //  ColorDot(
                 //   color: colors[index],
@@ -57,7 +60,7 @@ class SelectedColors extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

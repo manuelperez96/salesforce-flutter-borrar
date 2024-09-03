@@ -4,9 +4,9 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sf_commerce_sdk/repository/auth_repository.dart';
 
+part 'splash_bloc.freezed.dart';
 part 'splash_event.dart';
 part 'splash_state.dart';
-part 'splash_bloc.freezed.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc({
@@ -22,7 +22,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   Future<void> _onStarted(_Started event, Emitter<SplashState> emit) async {
     try {
       await Future.wait([
-        Future.delayed(_splashDuration),
+        Future<void>.delayed(_splashDuration),
         _doLogin(),
       ]);
 

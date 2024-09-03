@@ -1,17 +1,15 @@
-import 'package:flutter/material.dart';
-
 import 'package:example/components/Banner/L/banner_l.dart';
-
-import '../../../constants.dart';
+import 'package:example/constants.dart';
+import 'package:flutter/material.dart';
 
 class BannerLStyle1 extends StatelessWidget {
   const BannerLStyle1({
-    super.key,
-    this.image = "https://i.imgur.com/wpl37Kz.png",
     required this.title,
     required this.press,
-    this.subtitle,
     required this.discountPercent,
+    super.key,
+    this.image = 'https://i.imgur.com/wpl37Kz.png',
+    this.subtitle,
   });
   final String? image;
   final String title;
@@ -64,22 +62,23 @@ class BannerLStyle1 extends StatelessWidget {
                     ),
                     const SizedBox(width: defaultPadding / 4),
                     Text(
-                      "%",
+                      '%',
                       style: TextStyle(
                         foreground: Paint()
                           ..style = PaintingStyle.stroke
                           ..strokeWidth = 1.4
                           ..color = Colors.white38,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
               if (subtitle != null)
                 Container(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: defaultPadding / 2,
-                      vertical: defaultPadding / 8),
+                    horizontal: defaultPadding / 2,
+                    vertical: defaultPadding / 8,
+                  ),
                   color: Colors.white70,
                   child: Text(
                     subtitle!,
@@ -104,7 +103,7 @@ class BannerLStyle1 extends StatelessWidget {
               ),
               const Spacer(),
               const Text(
-                "Shop now  >",
+                'Shop now  >',
                 style: TextStyle(
                   fontFamily: grandisExtendedFont,
                   fontSize: 12,

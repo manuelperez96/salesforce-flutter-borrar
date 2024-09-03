@@ -1,14 +1,13 @@
+import 'package:example/components/network_image_with_loader.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_category.dart';
 
-import '../../constants.dart';
-import '../network_image_with_loader.dart';
-
 class ProductCard extends StatelessWidget {
   const ProductCard({
-    super.key,
     required this.press,
     required this.product,
+    super.key,
     this.bottomWidget = const SizedBox(),
     this.showBookmark = false,
   });
@@ -22,17 +21,20 @@ class ProductCard extends StatelessWidget {
     return OutlinedButton(
       onPressed: press,
       style: OutlinedButton.styleFrom(
-          minimumSize: const Size(140, 220),
-          maximumSize: const Size(140, 260),
-          padding: const EdgeInsets.all(8)),
+        minimumSize: const Size(140, 220),
+        maximumSize: const Size(140, 260),
+        padding: const EdgeInsets.all(8),
+      ),
       child: Column(
         children: [
           AspectRatio(
             aspectRatio: 1.15,
             child: Stack(
               children: [
-                NetworkImageWithLoader(product.image.link,
-                    radius: defaultBorderRadius),
+                NetworkImageWithLoader(
+                  product.image.link,
+                  radius: defaultBorderRadius,
+                ),
                 // if (product.dicountpercent != null)
                 //   Positioned(
                 //     right: defaultPadding / 2,
@@ -62,7 +64,9 @@ class ProductCard extends StatelessWidget {
           const Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: defaultPadding / 2, vertical: defaultPadding / 2),
+                horizontal: defaultPadding / 2,
+                vertical: defaultPadding / 2,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

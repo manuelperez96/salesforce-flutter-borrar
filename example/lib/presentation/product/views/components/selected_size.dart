@@ -1,15 +1,14 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
-import '../../../../constants.dart';
-
 class SelectedSize extends StatelessWidget {
   const SelectedSize({
-    super.key,
     required this.selectedSize,
     required this.onPressed,
     required this.availableValuesSizes,
     required this.sizes,
+    super.key,
   });
 
   final ValueChanged<ValuesVariation> onPressed;
@@ -26,7 +25,7 @@ class SelectedSize extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(defaultPadding),
           child: Text(
-            "Select Size",
+            'Select Size',
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
@@ -37,7 +36,8 @@ class SelectedSize extends StatelessWidget {
               sizes.length,
               (index) => Padding(
                 padding: EdgeInsets.only(
-                    left: index == 0 ? defaultPadding : defaultPadding / 2),
+                  left: index == 0 ? defaultPadding : defaultPadding / 2,
+                ),
                 child: SizeButton(
                   isActive: availableValuesSizes.contains(sizes[index].value),
                   text: sizes[index].name,
@@ -47,7 +47,7 @@ class SelectedSize extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -55,11 +55,11 @@ class SelectedSize extends StatelessWidget {
 
 class SizeButton extends StatelessWidget {
   const SizeButton({
-    super.key,
     required this.text,
     required this.isSelected,
     required this.press,
     required this.isActive,
+    super.key,
   });
 
   final String text;
@@ -82,11 +82,12 @@ class SizeButton extends StatelessWidget {
         child: Text(
           text.toUpperCase(),
           style: TextStyle(
-              color: isActive
-                  ? (isSelected
-                      ? primaryColor
-                      : Theme.of(context).textTheme.bodyLarge!.color)
-                  : Colors.grey),
+            color: isActive
+                ? (isSelected
+                    ? primaryColor
+                    : Theme.of(context).textTheme.bodyLarge!.color)
+                : Colors.grey,
+          ),
         ),
       ),
     );

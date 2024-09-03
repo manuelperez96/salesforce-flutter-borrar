@@ -19,12 +19,12 @@ class ProductDetailScreen extends StatelessWidget {
     required String selectedColor,
     required List<ImageGroup> imageGroups,
   }) {
-    List<String> imageLinks = [];
+    final imageLinks = <String>[];
 
     // Recorre todos los grupos de imágenes
-    for (var imageGroup in imageGroups) {
+    for (final imageGroup in imageGroups) {
       // Recorre todas las imágenes dentro del grupo
-      for (var image in imageGroup.images) {
+      for (final image in imageGroup.images) {
         // Si el enlace contiene el color seleccionado, añadirlo a la lista
         if (image.link.contains(selectedColor)) {
           imageLinks.add(image.link);
@@ -46,7 +46,7 @@ class ProductDetailScreen extends StatelessWidget {
         }
         final initialProduct = state.initialProduct!;
         final productQuantity = state.productQuantity!;
-        final List<String> imageByColor = getImagesByColor(
+        final imageByColor = getImagesByColor(
           selectedColor: state.selectedColor ?? '', // For items without color
           imageGroups: initialProduct.imageGroups,
         );
@@ -55,12 +55,15 @@ class ProductDetailScreen extends StatelessWidget {
           bottomNavigationBar: CartButton(
             product: initialProduct,
             productQuantity: productQuantity,
-            title: "Add to cart",
-            subTitle: "Total price",
+            title: 'Add to cart',
+            subTitle: 'Total price',
             press: () {
-              BlocProvider.of<CartBloc>(context).add(AddProductCart(
+              BlocProvider.of<CartBloc>(context).add(
+                AddProductCart(
                   state.initialProduct!,
-                  productQuantity)); // TODO Change initialProduct for selectedProductId
+                  productQuantity,
+                ),
+              ); // TODOChange initialProduct for selectedProductId
               customModalBottomSheet(
                 context,
                 child: const AddedToCartMessageScreen(),
@@ -91,7 +94,8 @@ class ProductDetailScreen extends StatelessWidget {
                           children: [
                             const ProductDetailQuantitySelector(),
                             Text(
-                                'Stock: ${initialProduct.inventory.stockLevel}'),
+                              'Stock: ${initialProduct.inventory.stockLevel}',
+                            ),
                           ],
                         ),
                       ],
@@ -101,8 +105,10 @@ class ProductDetailScreen extends StatelessWidget {
                 SliverPadding(
                   padding: const EdgeInsets.all(defaultPadding),
                   sliver: SliverToBoxAdapter(
-                    child: Text(initialProduct.pageTitle,
-                        style: Theme.of(context).textTheme.titleLarge),
+                    child: Text(
+                      initialProduct.pageTitle,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                   ),
                 ),
                 SliverPadding(
@@ -115,7 +121,7 @@ class ProductDetailScreen extends StatelessWidget {
                 const SliverToBoxAdapter(child: ProductSizeColorSelectors()),
                 const SliverToBoxAdapter(
                   child: SizedBox(height: defaultPadding),
-                )
+                ),
               ],
             ),
           ),

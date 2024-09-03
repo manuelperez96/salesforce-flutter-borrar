@@ -1,12 +1,11 @@
+import 'package:example/components/network_image_with_loader.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '/components/network_image_with_loader.dart';
-import '../../../../constants.dart';
 
 class ProductImages extends StatefulWidget {
   const ProductImages({
-    super.key,
     required this.images,
+    super.key,
   });
 
   final List<String?> images;
@@ -41,8 +40,9 @@ class _ProductImagesState extends State<ProductImages> {
         child: widget.images.isEmpty
             ? Center(
                 child: Image.asset(
-                "assets/images/not_available.png",
-              ))
+                  'assets/images/not_available.png',
+                ),
+              )
             : Stack(
                 children: [
                   PageView.builder(
@@ -82,9 +82,10 @@ class _ProductImagesState extends State<ProductImages> {
                             widget.images.length,
                             (index) => Padding(
                               padding: EdgeInsets.only(
-                                  right: index == (widget.images.length - 1)
-                                      ? 0
-                                      : defaultPadding / 4),
+                                right: index == (widget.images.length - 1)
+                                    ? 0
+                                    : defaultPadding / 4,
+                              ),
                               child: CircleAvatar(
                                 radius: 3,
                                 backgroundColor: Theme.of(context)
@@ -92,13 +93,14 @@ class _ProductImagesState extends State<ProductImages> {
                                     .bodyLarge!
                                     .color!
                                     .withOpacity(
-                                        index == _currentPage ? 1 : 0.2),
+                                      index == _currentPage ? 1 : 0.2,
+                                    ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    )
+                    ),
                 ],
               ),
       ),

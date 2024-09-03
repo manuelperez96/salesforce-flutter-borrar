@@ -23,7 +23,7 @@ class CartIndicator extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                "${state.products.length}",
+                '${state.products.length}',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 10,

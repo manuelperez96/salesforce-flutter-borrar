@@ -6,14 +6,13 @@ import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_category.dart';
 
 class CustomBanner extends StatelessWidget {
-  final Category category;
-  final List<ProductPreviewByCategory> productList;
-
   const CustomBanner({
-    super.key,
     required this.category,
     required this.productList,
+    super.key,
   });
+  final Category category;
+  final List<ProductPreviewByCategory> productList;
 
   @override
   Widget build(BuildContext context) {
@@ -33,36 +32,37 @@ class CustomBanner extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(defaultPadding),
                       child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                category.name,
-                                style: const TextStyle(
-                                  fontFamily: grandisExtendedFont,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 24,
-                                  color: Colors.white,
-                                ),
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              category.name,
+                              style: const TextStyle(
+                                fontFamily: grandisExtendedFont,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 24,
+                                color: Colors.white,
                               ),
-                              category.pageTitle != null
-                                  ? SizedBox(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          0.7,
-                                      child: Text(
-                                        category.pageTitle!,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                    )
-                                  : const SizedBox.shrink(),
-                            ],
-                          )),
+                            ),
+                            if (category.pageTitle != null)
+                              SizedBox(
+                                width: MediaQuery.sizeOf(context).width * 0.7,
+                                child: Text(
+                                  category.pageTitle!,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              )
+                            else
+                              const SizedBox.shrink(),
+                          ],
+                        ),
+                      ),
                     ),
                     // Padding(
                     //   padding: const EdgeInsets.all(defaultPadding),
@@ -110,7 +110,7 @@ class CustomBanner extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                 ],
-              )
+              ),
             ],
           );
   }

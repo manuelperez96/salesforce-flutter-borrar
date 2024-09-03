@@ -1,7 +1,6 @@
+import 'package:example/components/skleton/skelton.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../constants.dart';
-import '../skelton.dart';
 
 class BannerLSkelton extends StatelessWidget {
   const BannerLSkelton({
@@ -31,10 +30,10 @@ class BannerLSkelton extends StatelessWidget {
                   height: 24,
                 ),
                 Spacer(),
-                Skeleton(width: 80)
+                Skeleton(width: 80),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

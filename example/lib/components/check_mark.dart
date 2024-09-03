@@ -1,7 +1,6 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../constants.dart';
 
 class CheckMark extends StatelessWidget {
   const CheckMark({
@@ -12,7 +11,8 @@ class CheckMark extends StatelessWidget {
     this.padding = const EdgeInsets.all(2),
   });
   final double radious;
-  final Color activeColor, iconColor;
+  final Color activeColor;
+  final Color iconColor;
   final EdgeInsets padding;
 
   @override
@@ -23,7 +23,7 @@ class CheckMark extends StatelessWidget {
       child: Padding(
         padding: padding,
         child: SvgPicture.asset(
-          "assets/icons/Singlecheck.svg",
+          'assets/icons/Singlecheck.svg',
           colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
         ),
       ),

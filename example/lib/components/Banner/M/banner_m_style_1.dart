@@ -1,14 +1,13 @@
+import 'package:example/components/Banner/M/banner_m.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-import 'banner_m.dart';
-
-import '../../../constants.dart';
 
 class BannerMStyle1 extends StatelessWidget {
   const BannerMStyle1({
-    super.key,
-    this.image = "https://i.imgur.com/UP7xhPG.png",
     required this.text,
     required this.press,
+    super.key,
+    this.image = 'https://i.imgur.com/UP7xhPG.png',
   });
   final String? image;
   final String text;
@@ -40,7 +39,7 @@ class BannerMStyle1 extends StatelessWidget {
               ),
               const Spacer(),
               const Text(
-                "Shop now",
+                'Shop now',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,

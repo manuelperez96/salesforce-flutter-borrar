@@ -1,12 +1,11 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 
 class OutlinedActiveButton extends StatelessWidget {
   const OutlinedActiveButton({
-    super.key,
     required this.text,
     required this.press,
+    super.key,
     this.isActive = false,
   });
 
@@ -20,7 +19,9 @@ class OutlinedActiveButton extends StatelessWidget {
       onPressed: press,
       style: isActive
           ? OutlinedButton.styleFrom(
-              backgroundColor: primaryColor, foregroundColor: Colors.white)
+              backgroundColor: primaryColor,
+              foregroundColor: Colors.white,
+            )
           : null,
       child: Text(text),
     );

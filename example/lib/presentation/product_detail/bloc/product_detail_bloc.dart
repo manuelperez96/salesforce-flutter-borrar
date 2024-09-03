@@ -24,7 +24,9 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
   final ProductRepository _productRepository;
 
   Future<void> _onProductDetailEvent(
-      ProductDetailEvent event, Emitter<ProductDetailState> emit) async {
+    ProductDetailEvent event,
+    Emitter<ProductDetailState> emit,
+  ) async {
     try {
       final response =
           await _productRepository.getProduct(state.initialProductId);
@@ -55,17 +57,19 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     Emitter<ProductDetailState> emit,
   ) {
     late final String selectedProductId;
-    for (var variant in state.initialProduct!.variants!) {
+    for (final variant in state.initialProduct!.variants!) {
       if (variant.variationValues.color == state.selectedColor &&
           variant.variationValues.size == state.selectedSize) {
         selectedProductId = variant.productId;
       }
     }
 
-    emit(state.copyWith(
-      selectedColor: event.color,
-      selectedProductId: selectedProductId,
-    ));
+    emit(
+      state.copyWith(
+        selectedColor: event.color,
+        selectedProductId: selectedProductId,
+      ),
+    );
   }
 
   void _onUpdateSelectedSize(
@@ -73,16 +77,18 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     Emitter<ProductDetailState> emit,
   ) {
     late final String selectedProductId;
-    for (var variant in state.initialProduct!.variants!) {
+    for (final variant in state.initialProduct!.variants!) {
       if (variant.variationValues.color == state.selectedColor &&
           variant.variationValues.size == state.selectedSize) {
         selectedProductId = variant.productId;
       }
     }
 
-    emit(state.copyWith(
-      selectedSize: event.size,
-      selectedProductId: selectedProductId,
-    ));
+    emit(
+      state.copyWith(
+        selectedSize: event.size,
+        selectedProductId: selectedProductId,
+      ),
+    );
   }
 }

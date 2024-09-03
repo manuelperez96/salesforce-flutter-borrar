@@ -1,11 +1,10 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../constants.dart';
 
 class ProductAvailabilityTag extends StatelessWidget {
   const ProductAvailabilityTag({
-    super.key,
     required this.isAvailable,
+    super.key,
   });
 
   final bool isAvailable;
@@ -21,7 +20,7 @@ class ProductAvailabilityTag extends StatelessWidget {
         ),
       ),
       child: Text(
-        isAvailable ? "Available in stock" : "Currently unavailable",
+        isAvailable ? 'Available in stock' : 'Currently unavailable',
         style: Theme.of(context)
             .textTheme
             .labelSmall!

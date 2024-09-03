@@ -20,10 +20,11 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<CartBloc>(
-            create: (context) => CartBloc(
-                basketRepository: inject<SFCommerceSDK>().basketRepository,
-                productRepository: inject<SFCommerceSDK>().productRepository)
-              ..add(CheckStatusCart())),
+          create: (context) => CartBloc(
+            basketRepository: inject<SFCommerceSDK>().basketRepository,
+            productRepository: inject<SFCommerceSDK>().productRepository,
+          )..add(CheckStatusCart()),
+        ),
         BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(
             categoryRepository: inject<SFCommerceSDK>().categoryRepository,

@@ -1,13 +1,12 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../constants.dart';
 
 class CheckboxUnderlineListTile extends StatelessWidget {
   const CheckboxUnderlineListTile({
-    super.key,
     required this.onChanged,
     required this.value,
     required this.title,
+    super.key,
     this.numOfItems,
     this.trailing,
   });
@@ -33,7 +32,7 @@ class CheckboxUnderlineListTile extends StatelessWidget {
                 if (numOfItems != null)
                   WidgetSpan(
                     child: Text(
-                      "  ($numOfItems)",
+                      '  ($numOfItems)',
                       style: TextStyle(
                         color: value
                             ? Theme.of(context).textTheme.bodyLarge!.color
@@ -47,7 +46,8 @@ class CheckboxUnderlineListTile extends StatelessWidget {
           secondary: trailing != null
               ? Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: defaultPadding / 2),
+                    horizontal: defaultPadding / 2,
+                  ),
                   child: trailing,
                 )
               : null,

@@ -1,6 +1,5 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 
 const AppBarTheme appBarLightTheme = AppBarTheme(
   backgroundColor: Colors.white,

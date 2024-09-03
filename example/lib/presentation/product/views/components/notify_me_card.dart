@@ -1,14 +1,13 @@
+import 'package:example/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../constants.dart';
-
 class NotifyMeCard extends StatelessWidget {
   const NotifyMeCard({
+    required this.onChanged,
     super.key,
     this.isNotify = false,
-    required this.onChanged,
   });
 
   final bool isNotify;
@@ -19,7 +18,9 @@ class NotifyMeCard extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(
-            horizontal: defaultPadding, vertical: defaultPadding / 2),
+          horizontal: defaultPadding,
+          vertical: defaultPadding / 2,
+        ),
         child: Container(
           decoration: BoxDecoration(
             color: isNotify ? primaryColor : Colors.transparent,
@@ -51,27 +52,29 @@ class NotifyMeCard extends StatelessWidget {
                       side: const BorderSide(color: Colors.white10),
                     ),
                     child: SvgPicture.asset(
-                      "assets/icons/Notification.svg",
-                      colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                      'assets/icons/Notification.svg',
+                      colorFilter:
+                          const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                     ),
                   ),
                 ),
                 const SizedBox(width: defaultPadding),
                 Expanded(
                   child: Text(
-                    "Notify when product back to stock.",
+                    'Notify when product back to stock.',
                     style: TextStyle(
-                        color: isNotify
-                            ? Colors.white
-                            : Theme.of(context).textTheme.bodyLarge!.color,
-                        fontWeight: FontWeight.w500),
+                      color: isNotify
+                          ? Colors.white
+                          : Theme.of(context).textTheme.bodyLarge!.color,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
                 CupertinoSwitch(
                   onChanged: onChanged,
                   value: isNotify,
                   activeColor: primaryMaterialColor.shade900,
-                )
+                ),
               ],
             ),
           ),

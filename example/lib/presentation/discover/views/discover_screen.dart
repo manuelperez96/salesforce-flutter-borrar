@@ -1,17 +1,16 @@
 import 'package:example/constants.dart';
 import 'package:example/extensions/context_extensions.dart';
 import 'package:example/models/category_model.dart';
+import 'package:example/presentation/discover/views/components/expansion_category.dart';
 import 'package:example/presentation/search/views/components/search_form.dart';
 import 'package:flutter/material.dart';
-
-import 'components/expansion_category.dart';
 
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<CategoryModel> demoCategories = getCategoriesList(context);
+    final demoCategories = getCategoriesList(context);
 
     return Scaffold(
       body: SafeArea(
@@ -24,7 +23,9 @@ class DiscoverScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
-                  horizontal: defaultPadding, vertical: defaultPadding / 2),
+                horizontal: defaultPadding,
+                vertical: defaultPadding / 2,
+              ),
               child: Text(
                 context.localizations.categories,
                 style: Theme.of(context).textTheme.titleSmall,
@@ -43,7 +44,7 @@ class DiscoverScreen extends StatelessWidget {
                   subCategory: demoCategories[index].subCategories!,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -54,7 +55,7 @@ class DiscoverScreen extends StatelessWidget {
     return [
       CategoryModel(
         title: context.localizations.onsale,
-        svgSrc: "assets/icons/Sale.svg",
+        svgSrc: 'assets/icons/Sale.svg',
         subCategories: [
           CategoryModel(title: context.localizations.category_subtitle_1),
           CategoryModel(title: context.localizations.category_subtitle_2),
@@ -65,7 +66,7 @@ class DiscoverScreen extends StatelessWidget {
       ),
       CategoryModel(
         title: context.localizations.man_woman,
-        svgSrc: "assets/icons/Man&Woman.svg",
+        svgSrc: 'assets/icons/Man&Woman.svg',
         subCategories: [
           CategoryModel(title: context.localizations.category_subtitle_1),
           CategoryModel(title: context.localizations.category_subtitle_2),
@@ -74,7 +75,7 @@ class DiscoverScreen extends StatelessWidget {
       ),
       CategoryModel(
         title: context.localizations.kids,
-        svgSrc: "assets/icons/Child.svg",
+        svgSrc: 'assets/icons/Child.svg',
         subCategories: [
           CategoryModel(title: context.localizations.category_subtitle_1),
           CategoryModel(title: context.localizations.category_subtitle_2),
@@ -83,7 +84,7 @@ class DiscoverScreen extends StatelessWidget {
       ),
       CategoryModel(
         title: context.localizations.accessories,
-        svgSrc: "assets/icons/Accessories.svg",
+        svgSrc: 'assets/icons/Accessories.svg',
         subCategories: [
           CategoryModel(title: context.localizations.category_subtitle_1),
           CategoryModel(title: context.localizations.category_subtitle_2),

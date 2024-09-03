@@ -1,30 +1,32 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
-import '../constants.dart';
-
 class CartButton extends StatelessWidget {
   const CartButton({
-    super.key,
     required this.product,
-    this.title = "Buy Now",
-    this.subTitle = "Unit price",
     required this.press,
     required this.productQuantity,
+    super.key,
+    this.title = 'Buy Now',
+    this.subTitle = 'Unit price',
   });
 
   final Product product;
-  final String title, subTitle;
+  final String title;
+  final String subTitle;
   final VoidCallback press;
   final int productQuantity;
   @override
   Widget build(BuildContext context) {
-    final int stock = product.inventory.stockLevel;
+    final stock = product.inventory.stockLevel;
 
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(
-            horizontal: defaultPadding, vertical: defaultBorderRadius / 2),
+          horizontal: defaultPadding,
+          vertical: defaultBorderRadius / 2,
+        ),
         child: SizedBox(
           height: 64,
           child: Material(
@@ -43,14 +45,15 @@ class CartButton extends StatelessWidget {
                     flex: 4,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: defaultPadding),
+                        horizontal: defaultPadding,
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            // product.currency + // TODO Currency USD -> $
-                            "\$${(product.price * productQuantity).toStringAsFixed(2)}",
+                            // product.currency + // `TODO` Currency USD -> $
+                            '\$${_getTotalPrice()}',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleSmall!
@@ -59,9 +62,10 @@ class CartButton extends StatelessWidget {
                           Text(
                             subTitle,
                             style: const TextStyle(
-                                color: Colors.white54,
-                                fontWeight: FontWeight.w500),
-                          )
+                              color: Colors.white54,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -89,4 +93,7 @@ class CartButton extends StatelessWidget {
       ),
     );
   }
+
+  String _getTotalPrice() =>
+      (product.price * productQuantity).toStringAsFixed(2);
 }

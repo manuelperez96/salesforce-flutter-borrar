@@ -6,8 +6,8 @@ import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_cate
 
 class CustomProductCard extends StatelessWidget {
   const CustomProductCard({
-    super.key,
     required this.product,
+    super.key,
   });
   final ProductPreviewByCategory product;
 
@@ -15,13 +15,17 @@ class CustomProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: () {
-        Navigator.pushNamed(context, productDetailsScreenRoute,
-            arguments: product.id);
+        Navigator.pushNamed(
+          context,
+          productDetailsScreenRoute,
+          arguments: product.id,
+        );
       },
       style: OutlinedButton.styleFrom(
-          minimumSize: const Size(140, 220),
-          maximumSize: const Size(140, 260),
-          padding: const EdgeInsets.all(8)),
+        minimumSize: const Size(140, 220),
+        maximumSize: const Size(140, 260),
+        padding: const EdgeInsets.all(8),
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,15 +34,19 @@ class CustomProductCard extends StatelessWidget {
             aspectRatio: 1.15,
             child: Stack(
               children: [
-                NetworkImageWithLoader(product.image.link,
-                    radius: defaultBorderRadius),
+                NetworkImageWithLoader(
+                  product.image.link,
+                  radius: defaultBorderRadius,
+                ),
               ],
             ),
           ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                  horizontal: defaultPadding / 2, vertical: defaultPadding / 2),
+                horizontal: defaultPadding / 2,
+                vertical: defaultPadding / 2,
+              ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +63,7 @@ class CustomProductCard extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    "${product.price} ${product.currency}",
+                    '${product.price} ${product.currency}',
                     style: const TextStyle(
                       color: Color(0xFF31B0D8),
                       fontWeight: FontWeight.w500,

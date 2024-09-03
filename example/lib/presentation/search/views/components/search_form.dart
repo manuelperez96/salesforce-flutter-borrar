@@ -19,7 +19,9 @@ class SearchForm extends StatelessWidget {
 
   final GlobalKey<FormState>? formKey;
   final bool isEnabled;
-  final ValueChanged<String?>? onSaved, onChanged, onFieldSubmitted;
+  final ValueChanged<String?>? onSaved;
+  final ValueChanged<String?>? onChanged;
+  final ValueChanged<String?>? onFieldSubmitted;
   final FormFieldValidator<String>? validator;
   final VoidCallback? onTabFilter;
   final FocusNode? focusNode;
@@ -45,7 +47,7 @@ class SearchForm extends StatelessWidget {
           prefixIcon: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: SvgPicture.asset(
-              "assets/icons/Search.svg",
+              'assets/icons/Search.svg',
               height: 24,
               colorFilter: ColorFilter.mode(
                 Theme.of(context).iconTheme.color!.withOpacity(0.3),
@@ -65,7 +67,7 @@ class SearchForm extends StatelessWidget {
                   child: IconButton(
                     onPressed: onTabFilter,
                     icon: SvgPicture.asset(
-                      "assets/icons/Filter.svg",
+                      'assets/icons/Filter.svg',
                       height: 24,
                       colorFilter: ColorFilter.mode(
                         Theme.of(context).iconTheme.color ?? Colors.white,

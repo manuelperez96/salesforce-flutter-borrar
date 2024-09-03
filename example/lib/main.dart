@@ -12,7 +12,7 @@ void main() async {
   //let the app read the image from salesforce
   HttpOverrides.global = MyHttpOverrides();
 
-  SFCommerceSDK sf = SFCommerceSDK(
+  final sf = SFCommerceSDK(
     config: SfCommerceConfig(
       clientId: '0c892f93-5262-4cab-8349-b170e0779357',
       organizationId: 'f_ecom_zzrj_031',
@@ -35,6 +35,3 @@ class MyHttpOverrides extends HttpOverrides {
           (X509Certificate cert, String host, int port) => true;
   }
 }
-
-// Thanks for using our template. You are using the free version of the template.
-// 🔗 Full template: https://theflutterway.gumroad.com/l/fluttershop

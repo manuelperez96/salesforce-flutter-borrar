@@ -1,31 +1,31 @@
+import 'package:example/components/order_process.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../constants.dart';
-import 'order_process.dart';
-
 class OrderStatusCard extends StatelessWidget {
   const OrderStatusCard({
-    super.key,
     required this.orderId,
     required this.placedOn,
-    this.products,
     required this.orderStatus,
     required this.processingStatus,
     required this.packedStatus,
     required this.shippedStatus,
     required this.deliveredStatus,
+    super.key,
+    this.products,
     this.press,
     this.isCancled = false,
   });
 
-  final String orderId, placedOn;
+  final String orderId;
+  final String placedOn;
   final List<Widget>? products;
-  final OrderProcessStatus orderStatus,
-      processingStatus,
-      packedStatus,
-      shippedStatus,
-      deliveredStatus;
+  final OrderProcessStatus orderStatus;
+  final OrderProcessStatus processingStatus;
+  final OrderProcessStatus packedStatus;
+  final OrderProcessStatus shippedStatus;
+  final OrderProcessStatus deliveredStatus;
   final VoidCallback? press;
   final bool isCancled;
 
@@ -63,26 +63,28 @@ class OrderStatusCard extends StatelessWidget {
                             ),
                             child: Row(
                               children: [
-                                const Text("Order"),
+                                const Text('Order'),
                                 const SizedBox(width: defaultPadding / 2),
-                                Text("#$orderId"),
+                                Text('#$orderId'),
                               ],
                             ),
                           ),
                           const SizedBox(height: defaultPadding / 2),
                           Text(
-                            "Placed on $placedOn",
+                            'Placed on $placedOn',
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                         ],
                       ),
                       SvgPicture.asset(
-                        "assets/icons/miniRight.svg",
+                        'assets/icons/miniRight.svg',
                         height: 24,
                         width: 24,
                         colorFilter: ColorFilter.mode(
-                            Theme.of(context).dividerColor, BlendMode.srcIn),
-                      )
+                          Theme.of(context).dividerColor,
+                          BlendMode.srcIn,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -104,7 +106,7 @@ class OrderStatusCard extends StatelessWidget {
                   child: Column(
                     children: products ?? [],
                   ),
-                )
+                ),
               ],
             ),
           ),

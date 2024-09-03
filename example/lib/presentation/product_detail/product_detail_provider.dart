@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class ProductDetailProvider extends StatelessWidget {
-  const ProductDetailProvider({super.key, required this.productId});
+  const ProductDetailProvider({required this.productId, super.key});
 
   final String productId;
 

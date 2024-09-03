@@ -1,7 +1,6 @@
+import 'package:example/components/skleton/skelton.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../constants.dart';
-import '../skelton.dart';
 
 class DiscoverCategoriesSkelton extends StatelessWidget {
   const DiscoverCategoriesSkelton({
@@ -26,7 +25,9 @@ class DiscoverCategorySkelton extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: defaultPadding, vertical: defaultPadding * 0.75),
+        horizontal: defaultPadding,
+        vertical: defaultPadding * 0.75,
+      ),
       child: Row(
         children: [
           Skeleton(

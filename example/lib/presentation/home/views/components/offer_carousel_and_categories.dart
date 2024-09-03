@@ -1,12 +1,11 @@
+import 'package:example/constants.dart';
 import 'package:example/di/app_modules.dart';
 import 'package:example/extensions/context_extensions.dart';
+import 'package:example/presentation/home/views/components/categories.dart';
+import 'package:example/presentation/home/views/components/offers_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
-
-import '../../../../constants.dart';
-import 'categories.dart';
-import 'offers_carousel.dart';
 
 class OffersCarouselAndCategories extends StatefulWidget {
   const OffersCarouselAndCategories({

@@ -3,14 +3,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductListTile extends StatelessWidget {
   const ProductListTile({
-    super.key,
     required this.svgSrc,
     required this.title,
-    this.isShowBottomBorder = false,
     required this.press,
+    super.key,
+    this.isShowBottomBorder = false,
   });
 
-  final String svgSrc, title;
+  final String svgSrc;
+  final String title;
   final bool isShowBottomBorder;
   final VoidCallback press;
 
@@ -33,7 +34,7 @@ class ProductListTile extends StatelessWidget {
             ),
             title: Text(title),
             trailing: SvgPicture.asset(
-              "assets/icons/miniRight.svg",
+              'assets/icons/miniRight.svg',
               colorFilter: ColorFilter.mode(
                 Theme.of(context).textTheme.bodyMedium!.color ?? Colors.white,
                 BlendMode.srcIn,

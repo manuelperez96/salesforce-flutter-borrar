@@ -7,20 +7,23 @@ import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 class ProductSizeColorSelectors extends StatelessWidget {
   const ProductSizeColorSelectors({super.key});
-// TODO Refactor
+// TODORefactor
   List<Variant> getVariantsByColor(
-      String selectedColor, List<Variant> variants) {
+    String selectedColor,
+    List<Variant> variants,
+  ) {
     return variants.where((variant) {
       return variant.variationValues.color == selectedColor;
     }).toList();
   }
 
   List<String> getAvailableSizesForColor(
-      String selectedColor, List<Variant> variants) {
-    List<Variant> filteredVariants =
-        getVariantsByColor(selectedColor, variants);
+    String selectedColor,
+    List<Variant> variants,
+  ) {
+    final filteredVariants = getVariantsByColor(selectedColor, variants);
 
-    List<String> availableValuesSizes = filteredVariants
+    final availableValuesSizes = filteredVariants
         .where((variant) => variant.orderable)
         .map((variant) => variant.variationValues.size!)
         .toList();
@@ -42,7 +45,7 @@ class ProductSizeColorSelectors extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (hasVariationAttribute(attributeId: "color"))
+            if (hasVariationAttribute(attributeId: 'color'))
               SelectedColors(
                 product: product,
                 selectedColor: state.selectedColor!,
@@ -50,11 +53,11 @@ class ProductSizeColorSelectors extends StatelessWidget {
                       ProductDetailEvent.updateSelectedColor(color.value),
                     ),
               ),
-            if (hasVariationAttribute(attributeId: "size"))
+            if (hasVariationAttribute(attributeId: 'size'))
               SelectedSize(
                 selectedSize: state.selectedSize!,
                 sizes: product.variationAttributes!
-                    .firstWhere((element) => element.id == "size")
+                    .firstWhere((element) => element.id == 'size')
                     .values,
                 availableValuesSizes: getAvailableSizesForColor(
                   state.selectedColor!,

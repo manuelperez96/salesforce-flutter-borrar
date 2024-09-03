@@ -1,6 +1,5 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 
 ElevatedButtonThemeData elevatedButtonThemeData = ElevatedButtonThemeData(
   style: ElevatedButton.styleFrom(
@@ -14,8 +13,9 @@ ElevatedButtonThemeData elevatedButtonThemeData = ElevatedButtonThemeData(
   ),
 );
 
-OutlinedButtonThemeData outlinedButtonTheme(
-    {Color borderColor = blackColor10}) {
+OutlinedButtonThemeData outlinedButtonTheme({
+  Color borderColor = blackColor10,
+}) {
   return OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       padding: const EdgeInsets.all(defaultPadding),

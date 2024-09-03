@@ -1,19 +1,20 @@
+import 'package:example/constants.dart';
+import 'package:example/models/category_model.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../constants.dart';
-
 class ExpansionCategory extends StatelessWidget {
   const ExpansionCategory({
-    super.key,
     required this.title,
     required this.subCategory,
     required this.svgSrc,
+    super.key,
   });
 
-  final String title, svgSrc;
-  final List subCategory;
+  final String title;
+  final String svgSrc;
+  final List<CategoryModel> subCategory;
 
   @override
   Widget build(BuildContext context) {

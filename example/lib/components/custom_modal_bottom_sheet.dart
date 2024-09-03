@@ -1,12 +1,11 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 
 Future<dynamic> customModalBottomSheet(
   BuildContext context, {
+  required Widget child,
   bool isDismissible = true,
   double? height,
-  required Widget child,
 }) {
   return showModalBottomSheet(
     context: context,

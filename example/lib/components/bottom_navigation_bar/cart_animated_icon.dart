@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CartAnimatedIcon extends StatefulWidget {
-  const CartAnimatedIcon({super.key, required this.svgIcon});
+  const CartAnimatedIcon({required this.svgIcon, super.key});
   final SvgPicture svgIcon;
 
   @override
@@ -47,9 +47,10 @@ class _CartAnimatedIconState extends State<CartAnimatedIcon>
               //       ..scale(1 + _animation.value / 2),
               //     child: child!),
               child: Transform(
-                  transform:
-                      Matrix4.translationValues(0, -_animation.value * 30, 0),
-                  child: child!),
+                transform:
+                    Matrix4.translationValues(0, -_animation.value * 30, 0),
+                child: child,
+              ),
             );
           },
           child: const CartIndicator(),

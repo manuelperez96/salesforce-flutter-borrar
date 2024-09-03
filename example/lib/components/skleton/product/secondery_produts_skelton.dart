@@ -1,7 +1,6 @@
+import 'package:example/components/skleton/product/secondary_product_skelton.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../constants.dart';
-import 'secondary_product_skelton.dart';
 
 class SeconderyProductsSkelton extends StatelessWidget {
   const SeconderyProductsSkelton({
