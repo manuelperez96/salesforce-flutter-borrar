@@ -59,9 +59,9 @@ class ProductCard extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
+          const Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(
+              padding: EdgeInsets.symmetric(
                   horizontal: defaultPadding / 2, vertical: defaultPadding / 2),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +73,7 @@ class ProductCard extends StatelessWidget {
                   //       .bodyMedium!
                   //       .copyWith(fontSize: 10),
                   // ),
-                  const SizedBox(height: defaultPadding / 2),
+                  SizedBox(height: defaultPadding / 2),
                   // Text(
                   //   product.title,
                   //   maxLines: 2,
@@ -83,7 +83,7 @@ class ProductCard extends StatelessWidget {
                   //       .titleSmall!
                   //       .copyWith(fontSize: 12),
                   // ),
-                  const Spacer(),
+                  Spacer(),
                   // product.priceAfetDiscount != null
                   //     ? Row(
                   //         children: [

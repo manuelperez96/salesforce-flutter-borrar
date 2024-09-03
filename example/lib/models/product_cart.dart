@@ -7,19 +7,19 @@ class ProductCart {
   ProductCart({required this.product, this.quantity = 1});
 
   void addQuantity(int amount) {
-    this.quantity += amount;
+    quantity += amount;
   }
 
   void increaseQuantity() {
-    this.quantity++;
+    quantity++;
   }
 
   void decreaseQuantity() {
-    this.quantity--;
+    quantity--;
   }
 
   String getTotalPrice() {
     double result = quantity * product.pricePerUnit;
-    return result.toStringAsFixed(2) + ' ' + product.currency;
+    return '${result.toStringAsFixed(2)} ${product.currency}';
   }
 }
