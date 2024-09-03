@@ -1,6 +1,6 @@
 import 'package:example/constants.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
-import 'package:example/route/screen_export.dart';
+import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,7 +42,10 @@ class AddedToCartMessageScreen extends StatelessWidget {
                       () => context.read<CartBloc>().controller.forward());
 
                   Navigator.pushNamedAndRemoveUntil(
-                      context, entryPointScreenRoute, (route) => false);
+                    context,
+                    entryPointScreenRoute,
+                    (route) => false,
+                  );
                 },
                 child: const Text("Continue shopping"),
               ),

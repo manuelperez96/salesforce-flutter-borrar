@@ -24,13 +24,12 @@ class App extends StatelessWidget {
                 basketRepository: inject<SFCommerceSDK>().basketRepository,
                 productRepository: inject<SFCommerceSDK>().productRepository)
               ..add(CheckStatusCart())),
-        // BlocProvider<BookmarkBloc>(create: (context) => BookmarkBloc()),
         BlocProvider<HomeBloc>(
-            create: (context) => HomeBloc(
-                  categoryRepository:
-                      inject<SFCommerceSDK>().categoryRepository,
-                  productRepository: inject<SFCommerceSDK>().productRepository,
-                )..add(HomeEvent.loadHomeData())),
+          create: (context) => HomeBloc(
+            categoryRepository: inject<SFCommerceSDK>().categoryRepository,
+            productRepository: inject<SFCommerceSDK>().productRepository,
+          )..add(const HomeEvent.loadHomeData()),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
