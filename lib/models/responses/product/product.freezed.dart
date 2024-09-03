@@ -746,8 +746,8 @@ VariationValues _$VariationValuesFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VariationValues {
-  String get color => throw _privateConstructorUsedError;
-  String get size => throw _privateConstructorUsedError;
+  String? get color => throw _privateConstructorUsedError;
+  String? get size => throw _privateConstructorUsedError;
 
   /// Serializes this VariationValues to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -765,7 +765,7 @@ abstract class $VariationValuesCopyWith<$Res> {
           VariationValues value, $Res Function(VariationValues) then) =
       _$VariationValuesCopyWithImpl<$Res, VariationValues>;
   @useResult
-  $Res call({String color, String size});
+  $Res call({String? color, String? size});
 }
 
 /// @nodoc
@@ -783,18 +783,18 @@ class _$VariationValuesCopyWithImpl<$Res, $Val extends VariationValues>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? color = null,
-    Object? size = null,
+    Object? color = freezed,
+    Object? size = freezed,
   }) {
     return _then(_value.copyWith(
-      color: null == color
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
-      size: null == size
+              as String?,
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -807,7 +807,7 @@ abstract class _$$VariationValuesImplCopyWith<$Res>
       __$$VariationValuesImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String color, String size});
+  $Res call({String? color, String? size});
 }
 
 /// @nodoc
@@ -823,18 +823,18 @@ class __$$VariationValuesImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? color = null,
-    Object? size = null,
+    Object? color = freezed,
+    Object? size = freezed,
   }) {
     return _then(_$VariationValuesImpl(
-      color: null == color
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
-      size: null == size
+              as String?,
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -848,9 +848,9 @@ class _$VariationValuesImpl implements _VariationValues {
       _$$VariationValuesImplFromJson(json);
 
   @override
-  final String color;
+  final String? color;
   @override
-  final String size;
+  final String? size;
 
   @override
   String toString() {
@@ -889,16 +889,16 @@ class _$VariationValuesImpl implements _VariationValues {
 
 abstract class _VariationValues implements VariationValues {
   factory _VariationValues(
-      {required final String color,
-      required final String size}) = _$VariationValuesImpl;
+      {required final String? color,
+      required final String? size}) = _$VariationValuesImpl;
 
   factory _VariationValues.fromJson(Map<String, dynamic> json) =
       _$VariationValuesImpl.fromJson;
 
   @override
-  String get color;
+  String? get color;
   @override
-  String get size;
+  String? get size;
 
   /// Create a copy of VariationValues
   /// with the given fields replaced by the non-null parameter values.

@@ -12,7 +12,7 @@ class ProductDetailQuantitySelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductDetailBloc, ProductDetailState>(
       builder: (context, state) {
-        final product = state.product!;
+        final product = state.initialProduct!;
         final productQuantity = state.productQuantity!;
         return ProductQuantity(
           numOfItem: productQuantity,

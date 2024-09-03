@@ -45,8 +45,8 @@ class Variant with _$Variant {
 @freezed
 class VariationValues with _$VariationValues {
   factory VariationValues({
-    required String color,
-    required String size,
+    required String? color,
+    required String? size,
   }) = _VariationValues;
 
   factory VariationValues.fromJson(Map<String, dynamic> json) =>

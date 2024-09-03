@@ -666,45 +666,49 @@ abstract class _SelectedSize implements ProductDetailEvent {
 
 /// @nodoc
 mixin _$ProductDetailState {
-  String get productId => throw _privateConstructorUsedError;
+  String get initialProductId => throw _privateConstructorUsedError;
   ProductDetailStatus get status => throw _privateConstructorUsedError;
-  Product? get product => throw _privateConstructorUsedError;
+  Product? get initialProduct => throw _privateConstructorUsedError;
   int? get productQuantity => throw _privateConstructorUsedError;
   String? get selectedColor => throw _privateConstructorUsedError;
   String? get selectedSize => throw _privateConstructorUsedError;
+  String? get selectedProductId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String productId,
+            String initialProductId,
             ProductDetailStatus status,
-            Product? product,
+            Product? initialProduct,
             int? productQuantity,
             String? selectedColor,
-            String? selectedSize)
+            String? selectedSize,
+            String? selectedProductId)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String productId,
+            String initialProductId,
             ProductDetailStatus status,
-            Product? product,
+            Product? initialProduct,
             int? productQuantity,
             String? selectedColor,
-            String? selectedSize)?
+            String? selectedSize,
+            String? selectedProductId)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String productId,
+            String initialProductId,
             ProductDetailStatus status,
-            Product? product,
+            Product? initialProduct,
             int? productQuantity,
             String? selectedColor,
-            String? selectedSize)?
+            String? selectedSize,
+            String? selectedProductId)?
         initial,
     required TResult orElse(),
   }) =>
@@ -740,14 +744,15 @@ abstract class $ProductDetailStateCopyWith<$Res> {
       _$ProductDetailStateCopyWithImpl<$Res, ProductDetailState>;
   @useResult
   $Res call(
-      {String productId,
+      {String initialProductId,
       ProductDetailStatus status,
-      Product? product,
+      Product? initialProduct,
       int? productQuantity,
       String? selectedColor,
-      String? selectedSize});
+      String? selectedSize,
+      String? selectedProductId});
 
-  $ProductCopyWith<$Res>? get product;
+  $ProductCopyWith<$Res>? get initialProduct;
 }
 
 /// @nodoc
@@ -765,25 +770,26 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productId = null,
+    Object? initialProductId = null,
     Object? status = null,
-    Object? product = freezed,
+    Object? initialProduct = freezed,
     Object? productQuantity = freezed,
     Object? selectedColor = freezed,
     Object? selectedSize = freezed,
+    Object? selectedProductId = freezed,
   }) {
     return _then(_value.copyWith(
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
+      initialProductId: null == initialProductId
+          ? _value.initialProductId
+          : initialProductId // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ProductDetailStatus,
-      product: freezed == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
+      initialProduct: freezed == initialProduct
+          ? _value.initialProduct
+          : initialProduct // ignore: cast_nullable_to_non_nullable
               as Product?,
       productQuantity: freezed == productQuantity
           ? _value.productQuantity
@@ -797,6 +803,10 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
           ? _value.selectedSize
           : selectedSize // ignore: cast_nullable_to_non_nullable
               as String?,
+      selectedProductId: freezed == selectedProductId
+          ? _value.selectedProductId
+          : selectedProductId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -804,13 +814,13 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ProductCopyWith<$Res>? get product {
-    if (_value.product == null) {
+  $ProductCopyWith<$Res>? get initialProduct {
+    if (_value.initialProduct == null) {
       return null;
     }
 
-    return $ProductCopyWith<$Res>(_value.product!, (value) {
-      return _then(_value.copyWith(product: value) as $Val);
+    return $ProductCopyWith<$Res>(_value.initialProduct!, (value) {
+      return _then(_value.copyWith(initialProduct: value) as $Val);
     });
   }
 }
@@ -824,15 +834,16 @@ abstract class _$$InitialImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String productId,
+      {String initialProductId,
       ProductDetailStatus status,
-      Product? product,
+      Product? initialProduct,
       int? productQuantity,
       String? selectedColor,
-      String? selectedSize});
+      String? selectedSize,
+      String? selectedProductId});
 
   @override
-  $ProductCopyWith<$Res>? get product;
+  $ProductCopyWith<$Res>? get initialProduct;
 }
 
 /// @nodoc
@@ -848,25 +859,26 @@ class __$$InitialImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productId = null,
+    Object? initialProductId = null,
     Object? status = null,
-    Object? product = freezed,
+    Object? initialProduct = freezed,
     Object? productQuantity = freezed,
     Object? selectedColor = freezed,
     Object? selectedSize = freezed,
+    Object? selectedProductId = freezed,
   }) {
     return _then(_$InitialImpl(
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
+      initialProductId: null == initialProductId
+          ? _value.initialProductId
+          : initialProductId // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ProductDetailStatus,
-      product: freezed == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
+      initialProduct: freezed == initialProduct
+          ? _value.initialProduct
+          : initialProduct // ignore: cast_nullable_to_non_nullable
               as Product?,
       productQuantity: freezed == productQuantity
           ? _value.productQuantity
@@ -880,6 +892,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.selectedSize
           : selectedSize // ignore: cast_nullable_to_non_nullable
               as String?,
+      selectedProductId: freezed == selectedProductId
+          ? _value.selectedProductId
+          : selectedProductId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -888,30 +904,33 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
-      {required this.productId,
+      {required this.initialProductId,
       this.status = ProductDetailStatus.loading,
-      this.product,
+      this.initialProduct,
       this.productQuantity,
       this.selectedColor,
-      this.selectedSize});
+      this.selectedSize,
+      this.selectedProductId});
 
   @override
-  final String productId;
+  final String initialProductId;
   @override
   @JsonKey()
   final ProductDetailStatus status;
   @override
-  final Product? product;
+  final Product? initialProduct;
   @override
   final int? productQuantity;
   @override
   final String? selectedColor;
   @override
   final String? selectedSize;
+  @override
+  final String? selectedProductId;
 
   @override
   String toString() {
-    return 'ProductDetailState.initial(productId: $productId, status: $status, product: $product, productQuantity: $productQuantity, selectedColor: $selectedColor, selectedSize: $selectedSize)';
+    return 'ProductDetailState.initial(initialProductId: $initialProductId, status: $status, initialProduct: $initialProduct, productQuantity: $productQuantity, selectedColor: $selectedColor, selectedSize: $selectedSize, selectedProductId: $selectedProductId)';
   }
 
   @override
@@ -919,21 +938,31 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
-            (identical(other.productId, productId) ||
-                other.productId == productId) &&
+            (identical(other.initialProductId, initialProductId) ||
+                other.initialProductId == initialProductId) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.product, product) || other.product == product) &&
+            (identical(other.initialProduct, initialProduct) ||
+                other.initialProduct == initialProduct) &&
             (identical(other.productQuantity, productQuantity) ||
                 other.productQuantity == productQuantity) &&
             (identical(other.selectedColor, selectedColor) ||
                 other.selectedColor == selectedColor) &&
             (identical(other.selectedSize, selectedSize) ||
-                other.selectedSize == selectedSize));
+                other.selectedSize == selectedSize) &&
+            (identical(other.selectedProductId, selectedProductId) ||
+                other.selectedProductId == selectedProductId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productId, status, product,
-      productQuantity, selectedColor, selectedSize);
+  int get hashCode => Object.hash(
+      runtimeType,
+      initialProductId,
+      status,
+      initialProduct,
+      productQuantity,
+      selectedColor,
+      selectedSize,
+      selectedProductId);
 
   /// Create a copy of ProductDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -947,50 +976,53 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String productId,
+            String initialProductId,
             ProductDetailStatus status,
-            Product? product,
+            Product? initialProduct,
             int? productQuantity,
             String? selectedColor,
-            String? selectedSize)
+            String? selectedSize,
+            String? selectedProductId)
         initial,
   }) {
-    return initial(productId, status, product, productQuantity, selectedColor,
-        selectedSize);
+    return initial(initialProductId, status, initialProduct, productQuantity,
+        selectedColor, selectedSize, selectedProductId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String productId,
+            String initialProductId,
             ProductDetailStatus status,
-            Product? product,
+            Product? initialProduct,
             int? productQuantity,
             String? selectedColor,
-            String? selectedSize)?
+            String? selectedSize,
+            String? selectedProductId)?
         initial,
   }) {
-    return initial?.call(productId, status, product, productQuantity,
-        selectedColor, selectedSize);
+    return initial?.call(initialProductId, status, initialProduct,
+        productQuantity, selectedColor, selectedSize, selectedProductId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String productId,
+            String initialProductId,
             ProductDetailStatus status,
-            Product? product,
+            Product? initialProduct,
             int? productQuantity,
             String? selectedColor,
-            String? selectedSize)?
+            String? selectedSize,
+            String? selectedProductId)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(productId, status, product, productQuantity, selectedColor,
-          selectedSize);
+      return initial(initialProductId, status, initialProduct, productQuantity,
+          selectedColor, selectedSize, selectedProductId);
     }
     return orElse();
   }
@@ -1026,25 +1058,28 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements ProductDetailState {
   const factory _Initial(
-      {required final String productId,
+      {required final String initialProductId,
       final ProductDetailStatus status,
-      final Product? product,
+      final Product? initialProduct,
       final int? productQuantity,
       final String? selectedColor,
-      final String? selectedSize}) = _$InitialImpl;
+      final String? selectedSize,
+      final String? selectedProductId}) = _$InitialImpl;
 
   @override
-  String get productId;
+  String get initialProductId;
   @override
   ProductDetailStatus get status;
   @override
-  Product? get product;
+  Product? get initialProduct;
   @override
   int? get productQuantity;
   @override
   String? get selectedColor;
   @override
   String? get selectedSize;
+  @override
+  String? get selectedProductId;
 
   /// Create a copy of ProductDetailState
   /// with the given fields replaced by the non-null parameter values.

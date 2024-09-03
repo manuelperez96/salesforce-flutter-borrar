@@ -72,8 +72,8 @@ Map<String, dynamic> _$$VariantImplToJson(_$VariantImpl instance) =>
 _$VariationValuesImpl _$$VariationValuesImplFromJson(
         Map<String, dynamic> json) =>
     _$VariationValuesImpl(
-      color: json['color'] as String,
-      size: json['size'] as String,
+      color: json['color'] as String?,
+      size: json['size'] as String?,
     );
 
 Map<String, dynamic> _$$VariationValuesImplToJson(
