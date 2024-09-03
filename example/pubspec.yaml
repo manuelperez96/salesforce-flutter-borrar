@@ -35,12 +35,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
-  flutter_credit_card: ^4.0.1
   flutter_localizations:
     sdk: flutter
-  flutter_rating_bar: ^4.0.1
   flutter_svg: ^2.0.10+1
-  flutter_widget_from_html_core: ^0.15.1
   form_field_validator: ^1.1.0
   freezed_annotation: ^2.4.4
   get_it: ^7.7.0

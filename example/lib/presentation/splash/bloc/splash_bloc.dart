@@ -28,7 +28,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
       return emit(state.copyWith(logged: true));
     } catch (e) {
-      // Todo(Team): handle error case. Maybe add an error splash screen.
+      // TODO(Team): handle error case. Maybe add an error splash screen.
       addError(e);
     }
   }
