@@ -46,7 +46,7 @@ class _OffersCarouselAndCategoriesState
         Padding(
           padding: const EdgeInsets.all(defaultPadding),
           child: Text(
-            context.localizations.categories,
+            'context.localizations.categories',
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),

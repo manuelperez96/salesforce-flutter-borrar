@@ -124,20 +124,22 @@ class _EntryPointState extends State<EntryPoint> {
             BottomNavigationBarItem(
               icon: svgIcon('assets/icons/Shop.svg'),
               activeIcon: svgIcon('assets/icons/Shop.svg', color: primaryColor),
-              label: context.localizations.label_shop,
+              // TODO(Manuel): fix
+              label: 'context.localizations.label_shop',
             ),
             BottomNavigationBarItem(
-              icon: svgIcon('assets/icons/Category.svg'),
-              activeIcon:
-                  svgIcon('assets/icons/Category.svg', color: primaryColor),
-              label: context.localizations.label_discover,
-            ),
+                icon: svgIcon('assets/icons/Category.svg'),
+                activeIcon:
+                    svgIcon('assets/icons/Category.svg', color: primaryColor),
+                // TODO(Manuel): fix
+                label: 'context.localizations.label_discover,'),
             BottomNavigationBarItem(
               icon: CartAnimatedIcon(svgIcon: svgIcon('assets/icons/Bag.svg')),
               activeIcon: CartAnimatedIcon(
                 svgIcon: svgIcon('assets/icons/Bag.svg', color: primaryColor),
               ),
-              label: context.localizations.label_cart,
+              // TODO(Manuel): fix
+              label: 'context.localizations.label_cart',
             ),
           ],
         ),

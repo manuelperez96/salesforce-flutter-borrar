@@ -40,7 +40,7 @@ class SearchForm extends StatelessWidget {
         validator: validator,
         textInputAction: TextInputAction.search,
         decoration: InputDecoration(
-          hintText: context.localizations.discover_hint,
+          hintText: 'context.localizations.discover_hint',
           filled: false,
           border: secondaryOutlineInputBorder(context),
           enabledBorder: secondaryOutlineInputBorder(context),

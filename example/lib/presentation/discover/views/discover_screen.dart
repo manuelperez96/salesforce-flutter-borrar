@@ -26,8 +26,9 @@ class DiscoverScreen extends StatelessWidget {
                 horizontal: defaultPadding,
                 vertical: defaultPadding / 2,
               ),
+                // TODO(Manuel): fix
               child: Text(
-                context.localizations.categories,
+                'context.localizations.categories',
                 style: Theme.of(context).textTheme.titleSmall,
               ),
             ),
@@ -53,43 +54,44 @@ class DiscoverScreen extends StatelessWidget {
 
   List<CategoryModel> getCategoriesList(BuildContext context) {
     return [
+        // TODO(Manuel): fix
       CategoryModel(
-        title: context.localizations.onsale,
+        title: 'context.localizations.onsale',
         svgSrc: 'assets/icons/Sale.svg',
         subCategories: [
-          CategoryModel(title: context.localizations.category_subtitle_1),
-          CategoryModel(title: context.localizations.category_subtitle_2),
-          CategoryModel(title: context.localizations.category_subtitle_3),
-          CategoryModel(title: context.localizations.category_subtitle_4),
-          CategoryModel(title: context.localizations.category_subtitle_5),
+          CategoryModel(title: 'context.localizations.category_subtitle_1'),
+          CategoryModel(title: 'context.localizations.category_subtitle_2'),
+          CategoryModel(title: 'context.localizations.category_subtitle_3'),
+          CategoryModel(title: 'context.localizations.category_subtitle_4'),
+          CategoryModel(title: 'context.localizations.category_subtitle_5'),
         ],
       ),
-      CategoryModel(
-        title: context.localizations.man_woman,
-        svgSrc: 'assets/icons/Man&Woman.svg',
-        subCategories: [
-          CategoryModel(title: context.localizations.category_subtitle_1),
-          CategoryModel(title: context.localizations.category_subtitle_2),
-          CategoryModel(title: context.localizations.category_subtitle_3),
-        ],
-      ),
-      CategoryModel(
-        title: context.localizations.kids,
-        svgSrc: 'assets/icons/Child.svg',
-        subCategories: [
-          CategoryModel(title: context.localizations.category_subtitle_1),
-          CategoryModel(title: context.localizations.category_subtitle_2),
-          CategoryModel(title: context.localizations.category_subtitle_3),
-        ],
-      ),
-      CategoryModel(
-        title: context.localizations.accessories,
-        svgSrc: 'assets/icons/Accessories.svg',
-        subCategories: [
-          CategoryModel(title: context.localizations.category_subtitle_1),
-          CategoryModel(title: context.localizations.category_subtitle_2),
-        ],
-      ),
+      // CategoryModel(
+      //   title: context.localizations.man_woman,
+      //   svgSrc: 'assets/icons/Man&Woman.svg',
+      //   subCategories: [
+      //     CategoryModel(title: context.localizations.category_subtitle_1),
+      //     CategoryModel(title: context.localizations.category_subtitle_2),
+      //     CategoryModel(title: context.localizations.category_subtitle_3),
+      //   ],
+      // ),
+      // CategoryModel(
+      //   title: context.localizations.kids,
+      //   svgSrc: 'assets/icons/Child.svg',
+      //   subCategories: [
+      //     CategoryModel(title: context.localizations.category_subtitle_1),
+      //     CategoryModel(title: context.localizations.category_subtitle_2),
+      //     CategoryModel(title: context.localizations.category_subtitle_3),
+      //   ],
+      // ),
+      // CategoryModel(
+      //   title: context.localizations.accessories,
+      //   svgSrc: 'assets/icons/Accessories.svg',
+      //   subCategories: [
+      //     CategoryModel(title: context.localizations.category_subtitle_1),
+      //     CategoryModel(title: context.localizations.category_subtitle_2),
+      //   ],
+      // ),
     ];
   }
 }
