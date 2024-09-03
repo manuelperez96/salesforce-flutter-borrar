@@ -1,5 +1,6 @@
 // Pending task
-- Clean template. Remove unnecessary images and screens. - Patri
-- Internacionalization 
+
+- Internacionalization - Manu
+- Api Internacionalization - Manu
 - Create product detail page in example. - Patri
 - Basket (Checkout: cerrar la cesta) - Carlos
