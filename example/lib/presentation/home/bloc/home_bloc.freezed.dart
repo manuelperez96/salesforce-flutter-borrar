@@ -65,9 +65,6 @@ class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of HomeEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -84,9 +81,6 @@ class __$$LoadHomeDataImplCopyWithImpl<$Res>
   __$$LoadHomeDataImplCopyWithImpl(
       _$LoadHomeDataImpl _value, $Res Function(_$LoadHomeDataImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of HomeEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -216,9 +210,7 @@ mixin _$HomeState {
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of HomeState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -243,8 +235,6 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of HomeState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -285,8 +275,6 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HomeState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -348,9 +336,7 @@ class _$InitialImpl implements _Initial {
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_productByCategory), status);
 
-  /// Create a copy of HomeState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -431,11 +417,8 @@ abstract class _Initial implements HomeState {
   Map<Category, List<ProductPreviewByCategory>> get productByCategory;
   @override
   HomeStatus get status;
-
-  /// Create a copy of HomeState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -9,7 +9,6 @@ class Product with _$Product {
   factory Product({
     required String id,
     required String currency,
-    required List<ImageGroup> imageGroups,
     required String name,
     required String pageDescription,
     required String pageTitle,
@@ -18,6 +17,7 @@ class Product with _$Product {
     required String shortDescription,
     required int? minOrderQuantity,
     required Inventory inventory,
+    required List<ImageGroup> imageGroups,
 
     /// Values of this product (color, size)
     required VariationValues? variationValues,
@@ -25,8 +25,54 @@ class Product with _$Product {
     required List<Variant>? variants,
   }) = _Product;
 
+  const Product._();
+
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
+
+  static List<String> getImagesByColor({
+    required String selectedColor,
+    required List<ImageGroup> imageGroups,
+    String viewType = 'medium',
+  }) {
+    final imageLinks = <String>[];
+
+    final filteredImageGroups =
+        imageGroups.where((imageGroup) => imageGroup.viewType == viewType);
+
+    for (final imageGroup in filteredImageGroups) {
+      for (final image in imageGroup.images) {
+        if (image.link.contains(selectedColor)) {
+          imageLinks.add(image.link);
+        }
+      }
+    }
+
+    return imageLinks;
+  }
+
+  static List<Variant> getVariantsByColor(
+    String selectedColor,
+    List<Variant> variants,
+  ) {
+    return variants.where((variant) {
+      return variant.variationValues.color == selectedColor;
+    }).toList();
+  }
+
+  static List<String> getAvailableSizesForColor(
+    String selectedColor,
+    List<Variant> variants,
+  ) {
+    final filteredVariants = getVariantsByColor(selectedColor, variants);
+
+    final availableValuesSizes = filteredVariants
+        .where((variant) => variant.orderable)
+        .map((variant) => variant.variationValues.size!)
+        .toList();
+
+    return availableValuesSizes;
+  }
 }
 
 @freezed

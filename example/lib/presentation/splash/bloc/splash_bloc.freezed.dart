@@ -66,9 +66,6 @@ class _$SplashEventCopyWithImpl<$Res, $Val extends SplashEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of SplashEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -85,9 +82,6 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of SplashEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -206,9 +200,7 @@ mixin _$SplashState {
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of SplashState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $SplashStateCopyWith<SplashState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -232,8 +224,6 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SplashState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -267,8 +257,6 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SplashState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -308,9 +296,7 @@ class _$InitialImpl implements _Initial {
   @override
   int get hashCode => Object.hash(runtimeType, logged);
 
-  /// Create a copy of SplashState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -378,11 +364,8 @@ abstract class _Initial implements SplashState {
 
   @override
   bool get logged;
-
-  /// Create a copy of SplashState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
