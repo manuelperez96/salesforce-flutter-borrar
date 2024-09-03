@@ -1,20 +1,21 @@
 import 'dart:ui';
 
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 
 class BlurContainer extends StatelessWidget {
   const BlurContainer({
-    super.key,
     required this.text,
+    super.key,
     this.height = 40,
     this.width = 40,
     this.fontSize = 18,
   });
 
   final String text;
-  final double height, width, fontSize;
+  final double height;
+  final double width;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class BlurContainer extends StatelessWidget {
         Radius.circular(defaultBorderRadius / 2),
       ),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
           height: height,
           width: height,

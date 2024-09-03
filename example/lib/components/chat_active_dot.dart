@@ -1,6 +1,5 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 
 class ChatActiveDot extends StatelessWidget {
   const ChatActiveDot({

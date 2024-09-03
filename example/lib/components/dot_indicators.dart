@@ -1,6 +1,5 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 
 class DotIndicator extends StatelessWidget {
   const DotIndicator({
@@ -12,7 +11,8 @@ class DotIndicator extends StatelessWidget {
 
   final bool isActive;
 
-  final Color? inActiveColor, activeColor;
+  final Color? inActiveColor;
+  final Color? activeColor;
 
   @override
   Widget build(BuildContext context) {

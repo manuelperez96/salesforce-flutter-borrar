@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class UnBuyFullKit extends StatefulWidget {
-  const UnBuyFullKit({super.key, required this.images});
+  const UnBuyFullKit({required this.images, super.key});
 
   final List<String> images;
 

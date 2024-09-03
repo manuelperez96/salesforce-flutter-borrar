@@ -21,7 +21,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case productDetailsScreenRoute:
       return MaterialPageRoute(
         builder: (context) {
-          String productId = settings.arguments as String;
+          final productId = settings.arguments! as String;
           return ProductDetailProvider(productId: productId);
         },
       );

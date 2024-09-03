@@ -1,32 +1,35 @@
+import 'package:example/constants.dart';
 import 'package:example/extensions/context_extensions.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../constants.dart';
-
 // For preview
 class CategoryModel {
-  final String name;
-  final String? svgSrc, route;
-
   CategoryModel({
     required this.name,
     this.svgSrc,
     this.route,
   });
+  final String name;
+  final String? svgSrc;
+  final String? route;
 }
 
 List<CategoryModel> demoCategories = [
-  CategoryModel(name: "All Categories"),
+  CategoryModel(name: 'All Categories'),
   CategoryModel(
-      name: "On Sale",
-      svgSrc: "assets/icons/Sale.svg",
-      route: onSaleScreenRoute),
-  CategoryModel(name: "Man's", svgSrc: "assets/icons/Man.svg"),
-  CategoryModel(name: "Woman’s", svgSrc: "assets/icons/Woman.svg"),
+    name: 'On Sale',
+    svgSrc: 'assets/icons/Sale.svg',
+    route: onSaleScreenRoute,
+  ),
+  CategoryModel(name: "Man's", svgSrc: 'assets/icons/Man.svg'),
+  CategoryModel(name: 'Woman’s', svgSrc: 'assets/icons/Woman.svg'),
   CategoryModel(
-      name: "Kids", svgSrc: "assets/icons/Child.svg", route: kidsScreenRoute),
+    name: 'Kids',
+    svgSrc: 'assets/icons/Child.svg',
+    route: kidsScreenRoute,
+  ),
 ];
 // End For Preview
 
@@ -40,17 +43,23 @@ class Categories extends StatelessWidget {
     demoCategories = [
       CategoryModel(name: context.localizations.all_categories),
       CategoryModel(
-          name: context.localizations.onsale,
-          svgSrc: "assets/icons/Sale.svg",
-          route: onSaleScreenRoute),
+        name: context.localizations.onsale,
+        svgSrc: 'assets/icons/Sale.svg',
+        route: onSaleScreenRoute,
+      ),
       CategoryModel(
-          name: context.localizations.mans, svgSrc: "assets/icons/Man.svg"),
+        name: context.localizations.mans,
+        svgSrc: 'assets/icons/Man.svg',
+      ),
       CategoryModel(
-          name: context.localizations.womans, svgSrc: "assets/icons/Woman.svg"),
+        name: context.localizations.womans,
+        svgSrc: 'assets/icons/Woman.svg',
+      ),
       CategoryModel(
-          name: context.localizations.kids,
-          svgSrc: "assets/icons/Child.svg",
-          route: kidsScreenRoute),
+        name: context.localizations.kids,
+        svgSrc: 'assets/icons/Child.svg',
+        route: kidsScreenRoute,
+      ),
     ];
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -60,9 +69,9 @@ class Categories extends StatelessWidget {
             demoCategories.length,
             (index) => Padding(
               padding: EdgeInsets.only(
-                  left: index == 0 ? defaultPadding : defaultPadding / 2,
-                  right:
-                      index == demoCategories.length - 1 ? defaultPadding : 0),
+                left: index == 0 ? defaultPadding : defaultPadding / 2,
+                right: index == demoCategories.length - 1 ? defaultPadding : 0,
+              ),
               child: CategoryBtn(
                 category: demoCategories[index].name,
                 svgSrc: demoCategories[index].svgSrc,
@@ -83,11 +92,11 @@ class Categories extends StatelessWidget {
 
 class CategoryBtn extends StatelessWidget {
   const CategoryBtn({
-    super.key,
     required this.category,
-    this.svgSrc,
     required this.isActive,
     required this.press,
+    super.key,
+    this.svgSrc,
   });
 
   final String category;
@@ -106,9 +115,9 @@ class CategoryBtn extends StatelessWidget {
         decoration: BoxDecoration(
           color: isActive ? primaryColor : Colors.transparent,
           border: Border.all(
-              color: isActive
-                  ? Colors.transparent
-                  : Theme.of(context).dividerColor),
+            color:
+                isActive ? Colors.transparent : Theme.of(context).dividerColor,
+          ),
           borderRadius: const BorderRadius.all(Radius.circular(30)),
         ),
         child: Row(

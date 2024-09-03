@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HorizontalProductCard extends StatelessWidget {
-  const HorizontalProductCard({super.key, required this.productCart});
+  const HorizontalProductCard({required this.productCart, super.key});
 
   final ProductCart productCart;
 
@@ -17,7 +17,9 @@ class HorizontalProductCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.symmetric(
-          horizontal: defaultPadding / 2, vertical: defaultPadding),
+        horizontal: defaultPadding / 2,
+        vertical: defaultPadding,
+      ),
       height: 130,
       decoration: BoxDecoration(
         border: Border.all(color: Theme.of(context).focusColor),
@@ -28,8 +30,9 @@ class HorizontalProductCard extends StatelessWidget {
           AspectRatio(
             aspectRatio: 1.15,
             child: NetworkImageWithLoader(
-                productCart.product.imageGroups[0].images[0].link,
-                radius: defaultBorderRadius),
+              productCart.product.imageGroups[0].images[0].link,
+              radius: defaultBorderRadius,
+            ),
           ),
           const SizedBox(width: 8),
           Expanded(
@@ -60,12 +63,20 @@ class HorizontalProductCard extends StatelessWidget {
                     ProductQuantity(
                       numOfItem: productCart.quantity,
                       onIncrement: () {
-                        context.read<CartBloc>().add(ModifyQuantityProductCart(
-                            product: productCart.product, increase: true));
+                        context.read<CartBloc>().add(
+                              ModifyQuantityProductCart(
+                                product: productCart.product,
+                                increase: true,
+                              ),
+                            );
                       },
                       onDecrement: () {
-                        context.read<CartBloc>().add(ModifyQuantityProductCart(
-                            product: productCart.product, increase: false));
+                        context.read<CartBloc>().add(
+                              ModifyQuantityProductCart(
+                                product: productCart.product,
+                                increase: false,
+                              ),
+                            );
                       },
                     ),
                   ],

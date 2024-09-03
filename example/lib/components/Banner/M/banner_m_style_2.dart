@@ -1,18 +1,17 @@
+import 'package:example/components/Banner/M/banner_m.dart';
+import 'package:example/components/Banner/banner_discount_tag.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../banner_discount_tag.dart';
-import 'banner_m.dart';
-
-import '../../../constants.dart';
 
 class BannerMStyle2 extends StatelessWidget {
   const BannerMStyle2({
-    super.key,
-    this.image = "https://i.imgur.com/J1Qjut7.png",
     required this.title,
     required this.press,
-    this.subtitle,
     required this.discountParcent,
+    super.key,
+    this.image = 'https://i.imgur.com/J1Qjut7.png',
+    this.subtitle,
   });
   final String? image;
   final String title;
@@ -29,7 +28,6 @@ class BannerMStyle2 extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(defaultPadding),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
                 child: Column(
@@ -70,7 +68,7 @@ class BannerMStyle2 extends StatelessWidget {
                     backgroundColor: Colors.white,
                   ),
                   child: SvgPicture.asset(
-                    "assets/icons/Arrow - Right.svg",
+                    'assets/icons/Arrow - Right.svg',
                     colorFilter:
                         const ColorFilter.mode(Colors.black, BlendMode.srcIn),
                   ),

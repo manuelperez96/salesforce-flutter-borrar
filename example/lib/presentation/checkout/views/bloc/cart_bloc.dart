@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:example/models/product_cart.dart';
+import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
+import 'package:example/presentation/checkout/views/bloc/cart_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,19 +12,11 @@ import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/repository/basket_repository.dart';
 import 'package:sf_commerce_sdk/repository/product_repository.dart';
 
-import 'cart_event.dart';
-import 'cart_state.dart';
-
 class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
-  late AnimationController controller;
-
-  final BasketRepository _basketRepository;
-  final ProductRepository _productRepository;
-
-  CartBloc(
-      {required BasketRepository basketRepository,
-      required ProductRepository productRepository})
-      : _basketRepository = basketRepository,
+  CartBloc({
+    required BasketRepository basketRepository,
+    required ProductRepository productRepository,
+  })  : _basketRepository = basketRepository,
         _productRepository = productRepository,
         super(CartInitial()) {
     controller = AnimationController(
@@ -36,28 +30,34 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     on<ModifyQuantityProductCart>(_onProductModifyQuantity);
     on<CheckStatusCart>(_onCheckStatusCart);
   }
+  late AnimationController controller;
+
+  final BasketRepository _basketRepository;
+  final ProductRepository _productRepository;
 
   Future<void> _onCheckStatusCart(
     CheckStatusCart event,
     Emitter<CartState> emit,
   ) async {
     emit(CartLoading());
-    String? basketID = await _basketRepository.getBasketId();
+    final basketID = await _basketRepository.getBasketId();
     if (basketID == null) {
       add(CreateCart());
     } else {
       try {
-        Basket basket = await _basketRepository.getBasket(basketID);
-        List<ProductCart> products = [];
+        final basket = await _basketRepository.getBasket(basketID);
+        final products = <ProductCart>[];
         if (basket.productItems != null && basket.productItems!.isNotEmpty) {
-          List<String> itemsIDs = getItemsIDs(basket.productItems!);
-          List<Product> productList =
-              await _productRepository.getProducts(itemsIDs);
+          final itemsIDs = getItemsIDs(basket.productItems!);
+          final productList = await _productRepository.getProducts(itemsIDs);
 
-          for (var product in productList) {
-            products.add(ProductCart(
+          for (final product in productList) {
+            products.add(
+              ProductCart(
                 product: product,
-                quantity: getQuantity(product.id, basket.productItems!)));
+                quantity: getQuantity(product.id, basket.productItems!),
+              ),
+            );
           }
         }
         emit(CartLoaded(products, basket));
@@ -75,10 +75,10 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
 
     Basket newBasket;
 
-    ProductCart productCart = currentState
+    final productCart = currentState
         .products[indexOfProduct(event.product, currentState.products)!];
 
-    String itemId =
+    final itemId =
         findItemIdFromBasket(event.product, currentState.currentCart);
 
     if (event.increase) {
@@ -91,19 +91,22 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
       currentState.products.remove(productCart);
 
       newBasket = await _basketRepository.removeProductFromBasket(
-          basketId: currentState.currentCart.basketId, basketItemId: itemId);
+        basketId: currentState.currentCart.basketId,
+        basketItemId: itemId,
+      );
     } else {
       newBasket = await _basketRepository.updateProductInBasket(
-          basketId: currentState.currentCart.basketId,
-          basketItemId: itemId,
-          quantity: productCart.quantity);
+        basketId: currentState.currentCart.basketId,
+        basketItemId: itemId,
+        quantity: productCart.quantity,
+      );
     }
 
     emit(CartLoaded(currentState.products, newBasket));
   }
 
   Future<void> _onCreate(CreateCart event, Emitter<CartState> emit) async {
-    Basket basket = await _basketRepository.createBasket();
+    final basket = await _basketRepository.createBasket();
     emit(CartLoaded([], basket));
   }
 
@@ -114,31 +117,31 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     final currentState = state as CartLoaded;
     Basket newBasket;
 
-    int? indexOfCurrentProduct =
+    final indexOfCurrentProduct =
         indexOfProduct(event.product, currentState.products);
 
-    List<ProductCart> updatedProducts =
-        List<ProductCart>.from(currentState.products);
+    final updatedProducts = List<ProductCart>.from(currentState.products);
 
     if (indexOfCurrentProduct != null) {
       updatedProducts[indexOfCurrentProduct].addQuantity(event.quantity);
 
       newBasket = await _basketRepository.updateProductInBasket(
-          basketId: currentState.currentCart.basketId,
-          basketItemId: currentState
-              .currentCart.productItems![indexOfCurrentProduct].itemId,
-          quantity: updatedProducts[indexOfCurrentProduct].quantity);
+        basketId: currentState.currentCart.basketId,
+        basketItemId: currentState
+            .currentCart.productItems![indexOfCurrentProduct].itemId,
+        quantity: updatedProducts[indexOfCurrentProduct].quantity,
+      );
     } else {
       updatedProducts
           .add(ProductCart(product: event.product, quantity: event.quantity));
 
       newBasket = await _basketRepository.addProductToBasket(
-          basketId: currentState.currentCart.basketId,
-          productId: event.product.id,
-          quantity: event.quantity);
+        basketId: currentState.currentCart.basketId,
+        productId: event.product.id,
+        quantity: event.quantity,
+      );
     }
-
-    controller.forward();
+    unawaited(controller.forward());
 
     emit(CartLoaded(updatedProducts, newBasket));
   }
@@ -149,16 +152,17 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   ) async {
     final currentState = state as CartLoaded;
 
-    String itemIdToRemove =
+    final itemIdToRemove =
         findItemIdFromBasket(event.product, currentState.currentCart);
 
-    Basket newBasket = await _basketRepository.removeProductFromBasket(
-        basketId: currentState.currentCart.basketId,
-        basketItemId: itemIdToRemove);
+    final newBasket = await _basketRepository.removeProductFromBasket(
+      basketId: currentState.currentCart.basketId,
+      basketItemId: itemIdToRemove,
+    );
 
     final updatedProducts = List<ProductCart>.from(currentState.products)
       ..removeAt(indexOfProduct(event.product, currentState.products)!);
-    controller.forward();
+    unawaited(controller.forward());
     emit(CartLoaded(updatedProducts, newBasket));
   }
 
@@ -168,15 +172,15 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   }
 
   int? indexOfProduct(Product product, List<ProductCart> productsList) {
-    for (int i = 0; i < productsList.length; i++) {
+    for (var i = 0; i < productsList.length; i++) {
       if (product.id == productsList[i].product.id) return i;
     }
     return null;
   }
 
   String findItemIdFromBasket(Product product, Basket basket) {
-    String itemId = '';
-    for (var element in basket.productItems!) {
+    var itemId = '';
+    for (final element in basket.productItems!) {
       if (element.productId == product.id) {
         itemId = element.itemId;
       }
@@ -185,16 +189,16 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   }
 
   List<String> getItemsIDs(List<ProductItem> productItems) {
-    List<String> ids = [];
-    for (var element in productItems) {
+    final ids = <String>[];
+    for (final element in productItems) {
       ids.add(element.productId);
     }
     return ids;
   }
 
   int getQuantity(String id, List<ProductItem> productList) {
-    int quantity = 1; //by default
-    for (var element in productList) {
+    var quantity = 1; //by default
+    for (final element in productList) {
       if (element.productId == id) quantity = element.quantity;
     }
     return quantity;

@@ -1,11 +1,10 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../constants.dart';
 
 class UnitPrice extends StatelessWidget {
   const UnitPrice({
-    super.key,
     required this.price,
+    super.key,
     this.priceAfterDiscount,
   });
 
@@ -18,27 +17,28 @@ class UnitPrice extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Unit price",
+          'Unit price',
           style: Theme.of(context).textTheme.titleSmall,
         ),
         const SizedBox(height: defaultPadding / 1),
         Text.rich(
           TextSpan(
             text: priceAfterDiscount == null
-                ? "\$${price.toStringAsFixed(2)}  "
-                : "\$${priceAfterDiscount!.toStringAsFixed(2)}  ",
+                ? '\$${price.toStringAsFixed(2)}  '
+                : '\$${priceAfterDiscount!.toStringAsFixed(2)}  ',
             style: Theme.of(context).textTheme.titleLarge,
             children: [
               if (priceAfterDiscount != null)
                 TextSpan(
-                  text: "\$${price.toStringAsFixed(2)}",
+                  text: '\$${price.toStringAsFixed(2)}',
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                      color: Theme.of(context).textTheme.bodyMedium!.color,
-                      decoration: TextDecoration.lineThrough),
+                        color: Theme.of(context).textTheme.bodyMedium!.color,
+                        decoration: TextDecoration.lineThrough,
+                      ),
                 ),
             ],
           ),
-        )
+        ),
       ],
     );
   }

@@ -3,15 +3,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class DividerListTile extends StatelessWidget {
   const DividerListTile({
-    super.key,
-    this.isShowForwordArrow = true,
     required this.title,
     required this.press,
+    super.key,
+    this.isShowForwordArrow = true,
     this.leading,
     this.minLeadingWidth,
     this.isShowDivider = true,
   });
-  final bool isShowForwordArrow, isShowDivider;
+  final bool isShowForwordArrow;
+  final bool isShowDivider;
   final Widget title;
   final Widget? leading;
   final double? minLeadingWidth;
@@ -28,10 +29,11 @@ class DividerListTile extends StatelessWidget {
           title: title,
           trailing: isShowForwordArrow
               ? SvgPicture.asset(
-                  "assets/icons/miniRight.svg",
+                  'assets/icons/miniRight.svg',
                   colorFilter: ColorFilter.mode(
-                      Theme.of(context).iconTheme.color!.withOpacity(0.4),
-                      BlendMode.srcIn),
+                    Theme.of(context).iconTheme.color!.withOpacity(0.4),
+                    BlendMode.srcIn,
+                  ),
                 )
               : null,
         ),
@@ -43,15 +45,17 @@ class DividerListTile extends StatelessWidget {
 
 class DividerListTileWithTrilingText extends StatelessWidget {
   const DividerListTileWithTrilingText({
-    super.key,
     required this.svgSrc,
     required this.title,
     required this.trilingText,
     required this.press,
+    super.key,
     this.isShowArrow = true,
   });
 
-  final String svgSrc, title, trilingText;
+  final String svgSrc;
+  final String title;
+  final String trilingText;
   final VoidCallback press;
   final bool isShowArrow;
 
@@ -67,7 +71,9 @@ class DividerListTileWithTrilingText extends StatelessWidget {
             height: 24,
             width: 24,
             colorFilter: ColorFilter.mode(
-                Theme.of(context).iconTheme.color!, BlendMode.srcIn),
+              Theme.of(context).iconTheme.color!,
+              BlendMode.srcIn,
+            ),
           ),
           title: Text(
             title,
@@ -80,10 +86,11 @@ class DividerListTileWithTrilingText extends StatelessWidget {
                 const Spacer(),
                 Text(trilingText),
                 SvgPicture.asset(
-                  "assets/icons/miniRight.svg",
+                  'assets/icons/miniRight.svg',
                   colorFilter: ColorFilter.mode(
-                      Theme.of(context).iconTheme.color!.withOpacity(0.4),
-                      BlendMode.srcIn),
+                    Theme.of(context).iconTheme.color!.withOpacity(0.4),
+                    BlendMode.srcIn,
+                  ),
                 ),
               ],
             ),

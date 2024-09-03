@@ -1,7 +1,6 @@
+import 'package:example/components/skleton/product/product_card_skelton.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../constants.dart';
-import 'product_card_skelton.dart';
 
 class ProductsSkelton extends StatelessWidget {
   const ProductsSkelton({
@@ -26,4 +25,3 @@ class ProductsSkelton extends StatelessWidget {
     );
   }
 }
-

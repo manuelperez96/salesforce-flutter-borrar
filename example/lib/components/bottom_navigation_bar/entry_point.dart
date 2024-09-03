@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:example/components/bottom_navigation_bar/cart_animated_icon.dart';
 import 'package:example/components/glass_appbar.dart';
+import 'package:example/constants.dart';
 import 'package:example/extensions/context_extensions.dart';
 import 'package:example/presentation/checkout/views/cart_screen.dart';
 import 'package:example/presentation/discover/views/discover_screen.dart';
@@ -8,8 +9,6 @@ import 'package:example/presentation/home/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../../constants.dart';
 
 class EntryPoint extends StatefulWidget {
   const EntryPoint({super.key});
@@ -19,7 +18,7 @@ class EntryPoint extends StatefulWidget {
 }
 
 class _EntryPointState extends State<EntryPoint> {
-  final List _pages = const [
+  final List<Widget> _pages = const [
     HomeScreen(),
     DiscoverScreen(),
     CartScreen(),
@@ -33,10 +32,12 @@ class _EntryPointState extends State<EntryPoint> {
         src,
         height: 24,
         colorFilter: ColorFilter.mode(
-            color ??
-                Theme.of(context).iconTheme.color!.withOpacity(
-                    Theme.of(context).brightness == Brightness.dark ? 0.3 : 1),
-            BlendMode.srcIn),
+          color ??
+              Theme.of(context).iconTheme.color!.withOpacity(
+                    Theme.of(context).brightness == Brightness.dark ? 0.3 : 1,
+                  ),
+          BlendMode.srcIn,
+        ),
       );
     }
 
@@ -60,21 +61,23 @@ class _EntryPointState extends State<EntryPoint> {
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
-              "assets/icons/Search.svg",
+              'assets/icons/Search.svg',
               height: 24,
               colorFilter: ColorFilter.mode(
-                  Theme.of(context).textTheme.bodyLarge!.color!,
-                  BlendMode.srcIn),
+                Theme.of(context).textTheme.bodyLarge!.color!,
+                BlendMode.srcIn,
+              ),
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
-              "assets/icons/Notification.svg",
+              'assets/icons/Notification.svg',
               height: 24,
               colorFilter: ColorFilter.mode(
-                  Theme.of(context).textTheme.bodyLarge!.color!,
-                  BlendMode.srcIn),
+                Theme.of(context).textTheme.bodyLarge!.color!,
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ],
@@ -83,7 +86,6 @@ class _EntryPointState extends State<EntryPoint> {
       body: Stack(
         children: [
           PageTransitionSwitcher(
-            duration: defaultDuration,
             transitionBuilder: (child, animation, secondAnimation) {
               return FadeThroughTransition(
                 animation: animation,
@@ -120,20 +122,20 @@ class _EntryPointState extends State<EntryPoint> {
           unselectedItemColor: Colors.transparent,
           items: [
             BottomNavigationBarItem(
-              icon: svgIcon("assets/icons/Shop.svg"),
-              activeIcon: svgIcon("assets/icons/Shop.svg", color: primaryColor),
+              icon: svgIcon('assets/icons/Shop.svg'),
+              activeIcon: svgIcon('assets/icons/Shop.svg', color: primaryColor),
               label: context.localizations.label_shop,
             ),
             BottomNavigationBarItem(
-              icon: svgIcon("assets/icons/Category.svg"),
+              icon: svgIcon('assets/icons/Category.svg'),
               activeIcon:
-                  svgIcon("assets/icons/Category.svg", color: primaryColor),
+                  svgIcon('assets/icons/Category.svg', color: primaryColor),
               label: context.localizations.label_discover,
             ),
             BottomNavigationBarItem(
-              icon: CartAnimatedIcon(svgIcon: svgIcon("assets/icons/Bag.svg")),
+              icon: CartAnimatedIcon(svgIcon: svgIcon('assets/icons/Bag.svg')),
               activeIcon: CartAnimatedIcon(
-                svgIcon: svgIcon("assets/icons/Bag.svg", color: primaryColor),
+                svgIcon: svgIcon('assets/icons/Bag.svg', color: primaryColor),
               ),
               label: context.localizations.label_cart,
             ),

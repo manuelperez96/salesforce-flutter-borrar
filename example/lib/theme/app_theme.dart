@@ -1,16 +1,15 @@
-import 'package:flutter/material.dart';
+import 'package:example/constants.dart';
 import 'package:example/theme/button_theme.dart';
+import 'package:example/theme/checkbox_themedata.dart';
 import 'package:example/theme/input_decoration_theme.dart';
-
-import '../constants.dart';
-import 'checkbox_themedata.dart';
-import 'theme_data.dart';
+import 'package:example/theme/theme_data.dart';
+import 'package:flutter/material.dart';
 
 class AppTheme {
   static ThemeData lightTheme(BuildContext context) {
     return ThemeData(
       brightness: Brightness.light,
-      fontFamily: "Plus Jakarta",
+      fontFamily: 'Plus Jakarta',
       primarySwatch: primaryMaterialColor,
       primaryColor: primaryColor,
       scaffoldBackgroundColor: Colors.white,

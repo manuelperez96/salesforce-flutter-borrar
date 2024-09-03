@@ -1,11 +1,10 @@
 import 'package:example/components/dot_indicators.dart';
 import 'package:example/constants.dart';
 import 'package:example/extensions/context_extensions.dart';
+import 'package:example/presentation/onbording/views/components/onbording_content.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'components/onbording_content.dart';
 
 class OnBordingScreen extends StatefulWidget {
   const OnBordingScreen({super.key});
@@ -21,7 +20,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
 
   @override
   void initState() {
-    _pageController = PageController(initialPage: 0);
+    _pageController = PageController();
     super.initState();
   }
 
@@ -35,32 +34,32 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
   Widget build(BuildContext context) {
     _onbordData = [
       Onbord(
-        image: "assets/Illustration/Illustration-0.png",
-        imageDarkTheme: "assets/Illustration/Illustration_darkTheme_0.png",
+        image: 'assets/Illustration/Illustration-0.png',
+        imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_0.png',
         title: context.localizations.onboarding_title_1,
         description: context.localizations.onboarding_description_1,
       ),
       Onbord(
-        image: "assets/Illustration/Illustration-1.png",
-        imageDarkTheme: "assets/Illustration/Illustration_darkTheme_1.png",
+        image: 'assets/Illustration/Illustration-1.png',
+        imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_1.png',
         title: context.localizations.onboarding_title_2,
         description: context.localizations.onboarding_description_2,
       ),
       Onbord(
-        image: "assets/Illustration/Illustration-2.png",
-        imageDarkTheme: "assets/Illustration/Illustration_darkTheme_2.png",
+        image: 'assets/Illustration/Illustration-2.png',
+        imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_2.png',
         title: context.localizations.onboarding_title_3,
         description: context.localizations.onboarding_description_3,
       ),
       Onbord(
-        image: "assets/Illustration/Illustration-3.png",
-        imageDarkTheme: "assets/Illustration/Illustration_darkTheme_3.png",
+        image: 'assets/Illustration/Illustration-3.png',
+        imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_3.png',
         title: context.localizations.onboarding_title_4,
         description: context.localizations.onboarding_description_4,
       ),
       Onbord(
-        image: "assets/Illustration/Illustration-4.png",
-        imageDarkTheme: "assets/Illustration/Illustration_darkTheme_4.png",
+        image: 'assets/Illustration/Illustration-4.png',
+        imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_4.png',
         title: context.localizations.onboarding_title_5,
         description: context.localizations.onboarding_description_5,
       ),
@@ -78,13 +77,14 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
                       entryPointScreenRoute,
-                      ModalRoute.withName("/entry_point"),
+                      ModalRoute.withName('/entry_point'),
                     );
                   },
                   child: Text(
                     context.localizations.skip,
                     style: TextStyle(
-                        color: Theme.of(context).textTheme.bodyLarge!.color),
+                      color: Theme.of(context).textTheme.bodyLarge!.color,
+                    ),
                   ),
                 ),
               ),
@@ -131,12 +131,14 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                         onPressed: () {
                           if (_pageIndex < _onbordData.length - 1) {
                             _pageController.nextPage(
-                                curve: Curves.ease, duration: defaultDuration);
+                              curve: Curves.ease,
+                              duration: defaultDuration,
+                            );
                           } else {
                             Navigator.pushNamedAndRemoveUntil(
                               context,
                               entryPointScreenRoute,
-                              ModalRoute.withName("/entry_point"),
+                              ModalRoute.withName('/entry_point'),
                             );
                           }
                         },
@@ -144,7 +146,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                           shape: const CircleBorder(),
                         ),
                         child: SvgPicture.asset(
-                          "assets/icons/Arrow - Right.svg",
+                          'assets/icons/Arrow - Right.svg',
                           colorFilter: const ColorFilter.mode(
                             Colors.white,
                             BlendMode.srcIn,
@@ -165,13 +167,14 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
 }
 
 class Onbord {
-  final String image, title, description;
-  final String? imageDarkTheme;
-
   Onbord({
     required this.image,
     required this.title,
-    this.description = "",
+    this.description = '',
     this.imageDarkTheme,
   });
+  final String image;
+  final String title;
+  final String description;
+  final String? imageDarkTheme;
 }

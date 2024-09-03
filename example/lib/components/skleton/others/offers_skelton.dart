@@ -1,7 +1,6 @@
+import 'package:example/components/skleton/skelton.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../constants.dart';
-import '../skelton.dart';
 
 class OffersSkelton extends StatelessWidget {
   const OffersSkelton({
@@ -45,7 +44,7 @@ class OffersSkelton extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

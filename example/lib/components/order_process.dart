@@ -1,23 +1,22 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 
 class OrderProgress extends StatelessWidget {
   const OrderProgress({
-    super.key,
     required this.orderStatus,
     required this.processingStatus,
     required this.packedStatus,
     required this.shippedStatus,
     required this.deliveredStatus,
+    super.key,
     this.isCanceled = false,
   });
 
-  final OrderProcessStatus orderStatus,
-      processingStatus,
-      packedStatus,
-      shippedStatus,
-      deliveredStatus;
+  final OrderProcessStatus orderStatus;
+  final OrderProcessStatus processingStatus;
+  final OrderProcessStatus packedStatus;
+  final OrderProcessStatus shippedStatus;
+  final OrderProcessStatus deliveredStatus;
   final bool isCanceled;
 
   @override
@@ -27,7 +26,7 @@ class OrderProgress extends StatelessWidget {
         Expanded(
           child: ProcessDotWithLine(
             isShowLeftLine: false,
-            title: "Ordered",
+            title: 'Ordered',
             status: orderStatus,
             nextStatus: processingStatus,
           ),
@@ -35,14 +34,14 @@ class OrderProgress extends StatelessWidget {
         Expanded(
           child: ProcessDotWithLine(
             isActive: processingStatus == OrderProcessStatus.processing,
-            title: "Processing",
+            title: 'Processing',
             status: processingStatus,
             nextStatus: packedStatus,
           ),
         ),
         Expanded(
           child: ProcessDotWithLine(
-            title: "Packed",
+            title: 'Packed',
             status: packedStatus,
             nextStatus: shippedStatus,
             isActive: packedStatus == OrderProcessStatus.processing,
@@ -50,29 +49,30 @@ class OrderProgress extends StatelessWidget {
         ),
         Expanded(
           child: ProcessDotWithLine(
-            title: "Shipped",
+            title: 'Shipped',
             status: shippedStatus,
             nextStatus: isCanceled ? OrderProcessStatus.error : deliveredStatus,
             isActive: shippedStatus == OrderProcessStatus.processing,
           ),
         ),
-        isCanceled
-            ? const Expanded(
-                child: ProcessDotWithLine(
-                  title: "Canceled",
-                  status: OrderProcessStatus.canceled,
-                  isShowRightLine: false,
-                  isActive: true,
-                ),
-              )
-            : Expanded(
-                child: ProcessDotWithLine(
-                  title: "Delivered",
-                  status: deliveredStatus,
-                  isShowRightLine: false,
-                  isActive: deliveredStatus == OrderProcessStatus.done,
-                ),
-              ),
+        if (isCanceled)
+          const Expanded(
+            child: ProcessDotWithLine(
+              title: 'Canceled',
+              status: OrderProcessStatus.canceled,
+              isShowRightLine: false,
+              isActive: true,
+            ),
+          )
+        else
+          Expanded(
+            child: ProcessDotWithLine(
+              title: 'Delivered',
+              status: deliveredStatus,
+              isShowRightLine: false,
+              isActive: deliveredStatus == OrderProcessStatus.done,
+            ),
+          ),
       ],
     );
   }
@@ -80,16 +80,17 @@ class OrderProgress extends StatelessWidget {
 
 class ProcessDotWithLine extends StatelessWidget {
   const ProcessDotWithLine({
+    required this.status,
+    required this.title,
     super.key,
     this.isShowLeftLine = true,
     this.isShowRightLine = true,
-    required this.status,
-    required this.title,
     this.nextStatus,
     this.isActive = false,
   });
 
-  final bool isShowLeftLine, isShowRightLine;
+  final bool isShowLeftLine;
+  final bool isShowRightLine;
   final OrderProcessStatus status;
   final OrderProcessStatus? nextStatus;
   final String title;
@@ -134,7 +135,7 @@ class ProcessDotWithLine extends StatelessWidget {
               ),
             if (!isShowRightLine) const Spacer(),
           ],
-        )
+        ),
       ],
     );
   }
@@ -149,7 +150,7 @@ Widget statusWidget(BuildContext context, OrderProcessStatus status) {
         radius: 12,
         backgroundColor: successColor,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
           child: CircularProgressIndicator(
             color: Theme.of(context).scaffoldBackgroundColor,
             strokeWidth: 2,
@@ -161,7 +162,7 @@ Widget statusWidget(BuildContext context, OrderProcessStatus status) {
         radius: 12,
         backgroundColor: Theme.of(context).dividerColor,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
           child: CircleAvatar(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           ),
@@ -172,7 +173,7 @@ Widget statusWidget(BuildContext context, OrderProcessStatus status) {
         radius: 12,
         backgroundColor: errorColor,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
           child: CircleAvatar(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           ),
@@ -188,7 +189,8 @@ Widget statusWidget(BuildContext context, OrderProcessStatus status) {
           color: Theme.of(context).scaffoldBackgroundColor,
         ),
       );
-    default:
+
+    case OrderProcessStatus.done:
       return CircleAvatar(
         radius: 12,
         backgroundColor: successColor,
@@ -212,7 +214,8 @@ Color lineColor(BuildContext context, OrderProcessStatus status) {
     case OrderProcessStatus.canceled:
       return errorColor;
 
-    default:
+    case OrderProcessStatus.done:
+    case OrderProcessStatus.processing:
       return successColor;
   }
 }

@@ -1,22 +1,22 @@
 import 'dart:async';
 
+import 'package:example/components/Banner/M/banner_m.dart';
+import 'package:example/components/blur_container.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../constants.dart';
-import '../../blur_container.dart';
-import 'banner_m.dart';
-
 class BannerMWithCounter extends StatefulWidget {
   const BannerMWithCounter({
-    super.key,
-    this.image = "https://i.imgur.com/pRgcbpS.png",
     required this.text,
     required this.duration,
     required this.press,
+    super.key,
+    this.image = 'https://i.imgur.com/pRgcbpS.png',
   });
 
-  final String image, text;
+  final String image;
+  final String text;
   final Duration duration;
   final VoidCallback press;
 
@@ -69,32 +69,34 @@ class _BannerMWithCounterState extends State<BannerMWithCounter> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 BlurContainer(
-                  text: _duration.inHours.toString().padLeft(2, "0"),
+                  text: _duration.inHours.toString().padLeft(2, '0'),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: defaultPadding / 4),
-                  child: SvgPicture.asset("assets/icons/dot.svg"),
+                    horizontal: defaultPadding / 4,
+                  ),
+                  child: SvgPicture.asset('assets/icons/dot.svg'),
                 ),
                 BlurContainer(
                   text: _duration.inMinutes
                       .remainder(60)
                       .toString()
-                      .padLeft(2, "0"),
+                      .padLeft(2, '0'),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: defaultPadding / 4),
-                  child: SvgPicture.asset("assets/icons/dot.svg"),
+                    horizontal: defaultPadding / 4,
+                  ),
+                  child: SvgPicture.asset('assets/icons/dot.svg'),
                 ),
                 BlurContainer(
                   text: _duration.inSeconds
                       .remainder(60)
                       .toString()
-                      .padLeft(2, "0"),
+                      .padLeft(2, '0'),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ],

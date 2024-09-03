@@ -1,6 +1,5 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../constants.dart';
 
 class InchesSizeTable extends StatelessWidget {
   const InchesSizeTable({super.key});
@@ -15,9 +14,10 @@ class InchesSizeTable extends StatelessWidget {
         child: DataTable(
           border: TableBorder(
             verticalInside: BorderSide(
-                color: Theme.of(context).brightness == Brightness.light
-                    ? Colors.black12
-                    : Colors.white10),
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black12
+                  : Colors.white10,
+            ),
           ),
           columns: const <DataColumn>[
             DataColumn(label: Text('')),

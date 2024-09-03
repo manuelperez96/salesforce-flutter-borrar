@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:example/components/check_mark.dart';
-
-import '../../../../constants.dart';
+import 'package:example/constants.dart';
+import 'package:flutter/material.dart';
 
 class ColorDot extends StatelessWidget {
   const ColorDot({
-    super.key,
     required this.color,
+    super.key,
     this.isActive = false,
     this.press,
   });

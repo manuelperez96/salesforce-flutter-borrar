@@ -1,7 +1,6 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../constants.dart';
 
 class ShoppingBag extends StatelessWidget {
   const ShoppingBag({
@@ -23,12 +22,14 @@ class ShoppingBag extends StatelessWidget {
         children: [
           SvgPicture.asset(
             numOfItem == null
-                ? "assets/icons/Bag.svg"
-                : "assets/icons/bag_full.svg",
+                ? 'assets/icons/Bag.svg'
+                : 'assets/icons/bag_full.svg',
             height: 24,
             width: 24,
             colorFilter: ColorFilter.mode(
-                color ?? Theme.of(context).iconTheme.color!, BlendMode.srcIn),
+              color ?? Theme.of(context).iconTheme.color!,
+              BlendMode.srcIn,
+            ),
           ),
           if (numOfItem != null)
             Padding(
@@ -44,7 +45,7 @@ class ShoppingBag extends StatelessWidget {
                       : Colors.white,
                 ),
               ),
-            )
+            ),
         ],
       ),
     );

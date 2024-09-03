@@ -1,14 +1,15 @@
-import 'app_localizations.dart';
+import 'package:example/presentation/localization/app_localizations.dart';
 
 /// The translations for Spanish Castilian (`es`).
 class AppLocalizationsEs extends AppLocalizations {
-  AppLocalizationsEs([String locale = 'es']) : super(locale);
+  AppLocalizationsEs([super.locale = 'es']);
 
   @override
   String get app_title => 'Demo Capgemini';
 
   @override
-  String get onboarding_title_1 => 'Encuentra el artículo que has estado buscando';
+  String get onboarding_title_1 =>
+      'Encuentra el artículo que has estado buscando';
 
   @override
   String get onboarding_title_2 => 'Llena esas bolsas de compras';
@@ -23,19 +24,24 @@ class AppLocalizationsEs extends AppLocalizations {
   String get onboarding_title_5 => 'Tiendas cercanas';
 
   @override
-  String get onboarding_description_1 => 'Aquí verás una gran variedad de productos, cuidadosamente clasificados para una experiencia de navegación sin problemas.';
+  String get onboarding_description_1 =>
+      'Aquí verás una gran variedad de productos, cuidadosamente clasificados para una experiencia de navegación sin problemas.';
 
   @override
-  String get onboarding_description_2 => 'Agrega cualquier artículo que desees a tu carrito, o guárdalo en tu lista de deseos, para que no lo pierdas en tus futuras compras.';
+  String get onboarding_description_2 =>
+      'Agrega cualquier artículo que desees a tu carrito, o guárdalo en tu lista de deseos, para que no lo pierdas en tus futuras compras.';
 
   @override
-  String get onboarding_description_3 => 'Hay muchas opciones de pago disponibles para tu comodidad.';
+  String get onboarding_description_3 =>
+      'Hay muchas opciones de pago disponibles para tu comodidad.';
 
   @override
-  String get onboarding_description_4 => 'En particular, Shoplon puede empaquetar tus pedidos y ayudarte a gestionar tus envíos sin problemas.';
+  String get onboarding_description_4 =>
+      'En particular, Shoplon puede empaquetar tus pedidos y ayudarte a gestionar tus envíos sin problemas.';
 
   @override
-  String get onboarding_description_5 => 'Rastrea fácilmente las tiendas cercanas, navega por sus artículos y obtén información sobre sus productos.';
+  String get onboarding_description_5 =>
+      'Rastrea fácilmente las tiendas cercanas, navega por sus artículos y obtén información sobre sus productos.';
 
   @override
   String get skip => 'Saltar';
@@ -44,7 +50,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get welcome_back => '¡Bienvenido de nuevo!';
 
   @override
-  String get login_description => 'Inicia sesión con tus datos que ingresaste durante tu registro.';
+  String get login_description =>
+      'Inicia sesión con tus datos que ingresaste durante tu registro.';
 
   @override
   String get forgot_password => 'Olvidé mi contraseña';
@@ -71,13 +78,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get valid_email_address => 'Ingresa una dirección de correo válida';
 
   @override
-  String get passwords_special_character => 'Las contraseñas deben tener al menos un carácter especial';
+  String get passwords_special_character =>
+      'Las contraseñas deben tener al menos un carácter especial';
 
   @override
   String get password_required => 'Se requiere contraseña';
 
   @override
-  String get password_digits_long => 'La contraseña debe tener al menos 8 dígitos de longitud';
+  String get password_digits_long =>
+      'La contraseña debe tener al menos 8 dígitos de longitud';
 
   @override
   String get categories => 'Categorías';

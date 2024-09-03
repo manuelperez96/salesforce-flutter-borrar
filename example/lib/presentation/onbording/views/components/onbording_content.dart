@@ -1,34 +1,31 @@
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../constants.dart';
 
 class OnbordingContent extends StatelessWidget {
   const OnbordingContent({
-    super.key,
-    this.isTextOnTop = false,
     required this.title,
     required this.description,
     required this.image,
+    super.key,
+    this.isTextOnTop = false,
   });
 
   final bool isTextOnTop;
-  final String title, description, image;
+  final String title;
+  final String description;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const Spacer(),
-
         if (isTextOnTop)
           OnbordTitleDescription(
             title: title,
             description: description,
           ),
         if (isTextOnTop) const Spacer(),
-
-        /// if you are using SVG then replace [Image.asset] with [SvgPicture.asset]
-
         Image.asset(
           image,
           height: 250,
@@ -39,7 +36,6 @@ class OnbordingContent extends StatelessWidget {
             title: title,
             description: description,
           ),
-
         const Spacer(),
       ],
     );
@@ -48,12 +44,13 @@ class OnbordingContent extends StatelessWidget {
 
 class OnbordTitleDescription extends StatelessWidget {
   const OnbordTitleDescription({
-    super.key,
     required this.title,
     required this.description,
+    super.key,
   });
 
-  final String title, description;
+  final String title;
+  final String description;
 
   @override
   Widget build(BuildContext context) {

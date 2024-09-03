@@ -1,22 +1,21 @@
+import 'package:example/components/Banner/S/banner_s.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/svg.dart';
-
-import '../../../constants.dart';
-import 'banner_s.dart';
 
 class BannerSStyle5 extends StatelessWidget {
   const BannerSStyle5({
-    super.key,
-    this.image = "https://i.imgur.com/wQ0sNHT.png",
     required this.title,
     required this.press,
+    super.key,
+    this.image = 'https://i.imgur.com/wQ0sNHT.png',
     this.subtitle,
     this.bottomText,
   });
   final String? image;
   final String title;
-  final String? subtitle, bottomText;
+  final String? subtitle;
+  final String? bottomText;
 
   final VoidCallback press;
 
@@ -29,7 +28,6 @@ class BannerSStyle5 extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(defaultPadding),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
                 child: Column(
@@ -39,8 +37,9 @@ class BannerSStyle5 extends StatelessWidget {
                     if (subtitle != null)
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: defaultPadding / 2,
-                            vertical: defaultPadding / 8),
+                          horizontal: defaultPadding / 2,
+                          vertical: defaultPadding / 8,
+                        ),
                         color: Colors.white70,
                         child: Text(
                           subtitle!,
@@ -72,13 +71,13 @@ class BannerSStyle5 extends StatelessWidget {
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
-                      )
+                      ),
                   ],
                 ),
               ),
               const SizedBox(width: defaultPadding),
               SvgPicture.asset(
-                "assets/icons/miniRight.svg",
+                'assets/icons/miniRight.svg',
                 height: 28,
                 colorFilter:
                     const ColorFilter.mode(Colors.white, BlendMode.srcIn),

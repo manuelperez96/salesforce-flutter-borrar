@@ -3,21 +3,22 @@ import 'package:flutter/material.dart';
 
 class ProductQuantity extends StatelessWidget {
   const ProductQuantity({
-    super.key,
     required this.numOfItem,
     required this.onIncrement,
     required this.onDecrement,
+    super.key,
   });
 
   final int numOfItem;
-  final VoidCallback onIncrement, onDecrement;
+  final VoidCallback onIncrement;
+  final VoidCallback onDecrement;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         AppIconButton(
-          iconPath: "assets/icons/Minus.svg",
+          iconPath: 'assets/icons/Minus.svg',
           onPressed: onDecrement,
         ),
         SizedBox(
@@ -33,7 +34,7 @@ class ProductQuantity extends StatelessWidget {
           ),
         ),
         AppIconButton(
-          iconPath: "assets/icons/Plus1.svg",
+          iconPath: 'assets/icons/Plus1.svg',
           onPressed: onIncrement,
         ),
       ],

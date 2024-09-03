@@ -19,6 +19,6 @@ class _SizeGuideScreenState extends State<SizeGuideScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const UnBuyFullKit(images: ["assets/screens/Size Guide.png"]);
+    return const UnBuyFullKit(images: ['assets/screens/Size Guide.png']);
   }
 }
