@@ -1,4 +1,5 @@
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
+import 'package:example/models/product_cart.dart';
+import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
 
 abstract class CartState {}
 
@@ -7,6 +8,7 @@ class CartInitial extends CartState {}
 class CartLoading extends CartState {}
 
 class CartLoaded extends CartState {
-  final List<Product> products;
-  CartLoaded(this.products);
+  final Basket currentCart;
+  final List<ProductCart> products;
+  CartLoaded(this.products, this.currentCart);
 }

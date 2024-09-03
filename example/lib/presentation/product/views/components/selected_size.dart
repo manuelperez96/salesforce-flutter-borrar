@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 import '../../../../constants.dart';
 
 class SelectedSize extends StatelessWidget {
   const SelectedSize({
     super.key,
+    required this.selectedSize,
+    required this.onPressed,
+    required this.availableValuesSizes,
     required this.sizes,
-    required this.selectedIndex,
-    required this.press,
   });
 
-  final List<String> sizes;
-  final int selectedIndex;
-  final ValueChanged<int> press;
+  final ValueChanged<ValuesVariation> onPressed;
+  final String selectedSize;
+  final List<String> availableValuesSizes;
+  final List<ValuesVariation> sizes;
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +30,20 @@ class SelectedSize extends StatelessWidget {
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
-        Row(
-          children: List.generate(
-            sizes.length,
-            (index) => Padding(
-              padding: EdgeInsets.only(
-                  left: index == 0 ? defaultPadding : defaultPadding / 2),
-              child: SizeButton(
-                text: sizes[index],
-                isActive: selectedIndex == index,
-                press: () => press(index),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: List.generate(
+              sizes.length,
+              (index) => Padding(
+                padding: EdgeInsets.only(
+                    left: index == 0 ? defaultPadding : defaultPadding / 2),
+                child: SizeButton(
+                  isActive: availableValuesSizes.contains(sizes[index].value),
+                  text: sizes[index].name,
+                  isSelected: selectedSize == sizes[index].value,
+                  press: () => onPressed(sizes[index]),
+                ),
               ),
             ),
           ),
@@ -50,11 +57,13 @@ class SizeButton extends StatelessWidget {
   const SizeButton({
     super.key,
     required this.text,
-    required this.isActive,
+    required this.isSelected,
     required this.press,
+    required this.isActive,
   });
 
   final String text;
+  final bool isSelected;
   final bool isActive;
   final VoidCallback press;
 
@@ -64,18 +73,20 @@ class SizeButton extends StatelessWidget {
       height: 40,
       width: 40,
       child: OutlinedButton(
-        onPressed: press,
+        onPressed: isActive ? press : null,
         style: OutlinedButton.styleFrom(
           padding: EdgeInsets.zero,
           shape: const CircleBorder(),
-          side: isActive ? const BorderSide(color: primaryColor) : null,
+          side: isSelected ? const BorderSide(color: primaryColor) : null,
         ),
         child: Text(
           text.toUpperCase(),
           style: TextStyle(
               color: isActive
-                  ? primaryColor
-                  : Theme.of(context).textTheme.bodyLarge!.color),
+                  ? (isSelected
+                      ? primaryColor
+                      : Theme.of(context).textTheme.bodyLarge!.color)
+                  : Colors.grey),
         ),
       ),
     );

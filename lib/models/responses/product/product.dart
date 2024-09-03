@@ -14,27 +14,58 @@ class Product with _$Product {
     required String pageDescription,
     required String pageTitle,
     required double price,
-    required int pricePerUnit,
+    required double pricePerUnit,
     required String shortDescription,
     required int? minOrderQuantity,
-    // required String slugUrl,
-    // required int stepQuantity,
-    // required String unitMeasure,
-    // required int unitQuantity,
-    // required String upc,
-    // required List<Variant> variants,
+    required Inventory inventory,
+
+    /// Values of this product (color, size)
+    required VariationValues? variationValues,
     required List<ProductVariationAttribute>? variationAttributes,
-    // required VariationValues variationValues,
-    // @JsonKey(name: 'c_color') required String cColor,
-    // @JsonKey(name: 'c_IsNew') required String cIsNew,
-    // @JsonKey(name: 'c_IsNewtest') required String cIsNewtest,
-    // @JsonKey(name: 'c_RefinementColor') required String cRefinementColor,
-    // @JsonKey(name: 'c_Size') required String cSize,
-    // @JsonKey(name: 'c_Width') required String cWidth,
+    required List<Variant>? variants,
   }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
+}
+
+@freezed
+class Variant with _$Variant {
+  factory Variant({
+    required bool orderable,
+    required int price,
+    required String productId,
+    required VariationValues variationValues,
+  }) = _Variant;
+
+  factory Variant.fromJson(Map<String, dynamic> json) =>
+      _$VariantFromJson(json);
+}
+
+@freezed
+class VariationValues with _$VariationValues {
+  factory VariationValues({
+    required String? color,
+    required String? size,
+  }) = _VariationValues;
+
+  factory VariationValues.fromJson(Map<String, dynamic> json) =>
+      _$VariationValuesFromJson(json);
+}
+
+@freezed
+class Inventory with _$Inventory {
+  factory Inventory({
+    required int ats,
+    required bool backorderable,
+    required String id,
+    required bool orderable,
+    required bool preorderable,
+    required int stockLevel,
+  }) = _Inventory;
+
+  factory Inventory.fromJson(Map<String, dynamic> json) =>
+      _$InventoryFromJson(json);
 }
 
 @freezed

@@ -27,17 +27,16 @@ mixin _$Product {
   String get pageDescription => throw _privateConstructorUsedError;
   String get pageTitle => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
-  int get pricePerUnit => throw _privateConstructorUsedError;
+  double get pricePerUnit => throw _privateConstructorUsedError;
   String get shortDescription => throw _privateConstructorUsedError;
-  int? get minOrderQuantity =>
-      throw _privateConstructorUsedError; // required String slugUrl,
-// required int stepQuantity,
-// required String unitMeasure,
-// required int unitQuantity,
-// required String upc,
-// required List<Variant> variants,
+  int? get minOrderQuantity => throw _privateConstructorUsedError;
+  Inventory get inventory => throw _privateConstructorUsedError;
+
+  /// Values of this product (color, size)
+  VariationValues? get variationValues => throw _privateConstructorUsedError;
   List<ProductVariationAttribute>? get variationAttributes =>
       throw _privateConstructorUsedError;
+  List<Variant>? get variants => throw _privateConstructorUsedError;
 
   /// Serializes this Product to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -61,10 +60,16 @@ abstract class $ProductCopyWith<$Res> {
       String pageDescription,
       String pageTitle,
       double price,
-      int pricePerUnit,
+      double pricePerUnit,
       String shortDescription,
       int? minOrderQuantity,
-      List<ProductVariationAttribute>? variationAttributes});
+      Inventory inventory,
+      VariationValues? variationValues,
+      List<ProductVariationAttribute>? variationAttributes,
+      List<Variant>? variants});
+
+  $InventoryCopyWith<$Res> get inventory;
+  $VariationValuesCopyWith<$Res>? get variationValues;
 }
 
 /// @nodoc
@@ -92,7 +97,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? pricePerUnit = null,
     Object? shortDescription = null,
     Object? minOrderQuantity = freezed,
+    Object? inventory = null,
+    Object? variationValues = freezed,
     Object? variationAttributes = freezed,
+    Object? variants = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -126,7 +134,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       pricePerUnit: null == pricePerUnit
           ? _value.pricePerUnit
           : pricePerUnit // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       shortDescription: null == shortDescription
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
@@ -135,11 +143,47 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.minOrderQuantity
           : minOrderQuantity // ignore: cast_nullable_to_non_nullable
               as int?,
+      inventory: null == inventory
+          ? _value.inventory
+          : inventory // ignore: cast_nullable_to_non_nullable
+              as Inventory,
+      variationValues: freezed == variationValues
+          ? _value.variationValues
+          : variationValues // ignore: cast_nullable_to_non_nullable
+              as VariationValues?,
       variationAttributes: freezed == variationAttributes
           ? _value.variationAttributes
           : variationAttributes // ignore: cast_nullable_to_non_nullable
               as List<ProductVariationAttribute>?,
+      variants: freezed == variants
+          ? _value.variants
+          : variants // ignore: cast_nullable_to_non_nullable
+              as List<Variant>?,
     ) as $Val);
+  }
+
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $InventoryCopyWith<$Res> get inventory {
+    return $InventoryCopyWith<$Res>(_value.inventory, (value) {
+      return _then(_value.copyWith(inventory: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $VariationValuesCopyWith<$Res>? get variationValues {
+    if (_value.variationValues == null) {
+      return null;
+    }
+
+    return $VariationValuesCopyWith<$Res>(_value.variationValues!, (value) {
+      return _then(_value.copyWith(variationValues: value) as $Val);
+    });
   }
 }
 
@@ -158,10 +202,18 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String pageDescription,
       String pageTitle,
       double price,
-      int pricePerUnit,
+      double pricePerUnit,
       String shortDescription,
       int? minOrderQuantity,
-      List<ProductVariationAttribute>? variationAttributes});
+      Inventory inventory,
+      VariationValues? variationValues,
+      List<ProductVariationAttribute>? variationAttributes,
+      List<Variant>? variants});
+
+  @override
+  $InventoryCopyWith<$Res> get inventory;
+  @override
+  $VariationValuesCopyWith<$Res>? get variationValues;
 }
 
 /// @nodoc
@@ -187,7 +239,10 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? pricePerUnit = null,
     Object? shortDescription = null,
     Object? minOrderQuantity = freezed,
+    Object? inventory = null,
+    Object? variationValues = freezed,
     Object? variationAttributes = freezed,
+    Object? variants = freezed,
   }) {
     return _then(_$ProductImpl(
       id: null == id
@@ -221,7 +276,7 @@ class __$$ProductImplCopyWithImpl<$Res>
       pricePerUnit: null == pricePerUnit
           ? _value.pricePerUnit
           : pricePerUnit // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       shortDescription: null == shortDescription
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
@@ -230,10 +285,22 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.minOrderQuantity
           : minOrderQuantity // ignore: cast_nullable_to_non_nullable
               as int?,
+      inventory: null == inventory
+          ? _value.inventory
+          : inventory // ignore: cast_nullable_to_non_nullable
+              as Inventory,
+      variationValues: freezed == variationValues
+          ? _value.variationValues
+          : variationValues // ignore: cast_nullable_to_non_nullable
+              as VariationValues?,
       variationAttributes: freezed == variationAttributes
           ? _value._variationAttributes
           : variationAttributes // ignore: cast_nullable_to_non_nullable
               as List<ProductVariationAttribute>?,
+      variants: freezed == variants
+          ? _value._variants
+          : variants // ignore: cast_nullable_to_non_nullable
+              as List<Variant>?,
     ));
   }
 }
@@ -252,9 +319,13 @@ class _$ProductImpl implements _Product {
       required this.pricePerUnit,
       required this.shortDescription,
       required this.minOrderQuantity,
-      required final List<ProductVariationAttribute>? variationAttributes})
+      required this.inventory,
+      required this.variationValues,
+      required final List<ProductVariationAttribute>? variationAttributes,
+      required final List<Variant>? variants})
       : _imageGroups = imageGroups,
-        _variationAttributes = variationAttributes;
+        _variationAttributes = variationAttributes,
+        _variants = variants;
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
@@ -280,24 +351,18 @@ class _$ProductImpl implements _Product {
   @override
   final double price;
   @override
-  final int pricePerUnit;
+  final double pricePerUnit;
   @override
   final String shortDescription;
   @override
   final int? minOrderQuantity;
-// required String slugUrl,
-// required int stepQuantity,
-// required String unitMeasure,
-// required int unitQuantity,
-// required String upc,
-// required List<Variant> variants,
+  @override
+  final Inventory inventory;
+
+  /// Values of this product (color, size)
+  @override
+  final VariationValues? variationValues;
   final List<ProductVariationAttribute>? _variationAttributes;
-// required String slugUrl,
-// required int stepQuantity,
-// required String unitMeasure,
-// required int unitQuantity,
-// required String upc,
-// required List<Variant> variants,
   @override
   List<ProductVariationAttribute>? get variationAttributes {
     final value = _variationAttributes;
@@ -308,9 +373,19 @@ class _$ProductImpl implements _Product {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<Variant>? _variants;
+  @override
+  List<Variant>? get variants {
+    final value = _variants;
+    if (value == null) return null;
+    if (_variants is EqualUnmodifiableListView) return _variants;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'Product(id: $id, currency: $currency, imageGroups: $imageGroups, name: $name, pageDescription: $pageDescription, pageTitle: $pageTitle, price: $price, pricePerUnit: $pricePerUnit, shortDescription: $shortDescription, minOrderQuantity: $minOrderQuantity, variationAttributes: $variationAttributes)';
+    return 'Product(id: $id, currency: $currency, imageGroups: $imageGroups, name: $name, pageDescription: $pageDescription, pageTitle: $pageTitle, price: $price, pricePerUnit: $pricePerUnit, shortDescription: $shortDescription, minOrderQuantity: $minOrderQuantity, inventory: $inventory, variationValues: $variationValues, variationAttributes: $variationAttributes, variants: $variants)';
   }
 
   @override
@@ -335,8 +410,13 @@ class _$ProductImpl implements _Product {
                 other.shortDescription == shortDescription) &&
             (identical(other.minOrderQuantity, minOrderQuantity) ||
                 other.minOrderQuantity == minOrderQuantity) &&
+            (identical(other.inventory, inventory) ||
+                other.inventory == inventory) &&
+            (identical(other.variationValues, variationValues) ||
+                other.variationValues == variationValues) &&
             const DeepCollectionEquality()
-                .equals(other._variationAttributes, _variationAttributes));
+                .equals(other._variationAttributes, _variationAttributes) &&
+            const DeepCollectionEquality().equals(other._variants, _variants));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -353,7 +433,10 @@ class _$ProductImpl implements _Product {
       pricePerUnit,
       shortDescription,
       minOrderQuantity,
-      const DeepCollectionEquality().hash(_variationAttributes));
+      inventory,
+      variationValues,
+      const DeepCollectionEquality().hash(_variationAttributes),
+      const DeepCollectionEquality().hash(_variants));
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -380,11 +463,13 @@ abstract class _Product implements Product {
       required final String pageDescription,
       required final String pageTitle,
       required final double price,
-      required final int pricePerUnit,
+      required final double pricePerUnit,
       required final String shortDescription,
       required final int? minOrderQuantity,
-      required final List<ProductVariationAttribute>?
-          variationAttributes}) = _$ProductImpl;
+      required final Inventory inventory,
+      required final VariationValues? variationValues,
+      required final List<ProductVariationAttribute>? variationAttributes,
+      required final List<Variant>? variants}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
@@ -403,24 +488,680 @@ abstract class _Product implements Product {
   @override
   double get price;
   @override
-  int get pricePerUnit;
+  double get pricePerUnit;
   @override
   String get shortDescription;
   @override
-  int? get minOrderQuantity; // required String slugUrl,
-// required int stepQuantity,
-// required String unitMeasure,
-// required int unitQuantity,
-// required String upc,
-// required List<Variant> variants,
+  int? get minOrderQuantity;
+  @override
+  Inventory get inventory;
+
+  /// Values of this product (color, size)
+  @override
+  VariationValues? get variationValues;
   @override
   List<ProductVariationAttribute>? get variationAttributes;
+  @override
+  List<Variant>? get variants;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Variant _$VariantFromJson(Map<String, dynamic> json) {
+  return _Variant.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Variant {
+  bool get orderable => throw _privateConstructorUsedError;
+  int get price => throw _privateConstructorUsedError;
+  String get productId => throw _privateConstructorUsedError;
+  VariationValues get variationValues => throw _privateConstructorUsedError;
+
+  /// Serializes this Variant to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Variant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $VariantCopyWith<Variant> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $VariantCopyWith<$Res> {
+  factory $VariantCopyWith(Variant value, $Res Function(Variant) then) =
+      _$VariantCopyWithImpl<$Res, Variant>;
+  @useResult
+  $Res call(
+      {bool orderable,
+      int price,
+      String productId,
+      VariationValues variationValues});
+
+  $VariationValuesCopyWith<$Res> get variationValues;
+}
+
+/// @nodoc
+class _$VariantCopyWithImpl<$Res, $Val extends Variant>
+    implements $VariantCopyWith<$Res> {
+  _$VariantCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Variant
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderable = null,
+    Object? price = null,
+    Object? productId = null,
+    Object? variationValues = null,
+  }) {
+    return _then(_value.copyWith(
+      orderable: null == orderable
+          ? _value.orderable
+          : orderable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int,
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      variationValues: null == variationValues
+          ? _value.variationValues
+          : variationValues // ignore: cast_nullable_to_non_nullable
+              as VariationValues,
+    ) as $Val);
+  }
+
+  /// Create a copy of Variant
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $VariationValuesCopyWith<$Res> get variationValues {
+    return $VariationValuesCopyWith<$Res>(_value.variationValues, (value) {
+      return _then(_value.copyWith(variationValues: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$VariantImplCopyWith<$Res> implements $VariantCopyWith<$Res> {
+  factory _$$VariantImplCopyWith(
+          _$VariantImpl value, $Res Function(_$VariantImpl) then) =
+      __$$VariantImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool orderable,
+      int price,
+      String productId,
+      VariationValues variationValues});
+
+  @override
+  $VariationValuesCopyWith<$Res> get variationValues;
+}
+
+/// @nodoc
+class __$$VariantImplCopyWithImpl<$Res>
+    extends _$VariantCopyWithImpl<$Res, _$VariantImpl>
+    implements _$$VariantImplCopyWith<$Res> {
+  __$$VariantImplCopyWithImpl(
+      _$VariantImpl _value, $Res Function(_$VariantImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Variant
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderable = null,
+    Object? price = null,
+    Object? productId = null,
+    Object? variationValues = null,
+  }) {
+    return _then(_$VariantImpl(
+      orderable: null == orderable
+          ? _value.orderable
+          : orderable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int,
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      variationValues: null == variationValues
+          ? _value.variationValues
+          : variationValues // ignore: cast_nullable_to_non_nullable
+              as VariationValues,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$VariantImpl implements _Variant {
+  _$VariantImpl(
+      {required this.orderable,
+      required this.price,
+      required this.productId,
+      required this.variationValues});
+
+  factory _$VariantImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VariantImplFromJson(json);
+
+  @override
+  final bool orderable;
+  @override
+  final int price;
+  @override
+  final String productId;
+  @override
+  final VariationValues variationValues;
+
+  @override
+  String toString() {
+    return 'Variant(orderable: $orderable, price: $price, productId: $productId, variationValues: $variationValues)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VariantImpl &&
+            (identical(other.orderable, orderable) ||
+                other.orderable == orderable) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.productId, productId) ||
+                other.productId == productId) &&
+            (identical(other.variationValues, variationValues) ||
+                other.variationValues == variationValues));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, orderable, price, productId, variationValues);
+
+  /// Create a copy of Variant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VariantImplCopyWith<_$VariantImpl> get copyWith =>
+      __$$VariantImplCopyWithImpl<_$VariantImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$VariantImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Variant implements Variant {
+  factory _Variant(
+      {required final bool orderable,
+      required final int price,
+      required final String productId,
+      required final VariationValues variationValues}) = _$VariantImpl;
+
+  factory _Variant.fromJson(Map<String, dynamic> json) = _$VariantImpl.fromJson;
+
+  @override
+  bool get orderable;
+  @override
+  int get price;
+  @override
+  String get productId;
+  @override
+  VariationValues get variationValues;
+
+  /// Create a copy of Variant
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$VariantImplCopyWith<_$VariantImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+VariationValues _$VariationValuesFromJson(Map<String, dynamic> json) {
+  return _VariationValues.fromJson(json);
+}
+
+/// @nodoc
+mixin _$VariationValues {
+  String? get color => throw _privateConstructorUsedError;
+  String? get size => throw _privateConstructorUsedError;
+
+  /// Serializes this VariationValues to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of VariationValues
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $VariationValuesCopyWith<VariationValues> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $VariationValuesCopyWith<$Res> {
+  factory $VariationValuesCopyWith(
+          VariationValues value, $Res Function(VariationValues) then) =
+      _$VariationValuesCopyWithImpl<$Res, VariationValues>;
+  @useResult
+  $Res call({String? color, String? size});
+}
+
+/// @nodoc
+class _$VariationValuesCopyWithImpl<$Res, $Val extends VariationValues>
+    implements $VariationValuesCopyWith<$Res> {
+  _$VariationValuesCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of VariationValues
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? color = freezed,
+    Object? size = freezed,
+  }) {
+    return _then(_value.copyWith(
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String?,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$VariationValuesImplCopyWith<$Res>
+    implements $VariationValuesCopyWith<$Res> {
+  factory _$$VariationValuesImplCopyWith(_$VariationValuesImpl value,
+          $Res Function(_$VariationValuesImpl) then) =
+      __$$VariationValuesImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? color, String? size});
+}
+
+/// @nodoc
+class __$$VariationValuesImplCopyWithImpl<$Res>
+    extends _$VariationValuesCopyWithImpl<$Res, _$VariationValuesImpl>
+    implements _$$VariationValuesImplCopyWith<$Res> {
+  __$$VariationValuesImplCopyWithImpl(
+      _$VariationValuesImpl _value, $Res Function(_$VariationValuesImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of VariationValues
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? color = freezed,
+    Object? size = freezed,
+  }) {
+    return _then(_$VariationValuesImpl(
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String?,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$VariationValuesImpl implements _VariationValues {
+  _$VariationValuesImpl({required this.color, required this.size});
+
+  factory _$VariationValuesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VariationValuesImplFromJson(json);
+
+  @override
+  final String? color;
+  @override
+  final String? size;
+
+  @override
+  String toString() {
+    return 'VariationValues(color: $color, size: $size)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VariationValuesImpl &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.size, size) || other.size == size));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, color, size);
+
+  /// Create a copy of VariationValues
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VariationValuesImplCopyWith<_$VariationValuesImpl> get copyWith =>
+      __$$VariationValuesImplCopyWithImpl<_$VariationValuesImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$VariationValuesImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _VariationValues implements VariationValues {
+  factory _VariationValues(
+      {required final String? color,
+      required final String? size}) = _$VariationValuesImpl;
+
+  factory _VariationValues.fromJson(Map<String, dynamic> json) =
+      _$VariationValuesImpl.fromJson;
+
+  @override
+  String? get color;
+  @override
+  String? get size;
+
+  /// Create a copy of VariationValues
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$VariationValuesImplCopyWith<_$VariationValuesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Inventory _$InventoryFromJson(Map<String, dynamic> json) {
+  return _Inventory.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Inventory {
+  int get ats => throw _privateConstructorUsedError;
+  bool get backorderable => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  bool get orderable => throw _privateConstructorUsedError;
+  bool get preorderable => throw _privateConstructorUsedError;
+  int get stockLevel => throw _privateConstructorUsedError;
+
+  /// Serializes this Inventory to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Inventory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $InventoryCopyWith<Inventory> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InventoryCopyWith<$Res> {
+  factory $InventoryCopyWith(Inventory value, $Res Function(Inventory) then) =
+      _$InventoryCopyWithImpl<$Res, Inventory>;
+  @useResult
+  $Res call(
+      {int ats,
+      bool backorderable,
+      String id,
+      bool orderable,
+      bool preorderable,
+      int stockLevel});
+}
+
+/// @nodoc
+class _$InventoryCopyWithImpl<$Res, $Val extends Inventory>
+    implements $InventoryCopyWith<$Res> {
+  _$InventoryCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Inventory
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ats = null,
+    Object? backorderable = null,
+    Object? id = null,
+    Object? orderable = null,
+    Object? preorderable = null,
+    Object? stockLevel = null,
+  }) {
+    return _then(_value.copyWith(
+      ats: null == ats
+          ? _value.ats
+          : ats // ignore: cast_nullable_to_non_nullable
+              as int,
+      backorderable: null == backorderable
+          ? _value.backorderable
+          : backorderable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderable: null == orderable
+          ? _value.orderable
+          : orderable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      preorderable: null == preorderable
+          ? _value.preorderable
+          : preorderable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      stockLevel: null == stockLevel
+          ? _value.stockLevel
+          : stockLevel // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$InventoryImplCopyWith<$Res>
+    implements $InventoryCopyWith<$Res> {
+  factory _$$InventoryImplCopyWith(
+          _$InventoryImpl value, $Res Function(_$InventoryImpl) then) =
+      __$$InventoryImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int ats,
+      bool backorderable,
+      String id,
+      bool orderable,
+      bool preorderable,
+      int stockLevel});
+}
+
+/// @nodoc
+class __$$InventoryImplCopyWithImpl<$Res>
+    extends _$InventoryCopyWithImpl<$Res, _$InventoryImpl>
+    implements _$$InventoryImplCopyWith<$Res> {
+  __$$InventoryImplCopyWithImpl(
+      _$InventoryImpl _value, $Res Function(_$InventoryImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Inventory
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ats = null,
+    Object? backorderable = null,
+    Object? id = null,
+    Object? orderable = null,
+    Object? preorderable = null,
+    Object? stockLevel = null,
+  }) {
+    return _then(_$InventoryImpl(
+      ats: null == ats
+          ? _value.ats
+          : ats // ignore: cast_nullable_to_non_nullable
+              as int,
+      backorderable: null == backorderable
+          ? _value.backorderable
+          : backorderable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderable: null == orderable
+          ? _value.orderable
+          : orderable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      preorderable: null == preorderable
+          ? _value.preorderable
+          : preorderable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      stockLevel: null == stockLevel
+          ? _value.stockLevel
+          : stockLevel // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$InventoryImpl implements _Inventory {
+  _$InventoryImpl(
+      {required this.ats,
+      required this.backorderable,
+      required this.id,
+      required this.orderable,
+      required this.preorderable,
+      required this.stockLevel});
+
+  factory _$InventoryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InventoryImplFromJson(json);
+
+  @override
+  final int ats;
+  @override
+  final bool backorderable;
+  @override
+  final String id;
+  @override
+  final bool orderable;
+  @override
+  final bool preorderable;
+  @override
+  final int stockLevel;
+
+  @override
+  String toString() {
+    return 'Inventory(ats: $ats, backorderable: $backorderable, id: $id, orderable: $orderable, preorderable: $preorderable, stockLevel: $stockLevel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InventoryImpl &&
+            (identical(other.ats, ats) || other.ats == ats) &&
+            (identical(other.backorderable, backorderable) ||
+                other.backorderable == backorderable) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.orderable, orderable) ||
+                other.orderable == orderable) &&
+            (identical(other.preorderable, preorderable) ||
+                other.preorderable == preorderable) &&
+            (identical(other.stockLevel, stockLevel) ||
+                other.stockLevel == stockLevel));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, ats, backorderable, id, orderable, preorderable, stockLevel);
+
+  /// Create a copy of Inventory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InventoryImplCopyWith<_$InventoryImpl> get copyWith =>
+      __$$InventoryImplCopyWithImpl<_$InventoryImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$InventoryImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Inventory implements Inventory {
+  factory _Inventory(
+      {required final int ats,
+      required final bool backorderable,
+      required final String id,
+      required final bool orderable,
+      required final bool preorderable,
+      required final int stockLevel}) = _$InventoryImpl;
+
+  factory _Inventory.fromJson(Map<String, dynamic> json) =
+      _$InventoryImpl.fromJson;
+
+  @override
+  int get ats;
+  @override
+  bool get backorderable;
+  @override
+  String get id;
+  @override
+  bool get orderable;
+  @override
+  bool get preorderable;
+  @override
+  int get stockLevel;
+
+  /// Create a copy of Inventory
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InventoryImplCopyWith<_$InventoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

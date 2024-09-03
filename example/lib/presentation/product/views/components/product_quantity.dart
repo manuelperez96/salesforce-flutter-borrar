@@ -21,7 +21,7 @@ class ProductQuantity extends StatelessWidget {
           onPressed: onDecrement,
         ),
         SizedBox(
-          width: 40,
+          width: 30,
           child: Center(
             child: Text(
               numOfItem.toString(),

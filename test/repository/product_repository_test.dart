@@ -43,6 +43,29 @@ void main() {
                   'pageTitle': 'pageTitle for Product 1',
                   'price': 10,
                   'pricePerUnit': 10,
+                  'inventory': {
+                    'ats': 100,
+                    'backorderable': false,
+                    'id': 'inventory_m',
+                    'orderable': true,
+                    'preorderable': false,
+                    'stockLevel': 100,
+                  },
+                  'variants': [
+                    {
+                      'orderable': true,
+                      'price': 89.00,
+                      'productId': '701641312858M',
+                      'variationValues': {
+                        'color': 'JJ3WCXX',
+                        'size': '004',
+                      },
+                    },
+                  ],
+                  'variationValues': {
+                    'color': 'JJ5AJXX',
+                    'size': '008',
+                  },
                   'imageGroups': [
                     {
                       'viewType': 'viewType',
@@ -68,6 +91,29 @@ void main() {
                   'pricePerUnit': 20,
                   'shortDescription': 'shortDescription for Product 2',
                   'currency': 'USD',
+                  'inventory': {
+                    'ats': 100,
+                    'backorderable': false,
+                    'id': 'inventory_m',
+                    'orderable': true,
+                    'preorderable': false,
+                    'stockLevel': 100,
+                  },
+                  'variants': [
+                    {
+                      'orderable': true,
+                      'price': 89.00,
+                      'productId': '701641312858M',
+                      'variationValues': {
+                        'color': 'JJ3WCXX',
+                        'size': '004',
+                      },
+                    },
+                  ],
+                  'variationValues': {
+                    'color': 'JJ5AJXX',
+                    'size': '008',
+                  },
                   'imageGroups': [
                     {
                       'viewType': 'viewType',
@@ -134,6 +180,29 @@ void main() {
               'pageTitle': 'pageTitle for Product 1',
               'price': 10,
               'pricePerUnit': 10,
+              'inventory': {
+                'ats': 100,
+                'backorderable': false,
+                'id': 'inventory_m',
+                'orderable': true,
+                'preorderable': false,
+                'stockLevel': 100,
+              },
+              'variants': [
+                {
+                  'orderable': true,
+                  'price': 89.00,
+                  'productId': '701641312858M',
+                  'variationValues': {
+                    'color': 'JJ3WCXX',
+                    'size': '004',
+                  },
+                },
+              ],
+              'variationValues': {
+                'color': 'JJ5AJXX',
+                'size': '008',
+              },
               'imageGroups': [
                 {
                   'viewType': 'viewType',

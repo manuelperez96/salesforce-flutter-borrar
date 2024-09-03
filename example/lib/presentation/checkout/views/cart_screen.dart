@@ -1,95 +1,59 @@
+import 'package:example/components/product/horizontal_product_card.dart';
+import 'package:example/constants.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: MediaQuery.paddingOf(context).top,
+    return BlocBuilder<CartBloc, CartState>(builder: (context, state) {
+      if (state is CartLoading || state is CartInitial) {
+        return Scaffold(
+          body: const Center(
+            child: CircularProgressIndicator(),
           ),
-          Expanded(
-            child: BlocBuilder<CartBloc, CartState>(
-              builder: (context, state) {
-                if (state is CartInitial) {
-                  return const Center(
-                    child: Text("Cart is empty"),
+        );
+      } else {
+        final currentState = state as CartLoaded;
+        if (currentState.products.isEmpty) {
+          return Scaffold(
+            body: const Center(
+              child: Text("Cart is empty"),
+            ),
+          );
+        } else {
+          return Scaffold(
+            body: ListView.builder(
+              padding: EdgeInsets.all(defaultPadding),
+              itemCount: state.products.length + 1,
+              itemBuilder: (context, index) {
+                if (index == 0)
+                  return SizedBox(
+                    height: MediaQuery.paddingOf(context).top,
                   );
-                }
-
-                if (state is CartLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-
-                if (state is CartLoaded) {
-                  if (state.products.isEmpty) {
-                    return const Center(
-                      child: Text("Cart is empty"),
-                    );
-                  }
-
-                  Map<String, List<Product>> groupedProducts = {};
-                  for (var product in state.products) {
-                    groupedProducts
-                        .putIfAbsent(product.id.toString(), () => [])
-                        .add(product);
-                  }
-
-                  List<Widget> productCards = [];
-                  groupedProducts.forEach((id, products) {
-                    // final product = products.first;
-                    // final quantity = products.length;
-
-                    // Widget productCard = Padding(
-                    //   padding: const EdgeInsets.only(
-                    //     left: defaultPadding,
-                    //     right: defaultPadding,
-                    //   ),
-                    //   child: ProductCard(
-                    //     product: product,
-                    //     press: () {},
-                    //     bottomWidget: ProductQuantity(
-                    //       numOfItem: quantity,
-                    //       onIncrement: () {
-                    //         BlocProvider.of<CartBloc>(context)
-                    //             .add(AddProductCart(product, 1));
-                    //       },
-                    //       onDecrement: () {
-                    //         BlocProvider.of<CartBloc>(context)
-                    //             .add(RemoveProductCart(product));
-                    //       },
-                    //     ),
-                    //   ),
-                    // );
-
-                    // productCards.add(productCard);
-                  });
-
-                  return Align(
-                    alignment: Alignment.topCenter,
-                    child: Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      spacing: 4.0,
-                      runSpacing: 4.0,
-                      children: productCards,
-                    ),
-                  );
-                }
-                return const SizedBox();
+                return HorizontalProductCard(
+                    productCart: state.products[index - 1]);
               },
             ),
-          ),
-        ],
-      ),
-    );
+            floatingActionButton: FloatingActionButton.extended(
+              onPressed: () {},
+              label: Row(
+                children: [
+                  Text('Checkout'),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Icon(Icons.keyboard_arrow_right_rounded)
+                ],
+              ),
+            ),
+          );
+        }
+      }
+    });
   }
 }

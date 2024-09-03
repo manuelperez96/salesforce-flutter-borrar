@@ -5,25 +5,34 @@ import 'package:mockito/mockito.dart';
 import 'package:sf_commerce_sdk/models/exception/basket_exceptions.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/repository/basket_repository.dart';
+import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 
 import 'basket_repository_test.mocks.dart';
 
-@GenerateMocks([Dio])
+@GenerateMocks(
+  [Dio],
+  customMocks: [
+    MockSpec<TokenStorage>(),
+  ],
+)
 void main() {
   late MockDio mockDio;
+  late MockTokenStorage storage;
   late SfCommerceConfig config;
   late BasketRepository basketRepository;
   late Response<Map<String, Object>> mockResponse;
 
   setUp(() {
     mockDio = MockDio();
+    storage = MockTokenStorage();
     config = SfCommerceConfig(
       clientId: '0c892f93-5262-4cab-8349-b170e0779357',
       organizationId: 'f_ecom_zzrj_031',
       siteId: 'RefArch',
       host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
     );
-    basketRepository = BasketRepository(dio: mockDio, config: config);
+    basketRepository =
+        BasketRepository(dio: mockDio, config: config, storage: storage);
 
     mockResponse = Response(
       data: {

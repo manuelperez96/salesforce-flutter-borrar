@@ -5,36 +5,62 @@ import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/product/views/added_to_cart_message_screen.dart';
 import 'package:example/presentation/product/views/components/product_images.dart';
-import 'package:example/presentation/product/views/components/product_quantity.dart';
-import 'package:example/presentation/product/views/components/selected_colors.dart';
-import 'package:example/presentation/product/views/components/selected_size.dart';
 import 'package:example/presentation/product/views/components/unit_price.dart';
 import 'package:example/presentation/product_detail/bloc/product_detail_bloc.dart';
+import 'package:example/presentation/product_detail/components/product_detail_quantity_selector.dart';
+import 'package:example/presentation/product_detail/components/product_size_color_selectors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key});
+  List<String> getImagesByColor({
+    required String selectedColor,
+    required List<ImageGroup> imageGroups,
+  }) {
+    List<String> imageLinks = [];
+
+    // Recorre todos los grupos de imágenes
+    for (var imageGroup in imageGroups) {
+      // Recorre todas las imágenes dentro del grupo
+      for (var image in imageGroup.images) {
+        // Si el enlace contiene el color seleccionado, añadirlo a la lista
+        if (image.link.contains(selectedColor)) {
+          imageLinks.add(image.link);
+        }
+      }
+    }
+
+    return imageLinks;
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductDetailBloc, ProductDetailState>(
       builder: (context, state) {
         if (state.status == ProductDetailStatus.loading) {
-          return const Center(child: CircularProgressIndicator());
+          return Scaffold(
+            body: const Center(child: CircularProgressIndicator()),
+          );
         }
-        final product = state.product!;
+        final initialProduct = state.initialProduct!;
         final productQuantity = state.productQuantity!;
+        final List<String> imageByColor = getImagesByColor(
+          selectedColor: state.selectedColor ?? '', // For items without color
+          imageGroups: initialProduct.imageGroups,
+        );
+
         return Scaffold(
           bottomNavigationBar: CartButton(
-            product: product,
+            product: initialProduct,
             productQuantity: productQuantity,
             title: "Add to cart",
             subTitle: "Total price",
             press: () {
-              BlocProvider.of<CartBloc>(context)
-                  .add(AddProductCart(product, productQuantity));
+              BlocProvider.of<CartBloc>(context).add(AddProductCart(
+                  state.initialProduct!,
+                  productQuantity)); // TODO Change initialProduct for selectedProductId
               customModalBottomSheet(
                 context,
                 child: const AddedToCartMessageScreen(),
@@ -47,37 +73,26 @@ class ProductDetailScreen extends StatelessWidget {
                 SliverAppBar(
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   floating: true,
-                  title: Text(product.pageTitle),
+                  title: Text(initialProduct.pageTitle),
                   actions: [
                     //      BookmarkIconButton(product: state.product!),
                   ],
                 ),
-                ProductImages(
-                  images: state.product!.imageGroups.first.images
-                      .map((image) => image.link)
-                      .toList(),
-                ),
+                ProductImages(images: imageByColor),
                 SliverPadding(
                   padding: const EdgeInsets.all(defaultPadding),
                   sliver: SliverToBoxAdapter(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(child: UnitPrice(price: product.price)),
-                        ProductQuantity(
-                          numOfItem: productQuantity,
-                          onIncrement: () =>
-                              BlocProvider.of<ProductDetailBloc>(context).add(
-                            ProductDetailEvent.updateQuantity(
-                                productQuantity + 1),
-                          ),
-                          onDecrement: () =>
-                              BlocProvider.of<ProductDetailBloc>(context).add(
-                            ProductDetailEvent.updateQuantity(
-                                (productQuantity > product.minOrderQuantity!)
-                                    ? productQuantity - 1
-                                    : product.minOrderQuantity!),
-                          ),
+                        Expanded(child: UnitPrice(price: initialProduct.price)),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            ProductDetailQuantitySelector(),
+                            Text(
+                                'Stock: ${initialProduct.inventory.stockLevel}'),
+                          ],
                         ),
                       ],
                     ),
@@ -86,54 +101,18 @@ class ProductDetailScreen extends StatelessWidget {
                 SliverPadding(
                   padding: const EdgeInsets.all(defaultPadding),
                   sliver: SliverToBoxAdapter(
-                    child: Text(product.pageTitle,
+                    child: Text(initialProduct.pageTitle,
                         style: Theme.of(context).textTheme.titleLarge),
                   ),
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.all(defaultPadding),
                   sliver: SliverToBoxAdapter(
-                    child: Text(product.pageDescription),
+                    child: Text(initialProduct.pageDescription),
                   ),
                 ),
-                // TODO Stock maximo
-                // TODO Si no hay stock que no se pueda seleccionar
                 const SliverToBoxAdapter(child: Divider()),
-                if (_hasVariationAttribute(
-                    product: product, attributeId: "color"))
-                  SliverToBoxAdapter(
-                    child: SelectedColors(
-                      // TODO finish this when Saleforce responds
-                      // colors: widget.product.variationAttributes
-                      //     .firstWhere((element) => element.id == "color")
-                      //     .values
-                      //     .map((color) => color.value)
-                      //     .toList(),
-
-                      colors: const [
-                        Color(0xFFEA6262),
-                        Color(0xFFB1CC63),
-                        Color(0xFFFFBF5F),
-                        Color(0xFF9FE1DD),
-                        Color(0xFFC482DB),
-                      ],
-                      selectedColorIndex: 2,
-                      press: (value) {},
-                    ),
-                  ),
-                if (_hasVariationAttribute(
-                    product: product, attributeId: "size"))
-                  SliverToBoxAdapter(
-                    child: SelectedSize(
-                      sizes: product.variationAttributes!
-                          .firstWhere((element) => element.id == "size")
-                          .values
-                          .map((size) => size.name)
-                          .toList(),
-                      selectedIndex: 1,
-                      press: (value) {},
-                    ),
-                  ),
+                SliverToBoxAdapter(child: ProductSizeColorSelectors()),
                 const SliverToBoxAdapter(
                   child: SizedBox(height: defaultPadding),
                 )
@@ -143,12 +122,5 @@ class ProductDetailScreen extends StatelessWidget {
         );
       },
     );
-  }
-
-  bool _hasVariationAttribute(
-      {required Product product, required String attributeId}) {
-    return product.variationAttributes != null &&
-        product.variationAttributes!
-            .any((element) => element.id == attributeId);
   }
 }
