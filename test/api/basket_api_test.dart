@@ -2,29 +2,26 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:sf_commerce_sdk/api/basket_api.dart';
 import 'package:sf_commerce_sdk/models/exception/basket_exceptions.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
-import 'package:sf_commerce_sdk/repository/basket_repository.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
+import 'package:sf_commerce_sdk/utils/local_storage.dart';
 
-import 'basket_repository_test.mocks.dart';
+import 'basket_api_test.mocks.dart';
 
 @GenerateMocks(
-  [Dio, TokenStorage],
-  // customMocks: [
-  //   MockSpec<TokenStorage>(),
-  // ],
+  [Dio, LocalStorage],
 )
 void main() {
   late MockDio mockDio;
-  late MockTokenStorage storage;
+  late MockLocalStorage storage;
   late SfCommerceConfig config;
-  late BasketRepository basketRepository;
+  late BasketApi basketRepository;
   late Response<Map<String, Object>> mockResponse;
 
   setUp(() {
     mockDio = MockDio();
-    storage = MockTokenStorage();
+    storage = MockLocalStorage();
     config = SfCommerceConfig(
       clientId: '0c892f93-5262-4cab-8349-b170e0779357',
       organizationId: 'f_ecom_zzrj_031',
@@ -32,7 +29,7 @@ void main() {
       host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
     );
     basketRepository =
-        BasketRepository(dio: mockDio, config: config, storage: storage);
+        BasketApi(dio: mockDio, config: config, storage: storage);
 
     mockResponse = Response(
       data: {

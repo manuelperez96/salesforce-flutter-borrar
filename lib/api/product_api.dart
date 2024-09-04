@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/api/api.dart';
 import 'package:sf_commerce_sdk/models/exception/product_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_category.dart';
-import 'package:sf_commerce_sdk/repository/repository.dart';
 
-class ProductRepository extends Repository {
-  const ProductRepository({
+class ProductApi extends Api {
+  const ProductApi({
     required super.dio,
     required super.config,
   });

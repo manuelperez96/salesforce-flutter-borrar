@@ -2,11 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:sf_commerce_sdk/api/category_api.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
-import 'package:sf_commerce_sdk/repository/category_repository.dart';
 
 import '../helpers/repository/categories_repository.dart';
-import 'category_repository_test.mocks.dart';
+import 'category_api_test.mocks.dart';
 
 @GenerateNiceMocks(
   [
@@ -17,7 +17,7 @@ import 'category_repository_test.mocks.dart';
 void main() {
   late MockDio mockDio;
   late SfCommerceConfig config;
-  late CategoryRepository categoryRepository;
+  late CategoryApi categoryRepository;
   late MockResponse response;
 
   setUp(() {
@@ -31,7 +31,7 @@ void main() {
       host: 'https://host.com',
     );
 
-    categoryRepository = CategoryRepository(
+    categoryRepository = CategoryApi(
       dio: mockDio,
       config: config,
     );
@@ -42,7 +42,7 @@ void main() {
       'creation',
       () async {
         expect(
-          CategoryRepository(
+          CategoryApi(
             dio: mockDio,
             config: config,
           ),

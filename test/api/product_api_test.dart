@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:sf_commerce_sdk/api/product_api.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
-import 'package:sf_commerce_sdk/repository/product_repository.dart';
 import 'package:test/test.dart';
 
-import 'product_repository_test.mocks.dart';
+import 'product_api_test.mocks.dart';
 
 @GenerateMocks([Dio])
 void main() {
-  late ProductRepository productRepository;
+  late ProductApi productRepository;
   late MockDio mockDio;
   late SfCommerceConfig config;
 
@@ -21,7 +21,7 @@ void main() {
       siteId: 'RefArch',
       host: 'https://kv7kzm78.api.commercecloud.salesforce.com',
     );
-    productRepository = ProductRepository(
+    productRepository = ProductApi(
       dio: mockDio,
       config: config,
     );

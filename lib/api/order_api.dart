@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/api/api.dart';
 import 'package:sf_commerce_sdk/models/exception/order_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/order/order.dart';
-import 'package:sf_commerce_sdk/repository/repository.dart';
 
-class OrderRepository extends Repository {
-  const OrderRepository({
+class OrderApi extends Api {
+  const OrderApi({
     required super.dio,
     required super.config,
   });

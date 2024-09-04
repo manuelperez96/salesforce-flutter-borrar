@@ -1,24 +1,23 @@
 import 'package:dio/dio.dart';
-import 'package:sf_commerce_sdk/models/basket_entity.dart';
+import 'package:sf_commerce_sdk/api/api.dart';
 import 'package:sf_commerce_sdk/models/exception/basket_exceptions.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
-import 'package:sf_commerce_sdk/repository/repository.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
+import 'package:sf_commerce_sdk/utils/local_storage.dart';
 
-class BasketRepository extends Repository {
-  BasketRepository({
+class BasketApi extends Api {
+  BasketApi({
     required super.dio,
     required super.config,
-    required TokenStorage storage,
+    required LocalStorage storage,
   }) : _storage = storage;
 
-  final TokenStorage _storage;
+  final LocalStorage _storage;
 
   Future<String?> getBasketId() {
     return _storage.getBasketID();
   }
 
-  Future<BasketEntity> createBasket() async {
+  Future<Basket> createBasket() async {
     try {
       final response = await dio.post<dynamic>(
         '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets?siteId=${config.siteId}',
@@ -39,7 +38,7 @@ class BasketRepository extends Repository {
     }
   }
 
-  Future<BasketEntity> getBasket(String basketId) async {
+  Future<Basket> getBasket(String basketId) async {
     try {
       final response = await dio.get<dynamic>(
         '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$basketId?siteId=${config.siteId}',
@@ -56,7 +55,7 @@ class BasketRepository extends Repository {
     }
   }
 
-  Future<BasketEntity> addProductToBasket({
+  Future<Basket> addProductToBasket({
     required String basketId,
     required String productId,
     int quantity = 1,
@@ -79,7 +78,7 @@ class BasketRepository extends Repository {
     }
   }
 
-  Future<BasketEntity> removeProductFromBasket({
+  Future<Basket> removeProductFromBasket({
     required String basketId,
     required String basketItemId,
   }) async {
@@ -99,7 +98,7 @@ class BasketRepository extends Repository {
     }
   }
 
-  Future<BasketEntity> updateProductInBasket({
+  Future<Basket> updateProductInBasket({
     required String basketId,
     required String basketItemId,
     int quantity = 1,
@@ -119,13 +118,4 @@ class BasketRepository extends Repository {
       throw UpdateProductInBasketException(e);
     }
   }
-
-  Future<BasketEntity> incrementProductQuantity({
-    required String basketId,
-    required String basketItemId,
-  }) {}
-  Future<BasketEntity> decrementProductQuantity({
-    required String basketId,
-    required String basketItemId,
-  }) {}
 }

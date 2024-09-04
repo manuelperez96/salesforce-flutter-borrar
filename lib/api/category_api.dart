@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/api/api.dart';
 import 'package:sf_commerce_sdk/models/exception/category_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
-import 'package:sf_commerce_sdk/repository/repository.dart';
 
-class CategoryRepository extends Repository {
-  const CategoryRepository({
+class CategoryApi extends Api {
+  const CategoryApi({
     required super.dio,
     required super.config,
   });

@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:sf_commerce_sdk/api/auth_api.dart';
 import 'package:sf_commerce_sdk/models/exception/auth_exception.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
-import 'package:sf_commerce_sdk/repository/auth_repository.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 import 'package:test/test.dart';
 
 import '../helpers/models/access_token.dart';
-import 'auth_repository_test.mocks.dart';
+import 'auth_api_test.mocks.dart';
 
 @GenerateNiceMocks(
   [
@@ -25,7 +25,7 @@ void main() {
   late MockTokenStorage storage;
   late MockInterceptors interceptors;
   late SfCommerceConfig config;
-  late AuthRepository authRepo;
+  late AuthApi authRepo;
   late MockDioException dioException;
   late MockResponse response;
   late MockHeaders headers;
@@ -50,17 +50,17 @@ void main() {
     when(dioException.response).thenReturn(response);
     when(response.headers).thenReturn(headers);
 
-    authRepo = AuthRepository(dio: dio, config: config, storage: storage);
+    authRepo = AuthApi(dio: dio, config: config, storage: storage);
   });
 
   group(
-    'AuthRepository',
+    'AuthApi',
     () {
       test(
         'creation',
         () async {
           expect(
-            AuthRepository(
+            AuthApi(
               dio: dio,
               config: config,
               storage: storage,
