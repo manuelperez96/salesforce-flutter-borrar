@@ -1,4 +1,4 @@
-import 'package:sf_commerce_sdk/models/basket_entity.dart';
+import 'package:example/domain/model/product_cart_entity.dart';
 
 abstract class CartEvent {}
 
@@ -9,13 +9,13 @@ class CheckStatusCart extends CartEvent {}
 class IncrementQuantityProductCart extends CartEvent {
   IncrementQuantityProductCart({required this.product});
 
-  final ProductByBasket product;
+  final ProductCartEntity product;
 }
 
 class DecrementQuantityProductCart extends CartEvent {
   DecrementQuantityProductCart({required this.product});
 
-  final ProductByBasket product;
+  final ProductCartEntity product;
 }
 
 class AddProductCart extends CartEvent {
@@ -28,5 +28,5 @@ class AddProductCart extends CartEvent {
 class RemoveProductCart extends CartEvent {
   RemoveProductCart(this.product);
 
-  final ProductByBasket product;
+  final ProductCartEntity product;
 }

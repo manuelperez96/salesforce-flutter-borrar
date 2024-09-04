@@ -21,7 +21,7 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<CartBloc>(
           create: (context) => CartBloc(
-            basketRepository: inject<SFCommerceSDK>().basketRepository,
+            basketRepository: inject<SFCommerceSDK>().,
           )..add(CheckStatusCart()),
         ),
         BlocProvider<HomeBloc>(

@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:example/domain/repository/basket_repository.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/repository/basket_repository.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   CartBloc({
@@ -60,6 +60,8 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     final newBasket = await _basketRepository.addProductToBasket(
       basketId: currentState.currentCart.basketId,
       productId: event.productId,
+      quantity: event.quantity,
+      currentBasket: currentState.currentCart,
     );
 
     unawaited(controller.forward());
@@ -76,6 +78,7 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     final newBasket = await _basketRepository.removeProductFromBasket(
       basketId: currentState.currentCart.basketId,
       basketItemId: event.product.itemId,
+      currentBasket: currentState.currentCart,
     );
     unawaited(controller.forward());
     emit(CartLoaded(newBasket));
@@ -90,6 +93,7 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     final newBasket = await _basketRepository.incrementProductQuantity(
       basketId: currentState.currentCart.basketId,
       basketItemId: event.product.itemId,
+      currentBasket: currentState.currentCart,
     );
     emit(CartLoaded(newBasket));
   }
@@ -103,6 +107,7 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     final newBasket = await _basketRepository.decrementProductQuantity(
       basketId: currentState.currentCart.basketId,
       basketItemId: event.product.itemId,
+      currentBasket: currentState.currentCart,
     );
     emit(CartLoaded(newBasket));
   }

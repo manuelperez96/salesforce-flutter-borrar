@@ -1,16 +1,16 @@
 import 'package:example/components/network_image_with_loader.dart';
 import 'package:example/constants.dart';
+import 'package:example/domain/model/product_cart_entity.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/product/views/components/product_quantity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/models/basket_entity.dart';
 
 class HorizontalProductCard extends StatelessWidget {
   const HorizontalProductCard({required this.product, super.key});
 
-  final ProductByBasket product;
+  final ProductCartEntity product;
 
   @override
   Widget build(BuildContext context) {

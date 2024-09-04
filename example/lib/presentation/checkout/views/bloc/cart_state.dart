@@ -1,4 +1,4 @@
-import 'package:sf_commerce_sdk/models/basket_entity.dart';
+import 'package:example/domain/model/basket_entity.dart';
 
 abstract class CartState {}
 

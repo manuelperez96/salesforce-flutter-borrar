@@ -1,15 +1,5 @@
-class BasketEntity {
-  BasketEntity({
-    required this.basketId,
-    required this.productItems,
-  });
-
-  final String basketId;
-  final List<ProductByBasket> productItems;
-}
-
-class ProductByBasket {
-  ProductByBasket({
+class ProductCartEntity {
+  ProductCartEntity({
     required this.name,
     required this.productId,
     required this.itemId,
