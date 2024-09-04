@@ -32,7 +32,7 @@ class ProductRepository extends Repository {
   Future<Product> getProduct(String id) async {
     try {
       final response = await dio.get<dynamic>(
-        '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/products/$id?siteId=${config.siteId}',
+        '${config.host}/product/shopper-products/v1/organizations/${config.organizationId}/products/$id?siteId=${config.siteId}&allImages=true',
         options: Options(
           headers: {'Content-Type': 'application/json'},
         ),
