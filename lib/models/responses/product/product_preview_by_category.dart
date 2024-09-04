@@ -8,12 +8,15 @@ part 'product_preview_by_category.freezed.dart';
 class ProductPreviewByCategory with _$ProductPreviewByCategory {
   factory ProductPreviewByCategory({
     required String id,
+    required String representedId,
+    required Set<String> representedIdList,
     required String productName,
     required Image image,
     required double price,
     required String currency,
     required String categoryId,
     required Set<ProductType> types,
+    required bool orderable,
   }) = _ProductPreviewByCategory;
 
   factory ProductPreviewByCategory.fromJson({
@@ -26,6 +29,11 @@ class ProductPreviewByCategory with _$ProductPreviewByCategory {
         .cast<String>()
         .map(ProductType.fromValue)
         .toSet();
+    final representedId = (json['representedProduct'] as Map)['id'] as String;
+    final representedIdList = (json['representedProducts'] as List)
+        .cast<Map<String, dynamic>>()
+        .map((e) => e['id'] as String)
+        .toSet();
 
     return ProductPreviewByCategory(
       id: productId,
@@ -35,6 +43,9 @@ class ProductPreviewByCategory with _$ProductPreviewByCategory {
       currency: json['currency'] as String,
       categoryId: categoryId,
       types: productType,
+      orderable: json['orderable'] as bool,
+      representedId: representedId,
+      representedIdList: representedIdList,
     );
   }
 }

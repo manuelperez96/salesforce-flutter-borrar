@@ -89,6 +89,8 @@ class RefreshTokenInterceptor extends QueuedInterceptor {
   }
 
   Future<void> _addAuthHeader(Map<String, dynamic> headers) async {
+    final token = await _storage.getToken();
+    if (token == null) return; 
     headers['Authorization'] =
         'Bearer ${(await _storage.getToken())!.accessToken}';
   }
