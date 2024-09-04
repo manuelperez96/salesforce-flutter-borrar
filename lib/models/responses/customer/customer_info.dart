@@ -7,6 +7,7 @@ part 'customer_info.g.dart';
 class CustomerInfo with _$CustomerInfo {
   factory CustomerInfo({
     required String customerId,
+    required String? customerName,
     required String? email,
   }) = _CustomerInfo;
 

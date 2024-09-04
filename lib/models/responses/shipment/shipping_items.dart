@@ -6,17 +6,17 @@ part 'shipping_items.g.dart';
 @freezed
 class ShippingItem with _$ShippingItem {
   factory ShippingItem({
-    required int? adjustedTax,
-    required int? basePrice,
+    required double? adjustedTax,
+    required double? basePrice,
     required String? itemId,
     required String? itemText,
-    required int? price,
-    required int? priceAfterItemDiscount,
+    required double? price,
+    required double? priceAfterItemDiscount,
     required String shipmentId,
-    required int? tax,
-    required int? taxBasis,
+    required double? tax,
+    required double? taxBasis,
     required String? taxClassId,
-    required int? taxRate,
+    required double? taxRate,
   }) = _ShippingItem;
 
   factory ShippingItem.fromJson(Map<String, dynamic> json) =>

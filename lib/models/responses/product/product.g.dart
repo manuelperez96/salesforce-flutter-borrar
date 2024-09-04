@@ -10,9 +10,6 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       id: json['id'] as String,
       currency: json['currency'] as String,
-      imageGroups: (json['imageGroups'] as List<dynamic>)
-          .map((e) => ImageGroup.fromJson(e as Map<String, dynamic>))
-          .toList(),
       name: json['name'] as String,
       pageDescription: json['pageDescription'] as String,
       pageTitle: json['pageTitle'] as String,
@@ -21,6 +18,9 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       shortDescription: json['shortDescription'] as String,
       minOrderQuantity: (json['minOrderQuantity'] as num?)?.toInt(),
       inventory: Inventory.fromJson(json['inventory'] as Map<String, dynamic>),
+      imageGroups: (json['imageGroups'] as List<dynamic>)
+          .map((e) => ImageGroup.fromJson(e as Map<String, dynamic>))
+          .toList(),
       variationValues: json['variationValues'] == null
           ? null
           : VariationValues.fromJson(
@@ -38,7 +38,6 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'currency': instance.currency,
-      'imageGroups': instance.imageGroups,
       'name': instance.name,
       'pageDescription': instance.pageDescription,
       'pageTitle': instance.pageTitle,
@@ -47,6 +46,7 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
       'shortDescription': instance.shortDescription,
       'minOrderQuantity': instance.minOrderQuantity,
       'inventory': instance.inventory,
+      'imageGroups': instance.imageGroups,
       'variationValues': instance.variationValues,
       'variationAttributes': instance.variationAttributes,
       'variants': instance.variants,

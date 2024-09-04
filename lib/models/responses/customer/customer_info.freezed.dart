@@ -21,6 +21,7 @@ CustomerInfo _$CustomerInfoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CustomerInfo {
   String get customerId => throw _privateConstructorUsedError;
+  String? get customerName => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $CustomerInfoCopyWith<$Res> {
           CustomerInfo value, $Res Function(CustomerInfo) then) =
       _$CustomerInfoCopyWithImpl<$Res, CustomerInfo>;
   @useResult
-  $Res call({String customerId, String? email});
+  $Res call({String customerId, String? customerName, String? email});
 }
 
 /// @nodoc
@@ -52,6 +53,7 @@ class _$CustomerInfoCopyWithImpl<$Res, $Val extends CustomerInfo>
   @override
   $Res call({
     Object? customerId = null,
+    Object? customerName = freezed,
     Object? email = freezed,
   }) {
     return _then(_value.copyWith(
@@ -59,6 +61,10 @@ class _$CustomerInfoCopyWithImpl<$Res, $Val extends CustomerInfo>
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
               as String,
+      customerName: freezed == customerName
+          ? _value.customerName
+          : customerName // ignore: cast_nullable_to_non_nullable
+              as String?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -75,7 +81,7 @@ abstract class _$$CustomerInfoImplCopyWith<$Res>
       __$$CustomerInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String customerId, String? email});
+  $Res call({String customerId, String? customerName, String? email});
 }
 
 /// @nodoc
@@ -90,6 +96,7 @@ class __$$CustomerInfoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? customerId = null,
+    Object? customerName = freezed,
     Object? email = freezed,
   }) {
     return _then(_$CustomerInfoImpl(
@@ -97,6 +104,10 @@ class __$$CustomerInfoImplCopyWithImpl<$Res>
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
               as String,
+      customerName: freezed == customerName
+          ? _value.customerName
+          : customerName // ignore: cast_nullable_to_non_nullable
+              as String?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -108,7 +119,10 @@ class __$$CustomerInfoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CustomerInfoImpl implements _CustomerInfo {
-  _$CustomerInfoImpl({required this.customerId, required this.email});
+  _$CustomerInfoImpl(
+      {required this.customerId,
+      required this.customerName,
+      required this.email});
 
   factory _$CustomerInfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$CustomerInfoImplFromJson(json);
@@ -116,11 +130,13 @@ class _$CustomerInfoImpl implements _CustomerInfo {
   @override
   final String customerId;
   @override
+  final String? customerName;
+  @override
   final String? email;
 
   @override
   String toString() {
-    return 'CustomerInfo(customerId: $customerId, email: $email)';
+    return 'CustomerInfo(customerId: $customerId, customerName: $customerName, email: $email)';
   }
 
   @override
@@ -130,12 +146,14 @@ class _$CustomerInfoImpl implements _CustomerInfo {
             other is _$CustomerInfoImpl &&
             (identical(other.customerId, customerId) ||
                 other.customerId == customerId) &&
+            (identical(other.customerName, customerName) ||
+                other.customerName == customerName) &&
             (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, customerId, email);
+  int get hashCode => Object.hash(runtimeType, customerId, customerName, email);
 
   @JsonKey(ignore: true)
   @override
@@ -154,6 +172,7 @@ class _$CustomerInfoImpl implements _CustomerInfo {
 abstract class _CustomerInfo implements CustomerInfo {
   factory _CustomerInfo(
       {required final String customerId,
+      required final String? customerName,
       required final String? email}) = _$CustomerInfoImpl;
 
   factory _CustomerInfo.fromJson(Map<String, dynamic> json) =
@@ -161,6 +180,8 @@ abstract class _CustomerInfo implements CustomerInfo {
 
   @override
   String get customerId;
+  @override
+  String? get customerName;
   @override
   String? get email;
   @override

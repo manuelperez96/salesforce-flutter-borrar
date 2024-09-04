@@ -13,30 +13,9 @@ class BasketRepository extends Repository {
 
   final TokenStorage _storage;
 
-  // Future<Basket> checkBasketExists() async {
-  //   try {
-  //     final response = await dio.get<dynamic>(
-  //       '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$basketId?siteId=${config.siteId}',
-  //       options: Options(
-  //         headers: {'Content-Type': 'application/json'},
-  //       ),
-  //     );
-
-  //     final jsonResponse = response.data;
-  //     final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
-  //     return basket;
-  //   } on DioException catch (e) {
-  //     if (e.response?.statusCode != 303) throw GetBasketException(e);
-  //   }
-  // }
-
   Future<String?> getBasketId() {
     return _storage.getBasketID();
   }
-
-  // Future<void> saveBasketId(String basketID) {
-  //   return _storage.saveBasketID(basketID);
-  // }
 
   Future<Basket> createBasket() async {
     try {
@@ -47,8 +26,9 @@ class BasketRepository extends Repository {
         ),
       );
 
-      final jsonResponse = response.data;
-      final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
+      final jsonResponse = response.data as Map<String, dynamic>;
+
+      final basket = Basket.fromJson(jsonResponse);
 
       await _storage.saveBasketID(basket.basketId);
 

@@ -20,18 +20,18 @@ Shipment _$ShipmentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Shipment {
-  int? get adjustedMerchandizeTotalTax => throw _privateConstructorUsedError;
-  int? get adjustedShippingTotalTax => throw _privateConstructorUsedError;
+  double? get adjustedMerchandizeTotalTax => throw _privateConstructorUsedError;
+  double? get adjustedShippingTotalTax => throw _privateConstructorUsedError;
   bool get gift => throw _privateConstructorUsedError;
-  int? get merchandizeTotalTax => throw _privateConstructorUsedError;
-  int? get productSubTotal => throw _privateConstructorUsedError;
-  int? get productTotal => throw _privateConstructorUsedError;
+  double? get merchandizeTotalTax => throw _privateConstructorUsedError;
+  double? get productSubTotal => throw _privateConstructorUsedError;
+  double? get productTotal => throw _privateConstructorUsedError;
   String get shipmentId => throw _privateConstructorUsedError;
-  int? get shipmentTotal => throw _privateConstructorUsedError;
+  double? get shipmentTotal => throw _privateConstructorUsedError;
   String? get shippingStatus => throw _privateConstructorUsedError;
-  int? get shippingTotal => throw _privateConstructorUsedError;
-  int? get shippingTotalTax => throw _privateConstructorUsedError;
-  int? get taxTotal => throw _privateConstructorUsedError;
+  double? get shippingTotal => throw _privateConstructorUsedError;
+  double? get shippingTotalTax => throw _privateConstructorUsedError;
+  double? get taxTotal => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,18 +45,18 @@ abstract class $ShipmentCopyWith<$Res> {
       _$ShipmentCopyWithImpl<$Res, Shipment>;
   @useResult
   $Res call(
-      {int? adjustedMerchandizeTotalTax,
-      int? adjustedShippingTotalTax,
+      {double? adjustedMerchandizeTotalTax,
+      double? adjustedShippingTotalTax,
       bool gift,
-      int? merchandizeTotalTax,
-      int? productSubTotal,
-      int? productTotal,
+      double? merchandizeTotalTax,
+      double? productSubTotal,
+      double? productTotal,
       String shipmentId,
-      int? shipmentTotal,
+      double? shipmentTotal,
       String? shippingStatus,
-      int? shippingTotal,
-      int? shippingTotalTax,
-      int? taxTotal});
+      double? shippingTotal,
+      double? shippingTotalTax,
+      double? taxTotal});
 }
 
 /// @nodoc
@@ -89,11 +89,11 @@ class _$ShipmentCopyWithImpl<$Res, $Val extends Shipment>
       adjustedMerchandizeTotalTax: freezed == adjustedMerchandizeTotalTax
           ? _value.adjustedMerchandizeTotalTax
           : adjustedMerchandizeTotalTax // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adjustedShippingTotalTax: freezed == adjustedShippingTotalTax
           ? _value.adjustedShippingTotalTax
           : adjustedShippingTotalTax // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       gift: null == gift
           ? _value.gift
           : gift // ignore: cast_nullable_to_non_nullable
@@ -101,15 +101,15 @@ class _$ShipmentCopyWithImpl<$Res, $Val extends Shipment>
       merchandizeTotalTax: freezed == merchandizeTotalTax
           ? _value.merchandizeTotalTax
           : merchandizeTotalTax // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       productSubTotal: freezed == productSubTotal
           ? _value.productSubTotal
           : productSubTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       productTotal: freezed == productTotal
           ? _value.productTotal
           : productTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
@@ -117,7 +117,7 @@ class _$ShipmentCopyWithImpl<$Res, $Val extends Shipment>
       shipmentTotal: freezed == shipmentTotal
           ? _value.shipmentTotal
           : shipmentTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       shippingStatus: freezed == shippingStatus
           ? _value.shippingStatus
           : shippingStatus // ignore: cast_nullable_to_non_nullable
@@ -125,15 +125,15 @@ class _$ShipmentCopyWithImpl<$Res, $Val extends Shipment>
       shippingTotal: freezed == shippingTotal
           ? _value.shippingTotal
           : shippingTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       shippingTotalTax: freezed == shippingTotalTax
           ? _value.shippingTotalTax
           : shippingTotalTax // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       taxTotal: freezed == taxTotal
           ? _value.taxTotal
           : taxTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
     ) as $Val);
   }
 }
@@ -147,18 +147,18 @@ abstract class _$$ShipmentImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? adjustedMerchandizeTotalTax,
-      int? adjustedShippingTotalTax,
+      {double? adjustedMerchandizeTotalTax,
+      double? adjustedShippingTotalTax,
       bool gift,
-      int? merchandizeTotalTax,
-      int? productSubTotal,
-      int? productTotal,
+      double? merchandizeTotalTax,
+      double? productSubTotal,
+      double? productTotal,
       String shipmentId,
-      int? shipmentTotal,
+      double? shipmentTotal,
       String? shippingStatus,
-      int? shippingTotal,
-      int? shippingTotalTax,
-      int? taxTotal});
+      double? shippingTotal,
+      double? shippingTotalTax,
+      double? taxTotal});
 }
 
 /// @nodoc
@@ -189,11 +189,11 @@ class __$$ShipmentImplCopyWithImpl<$Res>
       adjustedMerchandizeTotalTax: freezed == adjustedMerchandizeTotalTax
           ? _value.adjustedMerchandizeTotalTax
           : adjustedMerchandizeTotalTax // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       adjustedShippingTotalTax: freezed == adjustedShippingTotalTax
           ? _value.adjustedShippingTotalTax
           : adjustedShippingTotalTax // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       gift: null == gift
           ? _value.gift
           : gift // ignore: cast_nullable_to_non_nullable
@@ -201,15 +201,15 @@ class __$$ShipmentImplCopyWithImpl<$Res>
       merchandizeTotalTax: freezed == merchandizeTotalTax
           ? _value.merchandizeTotalTax
           : merchandizeTotalTax // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       productSubTotal: freezed == productSubTotal
           ? _value.productSubTotal
           : productSubTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       productTotal: freezed == productTotal
           ? _value.productTotal
           : productTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       shipmentId: null == shipmentId
           ? _value.shipmentId
           : shipmentId // ignore: cast_nullable_to_non_nullable
@@ -217,7 +217,7 @@ class __$$ShipmentImplCopyWithImpl<$Res>
       shipmentTotal: freezed == shipmentTotal
           ? _value.shipmentTotal
           : shipmentTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       shippingStatus: freezed == shippingStatus
           ? _value.shippingStatus
           : shippingStatus // ignore: cast_nullable_to_non_nullable
@@ -225,15 +225,15 @@ class __$$ShipmentImplCopyWithImpl<$Res>
       shippingTotal: freezed == shippingTotal
           ? _value.shippingTotal
           : shippingTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       shippingTotalTax: freezed == shippingTotalTax
           ? _value.shippingTotalTax
           : shippingTotalTax // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       taxTotal: freezed == taxTotal
           ? _value.taxTotal
           : taxTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
     ));
   }
 }
@@ -259,29 +259,29 @@ class _$ShipmentImpl implements _Shipment {
       _$$ShipmentImplFromJson(json);
 
   @override
-  final int? adjustedMerchandizeTotalTax;
+  final double? adjustedMerchandizeTotalTax;
   @override
-  final int? adjustedShippingTotalTax;
+  final double? adjustedShippingTotalTax;
   @override
   final bool gift;
   @override
-  final int? merchandizeTotalTax;
+  final double? merchandizeTotalTax;
   @override
-  final int? productSubTotal;
+  final double? productSubTotal;
   @override
-  final int? productTotal;
+  final double? productTotal;
   @override
   final String shipmentId;
   @override
-  final int? shipmentTotal;
+  final double? shipmentTotal;
   @override
   final String? shippingStatus;
   @override
-  final int? shippingTotal;
+  final double? shippingTotal;
   @override
-  final int? shippingTotalTax;
+  final double? shippingTotalTax;
   @override
-  final int? taxTotal;
+  final double? taxTotal;
 
   @override
   String toString() {
@@ -354,46 +354,46 @@ class _$ShipmentImpl implements _Shipment {
 
 abstract class _Shipment implements Shipment {
   factory _Shipment(
-      {required final int? adjustedMerchandizeTotalTax,
-      required final int? adjustedShippingTotalTax,
+      {required final double? adjustedMerchandizeTotalTax,
+      required final double? adjustedShippingTotalTax,
       required final bool gift,
-      required final int? merchandizeTotalTax,
-      required final int? productSubTotal,
-      required final int? productTotal,
+      required final double? merchandizeTotalTax,
+      required final double? productSubTotal,
+      required final double? productTotal,
       required final String shipmentId,
-      required final int? shipmentTotal,
+      required final double? shipmentTotal,
       required final String? shippingStatus,
-      required final int? shippingTotal,
-      required final int? shippingTotalTax,
-      required final int? taxTotal}) = _$ShipmentImpl;
+      required final double? shippingTotal,
+      required final double? shippingTotalTax,
+      required final double? taxTotal}) = _$ShipmentImpl;
 
   factory _Shipment.fromJson(Map<String, dynamic> json) =
       _$ShipmentImpl.fromJson;
 
   @override
-  int? get adjustedMerchandizeTotalTax;
+  double? get adjustedMerchandizeTotalTax;
   @override
-  int? get adjustedShippingTotalTax;
+  double? get adjustedShippingTotalTax;
   @override
   bool get gift;
   @override
-  int? get merchandizeTotalTax;
+  double? get merchandizeTotalTax;
   @override
-  int? get productSubTotal;
+  double? get productSubTotal;
   @override
-  int? get productTotal;
+  double? get productTotal;
   @override
   String get shipmentId;
   @override
-  int? get shipmentTotal;
+  double? get shipmentTotal;
   @override
   String? get shippingStatus;
   @override
-  int? get shippingTotal;
+  double? get shippingTotal;
   @override
-  int? get shippingTotalTax;
+  double? get shippingTotalTax;
   @override
-  int? get taxTotal;
+  double? get taxTotal;
   @override
   @JsonKey(ignore: true)
   _$$ShipmentImplCopyWith<_$ShipmentImpl> get copyWith =>

@@ -9,11 +9,11 @@ import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 
 import 'basket_repository_test.mocks.dart';
 
-@GenerateNiceMocks(
-  [
-    MockSpec<Dio>(),
-    MockSpec<TokenStorage>(),
-  ],
+@GenerateMocks(
+  [Dio, TokenStorage],
+  // customMocks: [
+  //   MockSpec<TokenStorage>(),
+  // ],
 )
 void main() {
   late MockDio mockDio;

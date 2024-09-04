@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/models/exception/category_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/category/category.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
 
@@ -40,7 +41,7 @@ class CategoryRepository extends Repository {
 
       return categories;
     } catch (e) {
-      throw Exception('Failed to load categories: $e');
+      throw GetCategoriesException(e);
     }
   }
 
