@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/models/basket_entity.dart';
 import 'package:sf_commerce_sdk/models/exception/basket_exceptions.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
 import 'package:sf_commerce_sdk/repository/repository.dart';
@@ -17,7 +18,7 @@ class BasketRepository extends Repository {
     return _storage.getBasketID();
   }
 
-  Future<Basket> createBasket() async {
+  Future<BasketEntity> createBasket() async {
     try {
       final response = await dio.post<dynamic>(
         '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets?siteId=${config.siteId}',
@@ -38,7 +39,7 @@ class BasketRepository extends Repository {
     }
   }
 
-  Future<Basket> getBasket(String basketId) async {
+  Future<BasketEntity> getBasket(String basketId) async {
     try {
       final response = await dio.get<dynamic>(
         '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$basketId?siteId=${config.siteId}',
@@ -55,7 +56,7 @@ class BasketRepository extends Repository {
     }
   }
 
-  Future<Basket> addProductToBasket({
+  Future<BasketEntity> addProductToBasket({
     required String basketId,
     required String productId,
     int quantity = 1,
@@ -78,7 +79,7 @@ class BasketRepository extends Repository {
     }
   }
 
-  Future<Basket> removeProductFromBasket({
+  Future<BasketEntity> removeProductFromBasket({
     required String basketId,
     required String basketItemId,
   }) async {
@@ -98,7 +99,7 @@ class BasketRepository extends Repository {
     }
   }
 
-  Future<Basket> updateProductInBasket({
+  Future<BasketEntity> updateProductInBasket({
     required String basketId,
     required String basketItemId,
     int quantity = 1,
@@ -118,4 +119,13 @@ class BasketRepository extends Repository {
       throw UpdateProductInBasketException(e);
     }
   }
+
+  Future<BasketEntity> incrementProductQuantity({
+    required String basketId,
+    required String basketItemId,
+  }) {}
+  Future<BasketEntity> decrementProductQuantity({
+    required String basketId,
+    required String basketItemId,
+  }) {}
 }

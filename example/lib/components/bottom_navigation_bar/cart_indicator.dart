@@ -13,7 +13,7 @@ class CartIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
-        if (state is CartLoaded && state.products.isNotEmpty) {
+        if (state is CartLoaded && state.currentCart.productItems.isNotEmpty) {
           return Container(
             width: 16,
             height: 16,
@@ -23,7 +23,7 @@ class CartIndicator extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                '${state.products.length}',
+                '${state.currentCart.productItems.length}',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 10,

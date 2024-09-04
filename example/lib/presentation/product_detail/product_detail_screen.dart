@@ -41,7 +41,7 @@ class ProductDetailScreen extends StatelessWidget {
             press: () {
               BlocProvider.of<CartBloc>(context).add(
                 AddProductCart(
-                  state.initialProduct!,
+                  state.initialProduct!.id,
                   productQuantity,
                 ),
               ); // TODOChange initialProduct for selectedProductId

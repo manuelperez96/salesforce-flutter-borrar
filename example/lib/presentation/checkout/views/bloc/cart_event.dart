@@ -1,4 +1,4 @@
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
+import 'package:sf_commerce_sdk/models/basket_entity.dart';
 
 abstract class CartEvent {}
 
@@ -6,20 +6,27 @@ class CreateCart extends CartEvent {}
 
 class CheckStatusCart extends CartEvent {}
 
-// true -> increase      false -> decrease
-class ModifyQuantityProductCart extends CartEvent {
-  ModifyQuantityProductCart({required this.product, required this.increase});
-  final Product product;
-  final bool increase;
+class IncrementQuantityProductCart extends CartEvent {
+  IncrementQuantityProductCart({required this.product});
+
+  final ProductByBasket product;
+}
+
+class DecrementQuantityProductCart extends CartEvent {
+  DecrementQuantityProductCart({required this.product});
+
+  final ProductByBasket product;
 }
 
 class AddProductCart extends CartEvent {
-  AddProductCart(this.product, this.quantity);
-  final Product product;
+  AddProductCart(this.productId, this.quantity);
+
+  final String productId;
   final int quantity;
 }
 
 class RemoveProductCart extends CartEvent {
   RemoveProductCart(this.product);
-  final Product product;
+
+  final ProductByBasket product;
 }
