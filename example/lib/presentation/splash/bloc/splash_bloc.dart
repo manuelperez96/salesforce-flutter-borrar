@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:example/domain/repository/auth_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sf_commerce_sdk/repository/auth_repository.dart';
 
 part 'splash_bloc.freezed.dart';
 part 'splash_event.dart';

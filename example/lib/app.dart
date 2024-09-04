@@ -9,7 +9,6 @@ import 'package:example/route/router.dart' as router;
 import 'package:example/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -21,13 +20,13 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<CartBloc>(
           create: (context) => CartBloc(
-            basketRepository: inject<SFCommerceSDK>().,
+            basketRepository: inject.get(),
           )..add(CheckStatusCart()),
         ),
         BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(
-            categoryRepository: inject<SFCommerceSDK>().categoryRepository,
-            productRepository: inject<SFCommerceSDK>().productRepository,
+            categoryRepository: inject.get(),
+            productRepository: inject.get(),
           )..add(const HomeEvent.loadHomeData()),
         ),
       ],
