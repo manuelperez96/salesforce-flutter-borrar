@@ -1,6 +1,5 @@
 import 'package:example/constants.dart';
 import 'package:example/di/app_modules.dart';
-import 'package:example/extensions/context_extensions.dart';
 import 'package:example/presentation/home/views/components/categories.dart';
 import 'package:example/presentation/home/views/components/offers_carousel.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +45,7 @@ class _OffersCarouselAndCategoriesState
         Padding(
           padding: const EdgeInsets.all(defaultPadding),
           child: Text(
-            context.localizations.categories,
+            'context.localizations.categories',
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),

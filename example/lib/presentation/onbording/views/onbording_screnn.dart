@@ -1,6 +1,5 @@
 import 'package:example/components/dot_indicators.dart';
 import 'package:example/constants.dart';
-import 'package:example/extensions/context_extensions.dart';
 import 'package:example/presentation/onbording/views/components/onbording_content.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
@@ -36,32 +35,32 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
       Onbord(
         image: 'assets/Illustration/Illustration-0.png',
         imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_0.png',
-        title: context.localizations.onboarding_title_1,
-        description: context.localizations.onboarding_description_1,
+        title: 'context.localizations.onboarding_title_1',
+        description: 'context.localizations.onboarding_description_1',
       ),
       Onbord(
         image: 'assets/Illustration/Illustration-1.png',
         imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_1.png',
-        title: context.localizations.onboarding_title_2,
-        description: context.localizations.onboarding_description_2,
+        title: 'context.localizations.onboarding_title_2',
+        description: 'context.localizations.onboarding_description_2',
       ),
       Onbord(
         image: 'assets/Illustration/Illustration-2.png',
         imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_2.png',
-        title: context.localizations.onboarding_title_3,
-        description: context.localizations.onboarding_description_3,
+        title: 'context.localizations.onboarding_title_3',
+        description: 'context.localizations.onboarding_description_3',
       ),
       Onbord(
         image: 'assets/Illustration/Illustration-3.png',
         imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_3.png',
-        title: context.localizations.onboarding_title_4,
-        description: context.localizations.onboarding_description_4,
+        title: 'context.localizations.onboarding_title_4',
+        description: 'context.localizations.onboarding_description_4',
       ),
       Onbord(
         image: 'assets/Illustration/Illustration-4.png',
         imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_4.png',
-        title: context.localizations.onboarding_title_5,
-        description: context.localizations.onboarding_description_5,
+        title: 'context.localizations.onboarding_title_5',
+        description: 'context.localizations.onboarding_description_5',
       ),
     ];
     return Scaffold(
@@ -81,7 +80,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                     );
                   },
                   child: Text(
-                    context.localizations.skip,
+                    'context.localizations.skip',
                     style: TextStyle(
                       color: Theme.of(context).textTheme.bodyLarge!.color,
                     ),
