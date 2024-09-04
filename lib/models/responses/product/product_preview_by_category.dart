@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sf_commerce_sdk/models/responses/product/image.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product_type.dart';
 
 part 'product_preview_by_category.freezed.dart';
 
@@ -12,6 +13,7 @@ class ProductPreviewByCategory with _$ProductPreviewByCategory {
     required double price,
     required String currency,
     required String categoryId,
+    required Set<ProductType> types,
   }) = _ProductPreviewByCategory;
 
   factory ProductPreviewByCategory.fromJson({
@@ -20,6 +22,10 @@ class ProductPreviewByCategory with _$ProductPreviewByCategory {
   }) {
     final image = Image.fromJson(json['image'] as Map<String, dynamic>);
     final productId = (json['representedProduct'] as Map)['id'] as String;
+    final productType = (json['productType'] as List<dynamic>)
+        .cast<String>()
+        .map(ProductType.fromValue)
+        .toSet();
 
     return ProductPreviewByCategory(
       id: productId,
@@ -28,6 +34,7 @@ class ProductPreviewByCategory with _$ProductPreviewByCategory {
       price: (json['price'] as num).toDouble(),
       currency: json['currency'] as String,
       categoryId: categoryId,
+      types: productType,
     );
   }
 }

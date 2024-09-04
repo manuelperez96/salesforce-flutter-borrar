@@ -22,6 +22,7 @@ mixin _$ProductPreviewByCategory {
   double get price => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
   String get categoryId => throw _privateConstructorUsedError;
+  Set<ProductType> get types => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductPreviewByCategoryCopyWith<ProductPreviewByCategory> get copyWith =>
@@ -40,7 +41,8 @@ abstract class $ProductPreviewByCategoryCopyWith<$Res> {
       Image image,
       double price,
       String currency,
-      String categoryId});
+      String categoryId,
+      Set<ProductType> types});
 
   $ImageCopyWith<$Res> get image;
 }
@@ -65,6 +67,7 @@ class _$ProductPreviewByCategoryCopyWithImpl<$Res,
     Object? price = null,
     Object? currency = null,
     Object? categoryId = null,
+    Object? types = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -91,6 +94,10 @@ class _$ProductPreviewByCategoryCopyWithImpl<$Res,
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as String,
+      types: null == types
+          ? _value.types
+          : types // ignore: cast_nullable_to_non_nullable
+              as Set<ProductType>,
     ) as $Val);
   }
 
@@ -118,7 +125,8 @@ abstract class _$$ProductPreviewByCategoryImplCopyWith<$Res>
       Image image,
       double price,
       String currency,
-      String categoryId});
+      String categoryId,
+      Set<ProductType> types});
 
   @override
   $ImageCopyWith<$Res> get image;
@@ -143,6 +151,7 @@ class __$$ProductPreviewByCategoryImplCopyWithImpl<$Res>
     Object? price = null,
     Object? currency = null,
     Object? categoryId = null,
+    Object? types = null,
   }) {
     return _then(_$ProductPreviewByCategoryImpl(
       id: null == id
@@ -169,6 +178,10 @@ class __$$ProductPreviewByCategoryImplCopyWithImpl<$Res>
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as String,
+      types: null == types
+          ? _value._types
+          : types // ignore: cast_nullable_to_non_nullable
+              as Set<ProductType>,
     ));
   }
 }
@@ -182,7 +195,9 @@ class _$ProductPreviewByCategoryImpl implements _ProductPreviewByCategory {
       required this.image,
       required this.price,
       required this.currency,
-      required this.categoryId});
+      required this.categoryId,
+      required final Set<ProductType> types})
+      : _types = types;
 
   @override
   final String id;
@@ -196,10 +211,17 @@ class _$ProductPreviewByCategoryImpl implements _ProductPreviewByCategory {
   final String currency;
   @override
   final String categoryId;
+  final Set<ProductType> _types;
+  @override
+  Set<ProductType> get types {
+    if (_types is EqualUnmodifiableSetView) return _types;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_types);
+  }
 
   @override
   String toString() {
-    return 'ProductPreviewByCategory(id: $id, productName: $productName, image: $image, price: $price, currency: $currency, categoryId: $categoryId)';
+    return 'ProductPreviewByCategory(id: $id, productName: $productName, image: $image, price: $price, currency: $currency, categoryId: $categoryId, types: $types)';
   }
 
   @override
@@ -215,12 +237,13 @@ class _$ProductPreviewByCategoryImpl implements _ProductPreviewByCategory {
             (identical(other.currency, currency) ||
                 other.currency == currency) &&
             (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId));
+                other.categoryId == categoryId) &&
+            const DeepCollectionEquality().equals(other._types, _types));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, productName, image, price, currency, categoryId);
+  int get hashCode => Object.hash(runtimeType, id, productName, image, price,
+      currency, categoryId, const DeepCollectionEquality().hash(_types));
 
   @JsonKey(ignore: true)
   @override
@@ -237,7 +260,8 @@ abstract class _ProductPreviewByCategory implements ProductPreviewByCategory {
       required final Image image,
       required final double price,
       required final String currency,
-      required final String categoryId}) = _$ProductPreviewByCategoryImpl;
+      required final String categoryId,
+      required final Set<ProductType> types}) = _$ProductPreviewByCategoryImpl;
 
   @override
   String get id;
@@ -251,6 +275,8 @@ abstract class _ProductPreviewByCategory implements ProductPreviewByCategory {
   String get currency;
   @override
   String get categoryId;
+  @override
+  Set<ProductType> get types;
   @override
   @JsonKey(ignore: true)
   _$$ProductPreviewByCategoryImplCopyWith<_$ProductPreviewByCategoryImpl>
