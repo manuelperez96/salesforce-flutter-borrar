@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sf_commerce_sdk/models/responses/product/image.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product_type.dart';
+import 'package:sf_commerce_sdk/models/responses/product/variant_info.dart';
 
 part 'product.freezed.dart';
 
@@ -26,7 +27,10 @@ class Product with _$Product {
     required String? shortDescription,
     required String? longDescription,
     required String? category,
+    VariantInfo? variantInfo,
   }) = _Product;
+
+  const Product._();
 
   factory Product.fromJson(Map<String, dynamic> json) {
     final images = _getImages(json);
@@ -55,14 +59,34 @@ class Product with _$Product {
       productTypes: productTypes,
       shortDescription: json['shortDescription'] as String?,
       slugUrl: json['slugUrl'] as String,
+      variantInfo: _getVariant(json),
     );
   }
+
+  bool get hasVariants => variantInfo != null;
 
   static List<ImageBundle> _getImages(Map<String, dynamic> json) {
     return (json['imageGroups'] as List)
         .cast<Map<String, dynamic>>()
         .map(ImageBundle.fromJson)
         .toList();
+  }
+
+  static VariantInfo? _getVariant(Map<String, dynamic> json) {
+    final variants = (json['variants'] as List?)?.cast<Map<String, dynamic>>();
+    if (variants == null) return null;
+    final variationAttributes = (json['variationAttributes'] as List)
+        .cast<Map<String, dynamic>>()
+        .map(VariationAttributes.fromJson)
+        .toList();
+    final variationValues = json['variationValues'] as Map<String, dynamic>;
+
+    return VariantInfo(
+      color: variationValues['color'] as String,
+      size: variationValues['size'] as String,
+      variationAttributes: variationAttributes,
+      variants: variants.map(Variant.fromJson).toList(),
+    );
   }
 
   // static List<String> getImagesByColor({

@@ -5,8 +5,6 @@ part 'image.g.dart';
 
 @freezed
 class ImageBundle with _$ImageBundle {
-  const ImageBundle._();
-
   factory ImageBundle({
     required List<Image> images,
     required String viewType,
@@ -18,9 +16,11 @@ class ImageBundle with _$ImageBundle {
     return ImageBundle(
       images: images,
       viewType: json['viewType'] as String,
-      variationAttributes: _getvariationAttributes(json),
+      variationAttributes: _getVariationAttributes(json),
     );
   }
+
+  const ImageBundle._();
 
   static List<Image> _getImages(Map<String, dynamic> json) {
     return (json['images'] as List)
@@ -32,7 +32,7 @@ class ImageBundle with _$ImageBundle {
   // The inner structure of this field, is a list. But, for now, we only take
   // the first element. It could change in the future, we need to review
   // project requirement
-  static List<VariationAttribute> _getvariationAttributes(
+  static List<VariationAttribute> _getVariationAttributes(
     Map<String, dynamic> json,
   ) {
     final variationAttributeList = json['variationAttributes'] as List?;

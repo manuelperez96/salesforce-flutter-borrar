@@ -35,6 +35,7 @@ mixin _$Product {
   String? get shortDescription => throw _privateConstructorUsedError;
   String? get longDescription => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
+  VariantInfo? get variantInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
@@ -60,7 +61,10 @@ abstract class $ProductCopyWith<$Res> {
       Set<ProductType> productTypes,
       String? shortDescription,
       String? longDescription,
-      String? category});
+      String? category,
+      VariantInfo? variantInfo});
+
+  $VariantInfoCopyWith<$Res>? get variantInfo;
 }
 
 /// @nodoc
@@ -91,6 +95,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? shortDescription = freezed,
     Object? longDescription = freezed,
     Object? category = freezed,
+    Object? variantInfo = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -153,7 +158,23 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      variantInfo: freezed == variantInfo
+          ? _value.variantInfo
+          : variantInfo // ignore: cast_nullable_to_non_nullable
+              as VariantInfo?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $VariantInfoCopyWith<$Res>? get variantInfo {
+    if (_value.variantInfo == null) {
+      return null;
+    }
+
+    return $VariantInfoCopyWith<$Res>(_value.variantInfo!, (value) {
+      return _then(_value.copyWith(variantInfo: value) as $Val);
+    });
   }
 }
 
@@ -179,7 +200,11 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       Set<ProductType> productTypes,
       String? shortDescription,
       String? longDescription,
-      String? category});
+      String? category,
+      VariantInfo? variantInfo});
+
+  @override
+  $VariantInfoCopyWith<$Res>? get variantInfo;
 }
 
 /// @nodoc
@@ -208,6 +233,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? shortDescription = freezed,
     Object? longDescription = freezed,
     Object? category = freezed,
+    Object? variantInfo = freezed,
   }) {
     return _then(_$ProductImpl(
       id: null == id
@@ -270,13 +296,17 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      variantInfo: freezed == variantInfo
+          ? _value.variantInfo
+          : variantInfo // ignore: cast_nullable_to_non_nullable
+              as VariantInfo?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ProductImpl implements _Product {
+class _$ProductImpl extends _Product {
   _$ProductImpl(
       {required this.id,
       required this.brand,
@@ -292,9 +322,11 @@ class _$ProductImpl implements _Product {
       required final Set<ProductType> productTypes,
       required this.shortDescription,
       required this.longDescription,
-      required this.category})
+      required this.category,
+      this.variantInfo})
       : _images = images,
-        _productTypes = productTypes;
+        _productTypes = productTypes,
+        super._();
 
   @override
   final String id;
@@ -341,10 +373,12 @@ class _$ProductImpl implements _Product {
   final String? longDescription;
   @override
   final String? category;
+  @override
+  final VariantInfo? variantInfo;
 
   @override
   String toString() {
-    return 'Product(id: $id, brand: $brand, currency: $currency, images: $images, availableStock: $availableStock, stock: $stock, minOrderQuantity: $minOrderQuantity, name: $name, price: $price, pricePerUnit: $pricePerUnit, slugUrl: $slugUrl, productTypes: $productTypes, shortDescription: $shortDescription, longDescription: $longDescription, category: $category)';
+    return 'Product(id: $id, brand: $brand, currency: $currency, images: $images, availableStock: $availableStock, stock: $stock, minOrderQuantity: $minOrderQuantity, name: $name, price: $price, pricePerUnit: $pricePerUnit, slugUrl: $slugUrl, productTypes: $productTypes, shortDescription: $shortDescription, longDescription: $longDescription, category: $category, variantInfo: $variantInfo)';
   }
 
   @override
@@ -374,7 +408,9 @@ class _$ProductImpl implements _Product {
             (identical(other.longDescription, longDescription) ||
                 other.longDescription == longDescription) &&
             (identical(other.category, category) ||
-                other.category == category));
+                other.category == category) &&
+            (identical(other.variantInfo, variantInfo) ||
+                other.variantInfo == variantInfo));
   }
 
   @override
@@ -394,7 +430,8 @@ class _$ProductImpl implements _Product {
       const DeepCollectionEquality().hash(_productTypes),
       shortDescription,
       longDescription,
-      category);
+      category,
+      variantInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -403,7 +440,7 @@ class _$ProductImpl implements _Product {
       __$$ProductImplCopyWithImpl<_$ProductImpl>(this, _$identity);
 }
 
-abstract class _Product implements Product {
+abstract class _Product extends Product {
   factory _Product(
       {required final String id,
       required final String brand,
@@ -419,7 +456,9 @@ abstract class _Product implements Product {
       required final Set<ProductType> productTypes,
       required final String? shortDescription,
       required final String? longDescription,
-      required final String? category}) = _$ProductImpl;
+      required final String? category,
+      final VariantInfo? variantInfo}) = _$ProductImpl;
+  _Product._() : super._();
 
   @override
   String get id;
@@ -455,6 +494,8 @@ abstract class _Product implements Product {
   String? get longDescription;
   @override
   String? get category;
+  @override
+  VariantInfo? get variantInfo;
   @override
   @JsonKey(ignore: true)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
