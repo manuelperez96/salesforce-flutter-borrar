@@ -1,4 +1,5 @@
 import 'package:example/di/app_modules.dart';
+import 'package:example/domain/repository/product_repository.dart';
 import 'package:example/presentation/product_detail/bloc/product_detail_bloc.dart';
 import 'package:example/presentation/product_detail/product_detail_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,9 @@ class ProductDetailProvider extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProductDetailBloc(
         initialProductId: productId,
-        productRepository: inject<SFCommerceSDK>().productRepository,
+        productRepository: ProductRepository(
+          productApi: inject.get<SFCommerceSDK>().productApi,
+        ),
       )..add(const ProductDetailEvent.started()),
       child: const ProductDetailScreen(),
     );

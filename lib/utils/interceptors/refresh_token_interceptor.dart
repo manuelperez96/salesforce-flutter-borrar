@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:sf_commerce_sdk/models/exception/auth_exception.dart';
 import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 
 class RefreshTokenInterceptor extends QueuedInterceptor {
-   RefreshTokenInterceptor({
+  RefreshTokenInterceptor({
     required String organizationId,
     required String host,
     required TokenStorage storage,
@@ -50,7 +51,7 @@ class RefreshTokenInterceptor extends QueuedInterceptor {
 
   Future<void> _refreshToken() async {
     final token = await _storage.getToken();
-    if (token == null) throw Exception('There is not token');
+    if (token == null) throw const GetRefreshTokenException();
 
     final response = await Dio().post<dynamic>(
       _refreshTokenUrl,
@@ -67,7 +68,7 @@ class RefreshTokenInterceptor extends QueuedInterceptor {
     );
 
     if (response.data == null || response.statusCode != 200) {
-      throw Exception('There is not token');
+      throw const GetRefreshTokenException();
     }
 
     await _storage.saveToken(
@@ -89,7 +90,9 @@ class RefreshTokenInterceptor extends QueuedInterceptor {
   }
 
   Future<void> _addAuthHeader(Map<String, dynamic> headers) async {
-    headers['Authorization'] =
-        'Bearer ${(await _storage.getToken())!.accessToken}';
+    final token = await _storage.getToken();
+    if (token != null) {
+      headers['Authorization'] = 'Bearer ${token.accessToken}';
+    }
   }
 }

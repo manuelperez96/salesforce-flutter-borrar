@@ -1,5 +1,6 @@
 import 'package:example/constants/assets.dart';
 import 'package:example/di/app_modules.dart';
+import 'package:example/domain/repository/auth_repository.dart';
 import 'package:example/presentation/splash/bloc/splash_bloc.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,9 @@ class SplashProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => SplashBloc(
-        authRepository: inject<SFCommerceSDK>().authRepository,
+        authRepository: AuthRepository(
+          authApi: inject.get<SFCommerceSDK>().authApi,
+        ),
       )..add(const SplashEvent.started()),
       child: const SplashScreen(),
     );

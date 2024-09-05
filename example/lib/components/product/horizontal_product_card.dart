@@ -1,6 +1,6 @@
 import 'package:example/components/network_image_with_loader.dart';
 import 'package:example/constants.dart';
-import 'package:example/models/product_cart.dart';
+import 'package:example/domain/model/product_cart_entity.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/product/views/components/product_quantity.dart';
@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HorizontalProductCard extends StatelessWidget {
-  const HorizontalProductCard({required this.productCart, super.key});
+  const HorizontalProductCard({required this.product, super.key});
 
-  final ProductCart productCart;
+  final ProductCartEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class HorizontalProductCard extends StatelessWidget {
           AspectRatio(
             aspectRatio: 1.15,
             child: NetworkImageWithLoader(
-              productCart.product.imageGroups[0].images[0].link,
+              product.image,
               radius: defaultBorderRadius,
             ),
           ),
@@ -40,7 +40,7 @@ class HorizontalProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  productCart.product.name,
+                  product.name,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context)
@@ -52,7 +52,7 @@ class HorizontalProductCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      productCart.getTotalPrice(),
+                      product.getTotalPrice(),
                       style: const TextStyle(
                         color: Color(0xFF31B0D8),
                         fontWeight: FontWeight.w500,
@@ -61,20 +61,18 @@ class HorizontalProductCard extends StatelessWidget {
                     ),
                     const Spacer(),
                     ProductQuantity(
-                      numOfItem: productCart.quantity,
+                      numOfItem: product.quantity,
                       onIncrement: () {
                         context.read<CartBloc>().add(
-                              ModifyQuantityProductCart(
-                                product: productCart.product,
-                                increase: true,
+                              IncrementQuantityProductCart(
+                                product: product,
                               ),
                             );
                       },
                       onDecrement: () {
                         context.read<CartBloc>().add(
-                              ModifyQuantityProductCart(
-                                product: productCart.product,
-                                increase: false,
+                              DecrementQuantityProductCart(
+                                product: product,
                               ),
                             );
                       },

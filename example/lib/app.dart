@@ -1,4 +1,7 @@
 import 'package:example/di/app_modules.dart';
+import 'package:example/domain/repository/basket_repository.dart';
+import 'package:example/domain/repository/category_repository.dart';
+import 'package:example/domain/repository/product_repository.dart';
 import 'package:example/l10n/arb/app_localizations.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
@@ -20,14 +23,20 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<CartBloc>(
           create: (context) => CartBloc(
-            basketRepository: inject<SFCommerceSDK>().basketRepository,
-            productRepository: inject<SFCommerceSDK>().productRepository,
+            basketRepository: BasketRepository(
+              basketApi: inject.get<SFCommerceSDK>().basketApi,
+              productApi: inject.get<SFCommerceSDK>().productApi,
+            ),
           )..add(CheckStatusCart()),
         ),
         BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(
-            categoryRepository: inject<SFCommerceSDK>().categoryRepository,
-            productRepository: inject<SFCommerceSDK>().productRepository,
+            categoryRepository: CategoryRepository(
+              categoryApi: inject.get<SFCommerceSDK>().categoryApi,
+            ),
+            productRepository: ProductRepository(
+              productApi: inject.get<SFCommerceSDK>().productApi,
+            ),
           )..add(const HomeEvent.loadHomeData()),
         ),
       ],

@@ -22,7 +22,6 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 mixin _$Product {
   String get id => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
-  List<ImageGroup> get imageGroups => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get pageDescription => throw _privateConstructorUsedError;
   String get pageTitle => throw _privateConstructorUsedError;
@@ -31,6 +30,7 @@ mixin _$Product {
   String get shortDescription => throw _privateConstructorUsedError;
   int? get minOrderQuantity => throw _privateConstructorUsedError;
   Inventory get inventory => throw _privateConstructorUsedError;
+  List<ImageGroup> get imageGroups => throw _privateConstructorUsedError;
 
   /// Values of this product (color, size)
   VariationValues? get variationValues => throw _privateConstructorUsedError;
@@ -51,7 +51,6 @@ abstract class $ProductCopyWith<$Res> {
   $Res call(
       {String id,
       String currency,
-      List<ImageGroup> imageGroups,
       String name,
       String pageDescription,
       String pageTitle,
@@ -60,6 +59,7 @@ abstract class $ProductCopyWith<$Res> {
       String shortDescription,
       int? minOrderQuantity,
       Inventory inventory,
+      List<ImageGroup> imageGroups,
       VariationValues? variationValues,
       List<ProductVariationAttribute>? variationAttributes,
       List<Variant>? variants});
@@ -83,7 +83,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   $Res call({
     Object? id = null,
     Object? currency = null,
-    Object? imageGroups = null,
     Object? name = null,
     Object? pageDescription = null,
     Object? pageTitle = null,
@@ -92,6 +91,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? shortDescription = null,
     Object? minOrderQuantity = freezed,
     Object? inventory = null,
+    Object? imageGroups = null,
     Object? variationValues = freezed,
     Object? variationAttributes = freezed,
     Object? variants = freezed,
@@ -105,10 +105,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      imageGroups: null == imageGroups
-          ? _value.imageGroups
-          : imageGroups // ignore: cast_nullable_to_non_nullable
-              as List<ImageGroup>,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -141,6 +137,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.inventory
           : inventory // ignore: cast_nullable_to_non_nullable
               as Inventory,
+      imageGroups: null == imageGroups
+          ? _value.imageGroups
+          : imageGroups // ignore: cast_nullable_to_non_nullable
+              as List<ImageGroup>,
       variationValues: freezed == variationValues
           ? _value.variationValues
           : variationValues // ignore: cast_nullable_to_non_nullable
@@ -187,7 +187,6 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   $Res call(
       {String id,
       String currency,
-      List<ImageGroup> imageGroups,
       String name,
       String pageDescription,
       String pageTitle,
@@ -196,6 +195,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String shortDescription,
       int? minOrderQuantity,
       Inventory inventory,
+      List<ImageGroup> imageGroups,
       VariationValues? variationValues,
       List<ProductVariationAttribute>? variationAttributes,
       List<Variant>? variants});
@@ -219,7 +219,6 @@ class __$$ProductImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? currency = null,
-    Object? imageGroups = null,
     Object? name = null,
     Object? pageDescription = null,
     Object? pageTitle = null,
@@ -228,6 +227,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? shortDescription = null,
     Object? minOrderQuantity = freezed,
     Object? inventory = null,
+    Object? imageGroups = null,
     Object? variationValues = freezed,
     Object? variationAttributes = freezed,
     Object? variants = freezed,
@@ -241,10 +241,6 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      imageGroups: null == imageGroups
-          ? _value._imageGroups
-          : imageGroups // ignore: cast_nullable_to_non_nullable
-              as List<ImageGroup>,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -277,6 +273,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.inventory
           : inventory // ignore: cast_nullable_to_non_nullable
               as Inventory,
+      imageGroups: null == imageGroups
+          ? _value._imageGroups
+          : imageGroups // ignore: cast_nullable_to_non_nullable
+              as List<ImageGroup>,
       variationValues: freezed == variationValues
           ? _value.variationValues
           : variationValues // ignore: cast_nullable_to_non_nullable
@@ -299,7 +299,6 @@ class _$ProductImpl extends _Product {
   _$ProductImpl(
       {required this.id,
       required this.currency,
-      required final List<ImageGroup> imageGroups,
       required this.name,
       required this.pageDescription,
       required this.pageTitle,
@@ -308,6 +307,7 @@ class _$ProductImpl extends _Product {
       required this.shortDescription,
       required this.minOrderQuantity,
       required this.inventory,
+      required final List<ImageGroup> imageGroups,
       required this.variationValues,
       required final List<ProductVariationAttribute>? variationAttributes,
       required final List<Variant>? variants})
@@ -323,14 +323,6 @@ class _$ProductImpl extends _Product {
   final String id;
   @override
   final String currency;
-  final List<ImageGroup> _imageGroups;
-  @override
-  List<ImageGroup> get imageGroups {
-    if (_imageGroups is EqualUnmodifiableListView) return _imageGroups;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_imageGroups);
-  }
-
   @override
   final String name;
   @override
@@ -347,6 +339,13 @@ class _$ProductImpl extends _Product {
   final int? minOrderQuantity;
   @override
   final Inventory inventory;
+  final List<ImageGroup> _imageGroups;
+  @override
+  List<ImageGroup> get imageGroups {
+    if (_imageGroups is EqualUnmodifiableListView) return _imageGroups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_imageGroups);
+  }
 
   /// Values of this product (color, size)
   @override
@@ -374,7 +373,7 @@ class _$ProductImpl extends _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, currency: $currency, imageGroups: $imageGroups, name: $name, pageDescription: $pageDescription, pageTitle: $pageTitle, price: $price, pricePerUnit: $pricePerUnit, shortDescription: $shortDescription, minOrderQuantity: $minOrderQuantity, inventory: $inventory, variationValues: $variationValues, variationAttributes: $variationAttributes, variants: $variants)';
+    return 'Product(id: $id, currency: $currency, name: $name, pageDescription: $pageDescription, pageTitle: $pageTitle, price: $price, pricePerUnit: $pricePerUnit, shortDescription: $shortDescription, minOrderQuantity: $minOrderQuantity, inventory: $inventory, imageGroups: $imageGroups, variationValues: $variationValues, variationAttributes: $variationAttributes, variants: $variants)';
   }
 
   @override
@@ -385,8 +384,6 @@ class _$ProductImpl extends _Product {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.currency, currency) ||
                 other.currency == currency) &&
-            const DeepCollectionEquality()
-                .equals(other._imageGroups, _imageGroups) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.pageDescription, pageDescription) ||
                 other.pageDescription == pageDescription) &&
@@ -401,6 +398,8 @@ class _$ProductImpl extends _Product {
                 other.minOrderQuantity == minOrderQuantity) &&
             (identical(other.inventory, inventory) ||
                 other.inventory == inventory) &&
+            const DeepCollectionEquality()
+                .equals(other._imageGroups, _imageGroups) &&
             (identical(other.variationValues, variationValues) ||
                 other.variationValues == variationValues) &&
             const DeepCollectionEquality()
@@ -414,7 +413,6 @@ class _$ProductImpl extends _Product {
       runtimeType,
       id,
       currency,
-      const DeepCollectionEquality().hash(_imageGroups),
       name,
       pageDescription,
       pageTitle,
@@ -423,6 +421,7 @@ class _$ProductImpl extends _Product {
       shortDescription,
       minOrderQuantity,
       inventory,
+      const DeepCollectionEquality().hash(_imageGroups),
       variationValues,
       const DeepCollectionEquality().hash(_variationAttributes),
       const DeepCollectionEquality().hash(_variants));
@@ -445,7 +444,6 @@ abstract class _Product extends Product {
   factory _Product(
       {required final String id,
       required final String currency,
-      required final List<ImageGroup> imageGroups,
       required final String name,
       required final String pageDescription,
       required final String pageTitle,
@@ -454,6 +452,7 @@ abstract class _Product extends Product {
       required final String shortDescription,
       required final int? minOrderQuantity,
       required final Inventory inventory,
+      required final List<ImageGroup> imageGroups,
       required final VariationValues? variationValues,
       required final List<ProductVariationAttribute>? variationAttributes,
       required final List<Variant>? variants}) = _$ProductImpl;
@@ -465,8 +464,6 @@ abstract class _Product extends Product {
   String get id;
   @override
   String get currency;
-  @override
-  List<ImageGroup> get imageGroups;
   @override
   String get name;
   @override
@@ -483,6 +480,8 @@ abstract class _Product extends Product {
   int? get minOrderQuantity;
   @override
   Inventory get inventory;
+  @override
+  List<ImageGroup> get imageGroups;
   @override
 
   /// Values of this product (color, size)
