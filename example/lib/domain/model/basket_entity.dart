@@ -1,21 +1,21 @@
 import 'package:example/domain/model/product_cart_entity.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class BasketEntity {
-  BasketEntity({
-    required this.basketId,
-    required this.productItems,
-  });
+part 'basket_entity.freezed.dart';
 
-  final String basketId;
-  final List<ProductCartEntity> productItems;
+@freezed
+class BasketEntity with _$BasketEntity {
+  factory BasketEntity({
+    required String basketId,
+    required List<ProductCartEntity> productItems,
+  }) = _BasketEntity;
+
+  const BasketEntity._();
 
   bool containsProduct(String productId) {
-    for (final prod in productItems) {
-      if (prod.productId == productId) {
-        return true;
-      }
-    }
-    return false;
+    return productItems.any(
+      (element) => element.productId == productId,
+    );
   }
 
   String? getItemIdByProductId(String productId) {

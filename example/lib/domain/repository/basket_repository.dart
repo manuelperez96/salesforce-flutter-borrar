@@ -26,23 +26,20 @@ class BasketRepository {
   Future<BasketEntity> getBasket(String basketId) async {
     final basketResponseModel = await _basketApi.getBasket(basketId);
 
-    final result = BasketEntity(
-      basketId: basketResponseModel.basketId,
-      productItems: [],
-    );
+    final list = List<ProductCartEntity>.empty(growable: true);
 
     if (basketResponseModel.productItems != null &&
         basketResponseModel.productItems!.isNotEmpty) {
-      final itemsIds = <String>[];
-
-      basketResponseModel.productItems!.map(
-        (e) => itemsIds.add(e.productId),
-      );
+      final itemsIds = basketResponseModel.productItems!
+          .map(
+            (e) => e.productId,
+          )
+          .toList();
 
       final productDetailList = await _productApi.getProducts(itemsIds);
 
       for (var i = 0; i < productDetailList.length; i++) {
-        result.productItems.add(
+        list.add(
           ProductCartEntity(
             name: productDetailList[i].name,
             productId: productDetailList[i].id,
@@ -55,6 +52,11 @@ class BasketRepository {
         );
       }
     }
+    final result = BasketEntity(
+      basketId: basketResponseModel.basketId,
+      productItems: list,
+    );
+
     return result;
   }
 
@@ -62,27 +64,13 @@ class BasketRepository {
     required String basketId,
     required String productId,
     required int quantity,
-    required BasketEntity currentBasket,
   }) async {
-    if (currentBasket.containsProduct(productId)) {
-      final itemId = currentBasket.getItemIdByProductId(productId);
-      final oldQuantity = currentBasket.getQuantityByProductId(productId);
-
-      final responseModel = await _basketApi.updateProductInBasket(
-        basketId: basketId,
-        basketItemId: itemId!,
-        quantity: oldQuantity! + quantity,
-      );
-
-      return getEntityFromModel(responseModel);
-    } else {
-      final responseModel = await _basketApi.addProductToBasket(
-        basketId: basketId,
-        productId: productId,
-        quantity: quantity,
-      );
-      return getEntityFromModel(responseModel);
-    }
+    final responseModel = await _basketApi.addProductToBasket(
+      basketId: basketId,
+      productId: productId,
+      quantity: quantity,
+    );
+    return getEntityFromModel(responseModel);
   }
 
   Future<BasketEntity> removeProductFromBasket({
@@ -98,29 +86,15 @@ class BasketRepository {
     return getEntityFromModel(responseModel);
   }
 
-  Future<BasketEntity> incrementProductQuantity({
+  Future<BasketEntity> updateProductQuantity({
     required String basketId,
     required String basketItemId,
-    required BasketEntity currentBasket,
+    required int quantity,
   }) async {
     final responseModel = await _basketApi.updateProductInBasket(
       basketId: basketId,
       basketItemId: basketItemId,
-      quantity: currentBasket.getQuantityByItemId(basketItemId)! + 1,
-    );
-
-    return getEntityFromModel(responseModel);
-  }
-
-  Future<BasketEntity> decrementProductQuantity({
-    required String basketId,
-    required String basketItemId,
-    required BasketEntity currentBasket,
-  }) async {
-    final responseModel = await _basketApi.updateProductInBasket(
-      basketId: basketId,
-      basketItemId: basketItemId,
-      quantity: currentBasket.getQuantityByItemId(basketItemId)! - 1,
+      quantity: quantity,
     );
 
     return getEntityFromModel(responseModel);
@@ -129,10 +103,7 @@ class BasketRepository {
   Future<BasketEntity> getEntityFromModel(
     Basket basketResponseModel,
   ) async {
-    final result = BasketEntity(
-      basketId: basketResponseModel.basketId,
-      productItems: [],
-    );
+    final list = <ProductCartEntity>[];
 
     if (basketResponseModel.productItems != null &&
         basketResponseModel.productItems!.isNotEmpty) {
@@ -145,7 +116,7 @@ class BasketRepository {
       final productDetailList = await _productApi.getProducts(itemsIds);
 
       for (var i = 0; i < productDetailList.length; i++) {
-        result.productItems.add(
+        list.add(
           ProductCartEntity(
             name: productDetailList[i].name,
             productId: productDetailList[i].id,
@@ -158,6 +129,10 @@ class BasketRepository {
         );
       }
     }
+    final result = BasketEntity(
+      basketId: basketResponseModel.basketId,
+      productItems: list,
+    );
     return result;
   }
 }

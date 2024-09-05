@@ -2,8 +2,6 @@ import 'package:example/domain/model/product_cart_entity.dart';
 
 abstract class CartEvent {}
 
-class CreateCart extends CartEvent {}
-
 class CheckStatusCart extends CartEvent {}
 
 class IncrementQuantityProductCart extends CartEvent {

@@ -1,4 +1,7 @@
 import 'package:example/di/app_modules.dart';
+import 'package:example/domain/repository/basket_repository.dart';
+import 'package:example/domain/repository/category_repository.dart';
+import 'package:example/domain/repository/product_repository.dart';
 import 'package:example/extensions/context_extensions.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
@@ -9,6 +12,7 @@ import 'package:example/route/router.dart' as router;
 import 'package:example/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -20,13 +24,20 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<CartBloc>(
           create: (context) => CartBloc(
-            basketRepository: inject.get(),
+            basketRepository: BasketRepository(
+              basketApi: inject.get<SFCommerceSDK>().basketApi,
+              productApi: inject.get<SFCommerceSDK>().productApi,
+            ),
           )..add(CheckStatusCart()),
         ),
         BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(
-            categoryRepository: inject.get(),
-            productRepository: inject.get(),
+            categoryRepository: CategoryRepository(
+              categoryApi: inject.get<SFCommerceSDK>().categoryApi,
+            ),
+            productRepository: ProductRepository(
+              productApi: inject.get<SFCommerceSDK>().productApi,
+            ),
           )..add(const HomeEvent.loadHomeData()),
         ),
       ],

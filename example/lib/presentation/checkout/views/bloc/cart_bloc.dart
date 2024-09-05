@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:example/domain/model/basket_entity.dart';
 import 'package:example/domain/repository/basket_repository.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_state.dart';
@@ -11,13 +12,12 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   CartBloc({
     required BasketRepository basketRepository,
   })  : _basketRepository = basketRepository,
-        super(CartInitial()) {
+        super(CartLoading()) {
     controller = AnimationController(
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
 
-    on<CreateCart>(_onCreate);
     on<CheckStatusCart>(_onCheckStatusCart);
     on<AddProductCart>(_onProductAdded);
     on<RemoveProductCart>(_onProductRemoved);
@@ -28,27 +28,26 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
 
   final BasketRepository _basketRepository;
 
-  Future<void> _onCreate(CreateCart event, Emitter<CartState> emit) async {
-    final basket = await _basketRepository.createBasket();
-    emit(CartLoaded(basket));
+  Future<BasketEntity> _onCreateBasket() {
+    return _basketRepository.createBasket();
   }
 
   Future<void> _onCheckStatusCart(
     CheckStatusCart event,
     Emitter<CartState> emit,
   ) async {
-    emit(CartLoading());
+    late BasketEntity basket;
     final basketID = await _basketRepository.getBasketId();
     if (basketID == null) {
-      add(CreateCart());
+      basket = await _onCreateBasket();
     } else {
       try {
-        final basket = await _basketRepository.getBasket(basketID);
-        emit(CartLoaded(basket));
+        basket = await _basketRepository.getBasket(basketID);
       } catch (e) {
-        add(CreateCart());
+        basket = await _onCreateBasket();
       }
     }
+    emit(CartLoaded(basket));
   }
 
   Future<void> _onProductAdded(
@@ -57,12 +56,26 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   ) async {
     final currentState = state as CartLoaded;
 
-    final newBasket = await _basketRepository.addProductToBasket(
-      basketId: currentState.currentCart.basketId,
-      productId: event.productId,
-      quantity: event.quantity,
-      currentBasket: currentState.currentCart,
-    );
+    late BasketEntity newBasket;
+
+    if (currentState.currentCart.containsProduct(event.productId)) {
+      final itemId =
+          currentState.currentCart.getItemIdByProductId(event.productId);
+      final oldQuantity =
+          currentState.currentCart.getQuantityByProductId(event.productId);
+
+      newBasket = await _basketRepository.updateProductQuantity(
+        basketId: currentState.currentCart.basketId,
+        basketItemId: itemId!,
+        quantity: oldQuantity! + event.quantity,
+      );
+    } else {
+      newBasket = await _basketRepository.addProductToBasket(
+        basketId: currentState.currentCart.basketId,
+        productId: event.productId,
+        quantity: event.quantity,
+      );
+    }
 
     unawaited(controller.forward());
 
@@ -90,10 +103,13 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   ) async {
     final currentState = state as CartLoaded;
 
-    final newBasket = await _basketRepository.incrementProductQuantity(
+    final oldQuantity = currentState.currentCart
+        .getQuantityByProductId(event.product.productId);
+
+    final newBasket = await _basketRepository.updateProductQuantity(
       basketId: currentState.currentCart.basketId,
       basketItemId: event.product.itemId,
-      currentBasket: currentState.currentCart,
+      quantity: oldQuantity! + 1,
     );
     emit(CartLoaded(newBasket));
   }
@@ -104,10 +120,13 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   ) async {
     final currentState = state as CartLoaded;
 
-    final newBasket = await _basketRepository.decrementProductQuantity(
+    final oldQuantity = currentState.currentCart
+        .getQuantityByProductId(event.product.productId);
+
+    final newBasket = await _basketRepository.updateProductQuantity(
       basketId: currentState.currentCart.basketId,
       basketItemId: event.product.itemId,
-      currentBasket: currentState.currentCart,
+      quantity: oldQuantity! - 1,
     );
     emit(CartLoaded(newBasket));
   }

@@ -1,21 +1,20 @@
-class ProductCartEntity {
-  ProductCartEntity({
-    required this.name,
-    required this.productId,
-    required this.itemId,
-    required this.image,
-    required this.pricePerUnit,
-    required this.quantity,
-    required this.currency,
-  });
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  final String name;
-  final String productId;
-  final String itemId;
-  final String image;
-  final double pricePerUnit;
-  final int quantity;
-  final String currency;
+part 'product_cart_entity.freezed.dart';
+
+@freezed
+class ProductCartEntity with _$ProductCartEntity {
+  factory ProductCartEntity({
+    required String name,
+    required String productId,
+    required String itemId,
+    required String image,
+    required double pricePerUnit,
+    required int quantity,
+    required String currency,
+  }) = _ProductCartEntity;
+
+  const ProductCartEntity._();
 
   String getTotalPrice() {
     final result = quantity * pricePerUnit;
