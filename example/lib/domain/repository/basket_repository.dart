@@ -136,11 +136,11 @@ class BasketRepository {
 
     if (basketResponseModel.productItems != null &&
         basketResponseModel.productItems!.isNotEmpty) {
-      final itemsIds = <String>[];
-
-      basketResponseModel.productItems!.map(
-        (e) => itemsIds.add(e.productId),
-      );
+      final itemsIds = basketResponseModel.productItems!
+          .map(
+            (e) => e.productId,
+          )
+          .toList();
 
       final productDetailList = await _productApi.getProducts(itemsIds);
 

@@ -1,3 +1,4 @@
+import 'package:example/domain/repository/auth_repository.dart';
 import 'package:example/domain/repository/basket_repository.dart';
 import 'package:example/domain/repository/category_repository.dart';
 import 'package:example/domain/repository/product_repository.dart';
@@ -28,6 +29,11 @@ abstract final class AppModules {
       ..registerFactory<CategoryRepository>(
         () => CategoryRepository(
           categoryApi: inject.get<SFCommerceSDK>().categoryApi,
+        ),
+      )
+      ..registerFactory<AuthRepository>(
+        () => AuthRepository(
+          authApi: inject.get<SFCommerceSDK>().authApi,
         ),
       );
   }
