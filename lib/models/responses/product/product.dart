@@ -1,150 +1,111 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sf_commerce_sdk/models/responses/product/image.dart';
+import 'package:sf_commerce_sdk/models/responses/product/product_type.dart';
 
 part 'product.freezed.dart';
-part 'product.g.dart';
 
 @freezed
 class Product with _$Product {
   factory Product({
     required String id,
+    required String brand,
     required String currency,
+    required List<ImageBundle> images,
+
+    /// The number of item in stock that are available to sell.
+    required int availableStock,
+
+    /// The real number of items in stock.
+    required int stock,
+    required int minOrderQuantity,
     required String name,
-    required String pageDescription,
-    required String pageTitle,
     required double price,
     required double pricePerUnit,
-    required String shortDescription,
-    required int? minOrderQuantity,
-    required Inventory inventory,
-    required List<ImageGroup> imageGroups,
-
-    /// Values of this product (color, size)
-    required VariationValues? variationValues,
-    required List<ProductVariationAttribute>? variationAttributes,
-    required List<Variant>? variants,
+    required String slugUrl,
+    required Set<ProductType> productTypes,
+    required String? shortDescription,
+    required String? longDescription,
+    required String? category,
   }) = _Product;
 
-  const Product._();
+  factory Product.fromJson(Map<String, dynamic> json) {
+    final images = _getImages(json);
+    final inventory = json['inventory'] as Map<String, dynamic>;
+    final availableStock = (inventory['availableStock'] as num).toInt();
+    final stock = (inventory['stockLevel'] as num).toInt();
+    final productTypes = (json['type'] as Map<String, dynamic>)
+        .entries
+        .map((e) => e.key)
+        .map(ProductType.fromValue)
+        .toSet();
 
-  factory Product.fromJson(Map<String, dynamic> json) =>
-      _$ProductFromJson(json);
-
-  static List<String> getImagesByColor({
-    required String selectedColor,
-    required List<ImageGroup> imageGroups,
-    String viewType = 'medium',
-  }) {
-    final imageLinks = <String>[];
-
-    final filteredImageGroups =
-        imageGroups.where((imageGroup) => imageGroup.viewType == viewType);
-
-    for (final imageGroup in filteredImageGroups) {
-      for (final image in imageGroup.images) {
-        if (image.link.contains(selectedColor)) {
-          imageLinks.add(image.link);
-        }
-      }
-    }
-
-    return imageLinks;
+    return Product(
+      id: json['id'] as String,
+      brand: json['brand'] as String,
+      currency: json['currency'] as String,
+      images: images,
+      availableStock: availableStock,
+      stock: stock,
+      category: json['primaryCategoryId'] as String?,
+      longDescription: json['longDescription'] as String?,
+      minOrderQuantity: (json['minOrderQuantity'] as num).toInt(),
+      name: json['name'] as String,
+      price: (json['price'] as num).toDouble(),
+      pricePerUnit: (json['pricePerUnit'] as num).toDouble(),
+      productTypes: productTypes,
+      shortDescription: json['shortDescription'] as String?,
+      slugUrl: json['slugUrl'] as String,
+    );
   }
 
-  static List<Variant> getVariantsByColor(
-    String selectedColor,
-    List<Variant> variants,
-  ) {
-    return variants.where((variant) {
-      return variant.variationValues.color == selectedColor;
-    }).toList();
-  }
-
-  static List<String> getAvailableSizesForColor(
-    String selectedColor,
-    List<Variant> variants,
-  ) {
-    final filteredVariants = getVariantsByColor(selectedColor, variants);
-
-    final availableValuesSizes = filteredVariants
-        .where((variant) => variant.orderable)
-        .map((variant) => variant.variationValues.size!)
+  static List<ImageBundle> _getImages(Map<String, dynamic> json) {
+    return (json['imageGroups'] as List)
+        .cast<Map<String, dynamic>>()
+        .map(ImageBundle.fromJson)
         .toList();
-
-    return availableValuesSizes;
   }
-}
 
-@freezed
-class Variant with _$Variant {
-  factory Variant({
-    required bool orderable,
-    required int price,
-    required String productId,
-    required VariationValues variationValues,
-  }) = _Variant;
+  // static List<String> getImagesByColor({
+  //   required String selectedColor,
+  //   required List<ImageGroup> imageGroups,
+  //   String viewType = 'medium',
+  // }) {
+  //   final imageLinks = <String>[];
 
-  factory Variant.fromJson(Map<String, dynamic> json) =>
-      _$VariantFromJson(json);
-}
+  //   final filteredImageGroups =
+  //       imageGroups.where((imageGroup) => imageGroup.viewType == viewType);
 
-@freezed
-class VariationValues with _$VariationValues {
-  factory VariationValues({
-    required String? color,
-    required String? size,
-  }) = _VariationValues;
+  //   for (final imageGroup in filteredImageGroups) {
+  //     for (final image in imageGroup.images) {
+  //       if (image.link.contains(selectedColor)) {
+  //         imageLinks.add(image.link);
+  //       }
+  //     }
+  //   }
 
-  factory VariationValues.fromJson(Map<String, dynamic> json) =>
-      _$VariationValuesFromJson(json);
-}
+  //   return imageLinks;
+  // }
 
-@freezed
-class Inventory with _$Inventory {
-  factory Inventory({
-    required int ats,
-    required bool backorderable,
-    required String id,
-    required bool orderable,
-    required bool preorderable,
-    required int stockLevel,
-  }) = _Inventory;
+  // static List<Variant> getVariantsByColor(
+  //   String selectedColor,
+  //   List<Variant> variants,
+  // ) {
+  //   return variants.where((variant) {
+  //     return variant.variationValues.color == selectedColor;
+  //   }).toList();
+  // }
 
-  factory Inventory.fromJson(Map<String, dynamic> json) =>
-      _$InventoryFromJson(json);
-}
+  // static List<String> getAvailableSizesForColor(
+  //   String selectedColor,
+  //   List<Variant> variants,
+  // ) {
+  //   final filteredVariants = getVariantsByColor(selectedColor, variants);
 
-@freezed
-class ImageGroup with _$ImageGroup {
-  factory ImageGroup({
-    required List<Image> images,
-    required String viewType,
-  }) = _ImageGroup;
+  //   final availableValuesSizes = filteredVariants
+  //       .where((variant) => variant.orderable)
+  //       .map((variant) => variant.variationValues.size!)
+  //       .toList();
 
-  factory ImageGroup.fromJson(Map<String, dynamic> json) =>
-      _$ImageGroupFromJson(json);
-}
-
-@freezed
-class ProductVariationAttribute with _$ProductVariationAttribute {
-  factory ProductVariationAttribute({
-    required String id,
-    required String name,
-    required List<ValuesVariation> values,
-  }) = _ProductVariationAttribute;
-
-  factory ProductVariationAttribute.fromJson(Map<String, dynamic> json) =>
-      _$ProductVariationAttributeFromJson(json);
-}
-
-@freezed
-class ValuesVariation with _$ValuesVariation {
-  factory ValuesVariation({
-    required String name,
-    required bool orderable,
-    required String value,
-  }) = _ValuesVariation;
-
-  factory ValuesVariation.fromJson(Map<String, dynamic> json) =>
-      _$ValuesVariationFromJson(json);
+  //   return availableValuesSizes;
+  // }
 }
