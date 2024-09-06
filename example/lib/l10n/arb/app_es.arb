@@ -4,5 +4,11 @@
   "categories": "Categorías",
   "cart": "Cesta",
   "onSale": "En venta",
-  "skip": "Saltar"
+  "skip": "Saltar",
+  "onBoarding_title1": "Encuentra el artículo que has estado buscando",
+  "onBoarding_subtitle1": "Aquí verás una gran variedad de productos, cuidadosamente clasificados para una experiencia de navegación sin problemas.",
+  "onBoarding_title2": "Llena esas bolsas de compras",
+  "onBoarding_subtitle2": "Agrega cualquier artículo que desees a tu carrito, o guárdalo en tu lista de deseos, para que no lo pierdas en tus futuras compras.",
+  "onBoarding_title3": "Pago rápido y seguro",
+  "onBoarding_subtitle3": "Hay muchas opciones de pago disponibles para tu comodidad."
 }

@@ -120,6 +120,42 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Saltar'**
   String get skip;
+
+  /// No description provided for @onBoarding_title1.
+  ///
+  /// In es, this message translates to:
+  /// **'Encuentra el artículo que has estado buscando'**
+  String get onBoarding_title1;
+
+  /// No description provided for @onBoarding_subtitle1.
+  ///
+  /// In es, this message translates to:
+  /// **'Aquí verás una gran variedad de productos, cuidadosamente clasificados para una experiencia de navegación sin problemas.'**
+  String get onBoarding_subtitle1;
+
+  /// No description provided for @onBoarding_title2.
+  ///
+  /// In es, this message translates to:
+  /// **'Llena esas bolsas de compras'**
+  String get onBoarding_title2;
+
+  /// No description provided for @onBoarding_subtitle2.
+  ///
+  /// In es, this message translates to:
+  /// **'Agrega cualquier artículo que desees a tu carrito, o guárdalo en tu lista de deseos, para que no lo pierdas en tus futuras compras.'**
+  String get onBoarding_subtitle2;
+
+  /// No description provided for @onBoarding_title3.
+  ///
+  /// In es, this message translates to:
+  /// **'Pago rápido y seguro'**
+  String get onBoarding_title3;
+
+  /// No description provided for @onBoarding_subtitle3.
+  ///
+  /// In es, this message translates to:
+  /// **'Hay muchas opciones de pago disponibles para tu comodidad.'**
+  String get onBoarding_subtitle3;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
