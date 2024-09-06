@@ -11,3 +11,7 @@ class GetAuthorizationCodeException extends BaseApiException {
 class GetAccessTokenException extends BaseApiException {
   const GetAccessTokenException([super.message]);
 }
+
+class GetRefreshTokenException extends BaseApiException {
+  const GetRefreshTokenException([super.message]);
+}

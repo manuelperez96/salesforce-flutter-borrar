@@ -11,8 +11,6 @@ class TokenStorage {
 
   @visibleForTesting
   static const tokenKey = 'tokenKey';
-  @visibleForTesting
-  static const basketKey = 'basketIdKey';
 
   Future<void> saveToken(AccessToken token) {
     return _storage.write(key: tokenKey, value: jsonEncode(token.toJson()));
@@ -26,17 +24,8 @@ class TokenStorage {
     );
   }
 
-  Future<void> saveBasketID(String basketID) {
-    return _storage.write(key: basketKey, value: basketID);
-  }
-
-  Future<String?> getBasketID() {
-    return _storage.read(key: basketKey);
-  }
-
   Future<void> clear() async {
     await _storage.delete(key: tokenKey);
-    await _storage.delete(key: basketKey);
     return;
   }
 }

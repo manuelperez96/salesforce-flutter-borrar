@@ -48,26 +48,6 @@ class MockTokenStorage extends _i1.Mock implements _i2.TokenStorage {
       ) as _i3.Future<_i4.AccessToken?>);
 
   @override
-  _i3.Future<void> saveBasketID(String? basketID) => (super.noSuchMethod(
-        Invocation.method(
-          #saveBasketID,
-          [basketID],
-        ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
-
-  @override
-  _i3.Future<String?> getBasketID() => (super.noSuchMethod(
-        Invocation.method(
-          #getBasketID,
-          [],
-        ),
-        returnValue: _i3.Future<String?>.value(),
-        returnValueForMissingStub: _i3.Future<String?>.value(),
-      ) as _i3.Future<String?>);
-
-  @override
   _i3.Future<void> clear() => (super.noSuchMethod(
         Invocation.method(
           #clear,

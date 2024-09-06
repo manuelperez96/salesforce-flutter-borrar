@@ -15,4 +15,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get onSale => 'En venta';
+
+  @override
+  String get skip => 'Saltar';
 }

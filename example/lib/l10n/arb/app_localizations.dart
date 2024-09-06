@@ -114,6 +114,12 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'En venta'**
   String get onSale;
+
+  /// No description provided for @skip.
+  ///
+  /// In es, this message translates to:
+  /// **'Saltar'**
+  String get skip;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

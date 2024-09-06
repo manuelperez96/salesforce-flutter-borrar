@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sf_commerce_sdk/models/responses/basket/customer_info.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/product_item.dart';
-import 'package:sf_commerce_sdk/models/responses/basket/shipments.dart';
-import 'package:sf_commerce_sdk/models/responses/basket/shipping_items.dart';
+import 'package:sf_commerce_sdk/models/responses/customer/customer_info.dart';
+import 'package:sf_commerce_sdk/models/responses/shipment/shipments.dart';
+import 'package:sf_commerce_sdk/models/responses/shipment/shipping_items.dart';
 
 part 'basket.freezed.dart';
 part 'basket.g.dart';

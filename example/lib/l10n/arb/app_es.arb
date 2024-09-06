@@ -3,5 +3,6 @@
   "shop": "Tienda",
   "categories": "Categorías",
   "cart": "Cesta",
-  "onSale": "En venta"
+  "onSale": "En venta",
+  "skip": "Saltar"
 }

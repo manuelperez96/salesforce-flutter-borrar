@@ -2,6 +2,7 @@ import 'package:example/components/product/horizontal_product_card.dart';
 import 'package:example/constants.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_state.dart';
+import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +13,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
-        if (state is CartLoading || state is CartInitial) {
+        if (state is CartLoading) {
           return const Scaffold(
             body: Center(
               child: CircularProgressIndicator(),
@@ -20,7 +21,7 @@ class CartScreen extends StatelessWidget {
           );
         } else {
           final currentState = state as CartLoaded;
-          if (currentState.products.isEmpty) {
+          if (currentState.currentCart.productItems.isEmpty) {
             return const Scaffold(
               body: Center(
                 child: Text('Cart is empty'),
@@ -30,7 +31,7 @@ class CartScreen extends StatelessWidget {
             return Scaffold(
               body: ListView.builder(
                 padding: const EdgeInsets.all(defaultPadding),
-                itemCount: state.products.length + 1,
+                itemCount: state.currentCart.productItems.length + 1,
                 itemBuilder: (context, index) {
                   if (index == 0) {
                     return SizedBox(
@@ -38,12 +39,14 @@ class CartScreen extends StatelessWidget {
                     );
                   }
                   return HorizontalProductCard(
-                    productCart: state.products[index - 1],
+                    product: state.currentCart.productItems[index - 1],
                   );
                 },
               ),
               floatingActionButton: FloatingActionButton.extended(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, checkoutScreenRoute);
+                },
                 label: const Row(
                   children: [
                     Text('Checkout'),

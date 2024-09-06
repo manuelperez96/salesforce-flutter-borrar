@@ -3,4 +3,5 @@
 - Internacionalization - Manu
 - Api Internacionalization - Manu
 - Create product detail page in example. - Patri
-- Basket (Checkout: cerrar la cesta) - Carlos
+- Basket: 
+    --En la pantalla del carrito no se está teniendo en cuenta que el precio por unidad cambia según las cantidades del producto

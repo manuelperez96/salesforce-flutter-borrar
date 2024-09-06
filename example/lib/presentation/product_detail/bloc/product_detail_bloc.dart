@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:example/domain/repository/product_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sf_commerce_sdk/models/responses/product/product.dart';
-import 'package:sf_commerce_sdk/repository/product_repository.dart';
 
 part 'product_detail_bloc.freezed.dart';
 part 'product_detail_event.dart';

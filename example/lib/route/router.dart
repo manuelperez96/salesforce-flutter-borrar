@@ -1,4 +1,5 @@
 import 'package:example/components/bottom_navigation_bar/entry_point.dart';
+import 'package:example/presentation/checkout/checkout_screen.dart';
 import 'package:example/presentation/checkout/views/cart_screen.dart';
 import 'package:example/presentation/discover/views/discover_screen.dart';
 import 'package:example/presentation/home/views/home_screen.dart';
@@ -40,6 +41,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case cartScreenRoute:
       return MaterialPageRoute(
         builder: (context) => const CartScreen(),
+      );
+    case checkoutScreenRoute:
+      return MaterialPageRoute(
+        builder: (context) => const CheckoutScreen(),
       );
     default:
       return MaterialPageRoute(
