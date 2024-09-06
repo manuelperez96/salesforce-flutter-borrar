@@ -36,4 +36,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get onBoarding_subtitle3 => 'Hay muchas opciones de pago disponibles para tu comodidad.';
+
+  @override
+  String get find => 'Encuentra...';
 }

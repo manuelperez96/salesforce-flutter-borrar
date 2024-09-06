@@ -156,6 +156,12 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Hay muchas opciones de pago disponibles para tu comodidad.'**
   String get onBoarding_subtitle3;
+
+  /// No description provided for @find.
+  ///
+  /// In es, this message translates to:
+  /// **'Encuentra...'**
+  String get find;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
