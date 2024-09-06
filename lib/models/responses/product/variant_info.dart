@@ -44,7 +44,7 @@ class VariationAttributes with _$VariationAttributes {
   factory VariationAttributes.fromJson(Map<String, dynamic> json) {
     return VariationAttributes(
       id: json['id'] as String,
-      name: json['color'] as String,
+      name: json['name'] as String,
       valueKeys: (json['values'] as List).cast<Map<String, dynamic>>().map(
         (valueJson) {
           return ValueKey(

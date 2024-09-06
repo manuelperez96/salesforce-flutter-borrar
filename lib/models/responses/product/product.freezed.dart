@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Product {
   String get id => throw _privateConstructorUsedError;
-  String get brand => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
   List<ImageBundle> get images => throw _privateConstructorUsedError;
 
@@ -35,6 +34,7 @@ mixin _$Product {
   String? get shortDescription => throw _privateConstructorUsedError;
   String? get longDescription => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
+  String? get brand => throw _privateConstructorUsedError;
   VariantInfo? get variantInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -48,7 +48,6 @@ abstract class $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String brand,
       String currency,
       List<ImageBundle> images,
       int availableStock,
@@ -62,6 +61,7 @@ abstract class $ProductCopyWith<$Res> {
       String? shortDescription,
       String? longDescription,
       String? category,
+      String? brand,
       VariantInfo? variantInfo});
 
   $VariantInfoCopyWith<$Res>? get variantInfo;
@@ -81,7 +81,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @override
   $Res call({
     Object? id = null,
-    Object? brand = null,
     Object? currency = null,
     Object? images = null,
     Object? availableStock = null,
@@ -95,16 +94,13 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? shortDescription = freezed,
     Object? longDescription = freezed,
     Object? category = freezed,
+    Object? brand = freezed,
     Object? variantInfo = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
               as String,
       currency: null == currency
           ? _value.currency
@@ -158,6 +154,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String?,
       variantInfo: freezed == variantInfo
           ? _value.variantInfo
           : variantInfo // ignore: cast_nullable_to_non_nullable
@@ -187,7 +187,6 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String brand,
       String currency,
       List<ImageBundle> images,
       int availableStock,
@@ -201,6 +200,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String? shortDescription,
       String? longDescription,
       String? category,
+      String? brand,
       VariantInfo? variantInfo});
 
   @override
@@ -219,7 +219,6 @@ class __$$ProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? brand = null,
     Object? currency = null,
     Object? images = null,
     Object? availableStock = null,
@@ -233,16 +232,13 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? shortDescription = freezed,
     Object? longDescription = freezed,
     Object? category = freezed,
+    Object? brand = freezed,
     Object? variantInfo = freezed,
   }) {
     return _then(_$ProductImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
               as String,
       currency: null == currency
           ? _value.currency
@@ -296,6 +292,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String?,
       variantInfo: freezed == variantInfo
           ? _value.variantInfo
           : variantInfo // ignore: cast_nullable_to_non_nullable
@@ -309,7 +309,6 @@ class __$$ProductImplCopyWithImpl<$Res>
 class _$ProductImpl extends _Product {
   _$ProductImpl(
       {required this.id,
-      required this.brand,
       required this.currency,
       required final List<ImageBundle> images,
       required this.availableStock,
@@ -323,6 +322,7 @@ class _$ProductImpl extends _Product {
       required this.shortDescription,
       required this.longDescription,
       required this.category,
+      this.brand,
       this.variantInfo})
       : _images = images,
         _productTypes = productTypes,
@@ -330,8 +330,6 @@ class _$ProductImpl extends _Product {
 
   @override
   final String id;
-  @override
-  final String brand;
   @override
   final String currency;
   final List<ImageBundle> _images;
@@ -374,11 +372,13 @@ class _$ProductImpl extends _Product {
   @override
   final String? category;
   @override
+  final String? brand;
+  @override
   final VariantInfo? variantInfo;
 
   @override
   String toString() {
-    return 'Product(id: $id, brand: $brand, currency: $currency, images: $images, availableStock: $availableStock, stock: $stock, minOrderQuantity: $minOrderQuantity, name: $name, price: $price, pricePerUnit: $pricePerUnit, slugUrl: $slugUrl, productTypes: $productTypes, shortDescription: $shortDescription, longDescription: $longDescription, category: $category, variantInfo: $variantInfo)';
+    return 'Product(id: $id, currency: $currency, images: $images, availableStock: $availableStock, stock: $stock, minOrderQuantity: $minOrderQuantity, name: $name, price: $price, pricePerUnit: $pricePerUnit, slugUrl: $slugUrl, productTypes: $productTypes, shortDescription: $shortDescription, longDescription: $longDescription, category: $category, brand: $brand, variantInfo: $variantInfo)';
   }
 
   @override
@@ -387,7 +387,6 @@ class _$ProductImpl extends _Product {
         (other.runtimeType == runtimeType &&
             other is _$ProductImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.brand, brand) || other.brand == brand) &&
             (identical(other.currency, currency) ||
                 other.currency == currency) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
@@ -409,6 +408,7 @@ class _$ProductImpl extends _Product {
                 other.longDescription == longDescription) &&
             (identical(other.category, category) ||
                 other.category == category) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
             (identical(other.variantInfo, variantInfo) ||
                 other.variantInfo == variantInfo));
   }
@@ -417,7 +417,6 @@ class _$ProductImpl extends _Product {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      brand,
       currency,
       const DeepCollectionEquality().hash(_images),
       availableStock,
@@ -431,6 +430,7 @@ class _$ProductImpl extends _Product {
       shortDescription,
       longDescription,
       category,
+      brand,
       variantInfo);
 
   @JsonKey(ignore: true)
@@ -443,7 +443,6 @@ class _$ProductImpl extends _Product {
 abstract class _Product extends Product {
   factory _Product(
       {required final String id,
-      required final String brand,
       required final String currency,
       required final List<ImageBundle> images,
       required final int availableStock,
@@ -457,13 +456,12 @@ abstract class _Product extends Product {
       required final String? shortDescription,
       required final String? longDescription,
       required final String? category,
+      final String? brand,
       final VariantInfo? variantInfo}) = _$ProductImpl;
   _Product._() : super._();
 
   @override
   String get id;
-  @override
-  String get brand;
   @override
   String get currency;
   @override
@@ -494,6 +492,8 @@ abstract class _Product extends Product {
   String? get longDescription;
   @override
   String? get category;
+  @override
+  String? get brand;
   @override
   VariantInfo? get variantInfo;
   @override

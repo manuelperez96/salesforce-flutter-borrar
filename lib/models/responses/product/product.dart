@@ -9,7 +9,6 @@ part 'product.freezed.dart';
 class Product with _$Product {
   factory Product({
     required String id,
-    required String brand,
     required String currency,
     required List<ImageBundle> images,
 
@@ -27,6 +26,7 @@ class Product with _$Product {
     required String? shortDescription,
     required String? longDescription,
     required String? category,
+    String? brand,
     VariantInfo? variantInfo,
   }) = _Product;
 
@@ -35,15 +35,16 @@ class Product with _$Product {
   factory Product.fromJson(Map<String, dynamic> json) {
     final images = _getImages(json);
     final inventory = json['inventory'] as Map<String, dynamic>;
-    final availableStock = (inventory['availableStock'] as num).toInt();
+    final availableStock = (inventory['ats'] as num).toInt();
     final stock = (inventory['stockLevel'] as num).toInt();
     final productTypes = ProductType.fromJson(
       json['type'] as Map<String, dynamic>,
     );
 
+
     return Product(
       id: json['id'] as String,
-      brand: json['brand'] as String,
+      brand: json['brand'] as String?,
       currency: json['currency'] as String,
       images: images,
       availableStock: availableStock,
