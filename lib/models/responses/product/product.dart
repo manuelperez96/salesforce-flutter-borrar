@@ -37,11 +37,9 @@ class Product with _$Product {
     final inventory = json['inventory'] as Map<String, dynamic>;
     final availableStock = (inventory['availableStock'] as num).toInt();
     final stock = (inventory['stockLevel'] as num).toInt();
-    final productTypes = (json['type'] as Map<String, dynamic>)
-        .entries
-        .map((e) => e.key)
-        .map(ProductType.fromValue)
-        .toSet();
+    final productTypes = ProductType.fromJson(
+      json['type'] as Map<String, dynamic>,
+    );
 
     return Product(
       id: json['id'] as String,

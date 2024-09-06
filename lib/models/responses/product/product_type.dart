@@ -7,6 +7,10 @@ enum ProductType {
   variant,
   variationGroup;
 
+  static Set<ProductType> fromJson(Map<String, dynamic> json) {
+    return json.entries.map((e) => e.key).map(ProductType.fromValue).toSet();
+  }
+
   static ProductType fromValue(String value) {
     return switch (value) {
       'master' => ProductType.master,

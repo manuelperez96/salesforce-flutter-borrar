@@ -25,10 +25,10 @@ class ProductPreviewByCategory with _$ProductPreviewByCategory {
   }) {
     final image = Image.fromJson(json['image'] as Map<String, dynamic>);
     final productId = (json['representedProduct'] as Map)['id'] as String;
-    final productType = (json['productType'] as List<dynamic>)
-        .cast<String>()
-        .map(ProductType.fromValue)
-        .toSet();
+    final productType = ProductType.fromJson(
+      json['productType'] as Map<String, dynamic>,
+    );
+
     final representedId = (json['representedProduct'] as Map)['id'] as String;
     final representedIdList = (json['representedProducts'] as List)
         .cast<Map<String, dynamic>>()
