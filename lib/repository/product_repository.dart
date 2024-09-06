@@ -43,6 +43,7 @@ class ProductRepository extends Repository {
 
       return result;
     } catch (e) {
+      print(e);
       throw UnableToGetProductException(e);
     }
   }

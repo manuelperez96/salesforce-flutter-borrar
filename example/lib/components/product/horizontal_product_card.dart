@@ -30,7 +30,7 @@ class HorizontalProductCard extends StatelessWidget {
           AspectRatio(
             aspectRatio: 1.15,
             child: NetworkImageWithLoader(
-              productCart.product.imageGroups[0].images[0].link,
+              productCart.product.images.first.images.first.link,
               radius: defaultBorderRadius,
             ),
           ),

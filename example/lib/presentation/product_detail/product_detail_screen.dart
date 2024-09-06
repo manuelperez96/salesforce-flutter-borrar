@@ -27,10 +27,10 @@ class ProductDetailScreen extends StatelessWidget {
         }
         final initialProduct = state.initialProduct!;
         final productQuantity = state.productQuantity!;
-        final imageByColor = Product.getImagesByColor(
-          selectedColor: state.selectedColor ?? '', // For items without color
-          imageGroups: initialProduct.imageGroups,
-        );
+        // final imageByColor = Product.getImagesByColor(
+        //   selectedColor: state.selectedColor ?? '', // For items without color
+        //   imageGroups: initialProduct.imageGroups,
+        // );
 
         return Scaffold(
           bottomNavigationBar: CartButton(
@@ -57,12 +57,12 @@ class ProductDetailScreen extends StatelessWidget {
                 SliverAppBar(
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   floating: true,
-                  title: Text(initialProduct.pageTitle),
+                  title: Text(initialProduct.shortDescription ?? ''),
                   actions: const [
                     //      BookmarkIconButton(product: state.product!),
                   ],
                 ),
-                ProductImages(images: imageByColor),
+                //ProductImages(images: imageByColor),
                 SliverPadding(
                   padding: const EdgeInsets.all(defaultPadding),
                   sliver: SliverToBoxAdapter(
@@ -75,7 +75,7 @@ class ProductDetailScreen extends StatelessWidget {
                           children: [
                             const ProductDetailQuantitySelector(),
                             Text(
-                              'Stock: ${initialProduct.inventory.stockLevel}',
+                              'Stock: ${initialProduct.availableStock}',
                             ),
                           ],
                         ),
@@ -87,7 +87,7 @@ class ProductDetailScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(defaultPadding),
                   sliver: SliverToBoxAdapter(
                     child: Text(
-                      initialProduct.pageTitle,
+                      initialProduct.name,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
@@ -95,11 +95,11 @@ class ProductDetailScreen extends StatelessWidget {
                 SliverPadding(
                   padding: const EdgeInsets.all(defaultPadding),
                   sliver: SliverToBoxAdapter(
-                    child: Text(initialProduct.pageDescription),
+                    child: Text(initialProduct.shortDescription ?? ''),
                   ),
                 ),
                 const SliverToBoxAdapter(child: Divider()),
-                const SliverToBoxAdapter(child: ProductSizeColorSelectors()),
+                //const SliverToBoxAdapter(child: ProductSizeColorSelectors()),
                 const SliverToBoxAdapter(
                   child: SizedBox(height: defaultPadding),
                 ),

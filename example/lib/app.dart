@@ -25,6 +25,7 @@ class App extends StatelessWidget {
           )..add(CheckStatusCart()),
         ),
         BlocProvider<HomeBloc>(
+          lazy: false,
           create: (context) => HomeBloc(
             categoryRepository: inject<SFCommerceSDK>().categoryRepository,
             productRepository: inject<SFCommerceSDK>().productRepository,

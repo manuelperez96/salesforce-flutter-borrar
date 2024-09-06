@@ -35,8 +35,8 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
           initialProduct: response,
           status: ProductDetailStatus.loaded,
           productQuantity: response.minOrderQuantity ?? 1,
-          selectedColor: response.variationValues?.color,
-          selectedSize: response.variationValues?.size,
+          //selectedColor: response.variationValues?.color,
+          //selectedSize: response.variationValues?.size,
           selectedProductId: response.id,
         ),
       );
@@ -56,39 +56,39 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     _SelectedColor event,
     Emitter<ProductDetailState> emit,
   ) {
-    late final String selectedProductId;
-    for (final variant in state.initialProduct!.variants!) {
-      if (variant.variationValues.color == state.selectedColor &&
-          variant.variationValues.size == state.selectedSize) {
-        selectedProductId = variant.productId;
-      }
-    }
+    // late final String selectedProductId;
+    // for (final variant in state.initialProduct!.variants!) {
+    //   if (variant.variationValues.color == state.selectedColor &&
+    //       variant.variationValues.size == state.selectedSize) {
+    //     selectedProductId = variant.productId;
+    //   }
+    // }
 
-    emit(
-      state.copyWith(
-        selectedColor: event.color,
-        selectedProductId: selectedProductId,
-      ),
-    );
+    // emit(
+    //   state.copyWith(
+    //     selectedColor: event.color,
+    //     selectedProductId: selectedProductId,
+    //   ),
+    // );
   }
 
   void _onUpdateSelectedSize(
     _SelectedSize event,
     Emitter<ProductDetailState> emit,
   ) {
-    late final String selectedProductId;
-    for (final variant in state.initialProduct!.variants!) {
-      if (variant.variationValues.color == state.selectedColor &&
-          variant.variationValues.size == state.selectedSize) {
-        selectedProductId = variant.productId;
-      }
-    }
+    // late final String selectedProductId;
+    // for (final variant in state.initialProduct!.variants!) {
+    //   if (variant.variationValues.color == state.selectedColor &&
+    //       variant.variationValues.size == state.selectedSize) {
+    //     selectedProductId = variant.productId;
+    //   }
+    // }
 
-    emit(
-      state.copyWith(
-        selectedSize: event.size,
-        selectedProductId: selectedProductId,
-      ),
-    );
+    // emit(
+    //   state.copyWith(
+    //     selectedSize: event.size,
+    //     selectedProductId: selectedProductId,
+    //   ),
+    // );
   }
 }

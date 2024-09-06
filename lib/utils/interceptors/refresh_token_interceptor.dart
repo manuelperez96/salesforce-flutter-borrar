@@ -3,7 +3,7 @@ import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart'
 import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
 
 class RefreshTokenInterceptor extends QueuedInterceptor {
-   RefreshTokenInterceptor({
+  RefreshTokenInterceptor({
     required String organizationId,
     required String host,
     required TokenStorage storage,
@@ -90,8 +90,9 @@ class RefreshTokenInterceptor extends QueuedInterceptor {
 
   Future<void> _addAuthHeader(Map<String, dynamic> headers) async {
     final token = await _storage.getToken();
-    if (token == null) return; 
-    headers['Authorization'] =
-        'Bearer ${(await _storage.getToken())!.accessToken}';
+    if (token != null) {
+      headers['Authorization'] =
+          'Bearer ${(await _storage.getToken())!.accessToken}';
+    }
   }
 }
