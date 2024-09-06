@@ -4,6 +4,7 @@ import 'package:example/constants.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/product/views/added_to_cart_message_screen.dart';
+import 'package:example/presentation/product/views/components/product_images.dart';
 import 'package:example/presentation/product/views/components/unit_price.dart';
 import 'package:example/presentation/product_detail/bloc/product_detail_bloc.dart';
 import 'package:example/presentation/product_detail/components/product_detail_quantity_selector.dart';
@@ -55,11 +56,10 @@ class ProductDetailScreen extends StatelessWidget {
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   floating: true,
                   title: Text(initialProduct.shortDescription ?? ''),
-                  actions: const [
-                    //      BookmarkIconButton(product: state.product!),
-                  ],
                 ),
-                //ProductImages(images: imageByColor),
+                ProductImages(
+                  images: initialProduct.representativeUrlImages,
+                ),
                 SliverPadding(
                   padding: const EdgeInsets.all(defaultPadding),
                   sliver: SliverToBoxAdapter(
