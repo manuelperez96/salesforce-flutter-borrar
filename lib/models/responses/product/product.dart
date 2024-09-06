@@ -64,7 +64,8 @@ class Product with _$Product {
   bool get hasVariants => variantInfo != null;
 
   List<Image> get representativeImage => images.first.images;
-  List<String> get representativeUrlImages => representativeImage.map((e) => e.link,).toList();
+  List<String> get representativeUrlImages =>
+      representativeImage.map((e) => e.link).toList();
 
   static List<ImageBundle> _getImages(Map<String, dynamic> json) {
     return (json['imageGroups'] as List)
