@@ -39,7 +39,8 @@
 //                   left: index == 0 ? defaultPadding : defaultPadding / 2,
 //                 ),
 //                 child: SizeButton(
-//                   isActive: availableValuesSizes.contains(sizes[index].value),
+//                   isActive: availableValuesSizes.
+// contains(sizes[index].value),
 //                   text: sizes[index].name,
 //                   isSelected: selectedSize == sizes[index].value,
 //                   press: () => onPressed(sizes[index]),
