@@ -12,8 +12,14 @@ _$BasketImpl _$$BasketImplFromJson(Map<String, dynamic> json) => _$BasketImpl(
       adjustedShippingTotalTax:
           (json['adjustedShippingTotalTax'] as num?)?.toInt(),
       agentBasket: json['agentBasket'] as bool,
+      billingAddress: json['billingAddress'] == null
+          ? null
+          : IngAddress.fromJson(json['billingAddress'] as Map<String, dynamic>),
       basketId: json['basketId'] as String,
       channelType: json['channelType'] as String,
+      couponItems: (json['couponItems'] as List<dynamic>?)
+          ?.map((e) => CouponItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
       creationDate: DateTime.parse(json['creationDate'] as String),
       currency: json['currency'] as String,
       customerInfo:
@@ -21,11 +27,14 @@ _$BasketImpl _$$BasketImplFromJson(Map<String, dynamic> json) => _$BasketImpl(
       lastModified: DateTime.parse(json['lastModified'] as String),
       merchandizeTotalTax: (json['merchandizeTotalTax'] as num?)?.toInt(),
       orderTotal: (json['orderTotal'] as num?)?.toInt(),
+      paymentInstruments: (json['paymentInstruments'] as List<dynamic>?)
+          ?.map((e) => PaymentInstrument.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      productItems: (json['productItems'] as List<dynamic>?)
+          ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
+          .toList(),
       productSubTotal: (json['productSubTotal'] as num).toInt(),
       productTotal: (json['productTotal'] as num).toInt(),
-      productItems: (json['productItems'] as List<dynamic>?)
-          ?.map((e) => ProductItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
       shipments: (json['shipments'] as List<dynamic>)
           .map((e) => Shipment.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -43,17 +52,20 @@ Map<String, dynamic> _$$BasketImplToJson(_$BasketImpl instance) =>
       'adjustedMerchandizeTotalTax': instance.adjustedMerchandizeTotalTax,
       'adjustedShippingTotalTax': instance.adjustedShippingTotalTax,
       'agentBasket': instance.agentBasket,
+      'billingAddress': instance.billingAddress,
       'basketId': instance.basketId,
       'channelType': instance.channelType,
+      'couponItems': instance.couponItems,
       'creationDate': instance.creationDate.toIso8601String(),
       'currency': instance.currency,
       'customerInfo': instance.customerInfo,
       'lastModified': instance.lastModified.toIso8601String(),
       'merchandizeTotalTax': instance.merchandizeTotalTax,
       'orderTotal': instance.orderTotal,
+      'paymentInstruments': instance.paymentInstruments,
+      'productItems': instance.productItems,
       'productSubTotal': instance.productSubTotal,
       'productTotal': instance.productTotal,
-      'productItems': instance.productItems,
       'shipments': instance.shipments,
       'shippingItems': instance.shippingItems,
       'shippingTotal': instance.shippingTotal,

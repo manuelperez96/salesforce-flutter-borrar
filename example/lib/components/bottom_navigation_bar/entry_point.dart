@@ -3,7 +3,7 @@ import 'package:example/components/bottom_navigation_bar/cart_animated_icon.dart
 import 'package:example/components/glass_appbar.dart';
 import 'package:example/constants.dart';
 import 'package:example/l10n/l10n.dart';
-import 'package:example/presentation/checkout/views/cart_screen.dart';
+import 'package:example/presentation/basket/views/cart_screen.dart';
 import 'package:example/presentation/discover/views/discover_screen.dart';
 import 'package:example/presentation/home/views/home_screen.dart';
 import 'package:flutter/material.dart';

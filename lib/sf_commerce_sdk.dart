@@ -3,6 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sf_commerce_sdk/api/auth_api.dart';
 import 'package:sf_commerce_sdk/api/basket_api.dart';
 import 'package:sf_commerce_sdk/api/category_api.dart';
+import 'package:sf_commerce_sdk/api/order_api.dart';
 import 'package:sf_commerce_sdk/api/product_api.dart';
 import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
@@ -58,6 +59,11 @@ class SFCommerceSDK {
     dio: _dio,
     config: _config,
     storage: _localStorage,
+  );
+
+  late OrderApi orderApi = OrderApi(
+    dio: _dio,
+    config: _config,
   );
 
   bool get modeVerbose => Logger.isEnabled;

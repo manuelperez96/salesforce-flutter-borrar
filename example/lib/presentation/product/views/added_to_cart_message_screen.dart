@@ -1,5 +1,5 @@
 import 'package:example/constants.dart';
-import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
+import 'package:example/presentation/basket/bloc/cart_bloc.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

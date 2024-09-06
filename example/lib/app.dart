@@ -3,8 +3,8 @@ import 'package:example/domain/repository/basket_repository.dart';
 import 'package:example/domain/repository/category_repository.dart';
 import 'package:example/domain/repository/product_repository.dart';
 import 'package:example/l10n/arb/app_localizations.dart';
-import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
-import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
+import 'package:example/presentation/basket/bloc/cart_bloc.dart';
+import 'package:example/presentation/basket/bloc/cart_event.dart';
 import 'package:example/presentation/home/bloc/home_bloc.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:example/route/router.dart' as router;
@@ -26,6 +26,7 @@ class App extends StatelessWidget {
             basketRepository: BasketRepository(
               basketApi: inject.get<SFCommerceSDK>().basketApi,
               productApi: inject.get<SFCommerceSDK>().productApi,
+              orderApi: inject.get<SFCommerceSDK>().orderApi,
             ),
           )..add(CheckStatusCart()),
         ),

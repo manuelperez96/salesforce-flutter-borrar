@@ -1,5 +1,5 @@
 import 'package:example/components/bottom_navigation_bar/cart_indicator.dart';
-import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
+import 'package:example/presentation/basket/bloc/cart_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';

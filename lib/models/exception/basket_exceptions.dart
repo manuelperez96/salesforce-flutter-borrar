@@ -23,3 +23,15 @@ class RemoveProductFromBasketException extends BasketRepositoryException {
 class UpdateProductInBasketException extends BasketRepositoryException {
   const UpdateProductInBasketException([super.message]);
 }
+
+class AddPaymentMethodBasketException extends BasketRepositoryException {
+  const AddPaymentMethodBasketException([super.message]);
+}
+
+class AddShipmentBasketException extends BasketRepositoryException {
+  const AddShipmentBasketException([super.message]);
+}
+
+class AddBillingAddressBasketException extends BasketRepositoryException {
+  const AddBillingAddressBasketException([super.message]);
+}

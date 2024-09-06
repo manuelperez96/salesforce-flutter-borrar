@@ -4,4 +4,11 @@
 - Api Internacionalization - Manu
 - Create product detail page in example. - Patri
 - Basket: 
-    --En la pantalla del carrito no se está teniendo en cuenta que el precio por unidad cambia según las cantidades del producto
+    -- En la pantalla del carrito NO se está teniendo en cuenta que el precio por unidad cambia según las cantidades del producto
+    -- Al subir y bajar cantidades en la cesta, hay un delay se podría añadir una animación para que sea una experiencia mas atractiva
+    -- Cuando se compra la cesta, estoy harcodeando que la direccion de facturacion es la misma que la de envio, solo para la demo, para solucionarlo en el futuro hay que:
+        --- Cambiar el metodo addShipmentBasket del basket_api y cambiar que en la UI del carrito no llame a los 2 metodos seguidos sino por separado
+- Pedidos:
+    -- En la pantalla de rellenar la direccion de envio, habrá que mostrar las direcciones guardadas del usuario (cuando esté logueado).
+
+

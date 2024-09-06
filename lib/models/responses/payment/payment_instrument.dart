@@ -8,7 +8,7 @@ part 'payment_instrument.g.dart';
 class PaymentInstrument with _$PaymentInstrument {
   factory PaymentInstrument({
     required double amount,
-    required String paymentInstrumentId,
+    //required String? paymentInstrumentId,
     required String paymentMethodId,
     required PaymentCard? paymentCard,
   }) = _PaymentInstrument;

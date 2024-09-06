@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/api/api.dart';
 import 'package:sf_commerce_sdk/models/exception/basket_exceptions.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
+import 'package:sf_commerce_sdk/models/responses/order/ing_address.dart';
+import 'package:sf_commerce_sdk/models/responses/payment/payment_instrument.dart';
 import 'package:sf_commerce_sdk/utils/local_storage.dart';
 
 class BasketApi extends Api {
@@ -21,6 +23,11 @@ class BasketApi extends Api {
     try {
       final response = await dio.post<dynamic>(
         '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets?siteId=${config.siteId}',
+        data: {
+          'customerInfo': {
+            'email': 'testing@capgemini.com',
+          },
+        },
         options: Options(
           headers: {'Content-Type': 'application/json'},
         ),
@@ -116,6 +123,89 @@ class BasketApi extends Api {
       return basket;
     } catch (e) {
       throw UpdateProductInBasketException(e);
+    }
+  }
+
+  Future<Basket> addPaymentMethodToBasket({
+    required String basketId,
+    required PaymentInstrument paymentMethod,
+  }) async {
+    try {
+      final path =
+          '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$basketId/payment-instruments?siteId=${config.siteId}';
+
+      final response = await dio.post<dynamic>(
+        path,
+        data: paymentMethod.toJson(),
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
+      final jsonResponse = response.data;
+      final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
+      return basket;
+    } catch (e) {
+      throw AddPaymentMethodBasketException(e);
+    }
+  }
+
+  Future<Basket> addShipmentBasket({
+    required String basketId,
+  }) async {
+    try {
+      final path =
+          '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$basketId/shipments/me?siteId=${config.siteId}';
+
+      final response = await dio.patch<dynamic>(
+        path,
+        data: {
+          'shipmentId': 'me',
+          'shipmentNo': 'ignored shipment no',
+          'shippingMethod': {
+            'id': '003',
+          },
+          'shippingAddress': {
+            'firstName': 'Jane',
+            'lastName': 'Doe',
+            'address1': '415 Mission St',
+            'city': 'San Francisco',
+            'postalCode': '94105',
+            'stateCode': 'CA',
+            'countryCode': 'US',
+          },
+        },
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
+      final jsonResponse = response.data;
+      final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
+      return basket;
+    } catch (e) {
+      throw AddShipmentBasketException(e);
+    }
+  }
+
+  Future<Basket> addBillingAddressBasket({
+    required String basketId,
+    required IngAddress billAddress,
+  }) async {
+    try {
+      final path =
+          '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets/$basketId/billing-address?siteId=${config.siteId}';
+
+      final response = await dio.put<dynamic>(
+        path,
+        data: billAddress.toJson(),
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
+      final jsonResponse = response.data;
+      final basket = Basket.fromJson(jsonResponse as Map<String, dynamic>);
+      return basket;
+    } catch (e) {
+      throw AddBillingAddressBasketException(e);
     }
   }
 }

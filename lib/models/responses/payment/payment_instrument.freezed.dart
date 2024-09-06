@@ -20,8 +20,8 @@ PaymentInstrument _$PaymentInstrumentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PaymentInstrument {
-  double get amount => throw _privateConstructorUsedError;
-  String get paymentInstrumentId => throw _privateConstructorUsedError;
+  double get amount =>
+      throw _privateConstructorUsedError; //required String? paymentInstrumentId,
   String get paymentMethodId => throw _privateConstructorUsedError;
   PaymentCard? get paymentCard => throw _privateConstructorUsedError;
 
@@ -37,11 +37,7 @@ abstract class $PaymentInstrumentCopyWith<$Res> {
           PaymentInstrument value, $Res Function(PaymentInstrument) then) =
       _$PaymentInstrumentCopyWithImpl<$Res, PaymentInstrument>;
   @useResult
-  $Res call(
-      {double amount,
-      String paymentInstrumentId,
-      String paymentMethodId,
-      PaymentCard? paymentCard});
+  $Res call({double amount, String paymentMethodId, PaymentCard? paymentCard});
 
   $PaymentCardCopyWith<$Res>? get paymentCard;
 }
@@ -60,7 +56,6 @@ class _$PaymentInstrumentCopyWithImpl<$Res, $Val extends PaymentInstrument>
   @override
   $Res call({
     Object? amount = null,
-    Object? paymentInstrumentId = null,
     Object? paymentMethodId = null,
     Object? paymentCard = freezed,
   }) {
@@ -69,10 +64,6 @@ class _$PaymentInstrumentCopyWithImpl<$Res, $Val extends PaymentInstrument>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
-      paymentInstrumentId: null == paymentInstrumentId
-          ? _value.paymentInstrumentId
-          : paymentInstrumentId // ignore: cast_nullable_to_non_nullable
-              as String,
       paymentMethodId: null == paymentMethodId
           ? _value.paymentMethodId
           : paymentMethodId // ignore: cast_nullable_to_non_nullable
@@ -105,11 +96,7 @@ abstract class _$$PaymentInstrumentImplCopyWith<$Res>
       __$$PaymentInstrumentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {double amount,
-      String paymentInstrumentId,
-      String paymentMethodId,
-      PaymentCard? paymentCard});
+  $Res call({double amount, String paymentMethodId, PaymentCard? paymentCard});
 
   @override
   $PaymentCardCopyWith<$Res>? get paymentCard;
@@ -127,7 +114,6 @@ class __$$PaymentInstrumentImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? amount = null,
-    Object? paymentInstrumentId = null,
     Object? paymentMethodId = null,
     Object? paymentCard = freezed,
   }) {
@@ -136,10 +122,6 @@ class __$$PaymentInstrumentImplCopyWithImpl<$Res>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
-      paymentInstrumentId: null == paymentInstrumentId
-          ? _value.paymentInstrumentId
-          : paymentInstrumentId // ignore: cast_nullable_to_non_nullable
-              as String,
       paymentMethodId: null == paymentMethodId
           ? _value.paymentMethodId
           : paymentMethodId // ignore: cast_nullable_to_non_nullable
@@ -157,7 +139,6 @@ class __$$PaymentInstrumentImplCopyWithImpl<$Res>
 class _$PaymentInstrumentImpl implements _PaymentInstrument {
   _$PaymentInstrumentImpl(
       {required this.amount,
-      required this.paymentInstrumentId,
       required this.paymentMethodId,
       required this.paymentCard});
 
@@ -166,8 +147,7 @@ class _$PaymentInstrumentImpl implements _PaymentInstrument {
 
   @override
   final double amount;
-  @override
-  final String paymentInstrumentId;
+//required String? paymentInstrumentId,
   @override
   final String paymentMethodId;
   @override
@@ -175,7 +155,7 @@ class _$PaymentInstrumentImpl implements _PaymentInstrument {
 
   @override
   String toString() {
-    return 'PaymentInstrument(amount: $amount, paymentInstrumentId: $paymentInstrumentId, paymentMethodId: $paymentMethodId, paymentCard: $paymentCard)';
+    return 'PaymentInstrument(amount: $amount, paymentMethodId: $paymentMethodId, paymentCard: $paymentCard)';
   }
 
   @override
@@ -184,8 +164,6 @@ class _$PaymentInstrumentImpl implements _PaymentInstrument {
         (other.runtimeType == runtimeType &&
             other is _$PaymentInstrumentImpl &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.paymentInstrumentId, paymentInstrumentId) ||
-                other.paymentInstrumentId == paymentInstrumentId) &&
             (identical(other.paymentMethodId, paymentMethodId) ||
                 other.paymentMethodId == paymentMethodId) &&
             (identical(other.paymentCard, paymentCard) ||
@@ -194,8 +172,8 @@ class _$PaymentInstrumentImpl implements _PaymentInstrument {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, amount, paymentInstrumentId, paymentMethodId, paymentCard);
+  int get hashCode =>
+      Object.hash(runtimeType, amount, paymentMethodId, paymentCard);
 
   @JsonKey(ignore: true)
   @override
@@ -215,7 +193,6 @@ class _$PaymentInstrumentImpl implements _PaymentInstrument {
 abstract class _PaymentInstrument implements PaymentInstrument {
   factory _PaymentInstrument(
       {required final double amount,
-      required final String paymentInstrumentId,
       required final String paymentMethodId,
       required final PaymentCard? paymentCard}) = _$PaymentInstrumentImpl;
 
@@ -224,9 +201,7 @@ abstract class _PaymentInstrument implements PaymentInstrument {
 
   @override
   double get amount;
-  @override
-  String get paymentInstrumentId;
-  @override
+  @override //required String? paymentInstrumentId,
   String get paymentMethodId;
   @override
   PaymentCard? get paymentCard;
