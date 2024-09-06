@@ -34,7 +34,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
         state.copyWith(
           initialProduct: response,
           status: ProductDetailStatus.loaded,
-          productQuantity: response.minOrderQuantity ?? 1,
+          productQuantity: response.minOrderQuantity,
           //selectedColor: response.variationValues?.color,
           //selectedSize: response.variationValues?.size,
           selectedProductId: response.id,

@@ -4,14 +4,11 @@ import 'package:example/constants.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
 import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
 import 'package:example/presentation/product/views/added_to_cart_message_screen.dart';
-import 'package:example/presentation/product/views/components/product_images.dart';
 import 'package:example/presentation/product/views/components/unit_price.dart';
 import 'package:example/presentation/product_detail/bloc/product_detail_bloc.dart';
 import 'package:example/presentation/product_detail/components/product_detail_quantity_selector.dart';
-import 'package:example/presentation/product_detail/components/product_size_color_selectors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key});

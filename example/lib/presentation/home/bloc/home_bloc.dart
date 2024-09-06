@@ -47,11 +47,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           productByCategory: productByCategory,
         ),
       );
-      print('------------- fin bine');
     } catch (e) {
       addError(e);
-            print('------------- fin');
-            print(e);
       emit(state.copyWith(status: HomeStatus.failed));
     }
   }
