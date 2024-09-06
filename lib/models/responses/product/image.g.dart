@@ -7,7 +7,7 @@ part of 'image.dart';
 // **************************************************************************
 
 _$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
-      alt: json['alt'] as String,
+      alternativeText: json['alt'] as String,
       disBaseLink: json['disBaseLink'] as String,
       link: json['link'] as String,
       title: json['title'] as String,
@@ -15,7 +15,7 @@ _$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
 
 Map<String, dynamic> _$$ImageImplToJson(_$ImageImpl instance) =>
     <String, dynamic>{
-      'alt': instance.alt,
+      'alt': instance.alternativeText,
       'disBaseLink': instance.disBaseLink,
       'link': instance.link,
       'title': instance.title,

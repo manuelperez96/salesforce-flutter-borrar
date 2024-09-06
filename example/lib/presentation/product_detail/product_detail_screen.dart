@@ -8,10 +8,8 @@ import 'package:example/presentation/product/views/components/product_images.dar
 import 'package:example/presentation/product/views/components/unit_price.dart';
 import 'package:example/presentation/product_detail/bloc/product_detail_bloc.dart';
 import 'package:example/presentation/product_detail/components/product_detail_quantity_selector.dart';
-import 'package:example/presentation/product_detail/components/product_size_color_selectors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key});
@@ -27,10 +25,10 @@ class ProductDetailScreen extends StatelessWidget {
         }
         final initialProduct = state.initialProduct!;
         final productQuantity = state.productQuantity!;
-        final imageByColor = Product.getImagesByColor(
-          selectedColor: state.selectedColor ?? '', // For items without color
-          imageGroups: initialProduct.imageGroups,
-        );
+        // final imageByColor = Product.getImagesByColor(
+        //   selectedColor: state.selectedColor ?? '', // For items without color
+        //   imageGroups: initialProduct.imageGroups,
+        // );
 
         return Scaffold(
           bottomNavigationBar: CartButton(
@@ -57,12 +55,11 @@ class ProductDetailScreen extends StatelessWidget {
                 SliverAppBar(
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   floating: true,
-                  title: Text(initialProduct.pageTitle),
-                  actions: const [
-                    //      BookmarkIconButton(product: state.product!),
-                  ],
+                  title: Text(initialProduct.shortDescription ?? ''),
                 ),
-                ProductImages(images: imageByColor),
+                ProductImages(
+                  images: initialProduct.representativeUrlImages,
+                ),
                 SliverPadding(
                   padding: const EdgeInsets.all(defaultPadding),
                   sliver: SliverToBoxAdapter(
@@ -75,7 +72,7 @@ class ProductDetailScreen extends StatelessWidget {
                           children: [
                             const ProductDetailQuantitySelector(),
                             Text(
-                              'Stock: ${initialProduct.inventory.stockLevel}',
+                              'Stock: ${initialProduct.availableStock}',
                             ),
                           ],
                         ),
@@ -87,7 +84,7 @@ class ProductDetailScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(defaultPadding),
                   sliver: SliverToBoxAdapter(
                     child: Text(
-                      initialProduct.pageTitle,
+                      initialProduct.name,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
@@ -95,11 +92,11 @@ class ProductDetailScreen extends StatelessWidget {
                 SliverPadding(
                   padding: const EdgeInsets.all(defaultPadding),
                   sliver: SliverToBoxAdapter(
-                    child: Text(initialProduct.pageDescription),
+                    child: Text(initialProduct.shortDescription ?? ''),
                   ),
                 ),
                 const SliverToBoxAdapter(child: Divider()),
-                const SliverToBoxAdapter(child: ProductSizeColorSelectors()),
+                //const SliverToBoxAdapter(child: ProductSizeColorSelectors()),
                 const SliverToBoxAdapter(
                   child: SizedBox(height: defaultPadding),
                 ),

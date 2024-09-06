@@ -17,11 +17,15 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProductPreviewByCategory {
   String get id => throw _privateConstructorUsedError;
+  String get representedId => throw _privateConstructorUsedError;
+  Set<String> get representedIdList => throw _privateConstructorUsedError;
   String get productName => throw _privateConstructorUsedError;
   Image get image => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
   String get categoryId => throw _privateConstructorUsedError;
+  Set<ProductType> get types => throw _privateConstructorUsedError;
+  bool get orderable => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductPreviewByCategoryCopyWith<ProductPreviewByCategory> get copyWith =>
@@ -36,11 +40,15 @@ abstract class $ProductPreviewByCategoryCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String representedId,
+      Set<String> representedIdList,
       String productName,
       Image image,
       double price,
       String currency,
-      String categoryId});
+      String categoryId,
+      Set<ProductType> types,
+      bool orderable});
 
   $ImageCopyWith<$Res> get image;
 }
@@ -60,17 +68,29 @@ class _$ProductPreviewByCategoryCopyWithImpl<$Res,
   @override
   $Res call({
     Object? id = null,
+    Object? representedId = null,
+    Object? representedIdList = null,
     Object? productName = null,
     Object? image = null,
     Object? price = null,
     Object? currency = null,
     Object? categoryId = null,
+    Object? types = null,
+    Object? orderable = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      representedId: null == representedId
+          ? _value.representedId
+          : representedId // ignore: cast_nullable_to_non_nullable
+              as String,
+      representedIdList: null == representedIdList
+          ? _value.representedIdList
+          : representedIdList // ignore: cast_nullable_to_non_nullable
+              as Set<String>,
       productName: null == productName
           ? _value.productName
           : productName // ignore: cast_nullable_to_non_nullable
@@ -91,6 +111,14 @@ class _$ProductPreviewByCategoryCopyWithImpl<$Res,
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as String,
+      types: null == types
+          ? _value.types
+          : types // ignore: cast_nullable_to_non_nullable
+              as Set<ProductType>,
+      orderable: null == orderable
+          ? _value.orderable
+          : orderable // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -114,11 +142,15 @@ abstract class _$$ProductPreviewByCategoryImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
+      String representedId,
+      Set<String> representedIdList,
       String productName,
       Image image,
       double price,
       String currency,
-      String categoryId});
+      String categoryId,
+      Set<ProductType> types,
+      bool orderable});
 
   @override
   $ImageCopyWith<$Res> get image;
@@ -138,17 +170,29 @@ class __$$ProductPreviewByCategoryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? representedId = null,
+    Object? representedIdList = null,
     Object? productName = null,
     Object? image = null,
     Object? price = null,
     Object? currency = null,
     Object? categoryId = null,
+    Object? types = null,
+    Object? orderable = null,
   }) {
     return _then(_$ProductPreviewByCategoryImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      representedId: null == representedId
+          ? _value.representedId
+          : representedId // ignore: cast_nullable_to_non_nullable
+              as String,
+      representedIdList: null == representedIdList
+          ? _value._representedIdList
+          : representedIdList // ignore: cast_nullable_to_non_nullable
+              as Set<String>,
       productName: null == productName
           ? _value.productName
           : productName // ignore: cast_nullable_to_non_nullable
@@ -169,6 +213,14 @@ class __$$ProductPreviewByCategoryImplCopyWithImpl<$Res>
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as String,
+      types: null == types
+          ? _value._types
+          : types // ignore: cast_nullable_to_non_nullable
+              as Set<ProductType>,
+      orderable: null == orderable
+          ? _value.orderable
+          : orderable // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -178,14 +230,31 @@ class __$$ProductPreviewByCategoryImplCopyWithImpl<$Res>
 class _$ProductPreviewByCategoryImpl implements _ProductPreviewByCategory {
   _$ProductPreviewByCategoryImpl(
       {required this.id,
+      required this.representedId,
+      required final Set<String> representedIdList,
       required this.productName,
       required this.image,
       required this.price,
       required this.currency,
-      required this.categoryId});
+      required this.categoryId,
+      required final Set<ProductType> types,
+      required this.orderable})
+      : _representedIdList = representedIdList,
+        _types = types;
 
   @override
   final String id;
+  @override
+  final String representedId;
+  final Set<String> _representedIdList;
+  @override
+  Set<String> get representedIdList {
+    if (_representedIdList is EqualUnmodifiableSetView)
+      return _representedIdList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_representedIdList);
+  }
+
   @override
   final String productName;
   @override
@@ -196,10 +265,20 @@ class _$ProductPreviewByCategoryImpl implements _ProductPreviewByCategory {
   final String currency;
   @override
   final String categoryId;
+  final Set<ProductType> _types;
+  @override
+  Set<ProductType> get types {
+    if (_types is EqualUnmodifiableSetView) return _types;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_types);
+  }
+
+  @override
+  final bool orderable;
 
   @override
   String toString() {
-    return 'ProductPreviewByCategory(id: $id, productName: $productName, image: $image, price: $price, currency: $currency, categoryId: $categoryId)';
+    return 'ProductPreviewByCategory(id: $id, representedId: $representedId, representedIdList: $representedIdList, productName: $productName, image: $image, price: $price, currency: $currency, categoryId: $categoryId, types: $types, orderable: $orderable)';
   }
 
   @override
@@ -208,6 +287,10 @@ class _$ProductPreviewByCategoryImpl implements _ProductPreviewByCategory {
         (other.runtimeType == runtimeType &&
             other is _$ProductPreviewByCategoryImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.representedId, representedId) ||
+                other.representedId == representedId) &&
+            const DeepCollectionEquality()
+                .equals(other._representedIdList, _representedIdList) &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.image, image) || other.image == image) &&
@@ -215,12 +298,25 @@ class _$ProductPreviewByCategoryImpl implements _ProductPreviewByCategory {
             (identical(other.currency, currency) ||
                 other.currency == currency) &&
             (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId));
+                other.categoryId == categoryId) &&
+            const DeepCollectionEquality().equals(other._types, _types) &&
+            (identical(other.orderable, orderable) ||
+                other.orderable == orderable));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, productName, image, price, currency, categoryId);
+      runtimeType,
+      id,
+      representedId,
+      const DeepCollectionEquality().hash(_representedIdList),
+      productName,
+      image,
+      price,
+      currency,
+      categoryId,
+      const DeepCollectionEquality().hash(_types),
+      orderable);
 
   @JsonKey(ignore: true)
   @override
@@ -233,14 +329,22 @@ class _$ProductPreviewByCategoryImpl implements _ProductPreviewByCategory {
 abstract class _ProductPreviewByCategory implements ProductPreviewByCategory {
   factory _ProductPreviewByCategory(
       {required final String id,
+      required final String representedId,
+      required final Set<String> representedIdList,
       required final String productName,
       required final Image image,
       required final double price,
       required final String currency,
-      required final String categoryId}) = _$ProductPreviewByCategoryImpl;
+      required final String categoryId,
+      required final Set<ProductType> types,
+      required final bool orderable}) = _$ProductPreviewByCategoryImpl;
 
   @override
   String get id;
+  @override
+  String get representedId;
+  @override
+  Set<String> get representedIdList;
   @override
   String get productName;
   @override
@@ -251,6 +355,10 @@ abstract class _ProductPreviewByCategory implements ProductPreviewByCategory {
   String get currency;
   @override
   String get categoryId;
+  @override
+  Set<ProductType> get types;
+  @override
+  bool get orderable;
   @override
   @JsonKey(ignore: true)
   _$$ProductPreviewByCategoryImplCopyWith<_$ProductPreviewByCategoryImpl>

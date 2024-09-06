@@ -19,7 +19,7 @@ class CartButton extends StatelessWidget {
   final int productQuantity;
   @override
   Widget build(BuildContext context) {
-    final stock = product.inventory.stockLevel;
+    final stock = product.availableStock;
 
     return SafeArea(
       child: Padding(

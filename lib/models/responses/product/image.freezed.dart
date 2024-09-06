@@ -14,13 +14,199 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+/// @nodoc
+mixin _$ImageBundle {
+  List<Image> get images => throw _privateConstructorUsedError;
+  String get viewType => throw _privateConstructorUsedError;
+  List<VariationAttribute> get variationAttributes =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ImageBundleCopyWith<ImageBundle> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ImageBundleCopyWith<$Res> {
+  factory $ImageBundleCopyWith(
+          ImageBundle value, $Res Function(ImageBundle) then) =
+      _$ImageBundleCopyWithImpl<$Res, ImageBundle>;
+  @useResult
+  $Res call(
+      {List<Image> images,
+      String viewType,
+      List<VariationAttribute> variationAttributes});
+}
+
+/// @nodoc
+class _$ImageBundleCopyWithImpl<$Res, $Val extends ImageBundle>
+    implements $ImageBundleCopyWith<$Res> {
+  _$ImageBundleCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? images = null,
+    Object? viewType = null,
+    Object? variationAttributes = null,
+  }) {
+    return _then(_value.copyWith(
+      images: null == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<Image>,
+      viewType: null == viewType
+          ? _value.viewType
+          : viewType // ignore: cast_nullable_to_non_nullable
+              as String,
+      variationAttributes: null == variationAttributes
+          ? _value.variationAttributes
+          : variationAttributes // ignore: cast_nullable_to_non_nullable
+              as List<VariationAttribute>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ImageBundleImplCopyWith<$Res>
+    implements $ImageBundleCopyWith<$Res> {
+  factory _$$ImageBundleImplCopyWith(
+          _$ImageBundleImpl value, $Res Function(_$ImageBundleImpl) then) =
+      __$$ImageBundleImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<Image> images,
+      String viewType,
+      List<VariationAttribute> variationAttributes});
+}
+
+/// @nodoc
+class __$$ImageBundleImplCopyWithImpl<$Res>
+    extends _$ImageBundleCopyWithImpl<$Res, _$ImageBundleImpl>
+    implements _$$ImageBundleImplCopyWith<$Res> {
+  __$$ImageBundleImplCopyWithImpl(
+      _$ImageBundleImpl _value, $Res Function(_$ImageBundleImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? images = null,
+    Object? viewType = null,
+    Object? variationAttributes = null,
+  }) {
+    return _then(_$ImageBundleImpl(
+      images: null == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<Image>,
+      viewType: null == viewType
+          ? _value.viewType
+          : viewType // ignore: cast_nullable_to_non_nullable
+              as String,
+      variationAttributes: null == variationAttributes
+          ? _value._variationAttributes
+          : variationAttributes // ignore: cast_nullable_to_non_nullable
+              as List<VariationAttribute>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ImageBundleImpl extends _ImageBundle {
+  _$ImageBundleImpl(
+      {required final List<Image> images,
+      required this.viewType,
+      final List<VariationAttribute> variationAttributes = const []})
+      : _images = images,
+        _variationAttributes = variationAttributes,
+        super._();
+
+  final List<Image> _images;
+  @override
+  List<Image> get images {
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_images);
+  }
+
+  @override
+  final String viewType;
+  final List<VariationAttribute> _variationAttributes;
+  @override
+  @JsonKey()
+  List<VariationAttribute> get variationAttributes {
+    if (_variationAttributes is EqualUnmodifiableListView)
+      return _variationAttributes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_variationAttributes);
+  }
+
+  @override
+  String toString() {
+    return 'ImageBundle(images: $images, viewType: $viewType, variationAttributes: $variationAttributes)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ImageBundleImpl &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
+            (identical(other.viewType, viewType) ||
+                other.viewType == viewType) &&
+            const DeepCollectionEquality()
+                .equals(other._variationAttributes, _variationAttributes));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_images),
+      viewType,
+      const DeepCollectionEquality().hash(_variationAttributes));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ImageBundleImplCopyWith<_$ImageBundleImpl> get copyWith =>
+      __$$ImageBundleImplCopyWithImpl<_$ImageBundleImpl>(this, _$identity);
+}
+
+abstract class _ImageBundle extends ImageBundle {
+  factory _ImageBundle(
+      {required final List<Image> images,
+      required final String viewType,
+      final List<VariationAttribute> variationAttributes}) = _$ImageBundleImpl;
+  _ImageBundle._() : super._();
+
+  @override
+  List<Image> get images;
+  @override
+  String get viewType;
+  @override
+  List<VariationAttribute> get variationAttributes;
+  @override
+  @JsonKey(ignore: true)
+  _$$ImageBundleImplCopyWith<_$ImageBundleImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 Image _$ImageFromJson(Map<String, dynamic> json) {
   return _Image.fromJson(json);
 }
 
 /// @nodoc
 mixin _$Image {
-  String get alt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'alt')
+  String get alternativeText => throw _privateConstructorUsedError;
   String get disBaseLink => throw _privateConstructorUsedError;
   String get link => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
@@ -35,7 +221,11 @@ abstract class $ImageCopyWith<$Res> {
   factory $ImageCopyWith(Image value, $Res Function(Image) then) =
       _$ImageCopyWithImpl<$Res, Image>;
   @useResult
-  $Res call({String alt, String disBaseLink, String link, String title});
+  $Res call(
+      {@JsonKey(name: 'alt') String alternativeText,
+      String disBaseLink,
+      String link,
+      String title});
 }
 
 /// @nodoc
@@ -51,15 +241,15 @@ class _$ImageCopyWithImpl<$Res, $Val extends Image>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? alt = null,
+    Object? alternativeText = null,
     Object? disBaseLink = null,
     Object? link = null,
     Object? title = null,
   }) {
     return _then(_value.copyWith(
-      alt: null == alt
-          ? _value.alt
-          : alt // ignore: cast_nullable_to_non_nullable
+      alternativeText: null == alternativeText
+          ? _value.alternativeText
+          : alternativeText // ignore: cast_nullable_to_non_nullable
               as String,
       disBaseLink: null == disBaseLink
           ? _value.disBaseLink
@@ -84,7 +274,11 @@ abstract class _$$ImageImplCopyWith<$Res> implements $ImageCopyWith<$Res> {
       __$$ImageImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String alt, String disBaseLink, String link, String title});
+  $Res call(
+      {@JsonKey(name: 'alt') String alternativeText,
+      String disBaseLink,
+      String link,
+      String title});
 }
 
 /// @nodoc
@@ -98,15 +292,15 @@ class __$$ImageImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? alt = null,
+    Object? alternativeText = null,
     Object? disBaseLink = null,
     Object? link = null,
     Object? title = null,
   }) {
     return _then(_$ImageImpl(
-      alt: null == alt
-          ? _value.alt
-          : alt // ignore: cast_nullable_to_non_nullable
+      alternativeText: null == alternativeText
+          ? _value.alternativeText
+          : alternativeText // ignore: cast_nullable_to_non_nullable
               as String,
       disBaseLink: null == disBaseLink
           ? _value.disBaseLink
@@ -128,7 +322,7 @@ class __$$ImageImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ImageImpl implements _Image {
   _$ImageImpl(
-      {required this.alt,
+      {@JsonKey(name: 'alt') required this.alternativeText,
       required this.disBaseLink,
       required this.link,
       required this.title});
@@ -137,7 +331,8 @@ class _$ImageImpl implements _Image {
       _$$ImageImplFromJson(json);
 
   @override
-  final String alt;
+  @JsonKey(name: 'alt')
+  final String alternativeText;
   @override
   final String disBaseLink;
   @override
@@ -147,7 +342,7 @@ class _$ImageImpl implements _Image {
 
   @override
   String toString() {
-    return 'Image(alt: $alt, disBaseLink: $disBaseLink, link: $link, title: $title)';
+    return 'Image(alternativeText: $alternativeText, disBaseLink: $disBaseLink, link: $link, title: $title)';
   }
 
   @override
@@ -155,7 +350,8 @@ class _$ImageImpl implements _Image {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImageImpl &&
-            (identical(other.alt, alt) || other.alt == alt) &&
+            (identical(other.alternativeText, alternativeText) ||
+                other.alternativeText == alternativeText) &&
             (identical(other.disBaseLink, disBaseLink) ||
                 other.disBaseLink == disBaseLink) &&
             (identical(other.link, link) || other.link == link) &&
@@ -164,7 +360,8 @@ class _$ImageImpl implements _Image {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, alt, disBaseLink, link, title);
+  int get hashCode =>
+      Object.hash(runtimeType, alternativeText, disBaseLink, link, title);
 
   @JsonKey(ignore: true)
   @override
@@ -182,7 +379,7 @@ class _$ImageImpl implements _Image {
 
 abstract class _Image implements Image {
   factory _Image(
-      {required final String alt,
+      {@JsonKey(name: 'alt') required final String alternativeText,
       required final String disBaseLink,
       required final String link,
       required final String title}) = _$ImageImpl;
@@ -190,7 +387,8 @@ abstract class _Image implements Image {
   factory _Image.fromJson(Map<String, dynamic> json) = _$ImageImpl.fromJson;
 
   @override
-  String get alt;
+  @JsonKey(name: 'alt')
+  String get alternativeText;
   @override
   String get disBaseLink;
   @override
@@ -200,5 +398,141 @@ abstract class _Image implements Image {
   @override
   @JsonKey(ignore: true)
   _$$ImageImplCopyWith<_$ImageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$VariationAttribute {
+  String get id => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $VariationAttributeCopyWith<VariationAttribute> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $VariationAttributeCopyWith<$Res> {
+  factory $VariationAttributeCopyWith(
+          VariationAttribute value, $Res Function(VariationAttribute) then) =
+      _$VariationAttributeCopyWithImpl<$Res, VariationAttribute>;
+  @useResult
+  $Res call({String id, String value});
+}
+
+/// @nodoc
+class _$VariationAttributeCopyWithImpl<$Res, $Val extends VariationAttribute>
+    implements $VariationAttributeCopyWith<$Res> {
+  _$VariationAttributeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? value = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$VariationAttributeImplCopyWith<$Res>
+    implements $VariationAttributeCopyWith<$Res> {
+  factory _$$VariationAttributeImplCopyWith(_$VariationAttributeImpl value,
+          $Res Function(_$VariationAttributeImpl) then) =
+      __$$VariationAttributeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String id, String value});
+}
+
+/// @nodoc
+class __$$VariationAttributeImplCopyWithImpl<$Res>
+    extends _$VariationAttributeCopyWithImpl<$Res, _$VariationAttributeImpl>
+    implements _$$VariationAttributeImplCopyWith<$Res> {
+  __$$VariationAttributeImplCopyWithImpl(_$VariationAttributeImpl _value,
+      $Res Function(_$VariationAttributeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? value = null,
+  }) {
+    return _then(_$VariationAttributeImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$VariationAttributeImpl implements _VariationAttribute {
+  _$VariationAttributeImpl({required this.id, required this.value});
+
+  @override
+  final String id;
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'VariationAttribute(id: $id, value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VariationAttributeImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VariationAttributeImplCopyWith<_$VariationAttributeImpl> get copyWith =>
+      __$$VariationAttributeImplCopyWithImpl<_$VariationAttributeImpl>(
+          this, _$identity);
+}
+
+abstract class _VariationAttribute implements VariationAttribute {
+  factory _VariationAttribute(
+      {required final String id,
+      required final String value}) = _$VariationAttributeImpl;
+
+  @override
+  String get id;
+  @override
+  String get value;
+  @override
+  @JsonKey(ignore: true)
+  _$$VariationAttributeImplCopyWith<_$VariationAttributeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
