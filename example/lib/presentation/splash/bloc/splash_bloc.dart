@@ -25,7 +25,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         Future<void>.delayed(_splashDuration),
         _doLogin(),
       ]);
-
       return emit(state.copyWith(logged: true));
     } catch (e) {
       // TODO(Team): handle error case. Maybe add an error splash screen.
@@ -36,6 +35,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   Future<void> _doLogin() async {
     final logged = await _authRepository.checkStatus();
     if (logged) return;
-    return _authRepository.anonymousLogin();
+    await _authRepository.anonymousLogin();
   }
 }

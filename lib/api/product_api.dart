@@ -25,7 +25,7 @@ class ProductApi extends Api {
           .map((json) => Product.fromJson(json as Map<String, dynamic>))
           .toList();
     } catch (e) {
-      throw UnableToGetProductException(e);
+      throw UnableToGetProductException(StackTrace.current,e);
     }
   }
 
@@ -37,13 +37,12 @@ class ProductApi extends Api {
           headers: {'Content-Type': 'application/json'},
         ),
       );
-      final dynamic jsonResponse = response.data;
 
-      final result = Product.fromJson(jsonResponse as Map<String, dynamic>);
+      final result = Product.fromJson(response.data as Map<String, dynamic>);
 
       return result;
     } catch (e) {
-      throw UnableToGetProductException(e);
+      throw UnableToGetProductException(StackTrace.current, e);
     }
   }
 
@@ -64,7 +63,7 @@ class ProductApi extends Api {
               .toList() ??
           [];
     } catch (e) {
-      throw UnableToGetProductException(e);
+      throw UnableToGetProductException(StackTrace.current,e);
     }
   }
 
