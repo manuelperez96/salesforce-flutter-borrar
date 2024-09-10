@@ -3,6 +3,7 @@ import 'package:example/presentation/basket/views/cart_screen.dart';
 import 'package:example/presentation/checkout/views/billing_address_screen.dart';
 import 'package:example/presentation/checkout/views/order_screen.dart';
 import 'package:example/presentation/checkout/views/payment_method_screen.dart';
+import 'package:example/presentation/checkout/views/success_order_screen.dart';
 import 'package:example/presentation/discover/views/discover_screen.dart';
 import 'package:example/presentation/home/views/home_screen.dart';
 import 'package:example/presentation/onbording/views/onbording_screnn.dart';
@@ -55,6 +56,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case orderScreenRoute:
       return MaterialPageRoute(
         builder: (context) => const OrderScreen(),
+      );
+    case successsOrderScreenRoute:
+      return MaterialPageRoute(
+        builder: (context) => const SuccessOrderScreen(),
       );
     default:
       return MaterialPageRoute(

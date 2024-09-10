@@ -29,7 +29,7 @@ class AuthApi extends Api {
   ///
   /// Return true if user was login, otherwise return false.
   Future<bool> checkStatus() async {
-    return false;
+    //return false;
     final token = await _storage.getToken();
     if (token == null) return false;
     try {

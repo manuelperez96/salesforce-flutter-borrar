@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyField extends StatelessWidget {
-  const MyField({
+class CheckoutFormField extends StatelessWidget {
+  const CheckoutFormField({
     required this.controller,
     required this.hint,
     required this.validate,

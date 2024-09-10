@@ -26,25 +26,25 @@ _$BasketImpl _$$BasketImplFromJson(Map<String, dynamic> json) => _$BasketImpl(
           CustomerInfo.fromJson(json['customerInfo'] as Map<String, dynamic>),
       lastModified: DateTime.parse(json['lastModified'] as String),
       merchandizeTotalTax: (json['merchandizeTotalTax'] as num?)?.toInt(),
-      orderTotal: (json['orderTotal'] as num?)?.toInt(),
+      orderTotal: (json['orderTotal'] as num?)?.toDouble(),
       paymentInstruments: (json['paymentInstruments'] as List<dynamic>?)
           ?.map((e) => PaymentInstrument.fromJson(e as Map<String, dynamic>))
           .toList(),
       productItems: (json['productItems'] as List<dynamic>?)
           ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
           .toList(),
-      productSubTotal: (json['productSubTotal'] as num).toInt(),
-      productTotal: (json['productTotal'] as num).toInt(),
+      productSubTotal: (json['productSubTotal'] as num).toDouble(),
+      productTotal: (json['productTotal'] as num).toDouble(),
       shipments: (json['shipments'] as List<dynamic>)
           .map((e) => Shipment.fromJson(e as Map<String, dynamic>))
           .toList(),
       shippingItems: (json['shippingItems'] as List<dynamic>)
           .map((e) => ShippingItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-      shippingTotal: (json['shippingTotal'] as num?)?.toInt(),
-      shippingTotalTax: (json['shippingTotalTax'] as num?)?.toInt(),
+      shippingTotal: (json['shippingTotal'] as num?)?.toDouble(),
+      shippingTotalTax: (json['shippingTotalTax'] as num?)?.toDouble(),
       taxation: json['taxation'] as String,
-      taxTotal: (json['taxTotal'] as num?)?.toInt(),
+      taxTotal: (json['taxTotal'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$BasketImplToJson(_$BasketImpl instance) =>

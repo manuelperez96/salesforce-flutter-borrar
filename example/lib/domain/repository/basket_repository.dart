@@ -137,6 +137,11 @@ class BasketRepository {
     }
     final result = BasketEntity(
       basketId: basketResponseModel.basketId,
+      orderTotal: basketResponseModel.orderTotal,
+      shippingTotal: basketResponseModel.shippingTotal,
+      taxTotal: basketResponseModel.taxTotal,
+      subtotal: basketResponseModel.productTotal,
+      currency: basketResponseModel.currency,
       productItems: list,
     );
     return result;

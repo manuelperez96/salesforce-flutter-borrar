@@ -6,9 +6,10 @@ abstract class CartEvent {}
 class CheckStatusCart extends CartEvent {}
 
 class AddBillingAddress extends CartEvent {
-  AddBillingAddress({required this.ingAddress});
+  AddBillingAddress({required this.ingAddress, required this.phoneNumber});
 
   final IngAddress ingAddress;
+  final String phoneNumber;
 }
 
 class AddPaymentMethod extends CartEvent {}

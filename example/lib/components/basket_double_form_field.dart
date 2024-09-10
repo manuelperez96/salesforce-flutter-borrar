@@ -1,8 +1,8 @@
 import 'package:example/components/basket_form_field.dart';
 import 'package:flutter/material.dart';
 
-class MyDoubleRowField extends StatelessWidget {
-  const MyDoubleRowField({
+class CheckoutFormDoubleField extends StatelessWidget {
+  const CheckoutFormDoubleField({
     required this.controller,
     required this.hint,
     required this.controller2,
@@ -22,7 +22,7 @@ class MyDoubleRowField extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: MyField(
+          child: CheckoutFormField(
             controller: controller,
             hint: hint,
             validate: validate,
@@ -30,7 +30,7 @@ class MyDoubleRowField extends StatelessWidget {
         ),
         const SizedBox(width: 10),
         Expanded(
-          child: MyField(
+          child: CheckoutFormField(
             controller: controller2,
             hint: hint2,
             validate: validate,

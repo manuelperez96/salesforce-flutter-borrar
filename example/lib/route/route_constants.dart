@@ -58,5 +58,6 @@ const String cartScreenRoute = 'cart';
 const String billingAddressScreenRoute = 'billing_address';
 const String paymentMethodScreenRoute = 'payment_method';
 const String orderScreenRoute = 'order';
+const String successsOrderScreenRoute = 'success_order';
 const String addNewCardScreenRoute = 'add_new_card';
 const String thanksForOrderScreenRoute = 'thanks_order';

@@ -26,17 +26,17 @@ class Basket with _$Basket {
     required DateTime lastModified,
     required int? merchandizeTotalTax,
     // required   Notes notes,
-    required int? orderTotal,
+    required double? orderTotal,
     required List<PaymentInstrument>? paymentInstruments,
     required List<Item>? productItems,
-    required int productSubTotal,
-    required int productTotal,
+    required double productSubTotal,
+    required double productTotal,
     required List<Shipment> shipments,
     required List<ShippingItem> shippingItems,
-    required int? shippingTotal,
-    required int? shippingTotalTax,
+    required double? shippingTotal,
+    required double? shippingTotalTax,
     required String taxation,
-    required int? taxTotal,
+    required double? taxTotal,
   }) = _Basket;
 
   factory Basket.fromJson(Map<String, dynamic> json) => _$BasketFromJson(json);

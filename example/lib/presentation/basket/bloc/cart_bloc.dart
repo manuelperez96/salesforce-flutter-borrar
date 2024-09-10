@@ -33,6 +33,9 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   late AnimationController controller;
 
   final BasketRepository _basketRepository;
+  String? tempAddress;
+  String? tempName;
+  String? tempPhoneNumber;
 
   Future<BasketEntity> _onCreateBasket() {
     return _basketRepository.createBasket();
@@ -71,6 +74,13 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
         },
       ),
     );
+
+    tempAddress = '${event.ingAddress.address1}, '
+        '${event.ingAddress.postalCode}, '
+        '${event.ingAddress.city}';
+    tempName = '${event.ingAddress.firstName} ${event.ingAddress.lastName}';
+    tempPhoneNumber = event.phoneNumber;
+
     emit(CartLoaded(basket));
   }
 

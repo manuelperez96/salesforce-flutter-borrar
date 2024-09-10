@@ -1,6 +1,7 @@
 import 'package:example/components/basket_double_form_field.dart';
 import 'package:example/components/basket_form_field.dart';
 import 'package:example/constants.dart';
+import 'package:example/l10n/l10n.dart';
 import 'package:example/presentation/basket/bloc/cart_bloc.dart';
 import 'package:example/presentation/basket/bloc/cart_event.dart';
 import 'package:example/route/route_constants.dart';
@@ -36,13 +37,14 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
     } else {
       showFloating = false;
     }
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dirección de envío'),
+        title: Text(context.l10n.payment_method_title),
       ),
       body: Padding(
         padding: const EdgeInsets.all(defaultPadding),
@@ -50,17 +52,17 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              MyField(
+              CheckoutFormField(
                 controller: _numberCardController,
-                hint: 'Card Number',
+                hint: context.l10n.payment_method_credit_card_number,
                 validate: validate,
               ),
               const SizedBox(height: defaultPadding),
-              MyDoubleRowField(
+              CheckoutFormDoubleField(
                 controller: _dateController,
-                hint: 'month / year',
+                hint: context.l10n.payment_method_credit_card_date,
                 controller2: _cvcController,
-                hint2: 'CVC',
+                hint2: context.l10n.payment_method_credit_card_cvc,
                 validate: validate,
               ),
               const SizedBox(height: 100),
@@ -68,19 +70,25 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          context.read<CartBloc>().add(AddPaymentMethod());
-          Navigator.pushNamed(context, orderScreenRoute);
-        },
-        label: const Row(
-          children: [
-            Text('Continuar'),
-            SizedBox(
-              width: 5,
-            ),
-            Icon(Icons.keyboard_arrow_right_rounded),
-          ],
+      floatingActionButton: AnimatedOpacity(
+        duration: const Duration(seconds: 1),
+        opacity: showFloating ? 1 : 0.3,
+        child: FloatingActionButton.extended(
+          onPressed: () {
+            if (showFloating) {
+              context.read<CartBloc>().add(AddPaymentMethod());
+              Navigator.pushNamed(context, orderScreenRoute);
+            }
+          },
+          label: Row(
+            children: [
+              Text(context.l10n.continue_button),
+              const SizedBox(
+                width: 5,
+              ),
+              const Icon(Icons.keyboard_arrow_right_rounded),
+            ],
+          ),
         ),
       ),
     );

@@ -33,18 +33,18 @@ mixin _$Basket {
   DateTime get lastModified => throw _privateConstructorUsedError;
   int? get merchandizeTotalTax =>
       throw _privateConstructorUsedError; // required   Notes notes,
-  int? get orderTotal => throw _privateConstructorUsedError;
+  double? get orderTotal => throw _privateConstructorUsedError;
   List<PaymentInstrument>? get paymentInstruments =>
       throw _privateConstructorUsedError;
   List<Item>? get productItems => throw _privateConstructorUsedError;
-  int get productSubTotal => throw _privateConstructorUsedError;
-  int get productTotal => throw _privateConstructorUsedError;
+  double get productSubTotal => throw _privateConstructorUsedError;
+  double get productTotal => throw _privateConstructorUsedError;
   List<Shipment> get shipments => throw _privateConstructorUsedError;
   List<ShippingItem> get shippingItems => throw _privateConstructorUsedError;
-  int? get shippingTotal => throw _privateConstructorUsedError;
-  int? get shippingTotalTax => throw _privateConstructorUsedError;
+  double? get shippingTotal => throw _privateConstructorUsedError;
+  double? get shippingTotalTax => throw _privateConstructorUsedError;
   String get taxation => throw _privateConstructorUsedError;
-  int? get taxTotal => throw _privateConstructorUsedError;
+  double? get taxTotal => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -69,17 +69,17 @@ abstract class $BasketCopyWith<$Res> {
       CustomerInfo customerInfo,
       DateTime lastModified,
       int? merchandizeTotalTax,
-      int? orderTotal,
+      double? orderTotal,
       List<PaymentInstrument>? paymentInstruments,
       List<Item>? productItems,
-      int productSubTotal,
-      int productTotal,
+      double productSubTotal,
+      double productTotal,
       List<Shipment> shipments,
       List<ShippingItem> shippingItems,
-      int? shippingTotal,
-      int? shippingTotalTax,
+      double? shippingTotal,
+      double? shippingTotalTax,
       String taxation,
-      int? taxTotal});
+      double? taxTotal});
 
   $IngAddressCopyWith<$Res>? get billingAddress;
   $CustomerInfoCopyWith<$Res> get customerInfo;
@@ -174,7 +174,7 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
       orderTotal: freezed == orderTotal
           ? _value.orderTotal
           : orderTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       paymentInstruments: freezed == paymentInstruments
           ? _value.paymentInstruments
           : paymentInstruments // ignore: cast_nullable_to_non_nullable
@@ -186,11 +186,11 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
       productSubTotal: null == productSubTotal
           ? _value.productSubTotal
           : productSubTotal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       productTotal: null == productTotal
           ? _value.productTotal
           : productTotal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       shipments: null == shipments
           ? _value.shipments
           : shipments // ignore: cast_nullable_to_non_nullable
@@ -202,11 +202,11 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
       shippingTotal: freezed == shippingTotal
           ? _value.shippingTotal
           : shippingTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       shippingTotalTax: freezed == shippingTotalTax
           ? _value.shippingTotalTax
           : shippingTotalTax // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       taxation: null == taxation
           ? _value.taxation
           : taxation // ignore: cast_nullable_to_non_nullable
@@ -214,7 +214,7 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
       taxTotal: freezed == taxTotal
           ? _value.taxTotal
           : taxTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
     ) as $Val);
   }
 
@@ -259,17 +259,17 @@ abstract class _$$BasketImplCopyWith<$Res> implements $BasketCopyWith<$Res> {
       CustomerInfo customerInfo,
       DateTime lastModified,
       int? merchandizeTotalTax,
-      int? orderTotal,
+      double? orderTotal,
       List<PaymentInstrument>? paymentInstruments,
       List<Item>? productItems,
-      int productSubTotal,
-      int productTotal,
+      double productSubTotal,
+      double productTotal,
       List<Shipment> shipments,
       List<ShippingItem> shippingItems,
-      int? shippingTotal,
-      int? shippingTotalTax,
+      double? shippingTotal,
+      double? shippingTotalTax,
       String taxation,
-      int? taxTotal});
+      double? taxTotal});
 
   @override
   $IngAddressCopyWith<$Res>? get billingAddress;
@@ -364,7 +364,7 @@ class __$$BasketImplCopyWithImpl<$Res>
       orderTotal: freezed == orderTotal
           ? _value.orderTotal
           : orderTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       paymentInstruments: freezed == paymentInstruments
           ? _value._paymentInstruments
           : paymentInstruments // ignore: cast_nullable_to_non_nullable
@@ -376,11 +376,11 @@ class __$$BasketImplCopyWithImpl<$Res>
       productSubTotal: null == productSubTotal
           ? _value.productSubTotal
           : productSubTotal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       productTotal: null == productTotal
           ? _value.productTotal
           : productTotal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       shipments: null == shipments
           ? _value._shipments
           : shipments // ignore: cast_nullable_to_non_nullable
@@ -392,11 +392,11 @@ class __$$BasketImplCopyWithImpl<$Res>
       shippingTotal: freezed == shippingTotal
           ? _value.shippingTotal
           : shippingTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       shippingTotalTax: freezed == shippingTotalTax
           ? _value.shippingTotalTax
           : shippingTotalTax // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       taxation: null == taxation
           ? _value.taxation
           : taxation // ignore: cast_nullable_to_non_nullable
@@ -404,7 +404,7 @@ class __$$BasketImplCopyWithImpl<$Res>
       taxTotal: freezed == taxTotal
           ? _value.taxTotal
           : taxTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
     ));
   }
 }
@@ -479,7 +479,7 @@ class _$BasketImpl implements _Basket {
   final int? merchandizeTotalTax;
 // required   Notes notes,
   @override
-  final int? orderTotal;
+  final double? orderTotal;
   final List<PaymentInstrument>? _paymentInstruments;
   @override
   List<PaymentInstrument>? get paymentInstruments {
@@ -502,9 +502,9 @@ class _$BasketImpl implements _Basket {
   }
 
   @override
-  final int productSubTotal;
+  final double productSubTotal;
   @override
-  final int productTotal;
+  final double productTotal;
   final List<Shipment> _shipments;
   @override
   List<Shipment> get shipments {
@@ -522,13 +522,13 @@ class _$BasketImpl implements _Basket {
   }
 
   @override
-  final int? shippingTotal;
+  final double? shippingTotal;
   @override
-  final int? shippingTotalTax;
+  final double? shippingTotalTax;
   @override
   final String taxation;
   @override
-  final int? taxTotal;
+  final double? taxTotal;
 
   @override
   String toString() {
@@ -646,17 +646,17 @@ abstract class _Basket implements Basket {
       required final CustomerInfo customerInfo,
       required final DateTime lastModified,
       required final int? merchandizeTotalTax,
-      required final int? orderTotal,
+      required final double? orderTotal,
       required final List<PaymentInstrument>? paymentInstruments,
       required final List<Item>? productItems,
-      required final int productSubTotal,
-      required final int productTotal,
+      required final double productSubTotal,
+      required final double productTotal,
       required final List<Shipment> shipments,
       required final List<ShippingItem> shippingItems,
-      required final int? shippingTotal,
-      required final int? shippingTotalTax,
+      required final double? shippingTotal,
+      required final double? shippingTotalTax,
       required final String taxation,
-      required final int? taxTotal}) = _$BasketImpl;
+      required final double? taxTotal}) = _$BasketImpl;
 
   factory _Basket.fromJson(Map<String, dynamic> json) = _$BasketImpl.fromJson;
 
@@ -685,27 +685,27 @@ abstract class _Basket implements Basket {
   @override
   int? get merchandizeTotalTax;
   @override // required   Notes notes,
-  int? get orderTotal;
+  double? get orderTotal;
   @override
   List<PaymentInstrument>? get paymentInstruments;
   @override
   List<Item>? get productItems;
   @override
-  int get productSubTotal;
+  double get productSubTotal;
   @override
-  int get productTotal;
+  double get productTotal;
   @override
   List<Shipment> get shipments;
   @override
   List<ShippingItem> get shippingItems;
   @override
-  int? get shippingTotal;
+  double? get shippingTotal;
   @override
-  int? get shippingTotalTax;
+  double? get shippingTotalTax;
   @override
   String get taxation;
   @override
-  int? get taxTotal;
+  double? get taxTotal;
   @override
   @JsonKey(ignore: true)
   _$$BasketImplCopyWith<_$BasketImpl> get copyWith =>

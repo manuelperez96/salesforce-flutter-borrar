@@ -122,6 +122,180 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Saltar'**
   String get skip;
+
+  /// No description provided for @checkout.
+  ///
+  /// In es, this message translates to:
+  /// **'Comprar'**
+  String get checkout;
+
+  /// No description provided for @continue_button.
+  ///
+  /// In es, this message translates to:
+  /// **'Continuar'**
+  String get continue_button;
+
+  /// No description provided for @shipping_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Dirección de envío'**
+  String get shipping_title;
+
+  /// No description provided for @shipping_billing_address.
+  ///
+  /// In es, this message translates to:
+  /// **'Usar también como dirección de facturación'**
+  String get shipping_billing_address;
+
+  /// No description provided for @shipping_hint_address.
+  ///
+  /// In es, this message translates to:
+  /// **'Dirección'**
+  String get shipping_hint_address;
+
+  /// No description provided for @shipping_hint_city.
+  ///
+  /// In es, this message translates to:
+  /// **'Ciudad'**
+  String get shipping_hint_city;
+
+  /// No description provided for @shipping_hint_postal_code.
+  ///
+  /// In es, this message translates to:
+  /// **'Codigo postal'**
+  String get shipping_hint_postal_code;
+
+  /// No description provided for @shipping_hint_first_name.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre'**
+  String get shipping_hint_first_name;
+
+  /// No description provided for @shipping_hint_last_name.
+  ///
+  /// In es, this message translates to:
+  /// **'Primer apellido'**
+  String get shipping_hint_last_name;
+
+  /// No description provided for @shipping_hint_country_code.
+  ///
+  /// In es, this message translates to:
+  /// **'CountryCode'**
+  String get shipping_hint_country_code;
+
+  /// No description provided for @shipping_hint_phone_number.
+  ///
+  /// In es, this message translates to:
+  /// **'Número de teléfono'**
+  String get shipping_hint_phone_number;
+
+  /// No description provided for @shipping_hint_state_code.
+  ///
+  /// In es, this message translates to:
+  /// **'StateCode'**
+  String get shipping_hint_state_code;
+
+  /// No description provided for @payment_method_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Método de Pago'**
+  String get payment_method_title;
+
+  /// No description provided for @payment_method_credit_card_number.
+  ///
+  /// In es, this message translates to:
+  /// **'Número de la tarjeta'**
+  String get payment_method_credit_card_number;
+
+  /// No description provided for @payment_method_credit_card_date.
+  ///
+  /// In es, this message translates to:
+  /// **'mes/año'**
+  String get payment_method_credit_card_date;
+
+  /// No description provided for @payment_method_credit_card_cvc.
+  ///
+  /// In es, this message translates to:
+  /// **'CVC'**
+  String get payment_method_credit_card_cvc;
+
+  /// No description provided for @order_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Revisa tu pedido'**
+  String get order_title;
+
+  /// No description provided for @order_address_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Dirección'**
+  String get order_address_title;
+
+  /// No description provided for @order_label_subtotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Subtotal'**
+  String get order_label_subtotal;
+
+  /// No description provided for @order_label_total.
+  ///
+  /// In es, this message translates to:
+  /// **'Total'**
+  String get order_label_total;
+
+  /// No description provided for @order_label_shipping_total.
+  ///
+  /// In es, this message translates to:
+  /// **'Gastos de envío'**
+  String get order_label_shipping_total;
+
+  /// No description provided for @order_label_tax_total.
+  ///
+  /// In es, this message translates to:
+  /// **'IVA'**
+  String get order_label_tax_total;
+
+  /// No description provided for @order_summary_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Resumen del pedido'**
+  String get order_summary_title;
+
+  /// No description provided for @order_change_payment_method.
+  ///
+  /// In es, this message translates to:
+  /// **'Cambiar método de pago'**
+  String get order_change_payment_method;
+
+  /// No description provided for @order_create_order.
+  ///
+  /// In es, this message translates to:
+  /// **'Realizar pedido'**
+  String get order_create_order;
+
+  /// No description provided for @cart_empty.
+  ///
+  /// In es, this message translates to:
+  /// **'El carrito está vacío'**
+  String get cart_empty;
+
+  /// No description provided for @quantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad'**
+  String get quantity;
+
+  /// No description provided for @order_summary.
+  ///
+  /// In es, this message translates to:
+  /// **'Resumen del pedido'**
+  String get order_summary;
+
+  /// No description provided for @price_per_unit.
+  ///
+  /// In es, this message translates to:
+  /// **'Precio por unidad'**
+  String get price_per_unit;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
