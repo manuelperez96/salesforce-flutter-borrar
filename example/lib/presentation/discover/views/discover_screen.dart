@@ -57,39 +57,11 @@ class DiscoverScreen extends StatelessWidget {
         title: context.l10n.onSale,
         svgSrc: 'assets/icons/Sale.svg',
         subCategories: [
-          CategoryModel(title: 'context.localizations.category_subtitle_1'),
-          CategoryModel(title: 'context.localizations.category_subtitle_2'),
-          CategoryModel(title: 'context.localizations.category_subtitle_3'),
-          CategoryModel(title: 'context.localizations.category_subtitle_4'),
-          CategoryModel(title: 'context.localizations.category_subtitle_5'),
+          CategoryModel(title: 'Pantalones'),
+          CategoryModel(title: 'Consolas'),
+          CategoryModel(title: 'Video juegos'),
         ],
       ),
-      // CategoryModel(
-      //   title: context.localizations.man_woman,
-      //   svgSrc: 'assets/icons/Man&Woman.svg',
-      //   subCategories: [
-      //     CategoryModel(title: context.localizations.category_subtitle_1),
-      //     CategoryModel(title: context.localizations.category_subtitle_2),
-      //     CategoryModel(title: context.localizations.category_subtitle_3),
-      //   ],
-      // ),
-      // CategoryModel(
-      //   title: context.localizations.kids,
-      //   svgSrc: 'assets/icons/Child.svg',
-      //   subCategories: [
-      //     CategoryModel(title: context.localizations.category_subtitle_1),
-      //     CategoryModel(title: context.localizations.category_subtitle_2),
-      //     CategoryModel(title: context.localizations.category_subtitle_3),
-      //   ],
-      // ),
-      // CategoryModel(
-      //   title: context.localizations.accessories,
-      //   svgSrc: 'assets/icons/Accessories.svg',
-      //   subCategories: [
-      //     CategoryModel(title: context.localizations.category_subtitle_1),
-      //     CategoryModel(title: context.localizations.category_subtitle_2),
-      //   ],
-      // ),
     ];
   }
 }

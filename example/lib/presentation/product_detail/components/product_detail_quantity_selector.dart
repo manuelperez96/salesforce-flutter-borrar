@@ -18,16 +18,16 @@ class ProductDetailQuantitySelector extends StatelessWidget {
           numOfItem: productQuantity,
           onIncrement: () => BlocProvider.of<ProductDetailBloc>(context).add(
             ProductDetailEvent.updateQuantity(
-              productQuantity < product.inventory.stockLevel
+              productQuantity < product.availableStock
                   ? (productQuantity + 1)
                   : productQuantity,
             ),
           ),
           onDecrement: () => BlocProvider.of<ProductDetailBloc>(context).add(
             ProductDetailEvent.updateQuantity(
-              (productQuantity > product.minOrderQuantity!)
+              (productQuantity > product.minOrderQuantity)
                   ? productQuantity - 1
-                  : product.minOrderQuantity!,
+                  : product.minOrderQuantity,
             ),
           ),
         );

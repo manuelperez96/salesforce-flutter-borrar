@@ -36,32 +36,20 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
       Onbord(
         image: 'assets/Illustration/Illustration-0.png',
         imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_0.png',
-        title: 'context.localizations.onboarding_title_1',
-        description: 'context.localizations.onboarding_description_1',
+        title: context.l10n.onBoarding_title1,
+        description: context.l10n.onBoarding_subtitle1,
       ),
       Onbord(
         image: 'assets/Illustration/Illustration-1.png',
         imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_1.png',
-        title: 'context.localizations.onboarding_title_2',
-        description: 'context.localizations.onboarding_description_2',
+        title: context.l10n.onBoarding_title2,
+        description: context.l10n.onBoarding_subtitle2,
       ),
       Onbord(
         image: 'assets/Illustration/Illustration-2.png',
         imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_2.png',
-        title: 'context.localizations.onboarding_title_3',
-        description: 'context.localizations.onboarding_description_3',
-      ),
-      Onbord(
-        image: 'assets/Illustration/Illustration-3.png',
-        imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_3.png',
-        title: 'context.localizations.onboarding_title_4',
-        description: 'context.localizations.onboarding_description_4',
-      ),
-      Onbord(
-        image: 'assets/Illustration/Illustration-4.png',
-        imageDarkTheme: 'assets/Illustration/Illustration_darkTheme_4.png',
-        title: 'context.localizations.onboarding_title_5',
-        description: 'context.localizations.onboarding_description_5',
+        title: context.l10n.onBoarding_title3,
+        description: context.l10n.onBoarding_subtitle3,
       ),
     ];
     return Scaffold(

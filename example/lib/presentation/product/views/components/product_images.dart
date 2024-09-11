@@ -8,7 +8,7 @@ class ProductImages extends StatefulWidget {
     super.key,
   });
 
-  final List<String?> images;
+  final List<String> images;
 
   @override
   State<ProductImages> createState() => _ProductImagesState();
@@ -59,7 +59,7 @@ class _ProductImagesState extends State<ProductImages> {
                         borderRadius: const BorderRadius.all(
                           Radius.circular(defaultBorderRadius * 2),
                         ),
-                        child: NetworkImageWithLoader(widget.images[index]!),
+                        child: NetworkImageWithLoader(widget.images[index]),
                       ),
                     ),
                   ),
