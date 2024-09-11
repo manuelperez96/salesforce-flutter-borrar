@@ -1,7 +1,8 @@
 import 'package:example/components/product/horizontal_product_card.dart';
 import 'package:example/constants.dart';
-import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
-import 'package:example/presentation/checkout/views/bloc/cart_state.dart';
+import 'package:example/l10n/l10n.dart';
+import 'package:example/presentation/basket/bloc/cart_bloc.dart';
+import 'package:example/presentation/basket/bloc/cart_state.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +14,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
-        if (state is CartLoading) {
+        if (state is CartLoading || state is CartSuccessOrder) {
           return const Scaffold(
             body: Center(
               child: CircularProgressIndicator(),
@@ -22,9 +23,9 @@ class CartScreen extends StatelessWidget {
         } else {
           final currentState = state as CartLoaded;
           if (currentState.currentCart.productItems.isEmpty) {
-            return const Scaffold(
+            return Scaffold(
               body: Center(
-                child: Text('Cart is empty'),
+                child: Text(context.l10n.cart_empty),
               ),
             );
           } else {
@@ -45,15 +46,15 @@ class CartScreen extends StatelessWidget {
               ),
               floatingActionButton: FloatingActionButton.extended(
                 onPressed: () {
-                  Navigator.pushNamed(context, checkoutScreenRoute);
+                  Navigator.pushNamed(context, billingAddressScreenRoute);
                 },
-                label: const Row(
+                label: Row(
                   children: [
-                    Text('Checkout'),
-                    SizedBox(
+                    Text(context.l10n.checkout),
+                    const SizedBox(
                       width: 5,
                     ),
-                    Icon(Icons.keyboard_arrow_right_rounded),
+                    const Icon(Icons.keyboard_arrow_right_rounded),
                   ],
                 ),
               ),

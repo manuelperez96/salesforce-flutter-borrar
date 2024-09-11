@@ -23,9 +23,9 @@ mixin _$IngAddress {
   String get address1 => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get countryCode => throw _privateConstructorUsedError;
-  String get firstName => throw _privateConstructorUsedError;
-  String get fullName => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  String get firstName =>
+      throw _privateConstructorUsedError; //required String fullName,
+//required String? id,
   String get lastName => throw _privateConstructorUsedError;
   String get postalCode => throw _privateConstructorUsedError;
   String get stateCode => throw _privateConstructorUsedError;
@@ -47,8 +47,6 @@ abstract class $IngAddressCopyWith<$Res> {
       String city,
       String countryCode,
       String firstName,
-      String fullName,
-      String id,
       String lastName,
       String postalCode,
       String stateCode});
@@ -71,8 +69,6 @@ class _$IngAddressCopyWithImpl<$Res, $Val extends IngAddress>
     Object? city = null,
     Object? countryCode = null,
     Object? firstName = null,
-    Object? fullName = null,
-    Object? id = null,
     Object? lastName = null,
     Object? postalCode = null,
     Object? stateCode = null,
@@ -93,14 +89,6 @@ class _$IngAddressCopyWithImpl<$Res, $Val extends IngAddress>
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
               as String,
       lastName: null == lastName
           ? _value.lastName
@@ -131,8 +119,6 @@ abstract class _$$IngAddressImplCopyWith<$Res>
       String city,
       String countryCode,
       String firstName,
-      String fullName,
-      String id,
       String lastName,
       String postalCode,
       String stateCode});
@@ -153,8 +139,6 @@ class __$$IngAddressImplCopyWithImpl<$Res>
     Object? city = null,
     Object? countryCode = null,
     Object? firstName = null,
-    Object? fullName = null,
-    Object? id = null,
     Object? lastName = null,
     Object? postalCode = null,
     Object? stateCode = null,
@@ -175,14 +159,6 @@ class __$$IngAddressImplCopyWithImpl<$Res>
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
               as String,
       lastName: null == lastName
           ? _value.lastName
@@ -208,8 +184,6 @@ class _$IngAddressImpl implements _IngAddress {
       required this.city,
       required this.countryCode,
       required this.firstName,
-      required this.fullName,
-      required this.id,
       required this.lastName,
       required this.postalCode,
       required this.stateCode});
@@ -225,10 +199,8 @@ class _$IngAddressImpl implements _IngAddress {
   final String countryCode;
   @override
   final String firstName;
-  @override
-  final String fullName;
-  @override
-  final String id;
+//required String fullName,
+//required String? id,
   @override
   final String lastName;
   @override
@@ -238,7 +210,7 @@ class _$IngAddressImpl implements _IngAddress {
 
   @override
   String toString() {
-    return 'IngAddress(address1: $address1, city: $city, countryCode: $countryCode, firstName: $firstName, fullName: $fullName, id: $id, lastName: $lastName, postalCode: $postalCode, stateCode: $stateCode)';
+    return 'IngAddress(address1: $address1, city: $city, countryCode: $countryCode, firstName: $firstName, lastName: $lastName, postalCode: $postalCode, stateCode: $stateCode)';
   }
 
   @override
@@ -253,9 +225,6 @@ class _$IngAddressImpl implements _IngAddress {
                 other.countryCode == countryCode) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
-            (identical(other.fullName, fullName) ||
-                other.fullName == fullName) &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
             (identical(other.postalCode, postalCode) ||
@@ -267,7 +236,7 @@ class _$IngAddressImpl implements _IngAddress {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, address1, city, countryCode,
-      firstName, fullName, id, lastName, postalCode, stateCode);
+      firstName, lastName, postalCode, stateCode);
 
   @JsonKey(ignore: true)
   @override
@@ -289,8 +258,6 @@ abstract class _IngAddress implements IngAddress {
       required final String city,
       required final String countryCode,
       required final String firstName,
-      required final String fullName,
-      required final String id,
       required final String lastName,
       required final String postalCode,
       required final String stateCode}) = _$IngAddressImpl;
@@ -306,11 +273,8 @@ abstract class _IngAddress implements IngAddress {
   String get countryCode;
   @override
   String get firstName;
-  @override
-  String get fullName;
-  @override
-  String get id;
-  @override
+  @override //required String fullName,
+//required String? id,
   String get lastName;
   @override
   String get postalCode;

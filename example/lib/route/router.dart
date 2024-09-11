@@ -1,6 +1,9 @@
 import 'package:example/components/bottom_navigation_bar/entry_point.dart';
-import 'package:example/presentation/checkout/checkout_screen.dart';
-import 'package:example/presentation/checkout/views/cart_screen.dart';
+import 'package:example/presentation/basket/views/cart_screen.dart';
+import 'package:example/presentation/checkout/views/billing_address_screen.dart';
+import 'package:example/presentation/checkout/views/order_summary_screen.dart';
+import 'package:example/presentation/checkout/views/payment_method_screen.dart';
+import 'package:example/presentation/checkout/views/success_order_screen.dart';
 import 'package:example/presentation/discover/views/discover_screen.dart';
 import 'package:example/presentation/home/views/home_screen.dart';
 import 'package:example/presentation/onbording/views/onbording_screnn.dart';
@@ -42,9 +45,21 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const CartScreen(),
       );
-    case checkoutScreenRoute:
+    case billingAddressScreenRoute:
       return MaterialPageRoute(
-        builder: (context) => const CheckoutScreen(),
+        builder: (context) => const BillingAddressScreen(),
+      );
+    case paymentMethodScreenRoute:
+      return MaterialPageRoute(
+        builder: (context) => const PaymentMethodScreen(),
+      );
+    case orderScreenRoute:
+      return MaterialPageRoute(
+        builder: (context) => const OrderScreen(),
+      );
+    case successsOrderScreenRoute:
+      return MaterialPageRoute(
+        builder: (context) => const SuccessOrderScreen(),
       );
     default:
       return MaterialPageRoute(

@@ -8,6 +8,11 @@ class BasketEntity with _$BasketEntity {
   factory BasketEntity({
     required String basketId,
     required List<ProductCartEntity> productItems,
+    double? orderTotal,
+    double? shippingTotal,
+    double? taxTotal,
+    double? subtotal,
+    String? currency,
   }) = _BasketEntity;
 
   const BasketEntity._();

@@ -8,3 +8,5 @@ class CartLoaded extends CartState {
   CartLoaded(this.currentCart);
   final BasketEntity currentCart;
 }
+
+class CartSuccessOrder extends CartState {}

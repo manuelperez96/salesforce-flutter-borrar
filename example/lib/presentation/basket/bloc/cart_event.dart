@@ -1,8 +1,24 @@
 import 'package:example/domain/model/product_cart_entity.dart';
+import 'package:sf_commerce_sdk/models/responses/order/ing_address.dart';
 
 abstract class CartEvent {}
 
 class CheckStatusCart extends CartEvent {}
+
+class AddBillingAddress extends CartEvent {
+  AddBillingAddress({required this.ingAddress, required this.phoneNumber});
+
+  final IngAddress ingAddress;
+  final String phoneNumber;
+}
+
+class AddPaymentMethod extends CartEvent {}
+
+class CreateNewBasket extends CartEvent {}
+
+class CreateOrder extends CartEvent {}
+
+class AddShipment extends CartEvent {}
 
 class IncrementQuantityProductCart extends CartEvent {
   IncrementQuantityProductCart({required this.product});

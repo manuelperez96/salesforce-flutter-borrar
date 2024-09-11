@@ -9,9 +9,9 @@ class OrderApi extends Api {
     required super.config,
   });
 
-  Future<Order> createOrder(String basketID) async {
+  Future<int?> createOrder(String basketId) async {
     assert(
-      basketID.isNotEmpty,
+      basketId.isNotEmpty,
       'basketID can not be empty',
     );
 
@@ -22,13 +22,11 @@ class OrderApi extends Api {
           headers: {'Content-Type': 'application/json'},
         ),
         data: {
-          'basketId': basketID,
+          'basketId': basketId,
         },
       );
 
-      final jsonResponse = response.data as String;
-      final result = Order.fromJson(jsonResponse as Map<String, dynamic>);
-      return result;
+      return response.statusCode;
     } catch (e) {
       throw CreateOrderException(e);
     }

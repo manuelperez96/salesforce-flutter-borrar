@@ -1,8 +1,8 @@
 import 'package:example/components/cart_button.dart';
 import 'package:example/components/custom_modal_bottom_sheet.dart';
 import 'package:example/constants.dart';
-import 'package:example/presentation/checkout/views/bloc/cart_bloc.dart';
-import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
+import 'package:example/presentation/basket/bloc/cart_bloc.dart';
+import 'package:example/presentation/basket/bloc/cart_event.dart';
 import 'package:example/presentation/product/views/added_to_cart_message_screen.dart';
 import 'package:example/presentation/product/views/components/product_images.dart';
 import 'package:example/presentation/product/views/components/unit_price.dart';

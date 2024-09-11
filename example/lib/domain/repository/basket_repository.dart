@@ -1,18 +1,24 @@
 import 'package:example/domain/model/basket_entity.dart';
 import 'package:example/domain/model/product_cart_entity.dart';
 import 'package:sf_commerce_sdk/api/basket_api.dart';
+import 'package:sf_commerce_sdk/api/order_api.dart';
 import 'package:sf_commerce_sdk/api/product_api.dart';
 import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
+import 'package:sf_commerce_sdk/models/responses/order/ing_address.dart';
+import 'package:sf_commerce_sdk/models/responses/payment/payment_instrument.dart';
 
 class BasketRepository {
   BasketRepository({
     required BasketApi basketApi,
     required ProductApi productApi,
+    required OrderApi orderApi,
   })  : _basketApi = basketApi,
-        _productApi = productApi;
+        _productApi = productApi,
+        _orderApi = orderApi;
 
   final BasketApi _basketApi;
   final ProductApi _productApi;
+  final OrderApi _orderApi;
 
   Future<BasketEntity> createBasket() async {
     final result = await _basketApi.createBasket();
@@ -131,8 +137,55 @@ class BasketRepository {
     }
     final result = BasketEntity(
       basketId: basketResponseModel.basketId,
+      orderTotal: basketResponseModel.orderTotal,
+      shippingTotal: basketResponseModel.shippingTotal,
+      taxTotal: basketResponseModel.taxTotal,
+      subtotal: basketResponseModel.productTotal,
+      currency: basketResponseModel.currency,
       productItems: list,
     );
     return result;
+  }
+
+  Future<BasketEntity> addBillingAddressBasket({
+    required String basketId,
+    required IngAddress billAddress,
+  }) async {
+    final responseModel = await _basketApi.addBillingAddressBasket(
+      basketId: basketId,
+      billAddress: billAddress,
+    );
+
+    return getEntityFromModel(responseModel);
+  }
+
+  Future<BasketEntity> addPaymentMethodBasket({
+    required String basketId,
+    required PaymentInstrument paymentMethod,
+  }) async {
+    final responseModel = await _basketApi.addPaymentMethodToBasket(
+      basketId: basketId,
+      paymentMethod: paymentMethod,
+    );
+
+    return getEntityFromModel(responseModel);
+  }
+
+  Future<BasketEntity> addShipmentBasket({
+    required String basketId,
+  }) async {
+    final responseModel = await _basketApi.addShipmentBasket(
+      basketId: basketId,
+    );
+
+    return getEntityFromModel(responseModel);
+  }
+
+  Future<int?> createOrder({
+    required String basketId,
+  }) async {
+    return _orderApi.createOrder(
+      basketId,
+    );
   }
 }

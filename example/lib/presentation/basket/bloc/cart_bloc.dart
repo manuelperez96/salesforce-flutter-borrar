@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:example/domain/model/basket_entity.dart';
 import 'package:example/domain/repository/basket_repository.dart';
-import 'package:example/presentation/checkout/views/bloc/cart_event.dart';
-import 'package:example/presentation/checkout/views/bloc/cart_state.dart';
+import 'package:example/presentation/basket/bloc/cart_event.dart';
+import 'package:example/presentation/basket/bloc/cart_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sf_commerce_sdk/models/responses/order/ing_address.dart';
+import 'package:sf_commerce_sdk/models/responses/payment/payment_instrument.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   CartBloc({
@@ -23,13 +25,110 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     on<RemoveProductCart>(_onProductRemoved);
     on<IncrementQuantityProductCart>(_onIncrementProductQuantity);
     on<DecrementQuantityProductCart>(_onDecrementProductQuantity);
+    on<AddBillingAddress>(_onAddBillingAddress);
+    on<AddPaymentMethod>(_onAddPaymentMethod);
+    on<AddShipment>(_onAddShipment);
+    on<CreateOrder>(_onCreateOrder);
+    on<CreateNewBasket>(_onCreateNewBasket);
   }
   late AnimationController controller;
 
   final BasketRepository _basketRepository;
+  String? tempAddress;
+  String? tempName;
+  String? tempPhoneNumber;
 
   Future<BasketEntity> _onCreateBasket() {
     return _basketRepository.createBasket();
+  }
+
+  Future<void> _onCreateNewBasket(
+    CreateNewBasket event,
+    Emitter<CartState> emit,
+  ) async {
+    final basket = await _onCreateBasket();
+    emit(CartLoaded(basket));
+  }
+
+  Future<void> _onCreateOrder(
+    CreateOrder event,
+    Emitter<CartState> emit,
+  ) async {
+    final currentState = state as CartLoaded;
+    final statusCode = await _basketRepository.createOrder(
+      basketId: currentState.currentCart.basketId,
+    );
+    if (statusCode == 200) {
+      emit(CartSuccessOrder());
+    }
+  }
+
+  Future<void> _onAddBillingAddress(
+    AddBillingAddress event,
+    Emitter<CartState> emit,
+  ) async {
+    final currentState = state as CartLoaded;
+    final basket = await _basketRepository.addBillingAddressBasket(
+      basketId: currentState.currentCart.basketId,
+      //billAddress: event.ingAddress
+      billAddress: IngAddress.fromJson(
+        {
+          'firstName': 'John',
+          'lastName': 'Doe',
+          'address1': '415 Mission St',
+          'city': 'Jena',
+          'postalCode': '94105',
+          'stateCode': 'CA',
+          'countryCode': 'US',
+        },
+      ),
+    );
+
+    tempAddress = '${event.ingAddress.address1}, '
+        '${event.ingAddress.postalCode}, '
+        '${event.ingAddress.city}';
+    tempName = '${event.ingAddress.firstName} ${event.ingAddress.lastName}';
+    tempPhoneNumber = event.phoneNumber;
+
+    emit(CartLoaded(basket));
+  }
+
+  Future<void> _onAddPaymentMethod(
+    AddPaymentMethod event,
+    Emitter<CartState> emit,
+  ) async {
+    final currentState = state as CartLoaded;
+    final basket = await _basketRepository.addPaymentMethodBasket(
+      basketId: currentState.currentCart.basketId,
+      paymentMethod: PaymentInstrument.fromJson(
+        {
+          'amount': 9.99,
+          'paymentCard': {
+            'expirationYear': 1990,
+            'expirationMonth': 7,
+            'validFromMonth': 8,
+            'validFromYear': 2007,
+            'issueNumber': 'i117',
+            'maskedNumber': '*********1234',
+            'holder': 'Miller',
+            'cardType': 'Visa',
+          },
+          'paymentMethodId': 'CREDIT_CARD',
+        },
+      ),
+    );
+    emit(CartLoaded(basket));
+  }
+
+  Future<void> _onAddShipment(
+    AddShipment event,
+    Emitter<CartState> emit,
+  ) async {
+    final currentState = state as CartLoaded;
+    final basket = await _basketRepository.addShipmentBasket(
+      basketId: currentState.currentCart.basketId,
+    );
+    emit(CartLoaded(basket));
   }
 
   Future<void> _onCheckStatusCart(

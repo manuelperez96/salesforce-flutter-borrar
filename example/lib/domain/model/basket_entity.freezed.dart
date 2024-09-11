@@ -19,6 +19,11 @@ mixin _$BasketEntity {
   String get basketId => throw _privateConstructorUsedError;
   List<ProductCartEntity> get productItems =>
       throw _privateConstructorUsedError;
+  double? get orderTotal => throw _privateConstructorUsedError;
+  double? get shippingTotal => throw _privateConstructorUsedError;
+  double? get taxTotal => throw _privateConstructorUsedError;
+  double? get subtotal => throw _privateConstructorUsedError;
+  String? get currency => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BasketEntityCopyWith<BasketEntity> get copyWith =>
@@ -31,7 +36,14 @@ abstract class $BasketEntityCopyWith<$Res> {
           BasketEntity value, $Res Function(BasketEntity) then) =
       _$BasketEntityCopyWithImpl<$Res, BasketEntity>;
   @useResult
-  $Res call({String basketId, List<ProductCartEntity> productItems});
+  $Res call(
+      {String basketId,
+      List<ProductCartEntity> productItems,
+      double? orderTotal,
+      double? shippingTotal,
+      double? taxTotal,
+      double? subtotal,
+      String? currency});
 }
 
 /// @nodoc
@@ -49,6 +61,11 @@ class _$BasketEntityCopyWithImpl<$Res, $Val extends BasketEntity>
   $Res call({
     Object? basketId = null,
     Object? productItems = null,
+    Object? orderTotal = freezed,
+    Object? shippingTotal = freezed,
+    Object? taxTotal = freezed,
+    Object? subtotal = freezed,
+    Object? currency = freezed,
   }) {
     return _then(_value.copyWith(
       basketId: null == basketId
@@ -59,6 +76,26 @@ class _$BasketEntityCopyWithImpl<$Res, $Val extends BasketEntity>
           ? _value.productItems
           : productItems // ignore: cast_nullable_to_non_nullable
               as List<ProductCartEntity>,
+      orderTotal: freezed == orderTotal
+          ? _value.orderTotal
+          : orderTotal // ignore: cast_nullable_to_non_nullable
+              as double?,
+      shippingTotal: freezed == shippingTotal
+          ? _value.shippingTotal
+          : shippingTotal // ignore: cast_nullable_to_non_nullable
+              as double?,
+      taxTotal: freezed == taxTotal
+          ? _value.taxTotal
+          : taxTotal // ignore: cast_nullable_to_non_nullable
+              as double?,
+      subtotal: freezed == subtotal
+          ? _value.subtotal
+          : subtotal // ignore: cast_nullable_to_non_nullable
+              as double?,
+      currency: freezed == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -71,7 +108,14 @@ abstract class _$$BasketEntityImplCopyWith<$Res>
       __$$BasketEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String basketId, List<ProductCartEntity> productItems});
+  $Res call(
+      {String basketId,
+      List<ProductCartEntity> productItems,
+      double? orderTotal,
+      double? shippingTotal,
+      double? taxTotal,
+      double? subtotal,
+      String? currency});
 }
 
 /// @nodoc
@@ -87,6 +131,11 @@ class __$$BasketEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? basketId = null,
     Object? productItems = null,
+    Object? orderTotal = freezed,
+    Object? shippingTotal = freezed,
+    Object? taxTotal = freezed,
+    Object? subtotal = freezed,
+    Object? currency = freezed,
   }) {
     return _then(_$BasketEntityImpl(
       basketId: null == basketId
@@ -97,6 +146,26 @@ class __$$BasketEntityImplCopyWithImpl<$Res>
           ? _value._productItems
           : productItems // ignore: cast_nullable_to_non_nullable
               as List<ProductCartEntity>,
+      orderTotal: freezed == orderTotal
+          ? _value.orderTotal
+          : orderTotal // ignore: cast_nullable_to_non_nullable
+              as double?,
+      shippingTotal: freezed == shippingTotal
+          ? _value.shippingTotal
+          : shippingTotal // ignore: cast_nullable_to_non_nullable
+              as double?,
+      taxTotal: freezed == taxTotal
+          ? _value.taxTotal
+          : taxTotal // ignore: cast_nullable_to_non_nullable
+              as double?,
+      subtotal: freezed == subtotal
+          ? _value.subtotal
+          : subtotal // ignore: cast_nullable_to_non_nullable
+              as double?,
+      currency: freezed == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -106,7 +175,12 @@ class __$$BasketEntityImplCopyWithImpl<$Res>
 class _$BasketEntityImpl extends _BasketEntity {
   _$BasketEntityImpl(
       {required this.basketId,
-      required final List<ProductCartEntity> productItems})
+      required final List<ProductCartEntity> productItems,
+      this.orderTotal,
+      this.shippingTotal,
+      this.taxTotal,
+      this.subtotal,
+      this.currency})
       : _productItems = productItems,
         super._();
 
@@ -121,8 +195,19 @@ class _$BasketEntityImpl extends _BasketEntity {
   }
 
   @override
+  final double? orderTotal;
+  @override
+  final double? shippingTotal;
+  @override
+  final double? taxTotal;
+  @override
+  final double? subtotal;
+  @override
+  final String? currency;
+
+  @override
   String toString() {
-    return 'BasketEntity(basketId: $basketId, productItems: $productItems)';
+    return 'BasketEntity(basketId: $basketId, productItems: $productItems, orderTotal: $orderTotal, shippingTotal: $shippingTotal, taxTotal: $taxTotal, subtotal: $subtotal, currency: $currency)';
   }
 
   @override
@@ -133,12 +218,29 @@ class _$BasketEntityImpl extends _BasketEntity {
             (identical(other.basketId, basketId) ||
                 other.basketId == basketId) &&
             const DeepCollectionEquality()
-                .equals(other._productItems, _productItems));
+                .equals(other._productItems, _productItems) &&
+            (identical(other.orderTotal, orderTotal) ||
+                other.orderTotal == orderTotal) &&
+            (identical(other.shippingTotal, shippingTotal) ||
+                other.shippingTotal == shippingTotal) &&
+            (identical(other.taxTotal, taxTotal) ||
+                other.taxTotal == taxTotal) &&
+            (identical(other.subtotal, subtotal) ||
+                other.subtotal == subtotal) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, basketId,
-      const DeepCollectionEquality().hash(_productItems));
+  int get hashCode => Object.hash(
+      runtimeType,
+      basketId,
+      const DeepCollectionEquality().hash(_productItems),
+      orderTotal,
+      shippingTotal,
+      taxTotal,
+      subtotal,
+      currency);
 
   @JsonKey(ignore: true)
   @override
@@ -149,15 +251,29 @@ class _$BasketEntityImpl extends _BasketEntity {
 
 abstract class _BasketEntity extends BasketEntity {
   factory _BasketEntity(
-          {required final String basketId,
-          required final List<ProductCartEntity> productItems}) =
-      _$BasketEntityImpl;
+      {required final String basketId,
+      required final List<ProductCartEntity> productItems,
+      final double? orderTotal,
+      final double? shippingTotal,
+      final double? taxTotal,
+      final double? subtotal,
+      final String? currency}) = _$BasketEntityImpl;
   _BasketEntity._() : super._();
 
   @override
   String get basketId;
   @override
   List<ProductCartEntity> get productItems;
+  @override
+  double? get orderTotal;
+  @override
+  double? get shippingTotal;
+  @override
+  double? get taxTotal;
+  @override
+  double? get subtotal;
+  @override
+  String? get currency;
   @override
   @JsonKey(ignore: true)
   _$$BasketEntityImplCopyWith<_$BasketEntityImpl> get copyWith =>

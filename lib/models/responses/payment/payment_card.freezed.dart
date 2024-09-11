@@ -20,8 +20,14 @@ PaymentCard _$PaymentCardFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PaymentCard {
+  int get expirationYear => throw _privateConstructorUsedError;
+  int get expirationMonth => throw _privateConstructorUsedError;
+  int get validFromMonth => throw _privateConstructorUsedError;
+  int get validFromYear => throw _privateConstructorUsedError;
+  String get issueNumber => throw _privateConstructorUsedError;
+  String get maskedNumber => throw _privateConstructorUsedError;
+  String get holder => throw _privateConstructorUsedError;
   String get cardType => throw _privateConstructorUsedError;
-  bool get creditCardExpired => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +41,15 @@ abstract class $PaymentCardCopyWith<$Res> {
           PaymentCard value, $Res Function(PaymentCard) then) =
       _$PaymentCardCopyWithImpl<$Res, PaymentCard>;
   @useResult
-  $Res call({String cardType, bool creditCardExpired});
+  $Res call(
+      {int expirationYear,
+      int expirationMonth,
+      int validFromMonth,
+      int validFromYear,
+      String issueNumber,
+      String maskedNumber,
+      String holder,
+      String cardType});
 }
 
 /// @nodoc
@@ -51,18 +65,48 @@ class _$PaymentCardCopyWithImpl<$Res, $Val extends PaymentCard>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? expirationYear = null,
+    Object? expirationMonth = null,
+    Object? validFromMonth = null,
+    Object? validFromYear = null,
+    Object? issueNumber = null,
+    Object? maskedNumber = null,
+    Object? holder = null,
     Object? cardType = null,
-    Object? creditCardExpired = null,
   }) {
     return _then(_value.copyWith(
+      expirationYear: null == expirationYear
+          ? _value.expirationYear
+          : expirationYear // ignore: cast_nullable_to_non_nullable
+              as int,
+      expirationMonth: null == expirationMonth
+          ? _value.expirationMonth
+          : expirationMonth // ignore: cast_nullable_to_non_nullable
+              as int,
+      validFromMonth: null == validFromMonth
+          ? _value.validFromMonth
+          : validFromMonth // ignore: cast_nullable_to_non_nullable
+              as int,
+      validFromYear: null == validFromYear
+          ? _value.validFromYear
+          : validFromYear // ignore: cast_nullable_to_non_nullable
+              as int,
+      issueNumber: null == issueNumber
+          ? _value.issueNumber
+          : issueNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      maskedNumber: null == maskedNumber
+          ? _value.maskedNumber
+          : maskedNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      holder: null == holder
+          ? _value.holder
+          : holder // ignore: cast_nullable_to_non_nullable
+              as String,
       cardType: null == cardType
           ? _value.cardType
           : cardType // ignore: cast_nullable_to_non_nullable
               as String,
-      creditCardExpired: null == creditCardExpired
-          ? _value.creditCardExpired
-          : creditCardExpired // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -75,7 +119,15 @@ abstract class _$$PaymentCardImplCopyWith<$Res>
       __$$PaymentCardImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String cardType, bool creditCardExpired});
+  $Res call(
+      {int expirationYear,
+      int expirationMonth,
+      int validFromMonth,
+      int validFromYear,
+      String issueNumber,
+      String maskedNumber,
+      String holder,
+      String cardType});
 }
 
 /// @nodoc
@@ -89,18 +141,48 @@ class __$$PaymentCardImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? expirationYear = null,
+    Object? expirationMonth = null,
+    Object? validFromMonth = null,
+    Object? validFromYear = null,
+    Object? issueNumber = null,
+    Object? maskedNumber = null,
+    Object? holder = null,
     Object? cardType = null,
-    Object? creditCardExpired = null,
   }) {
     return _then(_$PaymentCardImpl(
+      expirationYear: null == expirationYear
+          ? _value.expirationYear
+          : expirationYear // ignore: cast_nullable_to_non_nullable
+              as int,
+      expirationMonth: null == expirationMonth
+          ? _value.expirationMonth
+          : expirationMonth // ignore: cast_nullable_to_non_nullable
+              as int,
+      validFromMonth: null == validFromMonth
+          ? _value.validFromMonth
+          : validFromMonth // ignore: cast_nullable_to_non_nullable
+              as int,
+      validFromYear: null == validFromYear
+          ? _value.validFromYear
+          : validFromYear // ignore: cast_nullable_to_non_nullable
+              as int,
+      issueNumber: null == issueNumber
+          ? _value.issueNumber
+          : issueNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      maskedNumber: null == maskedNumber
+          ? _value.maskedNumber
+          : maskedNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      holder: null == holder
+          ? _value.holder
+          : holder // ignore: cast_nullable_to_non_nullable
+              as String,
       cardType: null == cardType
           ? _value.cardType
           : cardType // ignore: cast_nullable_to_non_nullable
               as String,
-      creditCardExpired: null == creditCardExpired
-          ? _value.creditCardExpired
-          : creditCardExpired // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -108,19 +190,39 @@ class __$$PaymentCardImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PaymentCardImpl implements _PaymentCard {
-  _$PaymentCardImpl({required this.cardType, required this.creditCardExpired});
+  _$PaymentCardImpl(
+      {required this.expirationYear,
+      required this.expirationMonth,
+      required this.validFromMonth,
+      required this.validFromYear,
+      required this.issueNumber,
+      required this.maskedNumber,
+      required this.holder,
+      required this.cardType});
 
   factory _$PaymentCardImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentCardImplFromJson(json);
 
   @override
-  final String cardType;
+  final int expirationYear;
   @override
-  final bool creditCardExpired;
+  final int expirationMonth;
+  @override
+  final int validFromMonth;
+  @override
+  final int validFromYear;
+  @override
+  final String issueNumber;
+  @override
+  final String maskedNumber;
+  @override
+  final String holder;
+  @override
+  final String cardType;
 
   @override
   String toString() {
-    return 'PaymentCard(cardType: $cardType, creditCardExpired: $creditCardExpired)';
+    return 'PaymentCard(expirationYear: $expirationYear, expirationMonth: $expirationMonth, validFromMonth: $validFromMonth, validFromYear: $validFromYear, issueNumber: $issueNumber, maskedNumber: $maskedNumber, holder: $holder, cardType: $cardType)';
   }
 
   @override
@@ -128,15 +230,35 @@ class _$PaymentCardImpl implements _PaymentCard {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentCardImpl &&
+            (identical(other.expirationYear, expirationYear) ||
+                other.expirationYear == expirationYear) &&
+            (identical(other.expirationMonth, expirationMonth) ||
+                other.expirationMonth == expirationMonth) &&
+            (identical(other.validFromMonth, validFromMonth) ||
+                other.validFromMonth == validFromMonth) &&
+            (identical(other.validFromYear, validFromYear) ||
+                other.validFromYear == validFromYear) &&
+            (identical(other.issueNumber, issueNumber) ||
+                other.issueNumber == issueNumber) &&
+            (identical(other.maskedNumber, maskedNumber) ||
+                other.maskedNumber == maskedNumber) &&
+            (identical(other.holder, holder) || other.holder == holder) &&
             (identical(other.cardType, cardType) ||
-                other.cardType == cardType) &&
-            (identical(other.creditCardExpired, creditCardExpired) ||
-                other.creditCardExpired == creditCardExpired));
+                other.cardType == cardType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, cardType, creditCardExpired);
+  int get hashCode => Object.hash(
+      runtimeType,
+      expirationYear,
+      expirationMonth,
+      validFromMonth,
+      validFromYear,
+      issueNumber,
+      maskedNumber,
+      holder,
+      cardType);
 
   @JsonKey(ignore: true)
   @override
@@ -154,16 +276,34 @@ class _$PaymentCardImpl implements _PaymentCard {
 
 abstract class _PaymentCard implements PaymentCard {
   factory _PaymentCard(
-      {required final String cardType,
-      required final bool creditCardExpired}) = _$PaymentCardImpl;
+      {required final int expirationYear,
+      required final int expirationMonth,
+      required final int validFromMonth,
+      required final int validFromYear,
+      required final String issueNumber,
+      required final String maskedNumber,
+      required final String holder,
+      required final String cardType}) = _$PaymentCardImpl;
 
   factory _PaymentCard.fromJson(Map<String, dynamic> json) =
       _$PaymentCardImpl.fromJson;
 
   @override
-  String get cardType;
+  int get expirationYear;
   @override
-  bool get creditCardExpired;
+  int get expirationMonth;
+  @override
+  int get validFromMonth;
+  @override
+  int get validFromYear;
+  @override
+  String get issueNumber;
+  @override
+  String get maskedNumber;
+  @override
+  String get holder;
+  @override
+  String get cardType;
   @override
   @JsonKey(ignore: true)
   _$$PaymentCardImplCopyWith<_$PaymentCardImpl> get copyWith =>
