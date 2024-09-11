@@ -2,7 +2,6 @@ import 'package:example/constants.dart';
 import 'package:example/domain/model/product_cart_entity.dart';
 import 'package:example/l10n/l10n.dart';
 import 'package:example/presentation/basket/bloc/cart_bloc.dart';
-import 'package:example/presentation/basket/bloc/cart_event.dart';
 import 'package:example/presentation/basket/bloc/cart_state.dart';
 import 'package:example/route/route_constants.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,7 @@ class OrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final data = context.read<CartBloc>();
-    final cart = (data.state) as CartLoaded;
+    //final cart = (data.state) as CartLoaded;
 
     return Scaffold(
       appBar: AppBar(
@@ -40,14 +39,18 @@ class OrderScreen extends StatelessWidget {
               ),
               const SizedBox(height: defaultPadding),
               OrderSummary(
-                currency: cart.currentCart.currency!,
-                orderTotal: cart.currentCart.orderTotal!,
-                shippingTotal: cart.currentCart.shippingTotal!,
-                subTotal: cart.currentCart.subtotal!,
-                taxTotal: cart.currentCart.taxTotal!,
+                currency: ((data.state) as CartLoaded).currentCart.currency!,
+                orderTotal:
+                    ((data.state) as CartLoaded).currentCart.orderTotal!,
+                shippingTotal:
+                    ((data.state) as CartLoaded).currentCart.shippingTotal!,
+                subTotal: ((data.state) as CartLoaded).currentCart.subtotal!,
+                taxTotal: ((data.state) as CartLoaded).currentCart.taxTotal!,
               ),
               const SizedBox(height: defaultPadding * 2),
-              ReviewCart(products: cart.currentCart.productItems),
+              ReviewCart(
+                products: ((data.state) as CartLoaded).currentCart.productItems,
+              ),
             ],
           ),
         ),
@@ -55,11 +58,7 @@ class OrderScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Colors.green.shade200,
         onPressed: () {
-          context.read<CartBloc>().add(CreateOrder());
-          Future.delayed(
-            const Duration(milliseconds: 800),
-            () => Navigator.pushNamed(context, successsOrderScreenRoute),
-          );
+          Navigator.pushNamed(context, successsOrderScreenRoute);
         },
         label: Row(
           children: [

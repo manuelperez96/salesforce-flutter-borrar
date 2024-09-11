@@ -14,6 +14,8 @@ class AddBillingAddress extends CartEvent {
 
 class AddPaymentMethod extends CartEvent {}
 
+class CreateNewBasket extends CartEvent {}
+
 class CreateOrder extends CartEvent {}
 
 class AddShipment extends CartEvent {}

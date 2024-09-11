@@ -1,7 +1,7 @@
 import 'package:example/components/bottom_navigation_bar/entry_point.dart';
 import 'package:example/presentation/basket/views/cart_screen.dart';
 import 'package:example/presentation/checkout/views/billing_address_screen.dart';
-import 'package:example/presentation/checkout/views/order_screen.dart';
+import 'package:example/presentation/checkout/views/order_summary_screen.dart';
 import 'package:example/presentation/checkout/views/payment_method_screen.dart';
 import 'package:example/presentation/checkout/views/success_order_screen.dart';
 import 'package:example/presentation/discover/views/discover_screen.dart';

@@ -296,6 +296,24 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Precio por unidad'**
   String get price_per_unit;
+
+  /// No description provided for @success_pay.
+  ///
+  /// In es, this message translates to:
+  /// **'¡Pago realizado correctamente!'**
+  String get success_pay;
+
+  /// No description provided for @on_road.
+  ///
+  /// In es, this message translates to:
+  /// **'Estamos en marcha  😊'**
+  String get on_road;
+
+  /// No description provided for @home.
+  ///
+  /// In es, this message translates to:
+  /// **'Inicio'**
+  String get home;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

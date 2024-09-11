@@ -29,6 +29,7 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     on<AddPaymentMethod>(_onAddPaymentMethod);
     on<AddShipment>(_onAddShipment);
     on<CreateOrder>(_onCreateOrder);
+    on<CreateNewBasket>(_onCreateNewBasket);
   }
   late AnimationController controller;
 
@@ -39,6 +40,14 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
 
   Future<BasketEntity> _onCreateBasket() {
     return _basketRepository.createBasket();
+  }
+
+  Future<void> _onCreateNewBasket(
+    CreateNewBasket event,
+    Emitter<CartState> emit,
+  ) async {
+    final basket = await _onCreateBasket();
+    emit(CartLoaded(basket));
   }
 
   Future<void> _onCreateOrder(

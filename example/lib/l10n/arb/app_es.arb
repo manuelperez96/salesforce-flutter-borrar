@@ -33,5 +33,9 @@
   "cart_empty" : "El carrito está vacío",
   "quantity": "Cantidad",
   "order_summary" : "Resumen del pedido",
-  "price_per_unit": "Precio por unidad"
+  "price_per_unit": "Precio por unidad",
+  "success_pay" : "¡Pago realizado correctamente!",
+  "on_road":"Estamos en marcha  😊",
+  "home":"Inicio"
+
 }

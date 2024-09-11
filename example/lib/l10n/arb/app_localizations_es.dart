@@ -107,4 +107,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get price_per_unit => 'Precio por unidad';
+
+  @override
+  String get success_pay => '¡Pago realizado correctamente!';
+
+  @override
+  String get on_road => 'Estamos en marcha  😊';
+
+  @override
+  String get home => 'Inicio';
 }

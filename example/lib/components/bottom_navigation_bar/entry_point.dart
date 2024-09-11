@@ -26,6 +26,11 @@ class _EntryPointState extends State<EntryPoint> {
   int _currentIndex = 0;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SvgPicture svgIcon(String src, {Color? color}) {
       return SvgPicture.asset(
