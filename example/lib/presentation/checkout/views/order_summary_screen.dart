@@ -106,39 +106,41 @@ class ReviewCart extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  SizedBox(
-                    height: MediaQuery.sizeOf(context).width * 0.2,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            product.name,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
+                  Expanded(
+                    child: SizedBox(
+                      height: MediaQuery.sizeOf(context).width * 0.2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              product.name,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            '${context.l10n.quantity}: ${product.quantity}',
                             style: const TextStyle(
-                              fontSize: 14,
+                              fontSize: 11,
                               color: Colors.black,
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          '${context.l10n.quantity}: ${product.quantity}',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.black,
+                          const SizedBox(height: 5),
+                          Text(
+                            '${context.l10n.price_per_unit}: '
+                            '${product.pricePerUnit} ${product.currency}',
+                            style: const TextStyle(
+                              fontSize: 11,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          '${context.l10n.price_per_unit}: '
-                          '${product.pricePerUnit} ${product.currency}',
-                          style: const TextStyle(
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
