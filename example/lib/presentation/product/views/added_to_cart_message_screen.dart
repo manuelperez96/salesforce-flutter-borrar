@@ -40,7 +40,11 @@ class AddedToCartMessageScreen extends StatelessWidget {
                 onPressed: () {
                   Future.delayed(
                     const Duration(milliseconds: 300),
-                    () => context.read<CartBloc>().controller.forward(),
+                    () {
+                      if (context.mounted) {
+                        context.read<CartBloc>().controller.forward();
+                      }
+                    },
                   );
 
                   Navigator.pushNamedAndRemoveUntil(
