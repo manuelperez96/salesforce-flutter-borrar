@@ -6,8 +6,8 @@ part 'applied_discount.g.dart';
 /// {@template applied_discount}
 /// Represents a discount applied to an order or item.
 /// 
-/// This class includes various fields that describe the applied discount, including
-/// its amount and type.
+/// This class includes various fields that describe the applied discount, 
+/// including its amount and type.
 /// 
 /// - `amount`: The amount of the discount.
 /// - `type`: The type of the discount.

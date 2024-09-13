@@ -7,14 +7,16 @@ part 'payment_card.g.dart';
 /// Represents a payment card used for transactions.
 /// 
 /// This class includes various fields that describe the payment card, including
-/// its expiration date, issue number, masked number, holder name, and card type.
+/// its expiration date, issue number, masked number, holder name, 
+/// and card type.
 /// 
 /// - `expirationYear`: The year the card expires.
 /// - `expirationMonth`: The month the card expires.
 /// - `validFromMonth`: The month the card is valid from.
 /// - `validFromYear`: The year the card is valid from.
 /// - `issueNumber`: The issue number of the card.
-/// - `maskedNumber`: The masked number of the card (e.g., "**** **** **** 1234").
+/// - `maskedNumber`: The masked number of the card 
+/// (e.g., "**** **** **** 1234").
 /// - `holder`: The name of the cardholder.
 /// - `cardType`: The type of the card (e.g., "Visa", "MasterCard").
 /// {@endtemplate}

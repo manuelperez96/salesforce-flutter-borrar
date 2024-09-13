@@ -17,8 +17,10 @@ part 'order_item.g.dart';
 /// - `itemText`: The text description of the item.
 /// - `optionItems`: A list of option items associated with the item.
 /// - `price`: The price of the item.
-/// - `priceAfterItemDiscount`: The price of the item after item-specific discounts.
-/// - `priceAfterOrderDiscount`: The price of the item after order-wide discounts.
+/// - `priceAfterItemDiscount`: The price of the item after item-specific 
+/// discounts.
+/// - `priceAfterOrderDiscount`: The price of the item after order-wide 
+/// discounts.
 /// - `productId`: The unique identifier of the product.
 /// - `productName`: The name of the product.
 /// - `quantity`: The quantity of the item.
@@ -28,7 +30,8 @@ part 'order_item.g.dart';
 /// - `taxClassId`: The tax class identifier for the item.
 /// - `taxRate`: The tax rate applied to the item.
 /// - `optionId`: The identifier of the option associated with the item.
-/// - `optionValueId`: The value identifier of the option associated with the item.
+/// - `optionValueId`: The value identifier of the option associated with 
+/// the item.
 /// {@endtemplate}
 @freezed
 class Item with _$Item {

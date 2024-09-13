@@ -53,7 +53,8 @@ enum ProductType {
   ///
   /// - `value`: The string value to parse.
   ///
-  /// Returns the corresponding [ProductType] or throws an [ArgumentError] if the value does not match.
+  /// Returns the corresponding [ProductType] or throws an [ArgumentError] 
+  /// if the value does not match.
   static ProductType fromValue(String value) {
     return switch (value) {
       'master' => ProductType.master,

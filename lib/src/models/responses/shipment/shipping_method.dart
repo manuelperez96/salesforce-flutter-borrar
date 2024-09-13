@@ -6,8 +6,8 @@ part 'shipping_method.g.dart';
 /// {@template shipping_method}
 /// Represents a shipping method available for a shipment.
 /// 
-/// This class includes various fields that describe the shipping method, including
-/// its description, ID, name, and price.
+/// This class includes various fields that describe the shipping method, 
+/// including its description, ID, name, and price.
 /// 
 /// - `description`: The description of the shipping method.
 /// - `id`: The unique identifier of the shipping method.

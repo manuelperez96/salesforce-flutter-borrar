@@ -12,8 +12,8 @@ part 'product.freezed.dart';
 /// Represents a product in the catalog.
 /// 
 /// This class includes various fields that describe the product, including
-/// its ID, currency, images, stock information, name, price, descriptions, category,
-/// brand, and variant information.
+/// its ID, currency, images, stock information, name, price, descriptions, 
+/// category, brand, and variant information.
 /// 
 /// - `id`: The unique identifier of the product.
 /// - `currency`: The currency used for the product price.
@@ -110,7 +110,8 @@ class Product with _$Product {
   ///
   /// - `json`: The JSON object to extract variant information from.
   ///
-  /// Returns an instance of [VariantInfo] or `null` if no variant information is present.
+  /// Returns an instance of [VariantInfo] or `null` if no variant information 
+  /// is present.
   static VariantInfo? _getVariant(Map<String, dynamic> json) {
     final variants = (json['variants'] as List?)?.cast<Map<String, dynamic>>();
     if (variants == null) return null;

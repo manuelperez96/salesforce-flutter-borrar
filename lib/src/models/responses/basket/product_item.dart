@@ -19,8 +19,10 @@ part 'product_item.g.dart';
 /// - `gift`: Indicates if the product is a gift.
 /// - `itemId`: The unique identifier of the item in the order or basket.
 /// - `itemText`: The text description of the item.
-/// - `priceAfterItemDiscount`: The price of the product after item-specific discounts.
-/// - `priceAfterOrderDiscount`: The price of the product after order-wide discounts.
+/// - `priceAfterItemDiscount`: The price of the product after item-specific 
+/// discounts.
+/// - `priceAfterOrderDiscount`: The price of the product after order-wide 
+/// discounts.
 /// - `quantity`: The quantity of the product.
 /// - `shipmentId`: The identifier of the shipment associated with the product.
 /// - `tax`: The tax amount for the product.

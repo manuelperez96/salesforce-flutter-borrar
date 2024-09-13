@@ -6,7 +6,8 @@ part 'grouped_tax_item.g.dart';
 /// {@template grouped_tax_item}
 /// Represents a grouped tax item in a basket or order.
 /// 
-/// This class includes various fields that describe the grouped tax item, including
+/// This class includes various fields that describe the grouped tax item, 
+/// including
 /// its type, tax rate, and tax value.
 /// 
 /// - `type`: The type of the tax.

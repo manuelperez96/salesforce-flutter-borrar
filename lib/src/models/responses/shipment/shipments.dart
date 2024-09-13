@@ -12,8 +12,10 @@ part 'shipments.g.dart';
 /// This class includes various fields that describe the shipment, including
 /// its ID, tax information, product totals, shipping totals, and gift status.
 /// 
-/// - `adjustedMerchandiseTotalTax`: The adjusted total tax for merchandise (optional).
-/// - `adjustedShippingTotalTax`: The adjusted total tax for shipping (optional).
+/// - `adjustedMerchandiseTotalTax`: The adjusted total tax for 
+/// merchandise (optional).
+/// - `adjustedShippingTotalTax`: The adjusted total tax for 
+/// shipping (optional).
 /// - `gift`: Indicates if the shipment is a gift.
 /// - `merchandiseTotalTax`: The total tax for merchandise (optional).
 /// - `productSubTotal`: The subtotal amount for the products (optional).

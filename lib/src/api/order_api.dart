@@ -2,7 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 /// {@template order_api}
-/// A class that handles order-related API interactions within the SF Commerce SDK.
+/// A class that handles order-related API interactions within the SF 
+/// Commerce SDK.
 /// 
 /// This class provides methods for creating and retrieving orders.
 /// 

@@ -6,16 +6,18 @@ part 'shipping_items.g.dart';
 /// {@template shipping_item}
 /// Represents a shipping item in a shipment.
 /// 
-/// This class includes various fields that describe the shipping item, including
-/// its ID, prices, tax information, and shipment ID.
+/// This class includes various fields that describe the shipping item, 
+/// including its ID, prices, tax information, and shipment ID.
 /// 
 /// - `adjustedTax`: The adjusted tax amount for the shipping item (optional).
 /// - `basePrice`: The base price of the shipping item (optional).
 /// - `itemId`: The unique identifier of the shipping item (optional).
 /// - `itemText`: The text description of the shipping item (optional).
 /// - `price`: The price of the shipping item (optional).
-/// - `priceAfterItemDiscount`: The price of the shipping item after item-specific discounts (optional).
-/// - `shipmentId`: The identifier of the shipment associated with the shipping item.
+/// - `priceAfterItemDiscount`: The price of the shipping item after 
+/// item-specific discounts (optional).
+/// - `shipmentId`: The identifier of the shipment associated with 
+/// the shipping item.
 /// - `tax`: The tax amount for the shipping item (optional).
 /// - `taxBasis`: The basis for calculating the tax (optional).
 /// - `taxClassId`: The tax class identifier for the shipping item (optional).

@@ -1,15 +1,20 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
+/// {@template logger}
 /// Utility class for logging messages.
+/// 
 /// This class handles logging messages based on the enabled state.
-/// Only in Debug Mode.
+/// Logging is only performed in Debug Mode.
+/// 
+/// - `isEnabled`: A static boolean that determines if logging is enabled.
+/// {@endtemplate}
 class Logger {
   static bool isEnabled = false;
 
   /// Logs a message if logging is enabled.
   ///
-  /// [message] - The message to log.
+  /// - `message`: The message to log.
   static void log(String message) {
     if (isEnabled) {
       if (kDebugMode) {
@@ -19,10 +24,16 @@ class Logger {
   }
 }
 
+/// {@template network_util}
 /// Utility class for creating logging interceptors for Dio requests.
+/// 
+/// This class provides a method to create an [InterceptorsWrapper] that logs
+/// details of requests, responses, and errors using the provided [Logger].
+/// {@endtemplate}
 class NetworkUtil {
-  /// Creates an [InterceptorsWrapper] with logger capabilities
-  /// for Dio requests.
+  /// {@macro network_util}
+  /// 
+  /// Creates an [InterceptorsWrapper] with logger capabilities for Dio requests.
   ///
   /// This method returns an [InterceptorsWrapper] that logs details of
   /// requests, responses, and errors using the provided [Logger].

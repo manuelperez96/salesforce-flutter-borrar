@@ -7,8 +7,9 @@ part 'order_price_adjustment.g.dart';
 /// {@template order_price_adjustment}
 /// Represents a price adjustment applied to an order.
 /// 
-/// This class includes various fields that describe the price adjustment, including
-/// the applied discount, reason code, creator, creation date, and other attributes.
+/// This class includes various fields that describe the price adjustment, 
+/// including the applied discount, reason code, creator, creation date, 
+/// and other attributes.
 /// 
 /// - `appliedDiscount`: The discount applied to the order.
 /// - `reasonCode`: The reason code for the price adjustment.
@@ -19,7 +20,8 @@ part 'order_price_adjustment.g.dart';
 /// - `manual`: Indicates if the price adjustment was applied manually.
 /// - `price`: The amount of the price adjustment.
 /// - `priceAdjustmentId`: The unique identifier of the price adjustment.
-/// - `promotionId`: The identifier of the promotion associated with the price adjustment.
+/// - `promotionId`: The identifier of the promotion associated with the 
+/// price adjustment.
 /// {@endtemplate}
 @freezed
 class OrderPriceAdjustment with _$OrderPriceAdjustment {

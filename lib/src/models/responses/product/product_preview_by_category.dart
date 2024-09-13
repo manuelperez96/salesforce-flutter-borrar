@@ -6,8 +6,9 @@ part 'product_preview_by_category.freezed.dart';
 /// {@template product_preview_by_category}
 /// Represents a preview of a product within a specific category.
 /// 
-/// This class includes various fields that describe the product preview, including
-/// its ID, name, image, price, currency, category ID, product types, and orderable status.
+/// This class includes various fields that describe the product preview, 
+/// including its ID, name, image, price, currency, category ID, product 
+/// types, and orderable status.
 /// 
 /// - `id`: The unique identifier of the product.
 /// - `representedId`: The ID of the represented product.

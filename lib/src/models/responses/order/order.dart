@@ -15,8 +15,8 @@ part 'order.g.dart';
 /// Represents an order in the system.
 ///
 /// This class includes various fields that describe the order, including
-/// its ID, customer information, billing address, payment instruments, product items,
-/// and various totals and statuses.
+/// its ID, customer information, billing address, payment instruments, 
+/// product items, and various totals and statuses.
 ///
 /// - `adjustedMerchandiseTotalTax`: The adjusted total tax for merchandise.
 /// - `adjustedShippingTotalTax`: The adjusted total tax for shipping.
@@ -30,13 +30,16 @@ part 'order.g.dart';
 /// - `customerInfo`: Information about the customer associated with the order.
 /// - `customerName`: The name of the customer.
 /// - `exportStatus`: The export status of the order.
-/// - `groupedTaxItems`: The list of grouped tax items associated with the order.
+/// - `groupedTaxItems`: The list of grouped tax items associated 
+/// with the order.
 /// - `guest`: Indicates if the order was placed by a guest.
-/// - `giftCertificateItems`: The list of gift certificate items applied to the order.
+/// - `giftCertificateItems`: The list of gift certificate items applied 
+/// to the order.
 /// - `lastModified`: The date when the order was last modified.
 /// - `merchandiseTotalTax`: The total tax for merchandise.
 /// - `orderNo`: The unique identifier of the order.
-/// - `orderPriceAdjustments`: The list of price adjustments applied to the order.
+/// - `orderPriceAdjustments`: The list of price adjustments applied 
+/// to the order.
 /// - `orderToken`: The token associated with the order.
 /// - `orderTotal`: The total amount of the order.
 /// - `orderViewCode`: The view code of the order.

@@ -153,7 +153,8 @@ class BasketApi extends Api {
 
   /// Adds a payment method to the basket.
   ///
-  /// Throws [AddPaymentMethodBasketException] if adding the payment method fails.
+  /// Throws [AddPaymentMethodBasketException] if adding the payment 
+  /// method fails.
   Future<Basket> addPaymentMethodToBasket({
     required String basketId,
     required PaymentInstrument paymentMethod,
@@ -219,7 +220,8 @@ class BasketApi extends Api {
 
   /// Adds a billing address to the basket.
   ///
-  /// Throws [AddBillingAddressBasketException] if adding the billing address fails.
+  /// Throws [AddBillingAddressBasketException] if adding the billing 
+  /// address fails.
   Future<Basket> addBillingAddressBasket({
     required String basketId,
     required IngAddress billAddress,

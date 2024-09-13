@@ -4,14 +4,16 @@ part 'image.freezed.dart';
 part 'image.g.dart';
 
 /// {@template image_bundle}
-/// Represents a bundle of images with associated view type and variation attributes.
+/// Represents a bundle of images with associated view type and 
+/// variation attributes.
 ///
 /// This class includes various fields that describe the image bundle, including
 /// the list of images, view type, and variation attributes.
 ///
 /// - `images`: The list of images in the bundle.
 /// - `viewType`: The view type associated with the image bundle.
-/// - `variationAttributes`: The list of variation attributes associated with the image bundle.
+/// - `variationAttributes`: The list of variation attributes associated 
+/// with the image bundle.
 /// {@endtemplate}
 @freezed
 class ImageBundle with _$ImageBundle {
@@ -48,7 +50,8 @@ class ImageBundle with _$ImageBundle {
   ///
   /// - `json`: The JSON object to extract variation attributes from.
   ///
-  /// Returns an empty list if the variation attributes are not present or empty.
+  /// Returns an empty list if the variation attributes are not 
+  /// present or empty.
   static List<VariationAttribute> _getVariationAttributes(
     Map<String, dynamic> json,
   ) {
@@ -101,8 +104,8 @@ class Image with _$Image {
 /// {@template variation_attribute}
 /// Represents a variation attribute for a product.
 ///
-/// This class includes various fields that describe the variation attribute, including
-/// its ID and value.
+/// This class includes various fields that describe the variation attribute, 
+/// including its ID and value.
 ///
 /// - `id`: The unique identifier of the variation attribute.
 /// - `value`: The value of the variation attribute.

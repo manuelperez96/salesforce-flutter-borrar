@@ -7,12 +7,13 @@ part 'payment_instrument.g.dart';
 /// {@template payment_instrument}
 /// Represents a payment instrument used for transactions.
 /// 
-/// This class includes various fields that describe the payment instrument, including
-/// the amount, payment method ID, and an optional payment card.
+/// This class includes various fields that describe the payment instrument, 
+/// including the amount, payment method ID, and an optional payment card.
 /// 
 /// - `amount`: The amount associated with the payment instrument.
 /// - `paymentMethodId`: The identifier of the payment method.
-/// - `paymentCard`: The payment card associated with the payment instrument (optional).
+/// - `paymentCard`: The payment card associated with the payment 
+/// instrument (optional).
 /// {@endtemplate}
 @freezed
 class PaymentInstrument with _$PaymentInstrument {
