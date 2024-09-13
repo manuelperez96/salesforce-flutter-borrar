@@ -1,4 +1,5 @@
 import 'package:example/ui/components/bottom_navigation_bar/entry_point.dart';
+import 'package:example/ui/route/route_constants.dart';
 import 'package:example/ui/screen/basket/views/cart_screen.dart';
 import 'package:example/ui/screen/checkout/views/billing_address_screen.dart';
 import 'package:example/ui/screen/checkout/views/order_summary_screen.dart';
@@ -9,7 +10,6 @@ import 'package:example/ui/screen/home/views/home_screen.dart';
 import 'package:example/ui/screen/onbording/views/onbording_screnn.dart';
 import 'package:example/ui/screen/product_detail/product_detail_provider.dart';
 import 'package:example/ui/screen/splash/splash_screen.dart';
-import 'package:example/ui/route/route_constants.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {

@@ -1,6 +1,6 @@
 import 'package:example/constants.dart';
-import 'package:example/l10n/l10n.dart';
 import 'package:example/domain/model/category_model.dart';
+import 'package:example/l10n/l10n.dart';
 import 'package:example/ui/screen/discover/views/components/expansion_category.dart';
 import 'package:example/ui/screen/search/views/components/search_form.dart';
 import 'package:flutter/material.dart';
