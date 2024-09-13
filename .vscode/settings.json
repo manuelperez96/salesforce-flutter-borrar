@@ -1,6 +1,7 @@
 {
-    "cSpell.words": [
-        "Pkce",
-        "usid"
-    ]
+  "cSpell.words": [
+    "Pkce",
+    "usid"
+  ],
+  "dart.flutterSdkPath": ".fvm/versions/3.24.3"
 }
