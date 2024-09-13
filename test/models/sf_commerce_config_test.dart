@@ -1,4 +1,4 @@
-import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
+import 'package:sf_commerce_sdk/src/models/sf_commerce_config.dart';
 import 'package:test/test.dart';
 
 void main() {

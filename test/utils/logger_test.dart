@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
+import 'package:sf_commerce_sdk/src/utils/interceptors/logger_interceptor.dart';
 
 import 'logger_test.mocks.dart';
 

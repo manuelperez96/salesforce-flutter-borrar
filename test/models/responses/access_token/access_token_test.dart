@@ -1,4 +1,4 @@
-import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
+import 'package:sf_commerce_sdk/src/models/responses/access_token/access_token.dart';
 import 'package:test/test.dart';
 
 import '../../../helpers/models/access_token.dart';

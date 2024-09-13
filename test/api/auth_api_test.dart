@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sf_commerce_sdk/api/auth_api.dart';
-import 'package:sf_commerce_sdk/models/exception/auth_exception.dart';
-import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
+import 'package:sf_commerce_sdk/src/api/auth_api.dart';
+import 'package:sf_commerce_sdk/src/models/exception/auth_exception.dart';
+import 'package:sf_commerce_sdk/src/models/sf_commerce_config.dart';
+import 'package:sf_commerce_sdk/src/utils/interceptors/token_storage.dart';
 import 'package:test/test.dart';
 
 import '../helpers/models/access_token.dart';

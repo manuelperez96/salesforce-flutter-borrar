@@ -1,4 +1,4 @@
-import 'package:sf_commerce_sdk/utils/pkce_helper.dart';
+import 'package:sf_commerce_sdk/src/utils/pkce_helper.dart';
 import 'package:test/test.dart';
 
 void main() {

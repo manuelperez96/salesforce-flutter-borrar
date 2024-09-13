@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/refresh_token_interceptor.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
+import 'package:sf_commerce_sdk/src/utils/interceptors/refresh_token_interceptor.dart';
+import 'package:sf_commerce_sdk/src/utils/interceptors/token_storage.dart';
 import 'package:test/test.dart';
 
 import 'refresh_token_interceptor_test.mocks.dart';
