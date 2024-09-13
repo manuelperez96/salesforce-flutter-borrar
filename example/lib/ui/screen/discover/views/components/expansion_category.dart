@@ -1,5 +1,5 @@
 import 'package:example/constants.dart';
-import 'package:example/models/category_model.dart';
+import 'package:example/domain/model/category_model.dart';
 import 'package:example/ui/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

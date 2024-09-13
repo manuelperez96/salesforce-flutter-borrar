@@ -1,3 +1,4 @@
+// TODO(TEAM): delete
 class CategoryModel {
   CategoryModel({
     required this.title,
