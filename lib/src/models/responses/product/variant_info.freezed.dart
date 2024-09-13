@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$VariantInfo {
-  String get color => throw _privateConstructorUsedError;
-  String get size => throw _privateConstructorUsedError;
+  String? get color => throw _privateConstructorUsedError;
+  String? get size => throw _privateConstructorUsedError;
   List<VariationAttributes> get variationAttributes =>
       throw _privateConstructorUsedError;
   List<Variant> get variants => throw _privateConstructorUsedError;
@@ -34,8 +34,8 @@ abstract class $VariantInfoCopyWith<$Res> {
       _$VariantInfoCopyWithImpl<$Res, VariantInfo>;
   @useResult
   $Res call(
-      {String color,
-      String size,
+      {String? color,
+      String? size,
       List<VariationAttributes> variationAttributes,
       List<Variant> variants});
 }
@@ -53,20 +53,20 @@ class _$VariantInfoCopyWithImpl<$Res, $Val extends VariantInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? color = null,
-    Object? size = null,
+    Object? color = freezed,
+    Object? size = freezed,
     Object? variationAttributes = null,
     Object? variants = null,
   }) {
     return _then(_value.copyWith(
-      color: null == color
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
-      size: null == size
+              as String?,
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       variationAttributes: null == variationAttributes
           ? _value.variationAttributes
           : variationAttributes // ignore: cast_nullable_to_non_nullable
@@ -88,8 +88,8 @@ abstract class _$$VariantInfoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String color,
-      String size,
+      {String? color,
+      String? size,
       List<VariationAttributes> variationAttributes,
       List<Variant> variants});
 }
@@ -105,20 +105,20 @@ class __$$VariantInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? color = null,
-    Object? size = null,
+    Object? color = freezed,
+    Object? size = freezed,
     Object? variationAttributes = null,
     Object? variants = null,
   }) {
     return _then(_$VariantInfoImpl(
-      color: null == color
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
-      size: null == size
+              as String?,
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       variationAttributes: null == variationAttributes
           ? _value._variationAttributes
           : variationAttributes // ignore: cast_nullable_to_non_nullable
@@ -135,17 +135,17 @@ class __$$VariantInfoImplCopyWithImpl<$Res>
 
 class _$VariantInfoImpl implements _VariantInfo {
   _$VariantInfoImpl(
-      {required this.color,
-      required this.size,
+      {this.color,
+      this.size,
       required final List<VariationAttributes> variationAttributes,
       required final List<Variant> variants})
       : _variationAttributes = variationAttributes,
         _variants = variants;
 
   @override
-  final String color;
+  final String? color;
   @override
-  final String size;
+  final String? size;
   final List<VariationAttributes> _variationAttributes;
   @override
   List<VariationAttributes> get variationAttributes {
@@ -197,15 +197,15 @@ class _$VariantInfoImpl implements _VariantInfo {
 
 abstract class _VariantInfo implements VariantInfo {
   factory _VariantInfo(
-      {required final String color,
-      required final String size,
+      {final String? color,
+      final String? size,
       required final List<VariationAttributes> variationAttributes,
       required final List<Variant> variants}) = _$VariantInfoImpl;
 
   @override
-  String get color;
+  String? get color;
   @override
-  String get size;
+  String? get size;
   @override
   List<VariationAttributes> get variationAttributes;
   @override
@@ -220,8 +220,8 @@ abstract class _VariantInfo implements VariantInfo {
 mixin _$Variant {
   String get id => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
-  String get color => throw _privateConstructorUsedError;
-  String get size => throw _privateConstructorUsedError;
+  String? get color => throw _privateConstructorUsedError;
+  String? get size => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $VariantCopyWith<Variant> get copyWith => throw _privateConstructorUsedError;
@@ -232,7 +232,7 @@ abstract class $VariantCopyWith<$Res> {
   factory $VariantCopyWith(Variant value, $Res Function(Variant) then) =
       _$VariantCopyWithImpl<$Res, Variant>;
   @useResult
-  $Res call({String id, double price, String color, String size});
+  $Res call({String id, double price, String? color, String? size});
 }
 
 /// @nodoc
@@ -250,8 +250,8 @@ class _$VariantCopyWithImpl<$Res, $Val extends Variant>
   $Res call({
     Object? id = null,
     Object? price = null,
-    Object? color = null,
-    Object? size = null,
+    Object? color = freezed,
+    Object? size = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -262,14 +262,14 @@ class _$VariantCopyWithImpl<$Res, $Val extends Variant>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
-      color: null == color
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
-      size: null == size
+              as String?,
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -281,7 +281,7 @@ abstract class _$$VariantImplCopyWith<$Res> implements $VariantCopyWith<$Res> {
       __$$VariantImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, double price, String color, String size});
+  $Res call({String id, double price, String? color, String? size});
 }
 
 /// @nodoc
@@ -297,8 +297,8 @@ class __$$VariantImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? price = null,
-    Object? color = null,
-    Object? size = null,
+    Object? color = freezed,
+    Object? size = freezed,
   }) {
     return _then(_$VariantImpl(
       id: null == id
@@ -309,14 +309,14 @@ class __$$VariantImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
-      color: null == color
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
-      size: null == size
+              as String?,
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -324,20 +324,16 @@ class __$$VariantImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$VariantImpl implements _Variant {
-  _$VariantImpl(
-      {required this.id,
-      required this.price,
-      required this.color,
-      required this.size});
+  _$VariantImpl({required this.id, required this.price, this.color, this.size});
 
   @override
   final String id;
   @override
   final double price;
   @override
-  final String color;
+  final String? color;
   @override
-  final String size;
+  final String? size;
 
   @override
   String toString() {
@@ -369,17 +365,17 @@ abstract class _Variant implements Variant {
   factory _Variant(
       {required final String id,
       required final double price,
-      required final String color,
-      required final String size}) = _$VariantImpl;
+      final String? color,
+      final String? size}) = _$VariantImpl;
 
   @override
   String get id;
   @override
   double get price;
   @override
-  String get color;
+  String? get color;
   @override
-  String get size;
+  String? get size;
   @override
   @JsonKey(ignore: true)
   _$$VariantImplCopyWith<_$VariantImpl> get copyWith =>

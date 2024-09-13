@@ -28,6 +28,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     Emitter<ProductDetailState> emit,
   ) async {
     try {
+      print(state.initialProductId);
       final response =
           await _productRepository.getProduct(state.initialProductId);
       emit(
@@ -41,6 +42,8 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
         ),
       );
     } catch (e) {
+      print('---------------- error');
+      print(e);
       emit(state.copyWith(status: ProductDetailStatus.error));
     }
   }

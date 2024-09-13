@@ -66,7 +66,7 @@ class Product with _$Product {
     );
   }
 
-  bool get hasVariants => variantInfo != null;
+ bool get hasVariants => variantInfo != null;
 
   List<Image> get representativeImage => images.first.images;
   List<String> get representativeUrlImages =>
@@ -89,8 +89,8 @@ class Product with _$Product {
     final variationValues = json['variationValues'] as Map<String, dynamic>;
 
     return VariantInfo(
-      color: variationValues['color'] as String,
-      size: variationValues['size'] as String,
+      color: variationValues['color'] as String?,
+      size: variationValues['size'] as String?,
       variationAttributes: variationAttributes,
       variants: variants.map(Variant.fromJson).toList(),
     );

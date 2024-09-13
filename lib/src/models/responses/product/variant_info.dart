@@ -5,8 +5,8 @@ part 'variant_info.freezed.dart';
 @freezed
 class VariantInfo with _$VariantInfo {
   factory VariantInfo({
-    required String color,
-    required String size,
+    String? color,
+    String? size,
     required List<VariationAttributes> variationAttributes,
     required List<Variant> variants,
   }) = _VariantInfo;
@@ -17,8 +17,8 @@ class Variant with _$Variant {
   factory Variant({
     required String id,
     required double price,
-    required String color,
-    required String size,
+    String? color,
+    String? size,
   }) = _Variant;
 
   factory Variant.fromJson(Map<String, dynamic> json) {
@@ -27,8 +27,8 @@ class Variant with _$Variant {
     return Variant(
       id: json['productId'] as String,
       price: (json['price'] as num).toDouble(),
-      color: variantValues['color'] as String,
-      size: variantValues['size'] as String,
+      color: variantValues['color'] as String?,
+      size: variantValues['size'] as String?,
     );
   }
 }
