@@ -1,4 +1,5 @@
-import 'package:sf_commerce_sdk/api/auth_api.dart';
+
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class AuthRepository {
   AuthRepository({required AuthApi authApi}) : _authApi = authApi;

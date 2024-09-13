@@ -7,7 +7,7 @@ import 'package:example/ui/screen/basket/bloc/cart_bloc.dart';
 import 'package:example/ui/screen/basket/bloc/cart_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/models/responses/order/ing_address.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class BillingAddressScreen extends StatefulWidget {
   const BillingAddressScreen({super.key});

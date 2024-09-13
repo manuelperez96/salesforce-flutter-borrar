@@ -7,8 +7,7 @@ import 'package:example/ui/screen/basket/bloc/cart_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sf_commerce_sdk/models/responses/order/ing_address.dart';
-import 'package:sf_commerce_sdk/models/responses/payment/payment_instrument.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
   CartBloc({

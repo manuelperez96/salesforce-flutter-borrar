@@ -2,7 +2,7 @@ import 'package:example/constants.dart';
 import 'package:example/ui/components/network_image_with_loader.dart';
 import 'package:example/ui/route/route_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_category.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class CustomProductCard extends StatelessWidget {
   const CustomProductCard({

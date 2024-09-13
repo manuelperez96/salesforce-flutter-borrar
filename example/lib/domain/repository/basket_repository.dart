@@ -1,11 +1,6 @@
 import 'package:example/domain/model/basket_entity.dart';
 import 'package:example/domain/model/product_cart_entity.dart';
-import 'package:sf_commerce_sdk/api/basket_api.dart';
-import 'package:sf_commerce_sdk/api/order_api.dart';
-import 'package:sf_commerce_sdk/api/product_api.dart';
-import 'package:sf_commerce_sdk/models/responses/basket/basket.dart';
-import 'package:sf_commerce_sdk/models/responses/order/ing_address.dart';
-import 'package:sf_commerce_sdk/models/responses/payment/payment_instrument.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class BasketRepository {
   BasketRepository({

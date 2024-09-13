@@ -1,6 +1,4 @@
-import 'package:sf_commerce_sdk/api/product_api.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_category.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class ProductRepository {
   ProductRepository({required ProductApi productApi})

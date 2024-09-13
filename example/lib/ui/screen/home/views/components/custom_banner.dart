@@ -2,8 +2,7 @@ import 'package:example/constants.dart';
 import 'package:example/ui/components/network_image_with_loader.dart';
 import 'package:example/ui/screen/home/views/components/custom_product_card.dart';
 import 'package:flutter/material.dart';
-import 'package:sf_commerce_sdk/models/responses/category/category.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_category.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class CustomBanner extends StatelessWidget {
   const CustomBanner({

@@ -1,5 +1,5 @@
 import 'package:example/domain/model/product_cart_entity.dart';
-import 'package:sf_commerce_sdk/models/responses/order/ing_address.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 abstract class CartEvent {}
 

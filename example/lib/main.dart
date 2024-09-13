@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:example/app.dart';
 import 'package:example/di/app_modules.dart';
 import 'package:flutter/material.dart';
-import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 void main() async {
