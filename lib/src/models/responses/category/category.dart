@@ -5,10 +5,8 @@ part 'category.freezed.dart';
 enum ImageOrientation {
   vertical,
   landscape;
-}
 
-extension IMageOrientationX on ImageOrientation {
-   ImageOrientation fromValue(String? value) {
+  static ImageOrientation fromValue(String? value) {
     switch (value) {
       case 'vertical':
         return ImageOrientation.vertical;
