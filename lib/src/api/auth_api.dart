@@ -81,7 +81,6 @@ class AuthApi extends Api {
     try {
       final path =
           '${config.host}/shopper/auth/v1/organizations/${config.organizationId}/oauth2/authorize?response_type=code&client_id=${config.clientId}&hint=guest&code_challenge=$codeChallenge&redirect_uri=$_redirectUri';
-
       final response = await dio.get<dynamic>(
         path,
         options: Options(
