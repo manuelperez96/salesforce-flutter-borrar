@@ -1,6 +1,3 @@
-import 'package:example/di/app_modules.dart';
-import 'package:example/domain/repository/category_repository.dart';
-import 'package:example/domain/repository/product_repository.dart';
 import 'package:example/ui/screen/home/bloc/home_bloc.dart';
 import 'package:example/ui/screen/home/views/components/custom_banner.dart';
 import 'package:example/ui/screen/home/views/components/home_shimmer.dart';

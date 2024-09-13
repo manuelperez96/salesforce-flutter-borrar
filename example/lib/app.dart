@@ -1,13 +1,10 @@
 import 'package:example/di/app_modules.dart';
 import 'package:example/domain/repository/basket_repository.dart';
-import 'package:example/domain/repository/category_repository.dart';
-import 'package:example/domain/repository/product_repository.dart';
 import 'package:example/l10n/arb/app_localizations.dart';
 import 'package:example/ui/route/route_constants.dart';
 import 'package:example/ui/route/router.dart' as router;
 import 'package:example/ui/screen/basket/bloc/cart_bloc.dart';
 import 'package:example/ui/screen/basket/bloc/cart_event.dart';
-import 'package:example/ui/screen/home/bloc/home_bloc.dart';
 import 'package:example/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
