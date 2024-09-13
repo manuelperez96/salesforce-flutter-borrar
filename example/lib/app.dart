@@ -39,7 +39,7 @@ class App extends StatelessWidget {
             productRepository: ProductRepository(
               productApi: inject.get<SFCommerceSDK>().productApi,
             ),
-          )..add(const HomeEvent.loadHomeData()),
+          ),
         ),
       ],
       child: MaterialApp(
