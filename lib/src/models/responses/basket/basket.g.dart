@@ -7,8 +7,8 @@ part of 'basket.dart';
 // **************************************************************************
 
 _$BasketImpl _$$BasketImplFromJson(Map<String, dynamic> json) => _$BasketImpl(
-      adjustedMerchandizeTotalTax:
-          (json['adjustedMerchandizeTotalTax'] as num?)?.toInt(),
+      adjustedMerchandiseTotalTax:
+          (json['adjustedMerchandiseTotalTax'] as num?)?.toInt(),
       adjustedShippingTotalTax:
           (json['adjustedShippingTotalTax'] as num?)?.toInt(),
       agentBasket: json['agentBasket'] as bool,
@@ -25,7 +25,7 @@ _$BasketImpl _$$BasketImplFromJson(Map<String, dynamic> json) => _$BasketImpl(
       customerInfo:
           CustomerInfo.fromJson(json['customerInfo'] as Map<String, dynamic>),
       lastModified: DateTime.parse(json['lastModified'] as String),
-      merchandizeTotalTax: (json['merchandizeTotalTax'] as num?)?.toInt(),
+      merchandiseTotalTax: (json['merchandiseTotalTax'] as num?)?.toInt(),
       orderTotal: (json['orderTotal'] as num?)?.toDouble(),
       paymentInstruments: (json['paymentInstruments'] as List<dynamic>?)
           ?.map((e) => PaymentInstrument.fromJson(e as Map<String, dynamic>))
@@ -49,7 +49,7 @@ _$BasketImpl _$$BasketImplFromJson(Map<String, dynamic> json) => _$BasketImpl(
 
 Map<String, dynamic> _$$BasketImplToJson(_$BasketImpl instance) =>
     <String, dynamic>{
-      'adjustedMerchandizeTotalTax': instance.adjustedMerchandizeTotalTax,
+      'adjustedMerchandiseTotalTax': instance.adjustedMerchandiseTotalTax,
       'adjustedShippingTotalTax': instance.adjustedShippingTotalTax,
       'agentBasket': instance.agentBasket,
       'billingAddress': instance.billingAddress,
@@ -60,7 +60,7 @@ Map<String, dynamic> _$$BasketImplToJson(_$BasketImpl instance) =>
       'currency': instance.currency,
       'customerInfo': instance.customerInfo,
       'lastModified': instance.lastModified.toIso8601String(),
-      'merchandizeTotalTax': instance.merchandizeTotalTax,
+      'merchandiseTotalTax': instance.merchandiseTotalTax,
       'orderTotal': instance.orderTotal,
       'paymentInstruments': instance.paymentInstruments,
       'productItems': instance.productItems,

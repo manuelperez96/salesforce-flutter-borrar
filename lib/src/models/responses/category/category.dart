@@ -5,14 +5,18 @@ part 'category.freezed.dart';
 enum ImageOrientation {
   vertical,
   landscape;
+}
 
-  static ImageOrientation fromValue(String? value) {
-    return switch (value?.toLowerCase()) {
-      'vertical' => ImageOrientation.vertical,
-      'horizontal' => ImageOrientation.landscape,
-      // Used as default value when incorrect API implementation
-      _ => ImageOrientation.landscape,
-    };
+extension IMageOrientationX on ImageOrientation {
+   ImageOrientation fromValue(String? value) {
+    switch (value) {
+      case 'vertical':
+        return ImageOrientation.vertical;
+      case 'landscape':
+        return ImageOrientation.landscape;
+      default:
+        return ImageOrientation.vertical;
+    }
   }
 }
 
