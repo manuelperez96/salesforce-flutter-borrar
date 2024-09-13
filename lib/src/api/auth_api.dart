@@ -1,12 +1,20 @@
 import 'package:dio/dio.dart';
-import 'package:sf_commerce_sdk/src/api/api.dart';
-import 'package:sf_commerce_sdk/src/models/exception/auth_exception.dart';
-import 'package:sf_commerce_sdk/src/models/responses/access_token/access_token.dart';
-import 'package:sf_commerce_sdk/src/utils/interceptors/refresh_token_interceptor.dart';
-import 'package:sf_commerce_sdk/src/utils/interceptors/token_storage.dart';
-import 'package:sf_commerce_sdk/src/utils/pkce_helper.dart';
-
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
+import 'package:sf_commerce_sdk/src/utils/utils.dart';
+/// {@template auth_api}
+/// A class that handles authentication-related API interactions within 
+/// the SF Commerce SDK.
+/// 
+/// This class provides methods for checking login status, performing 
+/// anonymous login,
+/// and obtaining authorization and access tokens.
+/// 
+/// - `dio`: The Dio instance used for making HTTP requests.
+/// - `config`: The configuration details required for the API interactions.
+/// - `storage`: The token storage used for saving and retrieving tokens.
+/// {@endtemplate}
 class AuthApi extends Api {
+  /// {@macro auth_api}
   AuthApi({
     required super.dio,
     required super.config,
@@ -22,14 +30,16 @@ class AuthApi extends Api {
     );
   }
 
+  /// The token storage used for saving and retrieving tokens.
   final TokenStorage _storage;
+
+  /// The redirect URI used for authorization.
   static const _redirectUri = 'http://localhost:3000/callback';
 
-  /// Check if user was already login.
+  /// Checks if the user is already logged in.
   ///
-  /// Return true if user was login, otherwise return false.
+  /// Returns `true` if the user is logged in, otherwise returns `false`.
   Future<bool> checkStatus() async {
-    //return false;
     final token = await _storage.getToken();
     if (token == null) return false;
     try {
@@ -59,6 +69,9 @@ class AuthApi extends Api {
     }
   }
 
+  /// Performs an anonymous login.
+  ///
+  /// Throws [UnableDoAnonymousLoginException] if the login fails.
   Future<void> anonymousLogin() async {
     try {
       final (codeVerifier, codeChallenge) = PkceHelper.generateCodes();
@@ -75,6 +88,9 @@ class AuthApi extends Api {
     }
   }
 
+  /// Obtains authorization codes.
+  ///
+  /// Throws [GetAuthorizationCodeException] if obtaining the codes fails.
   Future<(String authCode, String usid)> _getAuthorizationCodes(
     String codeChallenge,
   ) async {
@@ -104,6 +120,9 @@ class AuthApi extends Api {
     }
   }
 
+  /// Obtains an access token.
+  ///
+  /// Throws [GetAccessTokenException] if obtaining the token fails.
   Future<AccessToken> _getAccessToken({
     required String codeVerifier,
     required String authCode,
@@ -134,6 +153,10 @@ class AuthApi extends Api {
     }
   }
 
+  /// Extracts authorization codes from a successful response.
+  ///
+  /// Throws [GetAuthorizationCodeException] if the response does not 
+  /// contain valid codes.
   (String code, String usid) _getTokenRequestDataOnSuccess(
     Response<dynamic> response,
   ) {
@@ -147,6 +170,10 @@ class AuthApi extends Api {
     return (code, usid);
   }
 
+  /// Extracts authorization codes from a redirect location.
+  ///
+  /// Throws [GetAuthorizationCodeException] if the location does not 
+  /// contain valid codes.
   (String code, String usid) _getTokenRequestDataOnRedirect(String location) {
     final data = location.split('?')[1].split('&');
     final code =
@@ -157,6 +184,7 @@ class AuthApi extends Api {
     return (code, usid);
   }
 
+  /// Builds the request body for obtaining an access token.
   Map<String, dynamic> _buildBody({
     required String authCode,
     required String codeVerifier,

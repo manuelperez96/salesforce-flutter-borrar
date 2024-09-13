@@ -1,15 +1,29 @@
 import 'package:dio/dio.dart';
-import 'package:sf_commerce_sdk/src/api/api.dart';
-import 'package:sf_commerce_sdk/src/models/exception/product_exception.dart';
-import 'package:sf_commerce_sdk/src/models/responses/product/product.dart';
-import 'package:sf_commerce_sdk/src/models/responses/product/product_preview_by_category.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
+/// {@template product_api}
+/// A class that handles product-related API interactions within 
+/// the SF Commerce SDK.
+/// 
+/// This class provides methods for retrieving products by their IDs, 
+/// retrieving a single product,
+/// and retrieving products by category.
+/// 
+/// - `dio`: The Dio instance used for making HTTP requests.
+/// - `config`: The configuration details required for the API interactions.
+/// {@endtemplate}
 class ProductApi extends Api {
+  /// {@macro product_api}
   const ProductApi({
     required super.dio,
     required super.config,
   });
 
+  /// Retrieves a list of products by their IDs.
+  ///
+  /// - `ids`: A list of product IDs to retrieve.
+  ///
+  /// Throws [UnableToGetProductException] if the retrieval fails.
   Future<List<Product>> getProducts(List<String> ids) async {
     try {
       final response = await dio.get<dynamic>(
@@ -25,10 +39,15 @@ class ProductApi extends Api {
           .map((json) => Product.fromJson(json as Map<String, dynamic>))
           .toList();
     } catch (e) {
-      throw UnableToGetProductException(StackTrace.current,e);
+      throw UnableToGetProductException(StackTrace.current, e);
     }
   }
 
+  /// Retrieves a single product by its ID.
+  ///
+  /// - `id`: The ID of the product to retrieve.
+  ///
+  /// Throws [UnableToGetProductException] if the retrieval fails.
   Future<Product> getProduct(String id) async {
     try {
       final response = await dio.get<dynamic>(
@@ -46,6 +65,11 @@ class ProductApi extends Api {
     }
   }
 
+  /// Retrieves a list of products by category.
+  ///
+  /// - `category`: The category ID to retrieve products from.
+  ///
+  /// Throws [UnableToGetProductException] if the retrieval fails.
   Future<List<ProductPreviewByCategory>> getProductByCategory(
     String category,
   ) async {
@@ -63,10 +87,14 @@ class ProductApi extends Api {
               .toList() ??
           [];
     } catch (e) {
-      throw UnableToGetProductException(StackTrace.current,e);
+      throw UnableToGetProductException(StackTrace.current, e);
     }
   }
 
+  /// Converts a JSON object to a [ProductPreviewByCategory] instance.
+  ///
+  /// - `categoryId`: The category ID associated with the product preview.
+  /// - `json`: The JSON object to convert.
   ProductPreviewByCategory _toProductPreview({
     required String categoryId,
     required Map<String, dynamic> json,

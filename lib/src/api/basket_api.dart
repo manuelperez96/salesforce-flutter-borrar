@@ -1,24 +1,37 @@
 import 'package:dio/dio.dart';
-import 'package:sf_commerce_sdk/src/api/api.dart';
-import 'package:sf_commerce_sdk/src/models/exception/basket_exceptions.dart';
-import 'package:sf_commerce_sdk/src/models/responses/basket/basket.dart';
-import 'package:sf_commerce_sdk/src/models/responses/order/ing_address.dart';
-import 'package:sf_commerce_sdk/src/models/responses/payment/payment_instrument.dart';
-import 'package:sf_commerce_sdk/src/utils/local_storage.dart';
-
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
+import 'package:sf_commerce_sdk/src/utils/utils.dart';
+/// {@template basket_api}
+/// A class that handles basket-related API interactions within 
+/// the SF Commerce SDK.
+/// 
+/// This class provides methods for creating, retrieving, and updating baskets,
+/// as well as adding products, payment methods, shipments, 
+/// and billing addresses to the basket.
+/// 
+/// - `dio`: The Dio instance used for making HTTP requests.
+/// - `config`: The configuration details required for the API interactions.
+/// - `storage`: The local storage used for saving and retrieving basket IDs.
+/// {@endtemplate}
 class BasketApi extends Api {
+  /// {@macro basket_api}
   BasketApi({
     required super.dio,
     required super.config,
     required LocalStorage storage,
   }) : _storage = storage;
 
+  /// The local storage used for saving and retrieving basket IDs.
   final LocalStorage _storage;
 
+  /// Retrieves the basket ID from local storage.
   Future<String?> getBasketId() {
     return _storage.getBasketID();
   }
 
+  /// Creates a new basket.
+  ///
+  /// Throws [CreateBasketException] if the basket creation fails.
   Future<Basket> createBasket() async {
     try {
       final response = await dio.post<dynamic>(
@@ -45,6 +58,9 @@ class BasketApi extends Api {
     }
   }
 
+  /// Retrieves a basket by its ID.
+  ///
+  /// Throws [GetBasketException] if the basket retrieval fails.
   Future<Basket> getBasket(String basketId) async {
     try {
       final response = await dio.get<dynamic>(
@@ -62,6 +78,9 @@ class BasketApi extends Api {
     }
   }
 
+  /// Adds a product to the basket.
+  ///
+  /// Throws [AddProductToBasketException] if adding the product fails.
   Future<Basket> addProductToBasket({
     required String basketId,
     required String productId,
@@ -85,6 +104,9 @@ class BasketApi extends Api {
     }
   }
 
+  /// Removes a product from the basket.
+  ///
+  /// Throws [RemoveProductFromBasketException] if removing the product fails.
   Future<Basket> removeProductFromBasket({
     required String basketId,
     required String basketItemId,
@@ -105,6 +127,9 @@ class BasketApi extends Api {
     }
   }
 
+  /// Updates the quantity of a product in the basket.
+  ///
+  /// Throws [UpdateProductInBasketException] if updating the product fails.
   Future<Basket> updateProductInBasket({
     required String basketId,
     required String basketItemId,
@@ -126,6 +151,9 @@ class BasketApi extends Api {
     }
   }
 
+  /// Adds a payment method to the basket.
+  ///
+  /// Throws [AddPaymentMethodBasketException] if adding the payment method fails.
   Future<Basket> addPaymentMethodToBasket({
     required String basketId,
     required PaymentInstrument paymentMethod,
@@ -149,6 +177,9 @@ class BasketApi extends Api {
     }
   }
 
+  /// Adds a shipment to the basket.
+  ///
+  /// Throws [AddShipmentBasketException] if adding the shipment fails.
   Future<Basket> addShipmentBasket({
     required String basketId,
   }) async {
@@ -186,6 +217,9 @@ class BasketApi extends Api {
     }
   }
 
+  /// Adds a billing address to the basket.
+  ///
+  /// Throws [AddBillingAddressBasketException] if adding the billing address fails.
   Future<Basket> addBillingAddressBasket({
     required String basketId,
     required IngAddress billAddress,

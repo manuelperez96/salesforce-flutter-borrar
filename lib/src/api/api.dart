@@ -2,26 +2,25 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sf_commerce_sdk/src/models/sf_commerce_config.dart';
 
-/// Abstract class `Repository` that serves as the base for any network request.
+/// {@template api}
+/// A base class for API interactions within the SF Commerce SDK.
 ///
-/// This class defines a common structure for all repository classes that make
-/// HTTP requests using the Dio library. It provides a `path` property to
-/// specify the API endpoint and a `Dio` HTTP client to perform the requests.
+/// This class provides the necessary configuration and HTTP client (Dio)
+/// for making API requests. It is intended to be extended by specific
+/// API classes that interact with different endpoints.
+///
+/// - `dio`: The Dio instance used for making HTTP requests.
+/// - `config`: The configuration details required for the API interactions.
+/// {@endtemplate}
 abstract class Api {
-  /// Constructs a `Repository` with the given [config].
-  ///
-  /// The [config] parameter is used to initialize the base URL for the API
-  /// requests.
+  /// {@macro api}
   const Api({required this.dio, required this.config});
 
+  /// The Dio instance used for making HTTP requests.
   @protected
   final Dio dio;
 
+  /// The configuration details required for the API interactions.
   @protected
   final SfCommerceConfig config;
-
-  /// HTTP client used to perform network requests.
-  ///
-  /// The `dio` instance is passed to the constructor of the repository and is
-  /// used to configure and execute HTTP requests.
 }

@@ -46,7 +46,7 @@ class AddedToCartMessageScreen extends StatelessWidget {
                       }
                     },
                   );
-
+                  
                   Navigator.pushNamedAndRemoveUntil(
                     context,
                     entryPointScreenRoute,

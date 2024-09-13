@@ -1,18 +1,30 @@
 import 'package:dio/dio.dart';
-import 'package:sf_commerce_sdk/src/api/api.dart';
-import 'package:sf_commerce_sdk/src/models/exception/order_exception.dart';
-import 'package:sf_commerce_sdk/src/models/responses/order/order.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
+/// {@template order_api}
+/// A class that handles order-related API interactions within the SF Commerce SDK.
+/// 
+/// This class provides methods for creating and retrieving orders.
+/// 
+/// - `dio`: The Dio instance used for making HTTP requests.
+/// - `config`: The configuration details required for the API interactions.
+/// {@endtemplate}
 class OrderApi extends Api {
+  /// {@macro order_api}
   const OrderApi({
     required super.dio,
     required super.config,
   });
 
+  /// Creates an order from a given basket ID.
+  ///
+  /// - `basketId`: The ID of the basket to create an order from.
+  ///
+  /// Throws [CreateOrderException] if the order creation fails.
   Future<int?> createOrder(String basketId) async {
     assert(
       basketId.isNotEmpty,
-      'basketID can not be empty',
+      'basketId can not be empty',
     );
 
     try {
@@ -32,6 +44,11 @@ class OrderApi extends Api {
     }
   }
 
+  /// Retrieves an order by its ID.
+  ///
+  /// - `orderID`: The ID of the order to retrieve.
+  ///
+  /// Throws [GetOrderException] if the order retrieval fails.
   Future<Order> getOrder(String orderID) async {
     assert(
       orderID.isNotEmpty,
