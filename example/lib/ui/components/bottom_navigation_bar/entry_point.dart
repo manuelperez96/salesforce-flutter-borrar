@@ -1,14 +1,40 @@
 import 'package:animations/animations.dart';
 import 'package:example/constants.dart';
+import 'package:example/di/app_modules.dart';
+import 'package:example/domain/repository/category_repository.dart';
+import 'package:example/domain/repository/product_repository.dart';
 import 'package:example/l10n/l10n.dart';
 import 'package:example/ui/components/bottom_navigation_bar/cart_animated_icon.dart';
 import 'package:example/ui/components/glass_appbar.dart';
 import 'package:example/ui/screen/basket/views/cart_screen.dart';
 import 'package:example/ui/screen/discover/views/discover_screen.dart';
+import 'package:example/ui/screen/home/bloc/home_bloc.dart';
 import 'package:example/ui/screen/home/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart' hide Image;
+
+class EntryPointProvider extends StatelessWidget {
+  const EntryPointProvider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+   return BlocProvider<HomeBloc>(
+      lazy: false,
+      create: (context) => HomeBloc(
+        categoryRepository: CategoryRepository(
+          categoryApi: inject.get<SFCommerceSDK>().categoryApi,
+        ),
+        productRepository: ProductRepository(
+          productApi: inject.get<SFCommerceSDK>().productApi,
+        ),
+      )..add(const HomeEvent.loadHomeData()),
+      child: const EntryPoint(),
+    );
+  }
+}
 
 class EntryPoint extends StatefulWidget {
   const EntryPoint({super.key});

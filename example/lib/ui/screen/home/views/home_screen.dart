@@ -1,22 +1,14 @@
+import 'package:example/di/app_modules.dart';
+import 'package:example/domain/repository/category_repository.dart';
+import 'package:example/domain/repository/product_repository.dart';
 import 'package:example/ui/screen/home/bloc/home_bloc.dart';
 import 'package:example/ui/screen/home/views/components/custom_banner.dart';
 import 'package:example/ui/screen/home/views/components/home_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<HomeBloc>().add(const HomeEvent.loadHomeData());
-  }
 
   @override
   Widget build(BuildContext context) {

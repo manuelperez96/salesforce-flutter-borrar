@@ -39,7 +39,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case entryPointScreenRoute:
       return MaterialPageRoute(
-        builder: (context) => const EntryPoint(),
+        builder: (context) => const EntryPointProvider(),
       );
     case cartScreenRoute:
       return MaterialPageRoute(
