@@ -1,5 +1,4 @@
-import 'package:sf_commerce_sdk/api/category_api.dart';
-import 'package:sf_commerce_sdk/models/responses/category/category.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class CategoryRepository {
   CategoryRepository({required CategoryApi categoryApi})

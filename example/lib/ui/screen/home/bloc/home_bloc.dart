@@ -2,8 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:example/domain/repository/category_repository.dart';
 import 'package:example/domain/repository/product_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sf_commerce_sdk/models/responses/category/category.dart';
-import 'package:sf_commerce_sdk/models/responses/product/product_preview_by_category.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 part 'home_bloc.freezed.dart';
 part 'home_event.dart';

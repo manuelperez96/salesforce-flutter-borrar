@@ -13,7 +13,7 @@ import 'package:dio/src/options.dart' as _i2;
 import 'package:dio/src/response.dart' as _i6;
 import 'package:dio/src/transformer.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:sf_commerce_sdk/utils/local_storage.dart' as _i10;
+import 'package:sf_commerce_sdk/src/utils/local_storage.dart' as _i10;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

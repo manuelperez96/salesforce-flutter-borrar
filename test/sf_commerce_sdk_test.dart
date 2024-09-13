@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
-import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/logger_interceptor.dart';
+import 'package:sf_commerce_sdk/src/models/sf_commerce_config.dart';
+import 'package:sf_commerce_sdk/src/sf_commerce_sdk.dart';
+import 'package:sf_commerce_sdk/src/utils/interceptors/logger_interceptor.dart';
 
 void main() {
   final config = SfCommerceConfig(

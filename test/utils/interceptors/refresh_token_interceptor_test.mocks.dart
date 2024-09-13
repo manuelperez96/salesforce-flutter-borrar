@@ -6,9 +6,10 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart'
+import 'package:sf_commerce_sdk/src/models/responses/access_token/access_token.dart'
     as _i4;
-import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart' as _i2;
+import 'package:sf_commerce_sdk/src/utils/interceptors/token_storage.dart'
+    as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

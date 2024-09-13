@@ -1,4 +1,4 @@
-import 'package:sf_commerce_sdk/models/responses/category/category.dart';
+import 'package:sf_commerce_sdk/src/models/responses/category/category.dart';
 
 const responseJSON = {
   'categories': [

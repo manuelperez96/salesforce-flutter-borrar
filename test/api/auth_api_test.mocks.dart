@@ -18,9 +18,10 @@ import 'package:dio/src/response.dart' as _i6;
 import 'package:dio/src/transformer.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i14;
-import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart'
+import 'package:sf_commerce_sdk/src/models/responses/access_token/access_token.dart'
     as _i13;
-import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart' as _i12;
+import 'package:sf_commerce_sdk/src/utils/interceptors/token_storage.dart'
+    as _i12;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

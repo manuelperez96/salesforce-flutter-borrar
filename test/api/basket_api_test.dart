@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sf_commerce_sdk/api/basket_api.dart';
-import 'package:sf_commerce_sdk/models/exception/basket_exceptions.dart';
-import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
-import 'package:sf_commerce_sdk/utils/local_storage.dart';
+import 'package:sf_commerce_sdk/src/api/basket_api.dart';
+import 'package:sf_commerce_sdk/src/models/exception/basket_exceptions.dart';
+import 'package:sf_commerce_sdk/src/models/sf_commerce_config.dart';
+import 'package:sf_commerce_sdk/src/utils/local_storage.dart';
 
 import 'basket_api_test.mocks.dart';
 

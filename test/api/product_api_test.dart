@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sf_commerce_sdk/api/product_api.dart';
-import 'package:sf_commerce_sdk/models/sf_commerce_config.dart';
+import 'package:sf_commerce_sdk/src/api/product_api.dart';
+import 'package:sf_commerce_sdk/src/models/sf_commerce_config.dart';
 import 'package:test/test.dart';
 
 import 'product_api_test.mocks.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sf_commerce_sdk/utils/local_storage.dart';
+import 'package:sf_commerce_sdk/src/utils/local_storage.dart';
 import 'package:test/test.dart';
 
 import 'local_storage_test.mocks.dart';

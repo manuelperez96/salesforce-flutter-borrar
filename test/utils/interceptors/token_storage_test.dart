@@ -1,8 +1,8 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sf_commerce_sdk/models/responses/access_token/access_token.dart';
-import 'package:sf_commerce_sdk/utils/interceptors/token_storage.dart';
+import 'package:sf_commerce_sdk/src/models/responses/access_token/access_token.dart';
+import 'package:sf_commerce_sdk/src/utils/interceptors/token_storage.dart';
 import 'package:test/test.dart';
 
 import '../../helpers/models/access_token.dart';
