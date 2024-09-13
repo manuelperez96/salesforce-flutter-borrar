@@ -21,6 +21,7 @@ EXAMPLE
 - Pedidos:
     -- En la pantalla de rellenar la direccion de envio, habrá que mostrar las direcciones guardadas del usuario (cuando esté logueado). - low
 - Show variant products in product detail screen - high
+- Remove old category model - High
 
 
 
