@@ -7,8 +7,8 @@ part of 'order.dart';
 // **************************************************************************
 
 _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
-      adjustedMerchandizeTotalTax:
-          (json['adjustedMerchandizeTotalTax'] as num).toInt(),
+      adjustedMerchandiseTotalTax:
+          (json['adjustedMerchandiseTotalTax'] as num).toInt(),
       adjustedShippingTotalTax:
           (json['adjustedShippingTotalTax'] as num).toDouble(),
       billingAddress:
@@ -33,7 +33,7 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
           .map((e) => GiftCertificateItem.fromJson(e as Map<String, dynamic>))
           .toList(),
       lastModified: DateTime.parse(json['lastModified'] as String),
-      merchandizeTotalTax: (json['merchandizeTotalTax'] as num).toInt(),
+      merchandiseTotalTax: (json['merchandiseTotalTax'] as num).toInt(),
       orderNo: json['orderNo'] as String,
       orderPriceAdjustments: (json['orderPriceAdjustments'] as List<dynamic>)
           .map((e) => OrderPriceAdjustment.fromJson(e as Map<String, dynamic>))
@@ -66,7 +66,7 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
 
 Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
     <String, dynamic>{
-      'adjustedMerchandizeTotalTax': instance.adjustedMerchandizeTotalTax,
+      'adjustedMerchandiseTotalTax': instance.adjustedMerchandiseTotalTax,
       'adjustedShippingTotalTax': instance.adjustedShippingTotalTax,
       'billingAddress': instance.billingAddress,
       'channelType': instance.channelType,
@@ -82,7 +82,7 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
       'guest': instance.guest,
       'giftCertificateItems': instance.giftCertificateItems,
       'lastModified': instance.lastModified.toIso8601String(),
-      'merchandizeTotalTax': instance.merchandizeTotalTax,
+      'merchandiseTotalTax': instance.merchandiseTotalTax,
       'orderNo': instance.orderNo,
       'orderPriceAdjustments': instance.orderPriceAdjustments,
       'orderToken': instance.orderToken,

@@ -23,9 +23,7 @@ mixin _$IngAddress {
   String get address1 => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get countryCode => throw _privateConstructorUsedError;
-  String get firstName =>
-      throw _privateConstructorUsedError; //required String fullName,
-//required String? id,
+  String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get postalCode => throw _privateConstructorUsedError;
   String get stateCode => throw _privateConstructorUsedError;
@@ -199,8 +197,6 @@ class _$IngAddressImpl implements _IngAddress {
   final String countryCode;
   @override
   final String firstName;
-//required String fullName,
-//required String? id,
   @override
   final String lastName;
   @override
@@ -273,8 +269,7 @@ abstract class _IngAddress implements IngAddress {
   String get countryCode;
   @override
   String get firstName;
-  @override //required String fullName,
-//required String? id,
+  @override
   String get lastName;
   @override
   String get postalCode;

@@ -20,7 +20,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Order {
-  int get adjustedMerchandizeTotalTax => throw _privateConstructorUsedError;
+  int get adjustedMerchandiseTotalTax => throw _privateConstructorUsedError;
   double get adjustedShippingTotalTax => throw _privateConstructorUsedError;
   IngAddress get billingAddress => throw _privateConstructorUsedError;
   String get channelType => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ mixin _$Order {
   List<GiftCertificateItem> get giftCertificateItems =>
       throw _privateConstructorUsedError;
   DateTime get lastModified => throw _privateConstructorUsedError;
-  int get merchandizeTotalTax => throw _privateConstructorUsedError;
+  int get merchandiseTotalTax => throw _privateConstructorUsedError;
   String get orderNo => throw _privateConstructorUsedError;
   List<OrderPriceAdjustment> get orderPriceAdjustments =>
       throw _privateConstructorUsedError;
@@ -71,7 +71,7 @@ abstract class $OrderCopyWith<$Res> {
       _$OrderCopyWithImpl<$Res, Order>;
   @useResult
   $Res call(
-      {int adjustedMerchandizeTotalTax,
+      {int adjustedMerchandiseTotalTax,
       double adjustedShippingTotalTax,
       IngAddress billingAddress,
       String channelType,
@@ -87,7 +87,7 @@ abstract class $OrderCopyWith<$Res> {
       bool guest,
       List<GiftCertificateItem> giftCertificateItems,
       DateTime lastModified,
-      int merchandizeTotalTax,
+      int merchandiseTotalTax,
       String orderNo,
       List<OrderPriceAdjustment> orderPriceAdjustments,
       String orderToken,
@@ -124,7 +124,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? adjustedMerchandizeTotalTax = null,
+    Object? adjustedMerchandiseTotalTax = null,
     Object? adjustedShippingTotalTax = null,
     Object? billingAddress = null,
     Object? channelType = null,
@@ -140,7 +140,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? guest = null,
     Object? giftCertificateItems = null,
     Object? lastModified = null,
-    Object? merchandizeTotalTax = null,
+    Object? merchandiseTotalTax = null,
     Object? orderNo = null,
     Object? orderPriceAdjustments = null,
     Object? orderToken = null,
@@ -161,9 +161,9 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? taxTotal = null,
   }) {
     return _then(_value.copyWith(
-      adjustedMerchandizeTotalTax: null == adjustedMerchandizeTotalTax
-          ? _value.adjustedMerchandizeTotalTax
-          : adjustedMerchandizeTotalTax // ignore: cast_nullable_to_non_nullable
+      adjustedMerchandiseTotalTax: null == adjustedMerchandiseTotalTax
+          ? _value.adjustedMerchandiseTotalTax
+          : adjustedMerchandiseTotalTax // ignore: cast_nullable_to_non_nullable
               as int,
       adjustedShippingTotalTax: null == adjustedShippingTotalTax
           ? _value.adjustedShippingTotalTax
@@ -225,9 +225,9 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.lastModified
           : lastModified // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      merchandizeTotalTax: null == merchandizeTotalTax
-          ? _value.merchandizeTotalTax
-          : merchandizeTotalTax // ignore: cast_nullable_to_non_nullable
+      merchandiseTotalTax: null == merchandiseTotalTax
+          ? _value.merchandiseTotalTax
+          : merchandiseTotalTax // ignore: cast_nullable_to_non_nullable
               as int,
       orderNo: null == orderNo
           ? _value.orderNo
@@ -329,7 +329,7 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int adjustedMerchandizeTotalTax,
+      {int adjustedMerchandiseTotalTax,
       double adjustedShippingTotalTax,
       IngAddress billingAddress,
       String channelType,
@@ -345,7 +345,7 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       bool guest,
       List<GiftCertificateItem> giftCertificateItems,
       DateTime lastModified,
-      int merchandizeTotalTax,
+      int merchandiseTotalTax,
       String orderNo,
       List<OrderPriceAdjustment> orderPriceAdjustments,
       String orderToken,
@@ -382,7 +382,7 @@ class __$$OrderImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? adjustedMerchandizeTotalTax = null,
+    Object? adjustedMerchandiseTotalTax = null,
     Object? adjustedShippingTotalTax = null,
     Object? billingAddress = null,
     Object? channelType = null,
@@ -398,7 +398,7 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? guest = null,
     Object? giftCertificateItems = null,
     Object? lastModified = null,
-    Object? merchandizeTotalTax = null,
+    Object? merchandiseTotalTax = null,
     Object? orderNo = null,
     Object? orderPriceAdjustments = null,
     Object? orderToken = null,
@@ -419,9 +419,9 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? taxTotal = null,
   }) {
     return _then(_$OrderImpl(
-      adjustedMerchandizeTotalTax: null == adjustedMerchandizeTotalTax
-          ? _value.adjustedMerchandizeTotalTax
-          : adjustedMerchandizeTotalTax // ignore: cast_nullable_to_non_nullable
+      adjustedMerchandiseTotalTax: null == adjustedMerchandiseTotalTax
+          ? _value.adjustedMerchandiseTotalTax
+          : adjustedMerchandiseTotalTax // ignore: cast_nullable_to_non_nullable
               as int,
       adjustedShippingTotalTax: null == adjustedShippingTotalTax
           ? _value.adjustedShippingTotalTax
@@ -483,9 +483,9 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value.lastModified
           : lastModified // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      merchandizeTotalTax: null == merchandizeTotalTax
-          ? _value.merchandizeTotalTax
-          : merchandizeTotalTax // ignore: cast_nullable_to_non_nullable
+      merchandiseTotalTax: null == merchandiseTotalTax
+          ? _value.merchandiseTotalTax
+          : merchandiseTotalTax // ignore: cast_nullable_to_non_nullable
               as int,
       orderNo: null == orderNo
           ? _value.orderNo
@@ -567,7 +567,7 @@ class __$$OrderImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OrderImpl implements _Order {
   _$OrderImpl(
-      {required this.adjustedMerchandizeTotalTax,
+      {required this.adjustedMerchandiseTotalTax,
       required this.adjustedShippingTotalTax,
       required this.billingAddress,
       required this.channelType,
@@ -583,7 +583,7 @@ class _$OrderImpl implements _Order {
       required this.guest,
       required final List<GiftCertificateItem> giftCertificateItems,
       required this.lastModified,
-      required this.merchandizeTotalTax,
+      required this.merchandiseTotalTax,
       required this.orderNo,
       required final List<OrderPriceAdjustment> orderPriceAdjustments,
       required this.orderToken,
@@ -615,7 +615,7 @@ class _$OrderImpl implements _Order {
       _$$OrderImplFromJson(json);
 
   @override
-  final int adjustedMerchandizeTotalTax;
+  final int adjustedMerchandiseTotalTax;
   @override
   final double adjustedShippingTotalTax;
   @override
@@ -666,7 +666,7 @@ class _$OrderImpl implements _Order {
   @override
   final DateTime lastModified;
   @override
-  final int merchandizeTotalTax;
+  final int merchandiseTotalTax;
   @override
   final String orderNo;
   final List<OrderPriceAdjustment> _orderPriceAdjustments;
@@ -738,7 +738,7 @@ class _$OrderImpl implements _Order {
 
   @override
   String toString() {
-    return 'Order(adjustedMerchandizeTotalTax: $adjustedMerchandizeTotalTax, adjustedShippingTotalTax: $adjustedShippingTotalTax, billingAddress: $billingAddress, channelType: $channelType, confirmationStatus: $confirmationStatus, couponItems: $couponItems, createdBy: $createdBy, creationDate: $creationDate, currency: $currency, customerInfo: $customerInfo, customerName: $customerName, exportStatus: $exportStatus, groupedTaxItems: $groupedTaxItems, guest: $guest, giftCertificateItems: $giftCertificateItems, lastModified: $lastModified, merchandizeTotalTax: $merchandizeTotalTax, orderNo: $orderNo, orderPriceAdjustments: $orderPriceAdjustments, orderToken: $orderToken, orderTotal: $orderTotal, orderViewCode: $orderViewCode, paymentInstruments: $paymentInstruments, paymentStatus: $paymentStatus, productItems: $productItems, productSubTotal: $productSubTotal, productTotal: $productTotal, shipments: $shipments, shippingItems: $shippingItems, shippingStatus: $shippingStatus, shippingTotal: $shippingTotal, shippingTotalTax: $shippingTotalTax, status: $status, taxation: $taxation, taxTotal: $taxTotal)';
+    return 'Order(adjustedMerchandiseTotalTax: $adjustedMerchandiseTotalTax, adjustedShippingTotalTax: $adjustedShippingTotalTax, billingAddress: $billingAddress, channelType: $channelType, confirmationStatus: $confirmationStatus, couponItems: $couponItems, createdBy: $createdBy, creationDate: $creationDate, currency: $currency, customerInfo: $customerInfo, customerName: $customerName, exportStatus: $exportStatus, groupedTaxItems: $groupedTaxItems, guest: $guest, giftCertificateItems: $giftCertificateItems, lastModified: $lastModified, merchandiseTotalTax: $merchandiseTotalTax, orderNo: $orderNo, orderPriceAdjustments: $orderPriceAdjustments, orderToken: $orderToken, orderTotal: $orderTotal, orderViewCode: $orderViewCode, paymentInstruments: $paymentInstruments, paymentStatus: $paymentStatus, productItems: $productItems, productSubTotal: $productSubTotal, productTotal: $productTotal, shipments: $shipments, shippingItems: $shippingItems, shippingStatus: $shippingStatus, shippingTotal: $shippingTotal, shippingTotalTax: $shippingTotalTax, status: $status, taxation: $taxation, taxTotal: $taxTotal)';
   }
 
   @override
@@ -746,9 +746,9 @@ class _$OrderImpl implements _Order {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OrderImpl &&
-            (identical(other.adjustedMerchandizeTotalTax, adjustedMerchandizeTotalTax) ||
-                other.adjustedMerchandizeTotalTax ==
-                    adjustedMerchandizeTotalTax) &&
+            (identical(other.adjustedMerchandiseTotalTax, adjustedMerchandiseTotalTax) ||
+                other.adjustedMerchandiseTotalTax ==
+                    adjustedMerchandiseTotalTax) &&
             (identical(other.adjustedShippingTotalTax, adjustedShippingTotalTax) ||
                 other.adjustedShippingTotalTax == adjustedShippingTotalTax) &&
             (identical(other.billingAddress, billingAddress) ||
@@ -778,8 +778,8 @@ class _$OrderImpl implements _Order {
                 .equals(other._giftCertificateItems, _giftCertificateItems) &&
             (identical(other.lastModified, lastModified) ||
                 other.lastModified == lastModified) &&
-            (identical(other.merchandizeTotalTax, merchandizeTotalTax) ||
-                other.merchandizeTotalTax == merchandizeTotalTax) &&
+            (identical(other.merchandiseTotalTax, merchandiseTotalTax) ||
+                other.merchandiseTotalTax == merchandiseTotalTax) &&
             (identical(other.orderNo, orderNo) || other.orderNo == orderNo) &&
             const DeepCollectionEquality()
                 .equals(other._orderPriceAdjustments, _orderPriceAdjustments) &&
@@ -813,7 +813,7 @@ class _$OrderImpl implements _Order {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        adjustedMerchandizeTotalTax,
+        adjustedMerchandiseTotalTax,
         adjustedShippingTotalTax,
         billingAddress,
         channelType,
@@ -829,7 +829,7 @@ class _$OrderImpl implements _Order {
         guest,
         const DeepCollectionEquality().hash(_giftCertificateItems),
         lastModified,
-        merchandizeTotalTax,
+        merchandiseTotalTax,
         orderNo,
         const DeepCollectionEquality().hash(_orderPriceAdjustments),
         orderToken,
@@ -866,7 +866,7 @@ class _$OrderImpl implements _Order {
 
 abstract class _Order implements Order {
   factory _Order(
-      {required final int adjustedMerchandizeTotalTax,
+      {required final int adjustedMerchandiseTotalTax,
       required final double adjustedShippingTotalTax,
       required final IngAddress billingAddress,
       required final String channelType,
@@ -882,7 +882,7 @@ abstract class _Order implements Order {
       required final bool guest,
       required final List<GiftCertificateItem> giftCertificateItems,
       required final DateTime lastModified,
-      required final int merchandizeTotalTax,
+      required final int merchandiseTotalTax,
       required final String orderNo,
       required final List<OrderPriceAdjustment> orderPriceAdjustments,
       required final String orderToken,
@@ -905,7 +905,7 @@ abstract class _Order implements Order {
   factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
 
   @override
-  int get adjustedMerchandizeTotalTax;
+  int get adjustedMerchandiseTotalTax;
   @override
   double get adjustedShippingTotalTax;
   @override
@@ -937,7 +937,7 @@ abstract class _Order implements Order {
   @override
   DateTime get lastModified;
   @override
-  int get merchandizeTotalTax;
+  int get merchandiseTotalTax;
   @override
   String get orderNo;
   @override
