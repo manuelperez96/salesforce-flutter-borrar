@@ -19,11 +19,7 @@ mixin _$Product {
   String get id => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
   List<ImageBundle> get images => throw _privateConstructorUsedError;
-
-  /// The number of item in stock that are available to sell.
   int get availableStock => throw _privateConstructorUsedError;
-
-  /// The real number of items in stock.
   int get stock => throw _privateConstructorUsedError;
   int get minOrderQuantity => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -340,11 +336,8 @@ class _$ProductImpl extends _Product {
     return EqualUnmodifiableListView(_images);
   }
 
-  /// The number of item in stock that are available to sell.
   @override
   final int availableStock;
-
-  /// The real number of items in stock.
   @override
   final int stock;
   @override
@@ -467,12 +460,8 @@ abstract class _Product extends Product {
   @override
   List<ImageBundle> get images;
   @override
-
-  /// The number of item in stock that are available to sell.
   int get availableStock;
   @override
-
-  /// The real number of items in stock.
   int get stock;
   @override
   int get minOrderQuantity;

@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sf_commerce_sdk/src/models/responses/product/image.dart';
-import 'package:sf_commerce_sdk/src/models/responses/product/product_type.dart';
-import 'package:sf_commerce_sdk/src/models/responses/product/variant_info.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 export 'image.dart';
 export 'product_preview_by_category.dart';

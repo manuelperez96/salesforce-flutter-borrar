@@ -8,12 +8,12 @@ part of 'shipments.dart';
 
 _$ShipmentImpl _$$ShipmentImplFromJson(Map<String, dynamic> json) =>
     _$ShipmentImpl(
-      adjustedMerchandizeTotalTax:
-          (json['adjustedMerchandizeTotalTax'] as num?)?.toDouble(),
+      adjustedMerchandiseTotalTax:
+          (json['adjustedMerchandiseTotalTax'] as num?)?.toDouble(),
       adjustedShippingTotalTax:
           (json['adjustedShippingTotalTax'] as num?)?.toDouble(),
       gift: json['gift'] as bool,
-      merchandizeTotalTax: (json['merchandizeTotalTax'] as num?)?.toDouble(),
+      merchandiseTotalTax: (json['merchandiseTotalTax'] as num?)?.toDouble(),
       productSubTotal: (json['productSubTotal'] as num?)?.toDouble(),
       productTotal: (json['productTotal'] as num?)?.toDouble(),
       shipmentId: json['shipmentId'] as String,
@@ -26,10 +26,10 @@ _$ShipmentImpl _$$ShipmentImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ShipmentImplToJson(_$ShipmentImpl instance) =>
     <String, dynamic>{
-      'adjustedMerchandizeTotalTax': instance.adjustedMerchandizeTotalTax,
+      'adjustedMerchandiseTotalTax': instance.adjustedMerchandiseTotalTax,
       'adjustedShippingTotalTax': instance.adjustedShippingTotalTax,
       'gift': instance.gift,
-      'merchandizeTotalTax': instance.merchandizeTotalTax,
+      'merchandiseTotalTax': instance.merchandiseTotalTax,
       'productSubTotal': instance.productSubTotal,
       'productTotal': instance.productTotal,
       'shipmentId': instance.shipmentId,

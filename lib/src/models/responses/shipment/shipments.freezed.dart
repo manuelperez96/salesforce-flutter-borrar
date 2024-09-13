@@ -20,10 +20,10 @@ Shipment _$ShipmentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Shipment {
-  double? get adjustedMerchandizeTotalTax => throw _privateConstructorUsedError;
+  double? get adjustedMerchandiseTotalTax => throw _privateConstructorUsedError;
   double? get adjustedShippingTotalTax => throw _privateConstructorUsedError;
   bool get gift => throw _privateConstructorUsedError;
-  double? get merchandizeTotalTax => throw _privateConstructorUsedError;
+  double? get merchandiseTotalTax => throw _privateConstructorUsedError;
   double? get productSubTotal => throw _privateConstructorUsedError;
   double? get productTotal => throw _privateConstructorUsedError;
   String get shipmentId => throw _privateConstructorUsedError;
@@ -45,10 +45,10 @@ abstract class $ShipmentCopyWith<$Res> {
       _$ShipmentCopyWithImpl<$Res, Shipment>;
   @useResult
   $Res call(
-      {double? adjustedMerchandizeTotalTax,
+      {double? adjustedMerchandiseTotalTax,
       double? adjustedShippingTotalTax,
       bool gift,
-      double? merchandizeTotalTax,
+      double? merchandiseTotalTax,
       double? productSubTotal,
       double? productTotal,
       String shipmentId,
@@ -72,10 +72,10 @@ class _$ShipmentCopyWithImpl<$Res, $Val extends Shipment>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? adjustedMerchandizeTotalTax = freezed,
+    Object? adjustedMerchandiseTotalTax = freezed,
     Object? adjustedShippingTotalTax = freezed,
     Object? gift = null,
-    Object? merchandizeTotalTax = freezed,
+    Object? merchandiseTotalTax = freezed,
     Object? productSubTotal = freezed,
     Object? productTotal = freezed,
     Object? shipmentId = null,
@@ -86,9 +86,9 @@ class _$ShipmentCopyWithImpl<$Res, $Val extends Shipment>
     Object? taxTotal = freezed,
   }) {
     return _then(_value.copyWith(
-      adjustedMerchandizeTotalTax: freezed == adjustedMerchandizeTotalTax
-          ? _value.adjustedMerchandizeTotalTax
-          : adjustedMerchandizeTotalTax // ignore: cast_nullable_to_non_nullable
+      adjustedMerchandiseTotalTax: freezed == adjustedMerchandiseTotalTax
+          ? _value.adjustedMerchandiseTotalTax
+          : adjustedMerchandiseTotalTax // ignore: cast_nullable_to_non_nullable
               as double?,
       adjustedShippingTotalTax: freezed == adjustedShippingTotalTax
           ? _value.adjustedShippingTotalTax
@@ -98,9 +98,9 @@ class _$ShipmentCopyWithImpl<$Res, $Val extends Shipment>
           ? _value.gift
           : gift // ignore: cast_nullable_to_non_nullable
               as bool,
-      merchandizeTotalTax: freezed == merchandizeTotalTax
-          ? _value.merchandizeTotalTax
-          : merchandizeTotalTax // ignore: cast_nullable_to_non_nullable
+      merchandiseTotalTax: freezed == merchandiseTotalTax
+          ? _value.merchandiseTotalTax
+          : merchandiseTotalTax // ignore: cast_nullable_to_non_nullable
               as double?,
       productSubTotal: freezed == productSubTotal
           ? _value.productSubTotal
@@ -147,10 +147,10 @@ abstract class _$$ShipmentImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {double? adjustedMerchandizeTotalTax,
+      {double? adjustedMerchandiseTotalTax,
       double? adjustedShippingTotalTax,
       bool gift,
-      double? merchandizeTotalTax,
+      double? merchandiseTotalTax,
       double? productSubTotal,
       double? productTotal,
       String shipmentId,
@@ -172,10 +172,10 @@ class __$$ShipmentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? adjustedMerchandizeTotalTax = freezed,
+    Object? adjustedMerchandiseTotalTax = freezed,
     Object? adjustedShippingTotalTax = freezed,
     Object? gift = null,
-    Object? merchandizeTotalTax = freezed,
+    Object? merchandiseTotalTax = freezed,
     Object? productSubTotal = freezed,
     Object? productTotal = freezed,
     Object? shipmentId = null,
@@ -186,9 +186,9 @@ class __$$ShipmentImplCopyWithImpl<$Res>
     Object? taxTotal = freezed,
   }) {
     return _then(_$ShipmentImpl(
-      adjustedMerchandizeTotalTax: freezed == adjustedMerchandizeTotalTax
-          ? _value.adjustedMerchandizeTotalTax
-          : adjustedMerchandizeTotalTax // ignore: cast_nullable_to_non_nullable
+      adjustedMerchandiseTotalTax: freezed == adjustedMerchandiseTotalTax
+          ? _value.adjustedMerchandiseTotalTax
+          : adjustedMerchandiseTotalTax // ignore: cast_nullable_to_non_nullable
               as double?,
       adjustedShippingTotalTax: freezed == adjustedShippingTotalTax
           ? _value.adjustedShippingTotalTax
@@ -198,9 +198,9 @@ class __$$ShipmentImplCopyWithImpl<$Res>
           ? _value.gift
           : gift // ignore: cast_nullable_to_non_nullable
               as bool,
-      merchandizeTotalTax: freezed == merchandizeTotalTax
-          ? _value.merchandizeTotalTax
-          : merchandizeTotalTax // ignore: cast_nullable_to_non_nullable
+      merchandiseTotalTax: freezed == merchandiseTotalTax
+          ? _value.merchandiseTotalTax
+          : merchandiseTotalTax // ignore: cast_nullable_to_non_nullable
               as double?,
       productSubTotal: freezed == productSubTotal
           ? _value.productSubTotal
@@ -242,10 +242,10 @@ class __$$ShipmentImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ShipmentImpl implements _Shipment {
   _$ShipmentImpl(
-      {required this.adjustedMerchandizeTotalTax,
+      {required this.adjustedMerchandiseTotalTax,
       required this.adjustedShippingTotalTax,
       required this.gift,
-      required this.merchandizeTotalTax,
+      required this.merchandiseTotalTax,
       required this.productSubTotal,
       required this.productTotal,
       required this.shipmentId,
@@ -259,13 +259,13 @@ class _$ShipmentImpl implements _Shipment {
       _$$ShipmentImplFromJson(json);
 
   @override
-  final double? adjustedMerchandizeTotalTax;
+  final double? adjustedMerchandiseTotalTax;
   @override
   final double? adjustedShippingTotalTax;
   @override
   final bool gift;
   @override
-  final double? merchandizeTotalTax;
+  final double? merchandiseTotalTax;
   @override
   final double? productSubTotal;
   @override
@@ -285,7 +285,7 @@ class _$ShipmentImpl implements _Shipment {
 
   @override
   String toString() {
-    return 'Shipment(adjustedMerchandizeTotalTax: $adjustedMerchandizeTotalTax, adjustedShippingTotalTax: $adjustedShippingTotalTax, gift: $gift, merchandizeTotalTax: $merchandizeTotalTax, productSubTotal: $productSubTotal, productTotal: $productTotal, shipmentId: $shipmentId, shipmentTotal: $shipmentTotal, shippingStatus: $shippingStatus, shippingTotal: $shippingTotal, shippingTotalTax: $shippingTotalTax, taxTotal: $taxTotal)';
+    return 'Shipment(adjustedMerchandiseTotalTax: $adjustedMerchandiseTotalTax, adjustedShippingTotalTax: $adjustedShippingTotalTax, gift: $gift, merchandiseTotalTax: $merchandiseTotalTax, productSubTotal: $productSubTotal, productTotal: $productTotal, shipmentId: $shipmentId, shipmentTotal: $shipmentTotal, shippingStatus: $shippingStatus, shippingTotal: $shippingTotal, shippingTotalTax: $shippingTotalTax, taxTotal: $taxTotal)';
   }
 
   @override
@@ -293,16 +293,16 @@ class _$ShipmentImpl implements _Shipment {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShipmentImpl &&
-            (identical(other.adjustedMerchandizeTotalTax,
-                    adjustedMerchandizeTotalTax) ||
-                other.adjustedMerchandizeTotalTax ==
-                    adjustedMerchandizeTotalTax) &&
+            (identical(other.adjustedMerchandiseTotalTax,
+                    adjustedMerchandiseTotalTax) ||
+                other.adjustedMerchandiseTotalTax ==
+                    adjustedMerchandiseTotalTax) &&
             (identical(
                     other.adjustedShippingTotalTax, adjustedShippingTotalTax) ||
                 other.adjustedShippingTotalTax == adjustedShippingTotalTax) &&
             (identical(other.gift, gift) || other.gift == gift) &&
-            (identical(other.merchandizeTotalTax, merchandizeTotalTax) ||
-                other.merchandizeTotalTax == merchandizeTotalTax) &&
+            (identical(other.merchandiseTotalTax, merchandiseTotalTax) ||
+                other.merchandiseTotalTax == merchandiseTotalTax) &&
             (identical(other.productSubTotal, productSubTotal) ||
                 other.productSubTotal == productSubTotal) &&
             (identical(other.productTotal, productTotal) ||
@@ -325,10 +325,10 @@ class _$ShipmentImpl implements _Shipment {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      adjustedMerchandizeTotalTax,
+      adjustedMerchandiseTotalTax,
       adjustedShippingTotalTax,
       gift,
-      merchandizeTotalTax,
+      merchandiseTotalTax,
       productSubTotal,
       productTotal,
       shipmentId,
@@ -354,10 +354,10 @@ class _$ShipmentImpl implements _Shipment {
 
 abstract class _Shipment implements Shipment {
   factory _Shipment(
-      {required final double? adjustedMerchandizeTotalTax,
+      {required final double? adjustedMerchandiseTotalTax,
       required final double? adjustedShippingTotalTax,
       required final bool gift,
-      required final double? merchandizeTotalTax,
+      required final double? merchandiseTotalTax,
       required final double? productSubTotal,
       required final double? productTotal,
       required final String shipmentId,
@@ -371,13 +371,13 @@ abstract class _Shipment implements Shipment {
       _$ShipmentImpl.fromJson;
 
   @override
-  double? get adjustedMerchandizeTotalTax;
+  double? get adjustedMerchandiseTotalTax;
   @override
   double? get adjustedShippingTotalTax;
   @override
   bool get gift;
   @override
-  double? get merchandizeTotalTax;
+  double? get merchandiseTotalTax;
   @override
   double? get productSubTotal;
   @override

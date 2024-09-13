@@ -16,11 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$VariantInfo {
-  String? get color => throw _privateConstructorUsedError;
-  String? get size => throw _privateConstructorUsedError;
   List<VariationAttributes> get variationAttributes =>
       throw _privateConstructorUsedError;
   List<Variant> get variants => throw _privateConstructorUsedError;
+  String? get color => throw _privateConstructorUsedError;
+  String? get size => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $VariantInfoCopyWith<VariantInfo> get copyWith =>
@@ -34,10 +34,10 @@ abstract class $VariantInfoCopyWith<$Res> {
       _$VariantInfoCopyWithImpl<$Res, VariantInfo>;
   @useResult
   $Res call(
-      {String? color,
-      String? size,
-      List<VariationAttributes> variationAttributes,
-      List<Variant> variants});
+      {List<VariationAttributes> variationAttributes,
+      List<Variant> variants,
+      String? color,
+      String? size});
 }
 
 /// @nodoc
@@ -53,20 +53,12 @@ class _$VariantInfoCopyWithImpl<$Res, $Val extends VariantInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? color = freezed,
-    Object? size = freezed,
     Object? variationAttributes = null,
     Object? variants = null,
+    Object? color = freezed,
+    Object? size = freezed,
   }) {
     return _then(_value.copyWith(
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String?,
-      size: freezed == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as String?,
       variationAttributes: null == variationAttributes
           ? _value.variationAttributes
           : variationAttributes // ignore: cast_nullable_to_non_nullable
@@ -75,6 +67,14 @@ class _$VariantInfoCopyWithImpl<$Res, $Val extends VariantInfo>
           ? _value.variants
           : variants // ignore: cast_nullable_to_non_nullable
               as List<Variant>,
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String?,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -88,10 +88,10 @@ abstract class _$$VariantInfoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? color,
-      String? size,
-      List<VariationAttributes> variationAttributes,
-      List<Variant> variants});
+      {List<VariationAttributes> variationAttributes,
+      List<Variant> variants,
+      String? color,
+      String? size});
 }
 
 /// @nodoc
@@ -105,20 +105,12 @@ class __$$VariantInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? color = freezed,
-    Object? size = freezed,
     Object? variationAttributes = null,
     Object? variants = null,
+    Object? color = freezed,
+    Object? size = freezed,
   }) {
     return _then(_$VariantInfoImpl(
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String?,
-      size: freezed == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as String?,
       variationAttributes: null == variationAttributes
           ? _value._variationAttributes
           : variationAttributes // ignore: cast_nullable_to_non_nullable
@@ -127,6 +119,14 @@ class __$$VariantInfoImplCopyWithImpl<$Res>
           ? _value._variants
           : variants // ignore: cast_nullable_to_non_nullable
               as List<Variant>,
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String?,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -135,17 +135,13 @@ class __$$VariantInfoImplCopyWithImpl<$Res>
 
 class _$VariantInfoImpl implements _VariantInfo {
   _$VariantInfoImpl(
-      {this.color,
-      this.size,
-      required final List<VariationAttributes> variationAttributes,
-      required final List<Variant> variants})
+      {required final List<VariationAttributes> variationAttributes,
+      required final List<Variant> variants,
+      this.color,
+      this.size})
       : _variationAttributes = variationAttributes,
         _variants = variants;
 
-  @override
-  final String? color;
-  @override
-  final String? size;
   final List<VariationAttributes> _variationAttributes;
   @override
   List<VariationAttributes> get variationAttributes {
@@ -164,8 +160,13 @@ class _$VariantInfoImpl implements _VariantInfo {
   }
 
   @override
+  final String? color;
+  @override
+  final String? size;
+
+  @override
   String toString() {
-    return 'VariantInfo(color: $color, size: $size, variationAttributes: $variationAttributes, variants: $variants)';
+    return 'VariantInfo(variationAttributes: $variationAttributes, variants: $variants, color: $color, size: $size)';
   }
 
   @override
@@ -173,20 +174,20 @@ class _$VariantInfoImpl implements _VariantInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VariantInfoImpl &&
-            (identical(other.color, color) || other.color == color) &&
-            (identical(other.size, size) || other.size == size) &&
             const DeepCollectionEquality()
                 .equals(other._variationAttributes, _variationAttributes) &&
-            const DeepCollectionEquality().equals(other._variants, _variants));
+            const DeepCollectionEquality().equals(other._variants, _variants) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      color,
-      size,
       const DeepCollectionEquality().hash(_variationAttributes),
-      const DeepCollectionEquality().hash(_variants));
+      const DeepCollectionEquality().hash(_variants),
+      color,
+      size);
 
   @JsonKey(ignore: true)
   @override
@@ -197,19 +198,19 @@ class _$VariantInfoImpl implements _VariantInfo {
 
 abstract class _VariantInfo implements VariantInfo {
   factory _VariantInfo(
-      {final String? color,
-      final String? size,
-      required final List<VariationAttributes> variationAttributes,
-      required final List<Variant> variants}) = _$VariantInfoImpl;
+      {required final List<VariationAttributes> variationAttributes,
+      required final List<Variant> variants,
+      final String? color,
+      final String? size}) = _$VariantInfoImpl;
 
-  @override
-  String? get color;
-  @override
-  String? get size;
   @override
   List<VariationAttributes> get variationAttributes;
   @override
   List<Variant> get variants;
+  @override
+  String? get color;
+  @override
+  String? get size;
   @override
   @JsonKey(ignore: true)
   _$$VariantInfoImplCopyWith<_$VariantInfoImpl> get copyWith =>
