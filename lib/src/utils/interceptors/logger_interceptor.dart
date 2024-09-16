@@ -10,6 +10,7 @@ import 'package:flutter/foundation.dart';
 /// - `isEnabled`: A static boolean that determines if logging is enabled.
 /// {@endtemplate}
 class Logger {
+  /// determines if logging is enabled.
   static bool isEnabled = false;
 
   /// Logs a message if logging is enabled.
@@ -33,7 +34,8 @@ class Logger {
 class NetworkUtil {
   /// {@macro network_util}
   /// 
-  /// Creates an [InterceptorsWrapper] with logger capabilities for Dio requests.
+  /// Creates an [InterceptorsWrapper] with logger capabilities 
+  /// for Dio requests.
   ///
   /// This method returns an [InterceptorsWrapper] that logs details of
   /// requests, responses, and errors using the provided [Logger].
