@@ -8,7 +8,6 @@ import 'package:sf_commerce_sdk/src/models/responses/order/order_item.dart';
 import 'package:sf_commerce_sdk/src/models/responses/order/order_price_adjustment.dart';
 import 'package:sf_commerce_sdk/src/models/responses/payment/payment_instrument.dart';
 import 'package:sf_commerce_sdk/src/models/responses/shipment/shipments.dart';
-import 'package:sf_commerce_sdk/src/models/responses/shipment/shipping_items.dart';
 
 export 'coupon_item.dart';
 export 'gift_certificate_item.dart';
@@ -19,8 +18,6 @@ export 'order_price_adjustment.dart';
 
 part 'order.freezed.dart';
 part 'order.g.dart';
-
-
 
 @freezed
 class Order with _$Order {

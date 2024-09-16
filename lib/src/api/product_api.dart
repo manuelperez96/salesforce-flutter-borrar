@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/src/api/api.dart';
 import 'package:sf_commerce_sdk/src/models/exception/product_exception.dart';
 import 'package:sf_commerce_sdk/src/models/responses/product/product.dart';
-import 'package:sf_commerce_sdk/src/models/responses/product/product_preview_by_category.dart';
 
 class ProductApi extends Api {
   const ProductApi({
@@ -25,7 +24,7 @@ class ProductApi extends Api {
           .map((json) => Product.fromJson(json as Map<String, dynamic>))
           .toList();
     } catch (e) {
-      throw UnableToGetProductException(StackTrace.current,e);
+      throw UnableToGetProductException(StackTrace.current, e);
     }
   }
 
@@ -63,7 +62,7 @@ class ProductApi extends Api {
               .toList() ??
           [];
     } catch (e) {
-      throw UnableToGetProductException(StackTrace.current,e);
+      throw UnableToGetProductException(StackTrace.current, e);
     }
   }
 
