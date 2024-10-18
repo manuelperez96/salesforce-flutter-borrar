@@ -12,6 +12,13 @@ class AddBillingAddress extends CartEvent {
   final String phoneNumber;
 }
 
+class AddBillingAndShipping extends CartEvent {
+  AddBillingAndShipping({required this.ingAddress, required this.phoneNumber});
+
+  final IngAddress ingAddress;
+  final String phoneNumber;
+}
+
 class AddPaymentMethod extends CartEvent {}
 
 class CreateNewBasket extends CartEvent {}

@@ -146,14 +146,21 @@ class _BillingAddressScreenState extends State<BillingAddressScreen> {
         child: FloatingActionButton.extended(
           onPressed: () {
             if (showFloating) {
-              context.read<CartBloc>()
-                ..add(
-                  AddBillingAddress(
-                    ingAddress: ingAddress!,
-                    phoneNumber: _phoneNumberController.text,
-                  ),
-                )
-                ..add(AddShipment());
+              context.read<CartBloc>().add(
+                    AddBillingAndShipping(
+                      ingAddress: ingAddress!,
+                      phoneNumber: _phoneNumberController.text,
+                    ),
+                  );
+
+              // TODO(team): uncomment this code and remove lines 150-154 when unmock the app.
+              // ..add(
+              //   AddBillingAddress(
+              //     ingAddress: ingAddress!,
+              //     phoneNumber: _phoneNumberController.text,
+              //   ),
+              // )
+              // ..add(AddShipment());
 
               Navigator.pushNamed(context, paymentMethodScreenRoute);
             }

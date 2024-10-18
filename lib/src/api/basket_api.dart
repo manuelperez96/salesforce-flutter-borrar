@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 import 'package:sf_commerce_sdk/src/utils/utils.dart';
+
 /// {@template basket_api}
-/// A class that handles basket-related API interactions within 
+/// A class that handles basket-related API interactions within
 /// the SF Commerce SDK.
-/// 
+///
 /// This class provides methods for creating, retrieving, and updating baskets,
-/// as well as adding products, payment methods, shipments, 
+/// as well as adding products, payment methods, shipments,
 /// and billing addresses to the basket.
-/// 
+///
 /// - `dio`: The Dio instance used for making HTTP requests.
 /// - `config`: The configuration details required for the API interactions.
 /// - `storage`: The local storage used for saving and retrieving basket IDs.
@@ -153,7 +154,7 @@ class BasketApi extends Api {
 
   /// Adds a payment method to the basket.
   ///
-  /// Throws [AddPaymentMethodBasketException] if adding the payment 
+  /// Throws [AddPaymentMethodBasketException] if adding the payment
   /// method fails.
   Future<Basket> addPaymentMethodToBasket({
     required String basketId,
@@ -194,7 +195,7 @@ class BasketApi extends Api {
           'shipmentId': 'me',
           'shipmentNo': 'ignored shipment no',
           'shippingMethod': {
-            'id': '003',
+            'id': '001',
           },
           'shippingAddress': {
             'firstName': 'Jane',
@@ -220,7 +221,7 @@ class BasketApi extends Api {
 
   /// Adds a billing address to the basket.
   ///
-  /// Throws [AddBillingAddressBasketException] if adding the billing 
+  /// Throws [AddBillingAddressBasketException] if adding the billing
   /// address fails.
   Future<Basket> addBillingAddressBasket({
     required String basketId,

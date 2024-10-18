@@ -29,6 +29,7 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
     on<AddShipment>(_onAddShipment);
     on<CreateOrder>(_onCreateOrder);
     on<CreateNewBasket>(_onCreateNewBasket);
+    on<AddBillingAndShipping>(_onAddBillingAndShipping);
   }
   late AnimationController controller;
 
@@ -39,6 +40,39 @@ class CartBloc extends Bloc<CartEvent, CartState> implements TickerProvider {
 
   Future<BasketEntity> _onCreateBasket() {
     return _basketRepository.createBasket();
+  }
+
+  // TODO(team): remove this event when remove mock data
+  Future<void> _onAddBillingAndShipping(
+    AddBillingAndShipping event,
+    Emitter<CartState> emit,
+  ) async {
+    final currentState = state as CartLoaded;
+    await _basketRepository.addBillingAddressBasket(
+      basketId: currentState.currentCart.basketId,
+      billAddress: IngAddress.fromJson(
+        {
+          'firstName': 'John',
+          'lastName': 'Doe',
+          'address1': '415 Mission St',
+          'city': 'Jena',
+          'postalCode': '94105',
+          'stateCode': 'CA',
+          'countryCode': 'US',
+        },
+      ),
+    );
+
+    tempAddress = '${event.ingAddress.address1}, '
+        '${event.ingAddress.postalCode}, '
+        '${event.ingAddress.city}';
+    tempName = '${event.ingAddress.firstName} ${event.ingAddress.lastName}';
+    tempPhoneNumber = event.phoneNumber;
+
+    final basket = await _basketRepository.addShipmentBasket(
+      basketId: currentState.currentCart.basketId,
+    );
+    emit(CartLoaded(basket));
   }
 
   Future<void> _onCreateNewBasket(
