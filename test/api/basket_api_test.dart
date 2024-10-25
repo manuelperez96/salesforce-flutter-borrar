@@ -114,12 +114,42 @@ void main() {
 
   group('BasketRepository', () {
     test('createBasket returns a Basket on success', () async {
-      when(mockDio.post<dynamic>(any, options: anyNamed('options')))
-          .thenAnswer((_) async => mockResponse);
+      when(
+        mockDio.post<dynamic>(
+          any,
+          options: anyNamed('options'),
+          data: anyNamed('data'),
+        ),
+      ).thenAnswer((_) async => mockResponse);
+
+      when(storage.getUserEmail()).thenAnswer(
+        (realInvocation) => Future.value('email@capgemini.com'),
+      );
 
       final basket = await basketRepository.createBasket();
 
       expect(basket.basketId, 'b5e5b218a91a2c9508a5ad7f70');
+    });
+
+    test(
+        'createBasket throws a UserNotFoundCreateBasketException when email is missing',
+        () async {
+      when(
+        mockDio.post<dynamic>(
+          any,
+          options: anyNamed('options'),
+          data: anyNamed('data'),
+        ),
+      ).thenAnswer((_) async => mockResponse);
+
+      when(storage.getUserEmail()).thenAnswer(
+        (realInvocation) => Future.value(),
+      );
+
+      expect(
+        () async => basketRepository.createBasket(),
+        throwsA(isA<CreateBasketException>()),
+      );
     });
 
     test('createBasket throws an exception on failure', () async {

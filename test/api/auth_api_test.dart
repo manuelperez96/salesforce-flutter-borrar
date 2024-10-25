@@ -5,6 +5,7 @@ import 'package:sf_commerce_sdk/src/api/auth_api.dart';
 import 'package:sf_commerce_sdk/src/models/exception/auth_exception.dart';
 import 'package:sf_commerce_sdk/src/models/sf_commerce_config.dart';
 import 'package:sf_commerce_sdk/src/utils/interceptors/token_storage.dart';
+import 'package:sf_commerce_sdk/src/utils/local_storage.dart';
 import 'package:test/test.dart';
 
 import '../helpers/models/access_token.dart';
@@ -14,6 +15,7 @@ import 'auth_api_test.mocks.dart';
   [
     MockSpec<Dio>(),
     MockSpec<TokenStorage>(),
+    MockSpec<LocalStorage>(),
     MockSpec<Interceptors>(),
     MockSpec<DioException>(),
     MockSpec<Response<dynamic>>(),
@@ -23,6 +25,7 @@ import 'auth_api_test.mocks.dart';
 void main() {
   late MockDio dio;
   late MockTokenStorage storage;
+  late MockLocalStorage localStorage;
   late MockInterceptors interceptors;
   late SfCommerceConfig config;
   late AuthApi authRepo;
@@ -33,6 +36,7 @@ void main() {
   setUp(() {
     dio = MockDio();
     storage = MockTokenStorage();
+    localStorage = MockLocalStorage();
     interceptors = MockInterceptors();
     dioException = MockDioException();
     response = MockResponse();
@@ -50,7 +54,12 @@ void main() {
     when(dioException.response).thenReturn(response);
     when(response.headers).thenReturn(headers);
 
-    authRepo = AuthApi(dio: dio, config: config, storage: storage);
+    authRepo = AuthApi(
+      dio: dio,
+      config: config,
+      storage: storage,
+      localStorage: localStorage,
+    );
   });
 
   group(
@@ -64,6 +73,7 @@ void main() {
               dio: dio,
               config: config,
               storage: storage,
+              localStorage: localStorage,
             ),
             isNotNull,
           );
@@ -206,6 +216,25 @@ void main() {
                   data: anyNamed('data'),
                 ),
               ).thenAnswer((_) async => response);
+            },
+          );
+        },
+      );
+
+      group(
+        'emailLogin',
+        () {
+          test(
+            'when request is success, save email in local storage',
+            () async {
+              const email = 'email@capgemini.com';
+              when(localStorage.saveUserEmail(email)).thenAnswer(
+                (realInvocation) => Future.value(),
+              );
+
+              await authRepo.emailLogin(email);
+
+              verify(localStorage.saveUserEmail(email)).called(1);
             },
           );
         },
