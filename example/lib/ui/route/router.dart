@@ -7,6 +7,7 @@ import 'package:example/ui/screen/checkout/views/payment_method_screen.dart';
 import 'package:example/ui/screen/checkout/views/success_order_screen.dart';
 import 'package:example/ui/screen/discover/views/discover_screen.dart';
 import 'package:example/ui/screen/home/views/home_screen.dart';
+import 'package:example/ui/screen/login/login_screen.dart';
 import 'package:example/ui/screen/onbording/views/onbording_screnn.dart';
 import 'package:example/ui/screen/product_detail/product_detail_provider.dart';
 import 'package:example/ui/screen/splash/splash_screen.dart';
@@ -21,6 +22,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case onboardingScreenRoute:
       return MaterialPageRoute(
         builder: (context) => const OnBordingScreen(),
+      );
+    case loginScreenRoute:
+      return MaterialPageRoute(
+        builder: (context) => const LoginScreen(),
       );
     case productDetailsScreenRoute:
       return MaterialPageRoute(

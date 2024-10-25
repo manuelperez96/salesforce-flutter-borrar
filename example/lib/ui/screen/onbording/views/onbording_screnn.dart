@@ -125,8 +125,8 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                           } else {
                             Navigator.pushNamedAndRemoveUntil(
                               context,
-                              entryPointScreenRoute,
-                              ModalRoute.withName('/entry_point'),
+                              loginScreenRoute,
+                              ModalRoute.withName('/login'),
                             );
                           }
                         },
