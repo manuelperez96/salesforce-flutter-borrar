@@ -35,11 +35,15 @@ class BasketApi extends Api {
   /// Throws [CreateBasketException] if the basket creation fails.
   Future<Basket> createBasket() async {
     try {
+      final userEmail = await _storage.getUserEmail();
+      if (userEmail == null) {
+        throw const UserNotFoundCreateBasketException();
+      }
       final response = await dio.post<dynamic>(
         '${config.host}/checkout/shopper-baskets/v1/organizations/${config.organizationId}/baskets?siteId=${config.siteId}',
         data: {
           'customerInfo': {
-            'email': 'testing@capgemini.com',
+            'email': userEmail,
           },
         },
         options: Options(

@@ -1,11 +1,22 @@
 import 'package:example/constants.dart';
 import 'package:example/l10n/l10n.dart';
 import 'package:example/ui/route/route_constants.dart';
+import 'package:example/ui/screen/auth/bloc/auth_bloc.dart';
 import 'package:example/ui/screen/auth/widgets/login_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _emailTextController = TextEditingController()
+    ..text = 'test@capgemini.com';
+  final _passwordTextController = TextEditingController()..text = 'password1@';
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +44,10 @@ class LoginScreen extends StatelessWidget {
                     context.l10n.login_description,
                   ),
                   const SizedBox(height: defaultPadding),
-                  const LogInForm(),
+                  LogInForm(
+                    emailController: _emailTextController,
+                    passwordController: _passwordTextController,
+                  ),
                   Align(
                     child: TextButton(
                       child: Text(context.l10n.forgot_password),
@@ -46,9 +60,16 @@ class LoginScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
+                      context.read<AuthBloc>().add(
+                            Login(
+                              email: _emailTextController.text,
+                              password: _passwordTextController.text,
+                            ),
+                          );
+
                       Navigator.pushReplacementNamed(
                         context,
-                        entryPointScreenRoute,
+                        loginLoadingScreenRoute,
                       );
                     },
                     child: Text(context.l10n.log_in_button),

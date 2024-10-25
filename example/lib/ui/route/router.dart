@@ -1,5 +1,6 @@
 import 'package:example/ui/components/bottom_navigation_bar/entry_point.dart';
 import 'package:example/ui/route/route_constants.dart';
+import 'package:example/ui/screen/auth/view/login_loading_screen.dart';
 import 'package:example/ui/screen/auth/view/login_screen.dart';
 import 'package:example/ui/screen/auth/view/signup_screen.dart';
 import 'package:example/ui/screen/basket/views/cart_screen.dart';
@@ -27,6 +28,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case loginScreenRoute:
       return MaterialPageRoute(
         builder: (context) => const LoginScreen(),
+      );
+    case loginLoadingScreenRoute:
+      return MaterialPageRoute(
+        builder: (context) => const LoadingAuthScreen(),
       );
     case signUpScreenRoute:
       return MaterialPageRoute(

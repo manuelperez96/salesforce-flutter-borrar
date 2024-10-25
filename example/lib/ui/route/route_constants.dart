@@ -21,6 +21,7 @@ const String productReviewsScreenRoute = 'product_reviews';
 const String addReviewsScreenRoute = 'add_reviews';
 const String homeScreenRoute = 'home';
 const String loginScreenRoute = 'login';
+const String loginLoadingScreenRoute = 'login_loading';
 const String brandScreenRoute = 'brand';
 const String discoverWithImageScreenRoute = 'discover_with_image';
 const String subDiscoverScreenRoute = 'sub_discover';

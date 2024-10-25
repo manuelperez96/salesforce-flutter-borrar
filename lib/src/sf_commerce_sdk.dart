@@ -10,11 +10,11 @@ import 'package:sf_commerce_sdk/src/utils/utils.dart';
 /// Auth, Basket, etc. It also handles authorization and refresh token
 /// and logging.
 ///
-///   
+///
 /// The [config] parameter is required to initialize the SDK with the necessary
 /// configuration details.
 ///
-/// The [enableVerboseLogs] parameter can be set to true to enable 
+/// The [enableVerboseLogs] parameter can be set to true to enable
 /// verbose logging.
 ///
 /// [dioInstance] should only be used for testing purposes.
@@ -83,6 +83,7 @@ class SFCommerceSDK {
     dio: _dio,
     config: _config,
     storage: _tokenStorage,
+    localStorage: _localStorage,
   );
 
   /// API for interacting with the basket.

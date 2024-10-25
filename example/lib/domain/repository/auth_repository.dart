@@ -1,4 +1,3 @@
-
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class AuthRepository {
@@ -12,5 +11,9 @@ class AuthRepository {
 
   Future<void> anonymousLogin() {
     return _authApi.anonymousLogin();
+  }
+
+  Future<void> emailLogin(String email) {
+    return _authApi.emailLogin(email);
   }
 }

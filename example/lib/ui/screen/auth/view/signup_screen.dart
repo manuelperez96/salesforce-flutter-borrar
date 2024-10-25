@@ -90,7 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       if (agreeTermsAndPolicy) {
                         Navigator.pushReplacementNamed(
                           context,
-                          entryPointScreenRoute,
+                          loginScreenRoute,
                         );
                       }
                     },

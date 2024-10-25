@@ -6,15 +6,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class LogInForm extends StatelessWidget {
   const LogInForm({
+    required this.emailController,
+    required this.passwordController,
     super.key,
   });
+
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         TextFormField(
-          initialValue: 'test@capgemini.com',
+          controller: emailController,
           onSaved: (emal) {},
           validator: emailValidator(context).call,
           textInputAction: TextInputAction.next,
@@ -42,7 +47,7 @@ class LogInForm extends StatelessWidget {
         ),
         const SizedBox(height: defaultPadding),
         TextFormField(
-          initialValue: 'password1@',
+          controller: passwordController,
           onSaved: (pass) {},
           validator: passValidator(context).call,
           obscureText: true,

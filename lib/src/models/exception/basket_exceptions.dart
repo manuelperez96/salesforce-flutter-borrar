@@ -19,6 +19,15 @@ class CreateBasketException extends BasketRepositoryException {
   const CreateBasketException([super.message]);
 }
 
+/// {@template user_not_found_create_basket_exception}
+/// Exception thrown when there is an error creating a basket
+/// because of missing user email.
+/// {@endtemplate}
+class UserNotFoundCreateBasketException extends BasketRepositoryException {
+  /// {@macro user_not_found_create_basket_exception}
+  const UserNotFoundCreateBasketException([super.message]);
+}
+
 /// {@template get_basket_exception}
 /// Exception thrown when there is an error retrieving a basket.
 /// {@endtemplate}
@@ -52,7 +61,7 @@ class UpdateProductInBasketException extends BasketRepositoryException {
 }
 
 /// {@template add_payment_method_basket_exception}
-/// Exception thrown when there is an error adding a payment method to 
+/// Exception thrown when there is an error adding a payment method to
 /// the basket.
 /// {@endtemplate}
 class AddPaymentMethodBasketException extends BasketRepositoryException {
@@ -69,7 +78,7 @@ class AddShipmentBasketException extends BasketRepositoryException {
 }
 
 /// {@template add_billing_address_basket_exception}
-/// Exception thrown when there is an error adding a billing address to 
+/// Exception thrown when there is an error adding a billing address to
 /// the basket.
 /// {@endtemplate}
 class AddBillingAddressBasketException extends BasketRepositoryException {

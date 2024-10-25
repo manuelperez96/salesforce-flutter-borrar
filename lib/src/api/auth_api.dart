@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 import 'package:sf_commerce_sdk/src/utils/utils.dart';
+
 /// {@template auth_api}
-/// A class that handles authentication-related API interactions within 
+/// A class that handles authentication-related API interactions within
 /// the SF Commerce SDK.
-/// 
-/// This class provides methods for checking login status, performing 
+///
+/// This class provides methods for checking login status, performing
 /// anonymous login,
 /// and obtaining authorization and access tokens.
-/// 
+///
 /// - `dio`: The Dio instance used for making HTTP requests.
 /// - `config`: The configuration details required for the API interactions.
 /// - `storage`: The token storage used for saving and retrieving tokens.
@@ -19,7 +20,9 @@ class AuthApi extends Api {
     required super.dio,
     required super.config,
     required TokenStorage storage,
-  }) : _storage = storage {
+    required LocalStorage localStorage,
+  })  : _storage = storage,
+        _localStorage = localStorage {
     dio.interceptors.add(
       RefreshTokenInterceptor(
         organizationId: config.organizationId,
@@ -32,6 +35,9 @@ class AuthApi extends Api {
 
   /// The token storage used for saving and retrieving tokens.
   final TokenStorage _storage;
+
+  /// The local storage used for saving and retrieving user email.
+  final LocalStorage _localStorage;
 
   /// The redirect URI used for authorization.
   static const _redirectUri = 'http://localhost:3000/callback';
@@ -66,6 +72,18 @@ class AuthApi extends Api {
       return true;
     } catch (_) {
       return false;
+    }
+  }
+
+  /// Performs an email & password login.
+  ///
+  /// Throws [UnableDoAnonymousLoginException] if the login fails.
+  Future<void> emailLogin(String email) async {
+    try {
+      await _localStorage.saveUserEmail(email);
+      //TODO (Team): WIP complete the process of login with email and password
+    } catch (e) {
+      throw UnableDoEmailLoginException(e);
     }
   }
 
@@ -155,7 +173,7 @@ class AuthApi extends Api {
 
   /// Extracts authorization codes from a successful response.
   ///
-  /// Throws [GetAuthorizationCodeException] if the response does not 
+  /// Throws [GetAuthorizationCodeException] if the response does not
   /// contain valid codes.
   (String code, String usid) _getTokenRequestDataOnSuccess(
     Response<dynamic> response,
@@ -172,7 +190,7 @@ class AuthApi extends Api {
 
   /// Extracts authorization codes from a redirect location.
   ///
-  /// Throws [GetAuthorizationCodeException] if the location does not 
+  /// Throws [GetAuthorizationCodeException] if the location does not
   /// contain valid codes.
   (String code, String usid) _getTokenRequestDataOnRedirect(String location) {
     final data = location.split('?')[1].split('&');
