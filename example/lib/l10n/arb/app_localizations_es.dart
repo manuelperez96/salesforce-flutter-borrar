@@ -137,4 +137,40 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get home => 'Inicio';
+
+  @override
+  String get welcome_back => 'Bienvenido de nuevo';
+
+  @override
+  String get login_description => 'login_description';
+
+  @override
+  String get forgot_password => 'forgot_password';
+
+  @override
+  String get log_in_button => 'log_in_button';
+
+  @override
+  String get no_account_description => 'no_account_description';
+
+  @override
+  String get sign_up => 'sign_up';
+
+  @override
+  String get sign_up_title => 'sign_up_title';
+
+  @override
+  String get sign_up_description => 'sign_up_description';
+
+  @override
+  String get sign_up_agree => 'sign_up_agree';
+
+  @override
+  String get sign_up_terms => 'sign_up_terms';
+
+  @override
+  String get sign_up_policy => 'sign_up_policy';
+
+  @override
+  String get sign_up_have_account_description => 'sign_up_have_account_description';
 }

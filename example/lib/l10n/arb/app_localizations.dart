@@ -356,6 +356,78 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Inicio'**
   String get home;
+
+  /// No description provided for @welcome_back.
+  ///
+  /// In es, this message translates to:
+  /// **'Bienvenido de nuevo'**
+  String get welcome_back;
+
+  /// No description provided for @login_description.
+  ///
+  /// In es, this message translates to:
+  /// **'login_description'**
+  String get login_description;
+
+  /// No description provided for @forgot_password.
+  ///
+  /// In es, this message translates to:
+  /// **'forgot_password'**
+  String get forgot_password;
+
+  /// No description provided for @log_in_button.
+  ///
+  /// In es, this message translates to:
+  /// **'log_in_button'**
+  String get log_in_button;
+
+  /// No description provided for @no_account_description.
+  ///
+  /// In es, this message translates to:
+  /// **'no_account_description'**
+  String get no_account_description;
+
+  /// No description provided for @sign_up.
+  ///
+  /// In es, this message translates to:
+  /// **'sign_up'**
+  String get sign_up;
+
+  /// No description provided for @sign_up_title.
+  ///
+  /// In es, this message translates to:
+  /// **'sign_up_title'**
+  String get sign_up_title;
+
+  /// No description provided for @sign_up_description.
+  ///
+  /// In es, this message translates to:
+  /// **'sign_up_description'**
+  String get sign_up_description;
+
+  /// No description provided for @sign_up_agree.
+  ///
+  /// In es, this message translates to:
+  /// **'sign_up_agree'**
+  String get sign_up_agree;
+
+  /// No description provided for @sign_up_terms.
+  ///
+  /// In es, this message translates to:
+  /// **'sign_up_terms'**
+  String get sign_up_terms;
+
+  /// No description provided for @sign_up_policy.
+  ///
+  /// In es, this message translates to:
+  /// **'sign_up_policy'**
+  String get sign_up_policy;
+
+  /// No description provided for @sign_up_have_account_description.
+  ///
+  /// In es, this message translates to:
+  /// **'sign_up_have_account_description'**
+  String get sign_up_have_account_description;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

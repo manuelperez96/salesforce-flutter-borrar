@@ -43,6 +43,20 @@
   "price_per_unit": "Precio por unidad",
   "success_pay" : "¡Pago realizado correctamente!",
   "on_road":"Estamos en marcha  😊",
-  "home":"Inicio"
+  "home":"Inicio",
+  "welcome_back": "Bienvenido de nuevo",
+  "login_description": "login_description",
+  "forgot_password": "forgot_password",
+  "log_in_button": "log_in_button",
+  "no_account_description": "no_account_description",
+  "sign_up": "sign_up",
+  "sign_up_title": "sign_up_title",
+  "sign_up_description": "sign_up_description",
+  "sign_up_agree": "sign_up_agree",
+  "sign_up_terms": "sign_up_terms",
+  "sign_up_policy": "sign_up_policy",
+  "sign_up_have_account_description": "sign_up_have_account_description"
+  
+
 
 }
