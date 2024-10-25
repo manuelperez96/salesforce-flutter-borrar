@@ -64,8 +64,8 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                   onPressed: () {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
-                      entryPointScreenRoute,
-                      ModalRoute.withName('/entry_point'),
+                      loginScreenRoute,
+                      ModalRoute.withName('/login'),
                     );
                   },
                   child: Text(
