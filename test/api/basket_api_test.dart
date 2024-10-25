@@ -132,8 +132,8 @@ void main() {
     });
 
     test(
-        'createBasket throws a UserNotFoundCreateBasketException when email is missing',
-        () async {
+        'createBasket throws a UserNotFoundCreateBasketException'
+        ' when email is missing', () async {
       when(
         mockDio.post<dynamic>(
           any,
