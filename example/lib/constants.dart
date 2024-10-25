@@ -1,6 +1,5 @@
 // TODO(TEAM): delete
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 
 // Just for demo
 const productDemoImg1 = 'https://i.imgur.com/CGCyp1d.png';
@@ -66,19 +65,5 @@ const Color errorColor = Color(0xFFEA5B5B);
 const double defaultPadding = 16;
 const double defaultBorderRadius = 12;
 const Duration defaultDuration = Duration(milliseconds: 300);
-
-final passwordValidator = MultiValidator([
-  RequiredValidator(errorText: 'Password is required'),
-  MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),
-  PatternValidator(
-    r'(?=.*?[#?!@$%^&*-])',
-    errorText: 'passwords must have at least one special character',
-  ),
-]);
-
-final emaildValidator = MultiValidator([
-  RequiredValidator(errorText: 'Email is required'),
-  EmailValidator(errorText: 'Enter a valid email address'),
-]);
 
 const pasNotMatchErrorText = 'passwords do not match';

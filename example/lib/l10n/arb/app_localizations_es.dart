@@ -139,38 +139,68 @@ class AppLocalizationsEs extends AppLocalizations {
   String get home => 'Inicio';
 
   @override
-  String get welcome_back => 'Bienvenido de nuevo';
+  String get welcome_back => 'Bienvenido';
 
   @override
-  String get login_description => 'login_description';
+  String get login_description => 'Estamos encantados de verte de nuevo, ¿conoces nuestras últimas ofertas?';
 
   @override
-  String get forgot_password => 'forgot_password';
+  String get forgot_password => '¿Olvidaste la contraseña?';
 
   @override
-  String get log_in_button => 'log_in_button';
+  String get log_in_button => 'Iniciar sesión';
 
   @override
-  String get no_account_description => 'no_account_description';
+  String get log_in_no_account_description => '¿No tienes cuenta?';
 
   @override
-  String get sign_up => 'sign_up';
+  String get log_in_no_account_sign_up => 'Regístrate';
 
   @override
-  String get sign_up_title => 'sign_up_title';
+  String get sign_up => 'Registrarse';
 
   @override
-  String get sign_up_description => 'sign_up_description';
+  String get sign_up_title => '¡Comencemos!';
 
   @override
-  String get sign_up_agree => 'sign_up_agree';
+  String get sign_up_description => 'Introduce tus datos para registrarte.';
 
   @override
-  String get sign_up_terms => 'sign_up_terms';
+  String get sign_up_agree => 'Estoy de acuerdo con los ';
 
   @override
-  String get sign_up_policy => 'sign_up_policy';
+  String get sign_up_terms => 'términos del servicio';
 
   @override
-  String get sign_up_have_account_description => 'sign_up_have_account_description';
+  String get sign_up_and => ' y  ';
+
+  @override
+  String get sign_up_policy => 'políticas de privacidad';
+
+  @override
+  String get sign_up_have_account_description => '¿Ya tienes una cuenta?';
+
+  @override
+  String get sign_up_have_account_login => 'Inicia sesión';
+
+  @override
+  String get password_digits_long => 'la contraseña debe contener 8 caracteres';
+
+  @override
+  String get passwords_special_character => 'la contraseña debe tener 1 caracter especial';
+
+  @override
+  String get email_required => 'el correo electronico es necesario';
+
+  @override
+  String get password_required => 'la contraseña es necesaria';
+
+  @override
+  String get valid_email_address => 'introduce una dirección de correo válida';
+
+  @override
+  String get password => 'Contraseña';
+
+  @override
+  String get email_address => 'Correo electronico';
 }

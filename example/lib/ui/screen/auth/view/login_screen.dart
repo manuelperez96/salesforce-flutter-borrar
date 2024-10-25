@@ -1,6 +1,7 @@
 import 'package:example/constants.dart';
 import 'package:example/l10n/l10n.dart';
 import 'package:example/ui/route/route_constants.dart';
+import 'package:example/ui/screen/auth/widgets/login_form.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -15,7 +16,7 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           children: [
             Image.asset(
-              "assets/images/login_header.png",
+              'assets/images/login_header.png',
               fit: BoxFit.cover,
             ),
             Padding(
@@ -32,14 +33,11 @@ class LoginScreen extends StatelessWidget {
                     context.l10n.login_description,
                   ),
                   const SizedBox(height: defaultPadding),
-                  LogInForm(formKey: _formKey),
+                  const LogInForm(),
                   Align(
                     child: TextButton(
                       child: Text(context.l10n.forgot_password),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, passwordRecoveryScreenRoute);
-                      },
+                      onPressed: () {},
                     ),
                   ),
                   SizedBox(
@@ -58,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(context.l10n.no_account_description),
+                      Text(context.l10n.log_in_no_account_description),
                       TextButton(
                         onPressed: () {
                           Navigator.pushReplacementNamed(
@@ -66,13 +64,13 @@ class LoginScreen extends StatelessWidget {
                             signUpScreenRoute,
                           );
                         },
-                        child: Text(context.l10n.sign_up),
-                      )
+                        child: Text(context.l10n.log_in_no_account_sign_up),
+                      ),
                     ],
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

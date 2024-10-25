@@ -1,7 +1,7 @@
 import 'package:example/ui/components/bottom_navigation_bar/entry_point.dart';
 import 'package:example/ui/route/route_constants.dart';
-import 'package:example/ui/screen/auth/login_screen.dart';
-import 'package:example/ui/screen/auth/signup_screen.dart';
+import 'package:example/ui/screen/auth/view/login_screen.dart';
+import 'package:example/ui/screen/auth/view/signup_screen.dart';
 import 'package:example/ui/screen/basket/views/cart_screen.dart';
 import 'package:example/ui/screen/checkout/views/billing_address_screen.dart';
 import 'package:example/ui/screen/checkout/views/order_summary_screen.dart';

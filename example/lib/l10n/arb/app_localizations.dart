@@ -360,74 +360,134 @@ abstract class AppLocalizations {
   /// No description provided for @welcome_back.
   ///
   /// In es, this message translates to:
-  /// **'Bienvenido de nuevo'**
+  /// **'Bienvenido'**
   String get welcome_back;
 
   /// No description provided for @login_description.
   ///
   /// In es, this message translates to:
-  /// **'login_description'**
+  /// **'Estamos encantados de verte de nuevo, ¿conoces nuestras últimas ofertas?'**
   String get login_description;
 
   /// No description provided for @forgot_password.
   ///
   /// In es, this message translates to:
-  /// **'forgot_password'**
+  /// **'¿Olvidaste la contraseña?'**
   String get forgot_password;
 
   /// No description provided for @log_in_button.
   ///
   /// In es, this message translates to:
-  /// **'log_in_button'**
+  /// **'Iniciar sesión'**
   String get log_in_button;
 
-  /// No description provided for @no_account_description.
+  /// No description provided for @log_in_no_account_description.
   ///
   /// In es, this message translates to:
-  /// **'no_account_description'**
-  String get no_account_description;
+  /// **'¿No tienes cuenta?'**
+  String get log_in_no_account_description;
+
+  /// No description provided for @log_in_no_account_sign_up.
+  ///
+  /// In es, this message translates to:
+  /// **'Regístrate'**
+  String get log_in_no_account_sign_up;
 
   /// No description provided for @sign_up.
   ///
   /// In es, this message translates to:
-  /// **'sign_up'**
+  /// **'Registrarse'**
   String get sign_up;
 
   /// No description provided for @sign_up_title.
   ///
   /// In es, this message translates to:
-  /// **'sign_up_title'**
+  /// **'¡Comencemos!'**
   String get sign_up_title;
 
   /// No description provided for @sign_up_description.
   ///
   /// In es, this message translates to:
-  /// **'sign_up_description'**
+  /// **'Introduce tus datos para registrarte.'**
   String get sign_up_description;
 
   /// No description provided for @sign_up_agree.
   ///
   /// In es, this message translates to:
-  /// **'sign_up_agree'**
+  /// **'Estoy de acuerdo con los '**
   String get sign_up_agree;
 
   /// No description provided for @sign_up_terms.
   ///
   /// In es, this message translates to:
-  /// **'sign_up_terms'**
+  /// **'términos del servicio'**
   String get sign_up_terms;
+
+  /// No description provided for @sign_up_and.
+  ///
+  /// In es, this message translates to:
+  /// **' y  '**
+  String get sign_up_and;
 
   /// No description provided for @sign_up_policy.
   ///
   /// In es, this message translates to:
-  /// **'sign_up_policy'**
+  /// **'políticas de privacidad'**
   String get sign_up_policy;
 
   /// No description provided for @sign_up_have_account_description.
   ///
   /// In es, this message translates to:
-  /// **'sign_up_have_account_description'**
+  /// **'¿Ya tienes una cuenta?'**
   String get sign_up_have_account_description;
+
+  /// No description provided for @sign_up_have_account_login.
+  ///
+  /// In es, this message translates to:
+  /// **'Inicia sesión'**
+  String get sign_up_have_account_login;
+
+  /// No description provided for @password_digits_long.
+  ///
+  /// In es, this message translates to:
+  /// **'la contraseña debe contener 8 caracteres'**
+  String get password_digits_long;
+
+  /// No description provided for @passwords_special_character.
+  ///
+  /// In es, this message translates to:
+  /// **'la contraseña debe tener 1 caracter especial'**
+  String get passwords_special_character;
+
+  /// No description provided for @email_required.
+  ///
+  /// In es, this message translates to:
+  /// **'el correo electronico es necesario'**
+  String get email_required;
+
+  /// No description provided for @password_required.
+  ///
+  /// In es, this message translates to:
+  /// **'la contraseña es necesaria'**
+  String get password_required;
+
+  /// No description provided for @valid_email_address.
+  ///
+  /// In es, this message translates to:
+  /// **'introduce una dirección de correo válida'**
+  String get valid_email_address;
+
+  /// No description provided for @password.
+  ///
+  /// In es, this message translates to:
+  /// **'Contraseña'**
+  String get password;
+
+  /// No description provided for @email_address.
+  ///
+  /// In es, this message translates to:
+  /// **'Correo electronico'**
+  String get email_address;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

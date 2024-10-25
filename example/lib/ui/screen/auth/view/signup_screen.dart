@@ -1,12 +1,19 @@
+import 'package:example/constants.dart';
 import 'package:example/l10n/l10n.dart';
 import 'package:example/ui/route/route_constants.dart';
+import 'package:example/ui/screen/auth/widgets/sign_up_form.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
-
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  bool agreeTermsAndPolicy = false;
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +22,8 @@ class SignUpScreen extends StatelessWidget {
         child: Column(
           children: [
             Image.asset(
-              "assets/images/signUp_header.png",
-              height: MediaQuery.of(context).size.height * 0.35,
+              'assets/images/signUp_header.png',
+              height: MediaQuery.sizeOf(context).height * 0.35,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
@@ -34,13 +41,16 @@ class SignUpScreen extends StatelessWidget {
                     context.l10n.sign_up_description,
                   ),
                   const SizedBox(height: defaultPadding),
-                  SignUpForm(formKey: _formKey),
+                  const SignUpForm(),
                   const SizedBox(height: defaultPadding),
                   Row(
                     children: [
                       Checkbox(
-                        onChanged: (value) {},
-                        value: false,
+                        onChanged: (value) {
+                          agreeTermsAndPolicy = value!;
+                          setState(() {});
+                        },
+                        value: agreeTermsAndPolicy,
                       ),
                       Expanded(
                         child: Text.rich(
@@ -49,10 +59,7 @@ class SignUpScreen extends StatelessWidget {
                             children: [
                               TextSpan(
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.pushNamed(
-                                        context, termsOfServicesScreenRoute);
-                                  },
+                                  ..onTap = () {},
                                 text: context.l10n.sign_up_terms,
                                 style: const TextStyle(
                                   color: primaryColor,
@@ -60,24 +67,35 @@ class SignUpScreen extends StatelessWidget {
                                 ),
                               ),
                               TextSpan(
+                                text: context.l10n.sign_up_and,
+                              ),
+                              TextSpan(
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {},
                                 text: context.l10n.sign_up_policy,
+                                style: const TextStyle(
+                                  color: primaryColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ],
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   const SizedBox(height: defaultPadding * 2),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        entryPointScreenRoute,
-                      );
+                      if (agreeTermsAndPolicy) {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          entryPointScreenRoute,
+                        );
+                      }
                     },
                     child: Text(
-                      context.l10n.continue_button,
+                      context.l10n.sign_up,
                     ),
                   ),
                   Row(
@@ -91,13 +109,13 @@ class SignUpScreen extends StatelessWidget {
                             loginScreenRoute,
                           );
                         },
-                        child: Text(context.l10n.log_in_button),
-                      )
+                        child: Text(context.l10n.sign_up_have_account_login),
+                      ),
                     ],
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
