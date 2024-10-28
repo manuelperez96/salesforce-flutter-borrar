@@ -7,7 +7,7 @@ import 'package:example/l10n/l10n.dart';
 import 'package:example/ui/components/bottom_navigation_bar/cart_animated_icon.dart';
 import 'package:example/ui/components/glass_appbar.dart';
 import 'package:example/ui/screen/basket/views/cart_screen.dart';
-import 'package:example/ui/screen/discover/views/discover_screen.dart';
+import 'package:example/ui/screen/category/view/category_screen.dart';
 import 'package:example/ui/screen/home/bloc/home_bloc.dart';
 import 'package:example/ui/screen/home/views/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +46,7 @@ class EntryPoint extends StatefulWidget {
 class _EntryPointState extends State<EntryPoint> {
   final List<Widget> _pages = const [
     HomeScreen(),
-    DiscoverScreen(),
+    CategoryScreen(),
     CartScreen(),
   ];
   int _currentIndex = 0;

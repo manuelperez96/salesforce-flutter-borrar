@@ -6,6 +6,8 @@ class CategoryRepository {
 
   final CategoryApi _categoryApi;
 
+  Future<List<Category>> getAllCategories() => _categoryApi.getAllCategories();
+
   Future<List<Category>> getRootCategories() {
     return _categoryApi.getRootCategories();
   }

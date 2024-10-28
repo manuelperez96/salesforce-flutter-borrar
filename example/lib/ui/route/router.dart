@@ -1,6 +1,7 @@
 import 'package:example/ui/components/bottom_navigation_bar/entry_point.dart';
 import 'package:example/ui/route/route_constants.dart';
 import 'package:example/ui/screen/basket/views/cart_screen.dart';
+import 'package:example/ui/screen/category/view/category_screen.dart';
 import 'package:example/ui/screen/checkout/views/billing_address_screen.dart';
 import 'package:example/ui/screen/checkout/views/order_summary_screen.dart';
 import 'package:example/ui/screen/checkout/views/payment_method_screen.dart';
@@ -35,7 +36,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case discoverScreenRoute:
       return MaterialPageRoute(
-        builder: (context) => const DiscoverScreen(),
+        builder: (context) => const CategoryScreen(),
       );
     case entryPointScreenRoute:
       return MaterialPageRoute(

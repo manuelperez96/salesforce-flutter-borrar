@@ -1,8 +1,8 @@
 import 'package:example/constants.dart';
-import 'package:example/domain/model/category_model.dart';
 import 'package:example/ui/route/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 class ExpansionCategory extends StatelessWidget {
   const ExpansionCategory({
@@ -14,7 +14,7 @@ class ExpansionCategory extends StatelessWidget {
 
   final String title;
   final String svgSrc;
-  final List<CategoryModel> subCategory;
+  final List<Category> subCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class ExpansionCategory extends StatelessWidget {
                 Navigator.pushNamed(context, onSaleScreenRoute);
               },
               title: Text(
-                subCategory[index].title,
+                subCategory[index].name,
                 style: const TextStyle(fontSize: 14),
               ),
             ),
