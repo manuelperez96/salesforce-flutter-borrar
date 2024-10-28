@@ -1,5 +1,6 @@
 import 'package:example/constants.dart';
 import 'package:example/l10n/l10n.dart';
+import 'package:example/ui/constants/assets.dart';
 import 'package:example/ui/route/route_constants.dart';
 import 'package:example/ui/screen/auth/widgets/sign_up_form.dart';
 import 'package:flutter/gestures.dart';
@@ -22,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Column(
           children: [
             Image.asset(
-              'assets/images/signUp_header.png',
+              Assets.signUpHeader,
               height: MediaQuery.sizeOf(context).height * 0.35,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -52,36 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                         value: agreeTermsAndPolicy,
                       ),
-                      Expanded(
-                        child: Text.rich(
-                          TextSpan(
-                            text: context.l10n.sign_up_agree,
-                            children: [
-                              TextSpan(
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {},
-                                text: context.l10n.sign_up_terms,
-                                style: const TextStyle(
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              TextSpan(
-                                text: context.l10n.sign_up_and,
-                              ),
-                              TextSpan(
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {},
-                                text: context.l10n.sign_up_policy,
-                                style: const TextStyle(
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      const _TermsAndPolicyText(),
                     ],
                   ),
                   const SizedBox(height: defaultPadding * 2),
@@ -91,6 +63,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Navigator.pushReplacementNamed(
                           context,
                           loginScreenRoute,
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              context.l10n.must_accept_terms,
+                            ),
+                          ),
                         );
                       }
                     },
@@ -114,6 +94,56 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ],
                   ),
                 ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _TermsAndPolicyText extends StatelessWidget {
+  const _TermsAndPolicyText();
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Text.rich(
+        TextSpan(
+          text: context.l10n.sign_up_agree,
+          children: [
+            TextSpan(
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(context.l10n.terms_unavailable),
+                    ),
+                  );
+                },
+              text: context.l10n.sign_up_terms,
+              style: const TextStyle(
+                color: primaryColor,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            TextSpan(
+              text: context.l10n.sign_up_and,
+            ),
+            TextSpan(
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(context.l10n.policy_unavailable),
+                    ),
+                  );
+                },
+              text: context.l10n.sign_up_policy,
+              style: const TextStyle(
+                color: primaryColor,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ],

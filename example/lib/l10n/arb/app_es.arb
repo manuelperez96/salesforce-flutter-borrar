@@ -65,5 +65,8 @@
   "password_required": "la contraseña es necesaria",
   "valid_email_address": "introduce una dirección de correo válida",
   "password": "Contraseña",
-  "email_address": "Correo electronico"
+  "email_address": "Correo electronico",
+  "must_accept_terms": "Debes aceptar las políticas y los términos de uso",
+  "terms_unavailable": "Términos no disponibles",
+  "policy_unavailable": "Políticas no disponibles"
 }

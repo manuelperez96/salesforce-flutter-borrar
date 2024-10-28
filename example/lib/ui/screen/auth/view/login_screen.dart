@@ -1,5 +1,6 @@
 import 'package:example/constants.dart';
 import 'package:example/l10n/l10n.dart';
+import 'package:example/ui/constants/assets.dart';
 import 'package:example/ui/route/route_constants.dart';
 import 'package:example/ui/screen/auth/bloc/auth_bloc.dart';
 import 'package:example/ui/screen/auth/widgets/login_form.dart';
@@ -27,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             Image.asset(
-              'assets/images/login_header.png',
+              Assets.signUpHeader,
               fit: BoxFit.cover,
             ),
             Padding(
