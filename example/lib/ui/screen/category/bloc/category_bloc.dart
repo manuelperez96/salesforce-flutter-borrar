@@ -25,9 +25,16 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   ) async {
     try {
       final categories = await _categoryRepository.getAllCategories();
+      final noEmptyCategories = categories
+          .where(
+            (element) =>
+                element.subcategories != null &&
+                element.subcategories!.isNotEmpty,
+          )
+          .toList();
       emit(
         state.copyWith(
-          categories: categories,
+          categories: noEmptyCategories,
           status: CategoryStatus.loaded,
         ),
       );

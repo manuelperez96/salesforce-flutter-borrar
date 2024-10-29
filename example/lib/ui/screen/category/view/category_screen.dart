@@ -94,8 +94,6 @@ class _LoadedView extends StatelessWidget {
           subCategory: category.subcategories ?? [],
           svgSrc: 'assets/icons/Sale.svg',
         );
-
-        return Text(category.name);
       },
     );
   }
