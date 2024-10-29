@@ -3,6 +3,7 @@ import 'package:example/di/app_modules.dart';
 import 'package:example/domain/repository/category_repository.dart';
 import 'package:example/l10n/l10n.dart';
 import 'package:example/ui/screen/category/bloc/category_bloc.dart';
+import 'package:example/ui/screen/category/search/search_screen.dart';
 import 'package:example/ui/screen/discover/views/components/expansion_category.dart';
 import 'package:example/ui/screen/search/views/components/search_form.dart';
 import 'package:flutter/material.dart';
@@ -34,10 +35,7 @@ class CategoryView extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.all(defaultPadding),
-              child: SearchForm(),
-            ),
+            _SearchForm(),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: defaultPadding,
@@ -51,6 +49,65 @@ class CategoryView extends StatelessWidget {
             const Expanded(child: _Body()),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _SearchForm extends StatefulWidget {
+  const _SearchForm();
+
+  @override
+  State<_SearchForm> createState() => _SearchFormState();
+}
+
+class _SearchFormState extends State<_SearchForm> {
+  final _controller = TextEditingController();
+
+  bool get _isPopulated => _controller.text.length >= 3;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(defaultPadding),
+      child: Column(
+        children: <Widget>[
+          SearchForm(
+            controller: _controller,
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: _isPopulated ? () => _pushSearchPage(context) : null,
+            child: const Text('Search'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _pushSearchPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute<void>(
+        builder: (context) {
+          return SearchScreen(
+            searchCriteria: _controller.text,
+          );
+        },
       ),
     );
   }

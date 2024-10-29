@@ -13,4 +13,8 @@ class ProductRepository {
   Future<Product> getProduct(String id) {
     return _productApi.getProduct(id);
   }
+
+  Future<List<ProductPreviewByCategory>> getProductByCriteria(String criteria) {
+    return _productApi.getProductByCriteria(criteria);
+  }
 }
