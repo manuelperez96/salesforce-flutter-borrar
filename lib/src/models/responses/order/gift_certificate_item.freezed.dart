@@ -25,8 +25,12 @@ mixin _$GiftCertificateItem {
   String get recipientEmail => throw _privateConstructorUsedError;
   String get shipmentId => throw _privateConstructorUsedError;
 
+  /// Serializes this GiftCertificateItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GiftCertificateItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GiftCertificateItemCopyWith<GiftCertificateItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$GiftCertificateItemCopyWithImpl<$Res, $Val extends GiftCertificateItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GiftCertificateItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$GiftCertificateItemImplCopyWithImpl<$Res>
       $Res Function(_$GiftCertificateItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GiftCertificateItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -175,12 +183,14 @@ class _$GiftCertificateItemImpl implements _GiftCertificateItem {
                 other.shipmentId == shipmentId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, amount, giftCertificateItemId, recipientEmail, shipmentId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GiftCertificateItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GiftCertificateItemImplCopyWith<_$GiftCertificateItemImpl> get copyWith =>
@@ -213,8 +223,11 @@ abstract class _GiftCertificateItem implements GiftCertificateItem {
   String get recipientEmail;
   @override
   String get shipmentId;
+
+  /// Create a copy of GiftCertificateItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GiftCertificateItemImplCopyWith<_$GiftCertificateItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

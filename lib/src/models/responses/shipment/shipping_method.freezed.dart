@@ -25,8 +25,12 @@ mixin _$ShippingMethod {
   String get name => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
 
+  /// Serializes this ShippingMethod to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShippingMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShippingMethodCopyWith<ShippingMethod> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$ShippingMethodCopyWithImpl<$Res, $Val extends ShippingMethod>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShippingMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class __$$ShippingMethodImplCopyWithImpl<$Res>
       _$ShippingMethodImpl _value, $Res Function(_$ShippingMethodImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShippingMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,11 +173,13 @@ class _$ShippingMethodImpl implements _ShippingMethod {
             (identical(other.price, price) || other.price == price));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, description, id, name, price);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShippingMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShippingMethodImplCopyWith<_$ShippingMethodImpl> get copyWith =>
@@ -202,8 +212,11 @@ abstract class _ShippingMethod implements ShippingMethod {
   String get name;
   @override
   double get price;
+
+  /// Create a copy of ShippingMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShippingMethodImplCopyWith<_$ShippingMethodImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

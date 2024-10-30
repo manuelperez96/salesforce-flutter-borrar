@@ -24,7 +24,9 @@ mixin _$ProductCartEntity {
   int get quantity => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductCartEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductCartEntityCopyWith<ProductCartEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +57,8 @@ class _$ProductCartEntityCopyWithImpl<$Res, $Val extends ProductCartEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductCartEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,6 +129,8 @@ class __$$ProductCartEntityImplCopyWithImpl<$Res>
       $Res Function(_$ProductCartEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductCartEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -224,7 +230,9 @@ class _$ProductCartEntityImpl extends _ProductCartEntity {
   int get hashCode => Object.hash(runtimeType, name, productId, itemId, image,
       pricePerUnit, quantity, currency);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductCartEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductCartEntityImplCopyWith<_$ProductCartEntityImpl> get copyWith =>
@@ -257,8 +265,11 @@ abstract class _ProductCartEntity extends ProductCartEntity {
   int get quantity;
   @override
   String get currency;
+
+  /// Create a copy of ProductCartEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductCartEntityImplCopyWith<_$ProductCartEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

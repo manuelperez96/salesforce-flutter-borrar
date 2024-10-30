@@ -25,8 +25,12 @@ mixin _$CouponItem {
   String get statusCode => throw _privateConstructorUsedError;
   bool get valid => throw _privateConstructorUsedError;
 
+  /// Serializes this CouponItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CouponItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CouponItemCopyWith<CouponItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$CouponItemCopyWithImpl<$Res, $Val extends CouponItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CouponItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class __$$CouponItemImplCopyWithImpl<$Res>
       _$CouponItemImpl _value, $Res Function(_$CouponItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CouponItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,12 +174,14 @@ class _$CouponItemImpl implements _CouponItem {
             (identical(other.valid, valid) || other.valid == valid));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, code, couponItemId, statusCode, valid);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CouponItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CouponItemImplCopyWith<_$CouponItemImpl> get copyWith =>
@@ -203,8 +213,11 @@ abstract class _CouponItem implements CouponItem {
   String get statusCode;
   @override
   bool get valid;
+
+  /// Create a copy of CouponItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CouponItemImplCopyWith<_$CouponItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

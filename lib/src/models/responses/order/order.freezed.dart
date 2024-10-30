@@ -60,8 +60,12 @@ mixin _$Order {
   String get taxation => throw _privateConstructorUsedError;
   double get taxTotal => throw _privateConstructorUsedError;
 
+  /// Serializes this Order to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderCopyWith<Order> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -121,6 +125,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -304,6 +310,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     ) as $Val);
   }
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IngAddressCopyWith<$Res> get billingAddress {
@@ -312,6 +320,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     });
   }
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CustomerInfoCopyWith<$Res> get customerInfo {
@@ -379,6 +389,8 @@ class __$$OrderImplCopyWithImpl<$Res>
       _$OrderImpl _value, $Res Function(_$OrderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -809,7 +821,7 @@ class _$OrderImpl implements _Order {
             (identical(other.taxTotal, taxTotal) || other.taxTotal == taxTotal));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -850,7 +862,9 @@ class _$OrderImpl implements _Order {
         taxTotal
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
@@ -974,8 +988,11 @@ abstract class _Order implements Order {
   String get taxation;
   @override
   double get taxTotal;
+
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

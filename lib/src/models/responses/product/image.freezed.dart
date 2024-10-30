@@ -21,7 +21,9 @@ mixin _$ImageBundle {
   List<VariationAttribute> get variationAttributes =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImageBundle
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ImageBundleCopyWith<ImageBundle> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +50,8 @@ class _$ImageBundleCopyWithImpl<$Res, $Val extends ImageBundle>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ImageBundle
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +98,8 @@ class __$$ImageBundleImplCopyWithImpl<$Res>
       _$ImageBundleImpl _value, $Res Function(_$ImageBundleImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ImageBundle
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,7 +179,9 @@ class _$ImageBundleImpl extends _ImageBundle {
       viewType,
       const DeepCollectionEquality().hash(_variationAttributes));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImageBundle
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImageBundleImplCopyWith<_$ImageBundleImpl> get copyWith =>
@@ -193,8 +201,11 @@ abstract class _ImageBundle extends ImageBundle {
   String get viewType;
   @override
   List<VariationAttribute> get variationAttributes;
+
+  /// Create a copy of ImageBundle
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImageBundleImplCopyWith<_$ImageBundleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -211,8 +222,12 @@ mixin _$Image {
   String get link => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
 
+  /// Serializes this Image to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Image
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ImageCopyWith<Image> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -238,6 +253,8 @@ class _$ImageCopyWithImpl<$Res, $Val extends Image>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Image
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -289,6 +306,8 @@ class __$$ImageImplCopyWithImpl<$Res>
       _$ImageImpl _value, $Res Function(_$ImageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Image
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -358,12 +377,14 @@ class _$ImageImpl implements _Image {
             (identical(other.title, title) || other.title == title));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, alternativeText, disBaseLink, link, title);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Image
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImageImplCopyWith<_$ImageImpl> get copyWith =>
@@ -395,8 +416,11 @@ abstract class _Image implements Image {
   String get link;
   @override
   String get title;
+
+  /// Create a copy of Image
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImageImplCopyWith<_$ImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -406,7 +430,9 @@ mixin _$VariationAttribute {
   String get id => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VariationAttribute
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VariationAttributeCopyWith<VariationAttribute> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -430,6 +456,8 @@ class _$VariationAttributeCopyWithImpl<$Res, $Val extends VariationAttribute>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VariationAttribute
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -468,6 +496,8 @@ class __$$VariationAttributeImplCopyWithImpl<$Res>
       $Res Function(_$VariationAttributeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VariationAttribute
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -514,7 +544,9 @@ class _$VariationAttributeImpl implements _VariationAttribute {
   @override
   int get hashCode => Object.hash(runtimeType, id, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VariationAttribute
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VariationAttributeImplCopyWith<_$VariationAttributeImpl> get copyWith =>
@@ -531,8 +563,11 @@ abstract class _VariationAttribute implements VariationAttribute {
   String get id;
   @override
   String get value;
+
+  /// Create a copy of VariationAttribute
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VariationAttributeImplCopyWith<_$VariationAttributeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

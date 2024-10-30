@@ -488,6 +488,24 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Correo electronico'**
   String get email_address;
+
+  /// No description provided for @must_accept_terms.
+  ///
+  /// In es, this message translates to:
+  /// **'Debes aceptar las políticas y los términos de uso'**
+  String get must_accept_terms;
+
+  /// No description provided for @terms_unavailable.
+  ///
+  /// In es, this message translates to:
+  /// **'Términos no disponibles'**
+  String get terms_unavailable;
+
+  /// No description provided for @policy_unavailable.
+  ///
+  /// In es, this message translates to:
+  /// **'Políticas no disponibles'**
+  String get policy_unavailable;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

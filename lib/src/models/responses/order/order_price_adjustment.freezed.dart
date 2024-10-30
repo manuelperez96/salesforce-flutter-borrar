@@ -31,8 +31,12 @@ mixin _$OrderPriceAdjustment {
   String get priceAdjustmentId => throw _privateConstructorUsedError;
   String get promotionId => throw _privateConstructorUsedError;
 
+  /// Serializes this OrderPriceAdjustment to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrderPriceAdjustment
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderPriceAdjustmentCopyWith<OrderPriceAdjustment> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -69,6 +73,8 @@ class _$OrderPriceAdjustmentCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderPriceAdjustment
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,6 +133,8 @@ class _$OrderPriceAdjustmentCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of OrderPriceAdjustment
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AppliedDiscountCopyWith<$Res> get appliedDiscount {
@@ -168,6 +176,8 @@ class __$$OrderPriceAdjustmentImplCopyWithImpl<$Res>
       $Res Function(_$OrderPriceAdjustmentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderPriceAdjustment
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -295,7 +305,7 @@ class _$OrderPriceAdjustmentImpl implements _OrderPriceAdjustment {
                 other.promotionId == promotionId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -310,7 +320,9 @@ class _$OrderPriceAdjustmentImpl implements _OrderPriceAdjustment {
       priceAdjustmentId,
       promotionId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderPriceAdjustment
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderPriceAdjustmentImplCopyWith<_$OrderPriceAdjustmentImpl>
@@ -362,8 +374,11 @@ abstract class _OrderPriceAdjustment implements OrderPriceAdjustment {
   String get priceAdjustmentId;
   @override
   String get promotionId;
+
+  /// Create a copy of OrderPriceAdjustment
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderPriceAdjustmentImplCopyWith<_$OrderPriceAdjustmentImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

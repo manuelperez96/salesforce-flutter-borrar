@@ -28,8 +28,12 @@ mixin _$IngAddress {
   String get postalCode => throw _privateConstructorUsedError;
   String get stateCode => throw _privateConstructorUsedError;
 
+  /// Serializes this IngAddress to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IngAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IngAddressCopyWith<IngAddress> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$IngAddressCopyWithImpl<$Res, $Val extends IngAddress>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IngAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,6 +136,8 @@ class __$$IngAddressImplCopyWithImpl<$Res>
       _$IngAddressImpl _value, $Res Function(_$IngAddressImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IngAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -229,12 +237,14 @@ class _$IngAddressImpl implements _IngAddress {
                 other.stateCode == stateCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, address1, city, countryCode,
       firstName, lastName, postalCode, stateCode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IngAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IngAddressImplCopyWith<_$IngAddressImpl> get copyWith =>
@@ -275,8 +285,11 @@ abstract class _IngAddress implements IngAddress {
   String get postalCode;
   @override
   String get stateCode;
+
+  /// Create a copy of IngAddress
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IngAddressImplCopyWith<_$IngAddressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

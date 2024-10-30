@@ -25,7 +25,9 @@ mixin _$BasketEntity {
   double? get subtotal => throw _privateConstructorUsedError;
   String? get currency => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketEntityCopyWith<BasketEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +58,8 @@ class _$BasketEntityCopyWithImpl<$Res, $Val extends BasketEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -126,6 +130,8 @@ class __$$BasketEntityImplCopyWithImpl<$Res>
       _$BasketEntityImpl _value, $Res Function(_$BasketEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -242,7 +248,9 @@ class _$BasketEntityImpl extends _BasketEntity {
       subtotal,
       currency);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketEntityImplCopyWith<_$BasketEntityImpl> get copyWith =>
@@ -274,8 +282,11 @@ abstract class _BasketEntity extends BasketEntity {
   double? get subtotal;
   @override
   String? get currency;
+
+  /// Create a copy of BasketEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketEntityImplCopyWith<_$BasketEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

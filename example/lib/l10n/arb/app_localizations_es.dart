@@ -203,4 +203,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get email_address => 'Correo electronico';
+
+  @override
+  String get must_accept_terms => 'Debes aceptar las políticas y los términos de uso';
+
+  @override
+  String get terms_unavailable => 'Términos no disponibles';
+
+  @override
+  String get policy_unavailable => 'Políticas no disponibles';
 }

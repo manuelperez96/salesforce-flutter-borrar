@@ -25,8 +25,12 @@ mixin _$PaymentInstrument {
   String get paymentMethodId => throw _privateConstructorUsedError;
   PaymentCard? get paymentCard => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentInstrument to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentInstrument
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentInstrumentCopyWith<PaymentInstrument> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$PaymentInstrumentCopyWithImpl<$Res, $Val extends PaymentInstrument>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentInstrument
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +81,8 @@ class _$PaymentInstrumentCopyWithImpl<$Res, $Val extends PaymentInstrument>
     ) as $Val);
   }
 
+  /// Create a copy of PaymentInstrument
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentCardCopyWith<$Res>? get paymentCard {
@@ -110,6 +118,8 @@ class __$$PaymentInstrumentImplCopyWithImpl<$Res>
       $Res Function(_$PaymentInstrumentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentInstrument
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,12 +180,14 @@ class _$PaymentInstrumentImpl implements _PaymentInstrument {
                 other.paymentCard == paymentCard));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, amount, paymentMethodId, paymentCard);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentInstrument
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentInstrumentImplCopyWith<_$PaymentInstrumentImpl> get copyWith =>
@@ -200,13 +212,16 @@ abstract class _PaymentInstrument implements PaymentInstrument {
       _$PaymentInstrumentImpl.fromJson;
 
   @override
-  double get amount;
-  @override //required String? paymentInstrumentId,
+  double get amount; //required String? paymentInstrumentId,
+  @override
   String get paymentMethodId;
   @override
   PaymentCard? get paymentCard;
+
+  /// Create a copy of PaymentInstrument
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentInstrumentImplCopyWith<_$PaymentInstrumentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

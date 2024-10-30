@@ -805,9 +805,28 @@ class MockLocalStorage extends _i1.Mock implements _i10.LocalStorage {
       ) as _i8.Future<void>);
 
   @override
+  _i8.Future<void> saveUserEmail(String? userEmail) => (super.noSuchMethod(
+        Invocation.method(
+          #saveUserEmail,
+          [userEmail],
+        ),
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
+
+  @override
   _i8.Future<String?> getBasketID() => (super.noSuchMethod(
         Invocation.method(
           #getBasketID,
+          [],
+        ),
+        returnValue: _i8.Future<String?>.value(),
+      ) as _i8.Future<String?>);
+
+  @override
+  _i8.Future<String?> getUserEmail() => (super.noSuchMethod(
+        Invocation.method(
+          #getUserEmail,
           [],
         ),
         returnValue: _i8.Future<String?>.value(),

@@ -32,8 +32,12 @@ mixin _$ShippingItem {
   String? get taxClassId => throw _privateConstructorUsedError;
   double? get taxRate => throw _privateConstructorUsedError;
 
+  /// Serializes this ShippingItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShippingItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShippingItemCopyWith<ShippingItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,6 +72,8 @@ class _$ShippingItemCopyWithImpl<$Res, $Val extends ShippingItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShippingItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,6 +168,8 @@ class __$$ShippingItemImplCopyWithImpl<$Res>
       _$ShippingItemImpl _value, $Res Function(_$ShippingItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShippingItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -298,7 +306,7 @@ class _$ShippingItemImpl implements _ShippingItem {
             (identical(other.taxRate, taxRate) || other.taxRate == taxRate));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -314,7 +322,9 @@ class _$ShippingItemImpl implements _ShippingItem {
       taxClassId,
       taxRate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShippingItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShippingItemImplCopyWith<_$ShippingItemImpl> get copyWith =>
@@ -367,8 +377,11 @@ abstract class _ShippingItem implements ShippingItem {
   String? get taxClassId;
   @override
   double? get taxRate;
+
+  /// Create a copy of ShippingItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShippingItemImplCopyWith<_$ShippingItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

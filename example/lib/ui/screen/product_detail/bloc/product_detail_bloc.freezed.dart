@@ -84,6 +84,9 @@ class _$ProductDetailEventCopyWithImpl<$Res, $Val extends ProductDetailEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -100,6 +103,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -217,6 +223,8 @@ class __$$UpdateQuantityImplCopyWithImpl<$Res>
       _$UpdateQuantityImpl _value, $Res Function(_$UpdateQuantityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -256,7 +264,9 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   @override
   int get hashCode => Object.hash(runtimeType, quantity);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateQuantityImplCopyWith<_$UpdateQuantityImpl> get copyWith =>
@@ -342,7 +352,10 @@ abstract class _UpdateQuantity implements ProductDetailEvent {
   const factory _UpdateQuantity(final int quantity) = _$UpdateQuantityImpl;
 
   int get quantity;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateQuantityImplCopyWith<_$UpdateQuantityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -364,6 +377,8 @@ class __$$SelectedColorImplCopyWithImpl<$Res>
       _$SelectedColorImpl _value, $Res Function(_$SelectedColorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -402,7 +417,9 @@ class _$SelectedColorImpl implements _SelectedColor {
   @override
   int get hashCode => Object.hash(runtimeType, color);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectedColorImplCopyWith<_$SelectedColorImpl> get copyWith =>
@@ -487,7 +504,10 @@ abstract class _SelectedColor implements ProductDetailEvent {
   const factory _SelectedColor(final String color) = _$SelectedColorImpl;
 
   String get color;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectedColorImplCopyWith<_$SelectedColorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -509,6 +529,8 @@ class __$$SelectedSizeImplCopyWithImpl<$Res>
       _$SelectedSizeImpl _value, $Res Function(_$SelectedSizeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -547,7 +569,9 @@ class _$SelectedSizeImpl implements _SelectedSize {
   @override
   int get hashCode => Object.hash(runtimeType, size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectedSizeImplCopyWith<_$SelectedSizeImpl> get copyWith =>
@@ -632,7 +656,10 @@ abstract class _SelectedSize implements ProductDetailEvent {
   const factory _SelectedSize(final String size) = _$SelectedSizeImpl;
 
   String get size;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectedSizeImplCopyWith<_$SelectedSizeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -703,7 +730,9 @@ mixin _$ProductDetailState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductDetailStateCopyWith<ProductDetailState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -736,6 +765,8 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -779,6 +810,8 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
     ) as $Val);
   }
 
+  /// Create a copy of ProductDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductCopyWith<$Res>? get initialProduct {
@@ -821,6 +854,8 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -929,7 +964,9 @@ class _$InitialImpl implements _Initial {
       selectedSize,
       selectedProductId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -1043,8 +1080,11 @@ abstract class _Initial implements ProductDetailState {
   String? get selectedSize;
   @override
   String? get selectedProductId;
+
+  /// Create a copy of ProductDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -4,7 +4,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i10;
-import 'dart:math' as _i15;
+import 'dart:math' as _i16;
 
 import 'package:dio/src/adapter.dart' as _i3;
 import 'package:dio/src/cancel_token.dart' as _i11;
@@ -13,15 +13,16 @@ import 'package:dio/src/dio_exception.dart' as _i7;
 import 'package:dio/src/dio_mixin.dart' as _i5;
 import 'package:dio/src/headers.dart' as _i8;
 import 'package:dio/src/options.dart' as _i2;
-import 'package:dio/src/redirect_record.dart' as _i16;
+import 'package:dio/src/redirect_record.dart' as _i17;
 import 'package:dio/src/response.dart' as _i6;
 import 'package:dio/src/transformer.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i14;
+import 'package:mockito/src/dummies.dart' as _i15;
 import 'package:sf_commerce_sdk/src/models/responses/access_token/access_token.dart'
     as _i13;
 import 'package:sf_commerce_sdk/src/utils/interceptors/token_storage.dart'
     as _i12;
+import 'package:sf_commerce_sdk/src/utils/local_storage.dart' as _i14;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -1166,6 +1167,61 @@ class MockTokenStorage extends _i1.Mock implements _i12.TokenStorage {
       ) as _i10.Future<void>);
 }
 
+/// A class which mocks [LocalStorage].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLocalStorage extends _i1.Mock implements _i14.LocalStorage {
+  @override
+  _i10.Future<void> saveBasketID(String? basketID) => (super.noSuchMethod(
+        Invocation.method(
+          #saveBasketID,
+          [basketID],
+        ),
+        returnValue: _i10.Future<void>.value(),
+        returnValueForMissingStub: _i10.Future<void>.value(),
+      ) as _i10.Future<void>);
+
+  @override
+  _i10.Future<void> saveUserEmail(String? userEmail) => (super.noSuchMethod(
+        Invocation.method(
+          #saveUserEmail,
+          [userEmail],
+        ),
+        returnValue: _i10.Future<void>.value(),
+        returnValueForMissingStub: _i10.Future<void>.value(),
+      ) as _i10.Future<void>);
+
+  @override
+  _i10.Future<String?> getBasketID() => (super.noSuchMethod(
+        Invocation.method(
+          #getBasketID,
+          [],
+        ),
+        returnValue: _i10.Future<String?>.value(),
+        returnValueForMissingStub: _i10.Future<String?>.value(),
+      ) as _i10.Future<String?>);
+
+  @override
+  _i10.Future<String?> getUserEmail() => (super.noSuchMethod(
+        Invocation.method(
+          #getUserEmail,
+          [],
+        ),
+        returnValue: _i10.Future<String?>.value(),
+        returnValueForMissingStub: _i10.Future<String?>.value(),
+      ) as _i10.Future<String?>);
+
+  @override
+  _i10.Future<void> clear() => (super.noSuchMethod(
+        Invocation.method(
+          #clear,
+          [],
+        ),
+        returnValue: _i10.Future<void>.value(),
+        returnValueForMissingStub: _i10.Future<void>.value(),
+      ) as _i10.Future<void>);
+}
+
 /// A class which mocks [Interceptors].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -1500,14 +1556,14 @@ class MockInterceptors extends _i1.Mock implements _i5.Interceptors {
           #join,
           [separator],
         ),
-        returnValue: _i14.dummyValue<String>(
+        returnValue: _i15.dummyValue<String>(
           this,
           Invocation.method(
             #join,
             [separator],
           ),
         ),
-        returnValueForMissingStub: _i14.dummyValue<String>(
+        returnValueForMissingStub: _i15.dummyValue<String>(
           this,
           Invocation.method(
             #join,
@@ -1601,7 +1657,7 @@ class MockInterceptors extends _i1.Mock implements _i5.Interceptors {
             combine,
           ],
         ),
-        returnValue: _i14.dummyValue<T>(
+        returnValue: _i15.dummyValue<T>(
           this,
           Invocation.method(
             #fold,
@@ -1611,7 +1667,7 @@ class MockInterceptors extends _i1.Mock implements _i5.Interceptors {
             ],
           ),
         ),
-        returnValueForMissingStub: _i14.dummyValue<T>(
+        returnValueForMissingStub: _i15.dummyValue<T>(
           this,
           Invocation.method(
             #fold,
@@ -1779,7 +1835,7 @@ class MockInterceptors extends _i1.Mock implements _i5.Interceptors {
       );
 
   @override
-  void shuffle([_i15.Random? random]) => super.noSuchMethod(
+  void shuffle([_i16.Random? random]) => super.noSuchMethod(
         Invocation.method(
           #shuffle,
           [random],
@@ -2237,14 +2293,14 @@ class MockResponse extends _i1.Mock implements _i6.Response<dynamic> {
       );
 
   @override
-  List<_i16.RedirectRecord> get redirects => (super.noSuchMethod(
+  List<_i17.RedirectRecord> get redirects => (super.noSuchMethod(
         Invocation.getter(#redirects),
-        returnValue: <_i16.RedirectRecord>[],
-        returnValueForMissingStub: <_i16.RedirectRecord>[],
-      ) as List<_i16.RedirectRecord>);
+        returnValue: <_i17.RedirectRecord>[],
+        returnValueForMissingStub: <_i17.RedirectRecord>[],
+      ) as List<_i17.RedirectRecord>);
 
   @override
-  set redirects(List<_i16.RedirectRecord>? _redirects) => super.noSuchMethod(
+  set redirects(List<_i17.RedirectRecord>? _redirects) => super.noSuchMethod(
         Invocation.setter(
           #redirects,
           _redirects,

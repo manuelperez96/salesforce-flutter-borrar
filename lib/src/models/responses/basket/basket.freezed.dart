@@ -45,8 +45,12 @@ mixin _$Basket {
   String get taxation => throw _privateConstructorUsedError;
   double? get taxTotal => throw _privateConstructorUsedError;
 
+  /// Serializes this Basket to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketCopyWith<Basket> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -94,6 +98,8 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -217,6 +223,8 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
     ) as $Val);
   }
 
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IngAddressCopyWith<$Res>? get billingAddress {
@@ -229,6 +237,8 @@ class _$BasketCopyWithImpl<$Res, $Val extends Basket>
     });
   }
 
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CustomerInfoCopyWith<$Res> get customerInfo {
@@ -284,6 +294,8 @@ class __$$BasketImplCopyWithImpl<$Res>
       _$BasketImpl _value, $Res Function(_$BasketImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -587,7 +599,7 @@ class _$BasketImpl implements _Basket {
             (identical(other.taxTotal, taxTotal) || other.taxTotal == taxTotal));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -616,7 +628,9 @@ class _$BasketImpl implements _Basket {
         taxTotal
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketImplCopyWith<_$BasketImpl> get copyWith =>
@@ -704,8 +718,11 @@ abstract class _Basket implements Basket {
   String get taxation;
   @override
   double? get taxTotal;
+
+  /// Create a copy of Basket
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketImplCopyWith<_$BasketImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

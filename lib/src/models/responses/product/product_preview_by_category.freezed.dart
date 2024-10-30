@@ -27,7 +27,9 @@ mixin _$ProductPreviewByCategory {
   Set<ProductType> get types => throw _privateConstructorUsedError;
   bool get orderable => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductPreviewByCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductPreviewByCategoryCopyWith<ProductPreviewByCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +66,8 @@ class _$ProductPreviewByCategoryCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductPreviewByCategory
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +126,8 @@ class _$ProductPreviewByCategoryCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ProductPreviewByCategory
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ImageCopyWith<$Res> get image {
@@ -166,6 +172,8 @@ class __$$ProductPreviewByCategoryImplCopyWithImpl<$Res>
       $Res Function(_$ProductPreviewByCategoryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductPreviewByCategory
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -318,7 +326,9 @@ class _$ProductPreviewByCategoryImpl implements _ProductPreviewByCategory {
       const DeepCollectionEquality().hash(_types),
       orderable);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductPreviewByCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductPreviewByCategoryImplCopyWith<_$ProductPreviewByCategoryImpl>
@@ -359,8 +369,11 @@ abstract class _ProductPreviewByCategory implements ProductPreviewByCategory {
   Set<ProductType> get types;
   @override
   bool get orderable;
+
+  /// Create a copy of ProductPreviewByCategory
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductPreviewByCategoryImplCopyWith<_$ProductPreviewByCategoryImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

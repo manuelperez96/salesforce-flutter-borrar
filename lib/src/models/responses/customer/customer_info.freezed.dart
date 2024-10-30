@@ -24,8 +24,12 @@ mixin _$CustomerInfo {
   String? get customerName => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
 
+  /// Serializes this CustomerInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomerInfoCopyWith<CustomerInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$CustomerInfoCopyWithImpl<$Res, $Val extends CustomerInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomerInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$CustomerInfoImplCopyWithImpl<$Res>
       _$CustomerInfoImpl _value, $Res Function(_$CustomerInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,11 +159,13 @@ class _$CustomerInfoImpl implements _CustomerInfo {
             (identical(other.email, email) || other.email == email));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, customerId, customerName, email);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomerInfoImplCopyWith<_$CustomerInfoImpl> get copyWith =>
@@ -184,8 +194,11 @@ abstract class _CustomerInfo implements CustomerInfo {
   String? get customerName;
   @override
   String? get email;
+
+  /// Create a copy of CustomerInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomerInfoImplCopyWith<_$CustomerInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

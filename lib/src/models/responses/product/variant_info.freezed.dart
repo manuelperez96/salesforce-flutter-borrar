@@ -22,7 +22,9 @@ mixin _$VariantInfo {
   String? get color => throw _privateConstructorUsedError;
   String? get size => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VariantInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VariantInfoCopyWith<VariantInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +52,8 @@ class _$VariantInfoCopyWithImpl<$Res, $Val extends VariantInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VariantInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -102,6 +106,8 @@ class __$$VariantInfoImplCopyWithImpl<$Res>
       _$VariantInfoImpl _value, $Res Function(_$VariantInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VariantInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -189,7 +195,9 @@ class _$VariantInfoImpl implements _VariantInfo {
       color,
       size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VariantInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VariantInfoImplCopyWith<_$VariantInfoImpl> get copyWith =>
@@ -211,8 +219,11 @@ abstract class _VariantInfo implements VariantInfo {
   String? get color;
   @override
   String? get size;
+
+  /// Create a copy of VariantInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VariantInfoImplCopyWith<_$VariantInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -224,7 +235,9 @@ mixin _$Variant {
   String? get color => throw _privateConstructorUsedError;
   String? get size => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Variant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VariantCopyWith<Variant> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -246,6 +259,8 @@ class _$VariantCopyWithImpl<$Res, $Val extends Variant>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Variant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -293,6 +308,8 @@ class __$$VariantImplCopyWithImpl<$Res>
       _$VariantImpl _value, $Res Function(_$VariantImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Variant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -355,7 +372,9 @@ class _$VariantImpl implements _Variant {
   @override
   int get hashCode => Object.hash(runtimeType, id, price, color, size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Variant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VariantImplCopyWith<_$VariantImpl> get copyWith =>
@@ -377,8 +396,11 @@ abstract class _Variant implements Variant {
   String? get color;
   @override
   String? get size;
+
+  /// Create a copy of Variant
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VariantImplCopyWith<_$VariantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -389,7 +411,9 @@ mixin _$VariationAttributes {
   String get name => throw _privateConstructorUsedError;
   List<ValueKey> get valueKeys => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VariationAttributes
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VariationAttributesCopyWith<VariationAttributes> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -413,6 +437,8 @@ class _$VariationAttributesCopyWithImpl<$Res, $Val extends VariationAttributes>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VariationAttributes
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -456,6 +482,8 @@ class __$$VariationAttributesImplCopyWithImpl<$Res>
       $Res Function(_$VariationAttributesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VariationAttributes
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -521,7 +549,9 @@ class _$VariationAttributesImpl implements _VariationAttributes {
   int get hashCode => Object.hash(
       runtimeType, id, name, const DeepCollectionEquality().hash(_valueKeys));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VariationAttributes
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VariationAttributesImplCopyWith<_$VariationAttributesImpl> get copyWith =>
@@ -541,8 +571,11 @@ abstract class _VariationAttributes implements VariationAttributes {
   String get name;
   @override
   List<ValueKey> get valueKeys;
+
+  /// Create a copy of VariationAttributes
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VariationAttributesImplCopyWith<_$VariationAttributesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -552,7 +585,9 @@ mixin _$ValueKey {
   String get name => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ValueKey
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ValueKeyCopyWith<ValueKey> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -575,6 +610,8 @@ class _$ValueKeyCopyWithImpl<$Res, $Val extends ValueKey>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ValueKey
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -613,6 +650,8 @@ class __$$ValueKeyImplCopyWithImpl<$Res>
       _$ValueKeyImpl _value, $Res Function(_$ValueKeyImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ValueKey
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -659,7 +698,9 @@ class _$ValueKeyImpl implements _ValueKey {
   @override
   int get hashCode => Object.hash(runtimeType, name, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ValueKey
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ValueKeyImplCopyWith<_$ValueKeyImpl> get copyWith =>
@@ -674,8 +715,11 @@ abstract class _ValueKey implements ValueKey {
   String get name;
   @override
   String get value;
+
+  /// Create a copy of ValueKey
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ValueKeyImplCopyWith<_$ValueKeyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

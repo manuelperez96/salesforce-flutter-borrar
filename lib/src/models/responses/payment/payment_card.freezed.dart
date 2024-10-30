@@ -29,8 +29,12 @@ mixin _$PaymentCard {
   String get holder => throw _privateConstructorUsedError;
   String get cardType => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentCard to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentCard
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentCardCopyWith<PaymentCard> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$PaymentCardCopyWithImpl<$Res, $Val extends PaymentCard>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentCard
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,6 +144,8 @@ class __$$PaymentCardImplCopyWithImpl<$Res>
       _$PaymentCardImpl _value, $Res Function(_$PaymentCardImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentCard
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -247,7 +255,7 @@ class _$PaymentCardImpl implements _PaymentCard {
                 other.cardType == cardType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -260,7 +268,9 @@ class _$PaymentCardImpl implements _PaymentCard {
       holder,
       cardType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentCard
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentCardImplCopyWith<_$PaymentCardImpl> get copyWith =>
@@ -304,8 +314,11 @@ abstract class _PaymentCard implements PaymentCard {
   String get holder;
   @override
   String get cardType;
+
+  /// Create a copy of PaymentCard
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentCardImplCopyWith<_$PaymentCardImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
