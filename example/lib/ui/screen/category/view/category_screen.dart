@@ -35,7 +35,7 @@ class CategoryView extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            _SearchForm(),
+            const _SearchForm(),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: defaultPadding,

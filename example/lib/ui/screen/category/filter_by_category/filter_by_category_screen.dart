@@ -39,7 +39,7 @@ class FilterByView extends StatelessWidget {
           context.read<FilterByCategoryBloc>().state.category,
         ),
       ),
-      body: _StateSwitcher(),
+      body: const _StateSwitcher(),
     );
   }
 }

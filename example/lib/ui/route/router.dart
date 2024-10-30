@@ -6,7 +6,6 @@ import 'package:example/ui/screen/checkout/views/billing_address_screen.dart';
 import 'package:example/ui/screen/checkout/views/order_summary_screen.dart';
 import 'package:example/ui/screen/checkout/views/payment_method_screen.dart';
 import 'package:example/ui/screen/checkout/views/success_order_screen.dart';
-import 'package:example/ui/screen/discover/views/discover_screen.dart';
 import 'package:example/ui/screen/home/views/home_screen.dart';
 import 'package:example/ui/screen/onbording/views/onbording_screnn.dart';
 import 'package:example/ui/screen/product_detail/product_detail_provider.dart';
