@@ -2,13 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
 
 /// {@template product_api}
-/// A class that handles product-related API interactions within 
+/// A class that handles product-related API interactions within
 /// the SF Commerce SDK.
-/// 
-/// This class provides methods for retrieving products by their IDs, 
+///
+/// This class provides methods for retrieving products by their IDs,
 /// retrieving a single product,
 /// and retrieving products by category.
-/// 
+///
 /// - `dio`: The Dio instance used for making HTTP requests.
 /// - `config`: The configuration details required for the API interactions.
 /// {@endtemplate}
@@ -84,6 +84,34 @@ class ProductApi extends Api {
               .map(
                 (json) => _toProductPreview(categoryId: category, json: json),
               )
+              .toList() ??
+          [];
+    } catch (e) {
+      throw UnableToGetProductException(StackTrace.current, e);
+    }
+  }
+
+  /// Retrieves a product based on the given criteria.
+  ///
+  /// - `criteria`: The search criteria to retrieve the product.
+  ///
+  /// Throws [UnableToGetProductException] if the retrieval fails.
+  Future<List<ProductPreviewByCategory>> getProductByCriteria(
+    String criteria,
+  ) async {
+    try {
+      final response = await dio.get<dynamic>(
+        '${config.host}/search/shopper-search/v1/organizations/${config.organizationId}/product-search?q=$criteria&siteId=${config.siteId}',
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
+
+      if (response.data == null) return [];
+
+      return ((response.data! as Map)['hits'] as List?)
+              ?.cast<Map<String, dynamic>>()
+              .map((json) => _toProductPreview(categoryId: 'none', json: json))
               .toList() ??
           [];
     } catch (e) {

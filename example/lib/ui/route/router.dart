@@ -4,11 +4,11 @@ import 'package:example/ui/screen/auth/view/login_loading_screen.dart';
 import 'package:example/ui/screen/auth/view/login_screen.dart';
 import 'package:example/ui/screen/auth/view/signup_screen.dart';
 import 'package:example/ui/screen/basket/views/cart_screen.dart';
+import 'package:example/ui/screen/category/view/category_screen.dart';
 import 'package:example/ui/screen/checkout/views/billing_address_screen.dart';
 import 'package:example/ui/screen/checkout/views/order_summary_screen.dart';
 import 'package:example/ui/screen/checkout/views/payment_method_screen.dart';
 import 'package:example/ui/screen/checkout/views/success_order_screen.dart';
-import 'package:example/ui/screen/discover/views/discover_screen.dart';
 import 'package:example/ui/screen/home/views/home_screen.dart';
 import 'package:example/ui/screen/onbording/views/onbording_screen.dart';
 import 'package:example/ui/screen/product_detail/product_detail_provider.dart';
@@ -50,7 +50,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case discoverScreenRoute:
       return MaterialPageRoute(
-        builder: (context) => const DiscoverScreen(),
+        builder: (context) => const CategoryScreen(),
       );
     case entryPointScreenRoute:
       return MaterialPageRoute(

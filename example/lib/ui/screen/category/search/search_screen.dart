@@ -1,0 +1,98 @@
+import 'package:example/di/app_modules.dart';
+import 'package:example/domain/repository/product_repository.dart';
+import 'package:example/ui/screen/category/search/bloc/search_bloc.dart';
+import 'package:example/ui/screen/home/views/components/custom_product_card.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sf_commerce_sdk/sf_commerce_sdk.dart';
+
+class SearchScreen extends StatelessWidget {
+  const SearchScreen({
+    required this.searchCriteria,
+    super.key,
+  });
+
+  final String searchCriteria;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => SearchBloc(
+        criteria: searchCriteria,
+        productRepository: ProductRepository(
+          productApi: inject.get<SFCommerceSDK>().productApi,
+        ),
+      )..add(const SearchEvent.started()),
+      child: const SearchView(),
+    );
+  }
+}
+
+class SearchView extends StatelessWidget {
+  const SearchView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          context.read<SearchBloc>().state.criteria,
+        ),
+      ),
+      body: const _StateSwitcher(),
+    );
+  }
+}
+
+class _StateSwitcher extends StatelessWidget {
+  const _StateSwitcher();
+
+  @override
+  Widget build(BuildContext context) {
+    final status = context.select(
+      (SearchBloc bloc) => bloc.state.status,
+    );
+
+    return switch (status) {
+      SearchStatus.loading => const Center(
+          child: CircularProgressIndicator(),
+        ),
+      SearchStatus.loaded => const _LoadedView(),
+      SearchStatus.error => const Center(
+          child: Text('Error'),
+        ),
+    };
+  }
+}
+
+class _LoadedView extends StatelessWidget {
+  const _LoadedView();
+
+  @override
+  Widget build(BuildContext context) {
+    final products = context.select((SearchBloc bloc) => bloc.state.products);
+
+    if (products.isEmpty) {
+      return const Center(
+        child: Text('No products found'),
+      );
+    }
+
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 16,
+        mainAxisSpacing: 16,
+        childAspectRatio: 0.7,
+      ),
+      itemCount: products.length,
+      itemBuilder: (context, index) => _buildItem(context, products[index]),
+    );
+  }
+
+  Widget _buildItem(BuildContext context, ProductPreviewByCategory product) {
+    return CustomProductCard(
+      product: product,
+    );
+  }
+}

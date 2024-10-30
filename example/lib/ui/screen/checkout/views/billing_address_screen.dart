@@ -153,7 +153,8 @@ class _BillingAddressScreenState extends State<BillingAddressScreen> {
                     ),
                   );
 
-              // TODO(team): uncomment this code and remove lines 150-154 when unmock the app.
+              // ignore: lines_longer_than_80_chars
+              // TODO(team): uncomment code and remove lines 150-154 when unmock the app.
               // ..add(
               //   AddBillingAddress(
               //     ingAddress: ingAddress!,
