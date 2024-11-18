@@ -47,6 +47,7 @@ class AuthApi extends Api {
   /// Returns `true` if the user is logged in, otherwise returns `false`.
   Future<bool> checkStatus() async {
     final token = await _storage.getToken();
+
     if (token == null) return false;
     try {
       final response = await dio.post<dynamic>(
@@ -125,6 +126,8 @@ class AuthApi extends Api {
 
       return _getTokenRequestDataOnSuccess(response);
     } on DioException catch (e) {
+      print('e.response?.statusCode: ${e.response?.statusCode} ************');
+
       if (e.response?.statusCode != 303) {
         throw GetAuthorizationCodeException(e);
       }

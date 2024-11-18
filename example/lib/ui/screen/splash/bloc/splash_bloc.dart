@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:example/domain/repository/auth_repository.dart';
+import 'package:example/domain/repository/cors_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'splash_bloc.freezed.dart';
@@ -11,12 +12,16 @@ part 'splash_state.dart';
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc({
     required AuthRepository authRepository,
+    required CorsRepository corsRepository,
   })  : _authRepository = authRepository,
+        _corsRepository = corsRepository,
         super(const _Initial()) {
     on<_Started>(_onStarted);
   }
 
   final AuthRepository _authRepository;
+  final CorsRepository _corsRepository;
+
   static const _splashDuration = Duration(milliseconds: 2500);
 
   Future<void> _onStarted(_Started event, Emitter<SplashState> emit) async {
@@ -33,6 +38,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   }
 
   Future<void> _doLogin() async {
+    //  await _corsRepository.getCors();
     final logged = await _authRepository.checkStatus();
     if (logged) return;
     await _authRepository.anonymousLogin();

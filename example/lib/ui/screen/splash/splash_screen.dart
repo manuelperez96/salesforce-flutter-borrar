@@ -1,5 +1,6 @@
 import 'package:example/di/app_modules.dart';
 import 'package:example/domain/repository/auth_repository.dart';
+import 'package:example/domain/repository/cors_repository.dart';
 import 'package:example/ui/constants/assets.dart';
 import 'package:example/ui/route/route_constants.dart';
 import 'package:example/ui/screen/splash/bloc/splash_bloc.dart';
@@ -17,6 +18,9 @@ class SplashProvider extends StatelessWidget {
       create: (_) => SplashBloc(
         authRepository: AuthRepository(
           authApi: inject.get<SFCommerceSDK>().authApi,
+        ),
+        corsRepository: CorsRepository(
+          corsApi: inject.get<SFCommerceSDK>().corsApi,
         ),
       )..add(const SplashEvent.started()),
       child: const SplashScreen(),

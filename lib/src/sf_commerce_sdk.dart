@@ -44,7 +44,18 @@ class SFCommerceSDK {
     _dio.options.headers = {
       'Content-Type': 'application/json',
     };
-
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          options.headers.addAll({
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          });
+          return handler.next(options);
+        },
+      ),
+    );
     _dio.interceptors.add(NetworkUtil.createLogsInterceptor());
 
     Logger.isEnabled = enableVerboseLogs;
@@ -76,6 +87,13 @@ class SFCommerceSDK {
   late final CategoryApi categoryApi = CategoryApi(
     dio: _dio,
     config: _config,
+  );
+
+  /// API for authentication.
+  late CorsApi corsApi = CorsApi(
+    dio: _dio,
+    config: _config,
+    storage: _tokenStorage,
   );
 
   /// API for authentication.
