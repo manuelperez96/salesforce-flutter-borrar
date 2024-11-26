@@ -40,7 +40,7 @@ class AuthApi extends Api {
   final LocalStorage _localStorage;
 
   /// The redirect URI used for authorization.
-  static const _redirectUri = 'https://salesforce-flutter-ndyg35tso-manuel-perez-sotos-projects.vercel.app/callback';
+  static const _redirectUri = 'http://localhost:3000/callback';
 
   /// Checks if the user is already logged in.
   ///
@@ -127,7 +127,6 @@ class AuthApi extends Api {
       return _getTokenRequestDataOnSuccess(response);
     } on DioException catch (e) {
       print('e.response?.statusCode: ${e.response?.statusCode} ************');
-      print('Data: ${e?.response?.data} ************');
 
       if (e.response?.statusCode != 303) {
         throw GetAuthorizationCodeException(e);
