@@ -40,7 +40,7 @@ class AuthApi extends Api {
   final LocalStorage _localStorage;
 
   /// The redirect URI used for authorization.
-  static const _redirectUri = 'http://localhost:3000/callback';
+  static const _redirectUri = 'https://salesforce-flutter.vercel.app/:3000/callback';
 
   /// Checks if the user is already logged in.
   ///
